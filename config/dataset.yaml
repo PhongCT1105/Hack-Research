@@ -1,0 +1,158 @@
+dataset_version: benchmark-v1
+schema_version: 1.0.0
+candidate_pool_version: candidate-pool-v1
+random_seed: 42
+target_professors: 100
+
+pilot:
+  preserved: true
+  professors: 12
+  domains: 3
+  conditions: 4
+  generations_per_condition: 2
+  generated_emails: 96
+  prefreeze_checkpoint_professors: 2
+  prefreeze_checkpoint_emails: 16
+
+domains:
+  computer_science_engineering: 20
+  biomedical_public_health: 20
+  psychology_cognitive_science: 20
+  physical_mathematical_sciences: 20
+  social_sciences_humanities: 20
+
+career_stage:
+  early: 35
+  mid: 35
+  senior: 30
+
+career_stage_fallback_years:
+  early:
+    minimum: 0
+    maximum: 8
+  mid:
+    minimum: 9
+    maximum: 18
+  senior:
+    minimum: 19
+    maximum: null
+
+visibility:
+  lower: 35
+  medium: 35
+  higher: 30
+  suggested_percentile_bands:
+    lower: [10, 40]
+    medium: [40, 75]
+    higher: [75, 95]
+  exclude_extreme_top_percent: 5
+
+research_breadth:
+  narrow: 30
+  moderate: 40
+  broad: 30
+
+paper_complexity:
+  low: 30
+  medium: 40
+  high: 30
+  score_version: paper-complexity-v1
+  weights:
+    technical_vocabulary_density: 0.25
+    method_count: 0.20
+    dataset_population_count: 0.15
+    result_experiment_count: 0.15
+    interdisciplinary_breadth: 0.15
+    readability_difficulty: 0.10
+  diagnostic_unweighted_components:
+    - research_objective_count
+    - qualification_hedging_density
+
+synthesis_difficulty:
+  low: 30
+  medium: 40
+  high: 30
+  score_version: synthesis-difficulty-v1
+  provisional_thresholds:
+    low: [0.0, 0.33]
+    medium: [0.33, 0.67]
+    high: [0.67, 1.0]
+  weights:
+    topic_entropy: 0.15
+    mean_semantic_distance: 0.15
+    topic_cluster_count: 0.10
+    method_diversity: 0.10
+    dataset_population_diversity: 0.10
+    temporal_research_evolution: 0.10
+    cross_domain_breadth: 0.10
+    inverse_topic_coherence: 0.20
+  human_review_required: true
+
+method_diversity:
+  target_policy: balanced_low_medium_high
+  score_version: method-diversity-v1
+
+candidate_pool:
+  minimum_raw_authors: 500
+  maximum_raw_authors: 1000
+  minimum_works: 8
+  minimum_usable_abstracts_final: 6
+  require_recent_activity: true
+  require_valid_institution: true
+  require_usable_topics: true
+  require_orcid: false
+
+papers_per_professor: 8
+candidate_papers_per_professor:
+  minimum: 20
+  maximum: 30
+paper_selection_slots:
+  recent: 3
+  influential: 2
+  diversifying: 2
+  random: 1
+focal_papers_per_professor: 2
+passages_per_focal_paper:
+  minimum: 2
+  maximum: 4
+
+sampling:
+  algorithm_version: constrained-margins-v1
+  objective: normalized_absolute_margin_deviation
+  deterministic_tiebreak: seeded_rank_then_professor_id
+  domain_hard_target: true
+  concentration_penalties:
+    institution: 0.05
+    region: 0.02
+
+providers:
+  openalex:
+    base_url: https://api.openalex.org
+    api_key_environment_variable: OPENALEX_API_KEY
+    per_page: 100
+    use_cursor_pagination: true
+    maximum_retries: 5
+    timeout_seconds: 30
+  crossref:
+    api_key_environment_variable: CROSSREF_API_KEY
+  semantic_scholar:
+    api_key_environment_variable: SEMANTIC_SCHOLAR_API_KEY
+  unpaywall:
+    contact_email_environment_variable: UNPAYWALL_EMAIL
+
+paths:
+  raw: data/raw
+  cache: data/raw/cache
+  interim: data/interim
+  final: data/final
+  private: data/private
+  private_pdfs: data/private/raw_pdfs
+  schemas: schemas
+  logs: logs
+
+privacy:
+  identity_map: data/private/professor_identity_map.csv
+  public_outputs_use_anonymous_ids: true
+  infer_sensitive_traits: false
+  send_generated_emails: false
+

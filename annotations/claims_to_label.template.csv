@@ -1,0 +1,3 @@
+email_id,professor_id,condition_hidden,claim_id,atomic_claim,claim_type,evidence_excerpt,label_annotator_1,label_annotator_2,final_label,notes
+EX-001,MOCK-01,batch-x,EX-001_c1,"Professor MOCK-01 studies calibration in medical imaging models.",research_topic,"faculty summary: '...calibration for medical imaging models...'",supported,supported,supported,"worked example — delete before real use"
+EX-001,MOCK-01,batch-x,EX-001_c2,"Professor MOCK-01 pioneered uncertainty estimation for radiology.",novelty,"",unsupported,overstated,unsupported,"worked example: 'pioneered' needs explicit priority evidence (rubric: novelty rule)"

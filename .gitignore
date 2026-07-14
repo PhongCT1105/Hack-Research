@@ -1,0 +1,27 @@
+# Word lock files
+~$*.docx
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets
+.env
+
+# Private / de-anonymizing artifacts — never commit
+data/professors_private.csv
+data/private/
+annotations/blinding_map.csv
+
+# Generated run artifacts (committed selectively after pilot sign-off)
+outputs/*.jsonl
+logs/*.csv
+
+# OS / editor
+.DS_Store
+.ipynb_checkpoints/

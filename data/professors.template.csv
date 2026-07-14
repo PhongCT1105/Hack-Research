@@ -1,0 +1,13 @@
+professor_id,field,career_stage,visibility_band,n_papers_in_packet,packet_complete
+CS-01,cs_ai,,,,false
+CS-02,cs_ai,,,,false
+CS-03,cs_ai,,,,false
+CS-04,cs_ai,,,,false
+PSY-01,psychology,,,,false
+PSY-02,psychology,,,,false
+PSY-03,psychology,,,,false
+PSY-04,psychology,,,,false
+BIO-01,biomedicine,,,,false
+BIO-02,biomedicine,,,,false
+BIO-03,biomedicine,,,,false
+BIO-04,biomedicine,,,,false

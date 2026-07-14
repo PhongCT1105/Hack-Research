@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "outreach-eval"
+version = "0.1.0"
+description = "Claim-level factuality evaluation of AI-generated professor outreach emails (2x2 grounding x verification study)"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+    "pyyaml>=6.0",
+    "pandas>=2.2",
+    "anthropic>=0.40",
+    "openai>=1.50",
+    "tenacity>=8.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+analysis = [
+    "statsmodels>=0.14",
+    "matplotlib>=3.9",
+    "jupyter",
+    "scikit-learn>=1.5",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/outreach_eval"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

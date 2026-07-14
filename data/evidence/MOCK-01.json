@@ -1,0 +1,85 @@
+{
+  "professor_id": "MOCK-01",
+  "field": "cs_ai",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "The Reliable Vision Lab studies uncertainty estimation and calibration for medical imaging models, with a focus on chest radiograph triage under distribution shift. Recent projects examine how calibration failures affect downstream clinical prioritization decisions.",
+  "faculty_summary_provenance": {
+    "source_url": "https://example.edu/~mockprof/research",
+    "retrieved": "2026-07-14",
+    "access_method": "faculty page",
+    "notes": "Fictional professor for pipeline development. Do not use in analysis."
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Calibration Under Distribution Shift in Chest Radiograph Triage",
+      "year": 2025,
+      "venue": "Journal of Machine Learning for Health (fictional)",
+      "authors": ["Mock Professor", "A. Student", "B. Collaborator"],
+      "doi": "10.0000/mock.2025.001",
+      "abstract": "Deep triage models for chest radiographs are typically evaluated in-distribution. We study calibration under realistic distribution shift across three hospital systems and find that expected calibration error increases up to threefold under scanner and population shift. A simple temperature-rescaling procedure applied per site recovers most of the loss on one benchmark dataset. We release evaluation code for site-stratified calibration.",
+      "provenance": {
+        "source_url": "https://example.org/mock/2025.001",
+        "retrieved": "2026-07-14",
+        "access_method": "mock",
+        "notes": ""
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Do Uncertainty Estimates Help Radiologists Prioritize? A Retrospective Study",
+      "year": 2024,
+      "venue": "Conference on Health AI (fictional)",
+      "authors": ["A. Student", "Mock Professor"],
+      "doi": "10.0000/mock.2024.002",
+      "abstract": "We retrospectively evaluate whether model uncertainty estimates could help radiologists prioritize worklists. Using 12,000 historical chest radiographs from a single academic hospital, we simulate uncertainty-aware ordering and observe promising reductions in time-to-read for urgent findings. Results are retrospective and require prospective validation before clinical use.",
+      "provenance": {
+        "source_url": "https://example.org/mock/2024.002",
+        "retrieved": "2026-07-14",
+        "access_method": "mock",
+        "notes": ""
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "A Survey of Selective Prediction in Medical Imaging",
+      "year": 2023,
+      "venue": "Survey Track (fictional)",
+      "authors": ["Mock Professor", "C. Colleague"],
+      "doi": "10.0000/mock.2023.003",
+      "abstract": "We survey selective prediction methods in medical imaging, categorizing abstention strategies, calibration approaches, and evaluation protocols, and identify open problems in site-transferable uncertainty estimation.",
+      "provenance": {
+        "source_url": "https://example.org/mock/2023.003",
+        "retrieved": "2026-07-14",
+        "access_method": "mock",
+        "notes": ""
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "methods",
+      "text": "We evaluate three post-hoc calibration methods (temperature scaling, isotonic regression, and per-site temperature rescaling) on radiographs from three hospital systems, using site-held-out splits. No model retraining is performed; all interventions are post-hoc.",
+      "provenance": {
+        "source_url": "https://example.org/mock/2025.001",
+        "retrieved": "2026-07-14",
+        "access_method": "mock",
+        "notes": ""
+      }
+    },
+    {
+      "paper_id": "P1",
+      "section": "results",
+      "text": "Per-site temperature rescaling reduced expected calibration error from 0.19 to 0.07 on the shifted benchmark, but gains did not transfer to the third hospital system, where ECE remained at 0.14.",
+      "provenance": {
+        "source_url": "https://example.org/mock/2025.001",
+        "retrieved": "2026-07-14",
+        "access_method": "mock",
+        "notes": ""
+      }
+    }
+  ],
+  "real_name_do_not_export": "Mock Professor (fictional)"
+}

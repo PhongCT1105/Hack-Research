@@ -1,0 +1,181 @@
+{
+  "$defs": {
+    "FocalPassage": {
+      "properties": {
+        "paper_id": {
+          "description": "Must reference a Paper.paper_id in the same packet",
+          "title": "Paper Id",
+          "type": "string"
+        },
+        "section": {
+          "description": "intro | methods | results | discussion | project page",
+          "title": "Section",
+          "type": "string"
+        },
+        "text": {
+          "description": "Short verbatim passage (a few sentences)",
+          "title": "Text",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "paper_id",
+        "section",
+        "text",
+        "provenance"
+      ],
+      "title": "FocalPassage",
+      "type": "object"
+    },
+    "Paper": {
+      "properties": {
+        "paper_id": {
+          "description": "Packet-local id, e.g. 'P1'",
+          "title": "Paper Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "year": {
+          "title": "Year",
+          "type": "integer"
+        },
+        "venue": {
+          "title": "Venue",
+          "type": "string"
+        },
+        "authors": {
+          "description": "Full author list, order as published",
+          "items": {
+            "type": "string"
+          },
+          "title": "Authors",
+          "type": "array"
+        },
+        "doi": {
+          "default": "",
+          "title": "Doi",
+          "type": "string"
+        },
+        "abstract": {
+          "title": "Abstract",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "paper_id",
+        "title",
+        "year",
+        "venue",
+        "authors",
+        "abstract",
+        "provenance"
+      ],
+      "title": "Paper",
+      "type": "object"
+    },
+    "Provenance": {
+      "properties": {
+        "source_url": {
+          "title": "Source Url",
+          "type": "string"
+        },
+        "retrieved": {
+          "format": "date",
+          "title": "Retrieved",
+          "type": "string"
+        },
+        "access_method": {
+          "description": "How the item was obtained, e.g. 'faculty page', 'openalex api', 'pdf'",
+          "title": "Access Method",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_url",
+        "retrieved",
+        "access_method"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "description": "Everything the writer (conditions B/D) and verifier (C/D) may rely on.\n\n'Unsupported' in annotation means unsupported by THIS packet \u2014 the packet is\nthe agreed evidence scope, so its construction quality is load-bearing.",
+  "properties": {
+    "professor_id": {
+      "pattern": "^(CS|PSY|BIO|MOCK)-\\d{2}$",
+      "title": "Professor Id",
+      "type": "string"
+    },
+    "field": {
+      "description": "cs_ai | psychology | biomedicine (mock allowed)",
+      "title": "Field",
+      "type": "string"
+    },
+    "career_stage": {
+      "description": "assistant | associate | full",
+      "title": "Career Stage",
+      "type": "string"
+    },
+    "visibility_band": {
+      "description": "low | medium | high citation-visibility band",
+      "title": "Visibility Band",
+      "type": "string"
+    },
+    "faculty_summary": {
+      "description": "Short research summary from the official faculty/lab page (themes only)",
+      "title": "Faculty Summary",
+      "type": "string"
+    },
+    "faculty_summary_provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "papers": {
+      "description": "6 for pilot, 8 recommended at scale",
+      "items": {
+        "$ref": "#/$defs/Paper"
+      },
+      "minItems": 1,
+      "title": "Papers",
+      "type": "array"
+    },
+    "focal_passages": {
+      "description": "2-4 passages for 1-2 focal papers; cover method/result detail",
+      "items": {
+        "$ref": "#/$defs/FocalPassage"
+      },
+      "title": "Focal Passages",
+      "type": "array"
+    },
+    "real_name_do_not_export": {
+      "default": "",
+      "description": "Never copied into outputs, annotations, analysis, or the paper",
+      "title": "Real Name Do Not Export",
+      "type": "string"
+    }
+  },
+  "required": [
+    "professor_id",
+    "field",
+    "career_stage",
+    "visibility_band",
+    "faculty_summary",
+    "faculty_summary_provenance",
+    "papers"
+  ],
+  "title": "EvidencePacket",
+  "type": "object"
+}
