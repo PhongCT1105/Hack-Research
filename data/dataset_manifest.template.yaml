@@ -1,0 +1,70 @@
+template_only: true
+status: not_started
+dataset_version: benchmark-v1
+schema_version: 1.0.0
+candidate_pool_version: null
+created_at: null
+created_by: null
+collection_code_version: null
+configuration_path: config/dataset.yaml
+configuration_checksum_sha256: null
+
+sampling:
+  sampling_seed: 42
+  sampling_algorithm_version: constrained-margins-v1
+  target_distribution:
+    domain:
+      computer_science_engineering: 20
+      biomedical_public_health: 20
+      psychology_cognitive_science: 20
+      physical_mathematical_sciences: 20
+      social_sciences_humanities: 20
+    career_stage: {early: 35, mid: 35, senior: 30}
+    visibility: {lower: 35, medium: 35, higher: 30}
+    research_breadth: {narrow: 30, moderate: 40, broad: 30}
+    paper_complexity: {low: 30, medium: 40, high: 30}
+    synthesis_difficulty: {low: 30, medium: 40, high: 30}
+  achieved_distribution: {}
+  objective_value: null
+  excluded_candidates: []
+  exclusion_reason_counts: {}
+
+source_snapshots:
+  retrieval_window_start: null
+  retrieval_window_end: null
+  providers: []
+  raw_files: []
+  raw_checksums_sha256: {}
+
+algorithms:
+  paper_complexity: paper-complexity-v1
+  research_breadth: research-breadth-v1
+  method_diversity: method-diversity-v1
+  synthesis_difficulty: synthesis-difficulty-v1
+  paper_selection: representative-paper-selection-v1
+  abstract_reconstruction: openalex-inverted-index-v1
+
+counts:
+  institutions: 0
+  raw_author_candidates: 0
+  verified_professors: 0
+  selected_professors: 0
+  selected_papers: 0
+  focal_papers: 0
+  evidence_passages: 0
+
+quality_control:
+  first_10_gate_decision: null
+  schema_validation_passed: false
+  unique_professor_ids_passed: false
+  paper_counts_passed: false
+  focal_paper_counts_passed: false
+  passage_counts_passed: false
+  source_urls_and_dates_passed: false
+  authorship_verification_passed: false
+  public_identity_scan_passed: false
+  raw_pdf_commit_scan_passed: false
+  validation_report_path: null
+
+known_limitations: []
+release_notes: null

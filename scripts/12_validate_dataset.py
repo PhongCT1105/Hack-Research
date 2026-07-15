@@ -6,7 +6,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from _dataset_cli import StageSpec, build_parser, load_config, stage_plan, write_json_atomic
+from _dataset_cli import (
+    StageSpec,
+    build_parser,
+    handle_progress_action,
+    load_config,
+    stage_plan,
+    write_json_atomic,
+)
 
 SPEC = StageSpec(12, "validate_dataset", __doc__, "data/final/evidence_packets", "data/final/validation_report.json", implemented_locally=True)
 ROOT = Path(__file__).resolve().parents[1]
@@ -79,6 +86,9 @@ def validate_repository(config_path: str | Path, packet_input: str | Path | None
 def main() -> int:
     parser = build_parser(SPEC)
     arguments = parser.parse_args()
+    progress_result = handle_progress_action(arguments, parser)
+    if progress_result is not None:
+        return progress_result
     try:
         config = load_config(arguments.config)
     except (OSError, ValueError, RuntimeError) as error:

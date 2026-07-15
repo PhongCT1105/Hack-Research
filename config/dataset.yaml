@@ -143,6 +143,7 @@ providers:
 paths:
   raw: data/raw
   cache: data/raw/cache
+  progress: data/raw/progress
   interim: data/interim
   final: data/final
   private: data/private
@@ -150,9 +151,15 @@ paths:
   schemas: schemas
   logs: logs
 
+collection_progress:
+  checkpoint_version: collection-progress-v1
+  rate_limit_exit_code: 75
+  persist_after_each_page: true
+  persist_after_each_item: true
+  include_api_credentials: false
+
 privacy:
   identity_map: data/private/professor_identity_map.csv
   public_outputs_use_anonymous_ids: true
   infer_sensitive_traits: false
   send_generated_emails: false
-

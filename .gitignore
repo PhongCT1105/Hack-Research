@@ -12,11 +12,33 @@ venv/
 
 # Secrets
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+config/*secret*.yaml
+config/*secrets*.yaml
+config/local*.yaml
 
 # Private / de-anonymizing artifacts — never commit
 data/professors_private.csv
-data/private/
+data/private/*
+!data/private/.gitkeep
+!data/private/raw_pdfs/
+data/private/raw_pdfs/*
+!data/private/raw_pdfs/.gitkeep
+data/private/professor_identity_map.csv
+data/private/*identity*map*
 annotations/blinding_map.csv
+
+# Collection caches and temporary request artifacts
+data/raw/cache/
+data/raw/progress/
+data/**/.cache/
+*.http-cache
+*.sqlite-wal
+*.sqlite-shm
+*.tmp
 
 # Generated run artifacts (committed selectively after pilot sign-off)
 outputs/*.jsonl

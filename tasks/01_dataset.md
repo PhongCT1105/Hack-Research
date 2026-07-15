@@ -1,5 +1,10 @@
 # Workstream 1 — Dataset & Evidence Packets
 
+> **Scope:** This task is the preserved 12-professor pilot workstream. The expanded
+> approximately 100-professor `benchmark-v1` uses `docs/openalex_collection_guide.md`,
+> `schemas/`, `config/dataset.yaml`, and `data/{raw,interim,final,private}`. Do not use
+> this pilot task to overwrite or down-scope the expanded collection contracts.
+
 **Owner:** Phong · **Depends on:** nothing (starts immediately)
 **Blocks:** pipeline pilot run (needs first 2 packets), all downstream analysis.
 
@@ -20,7 +25,7 @@ evidence.
 | File | Content |
 |---|---|
 | `data/professors.csv` | Public manifest: `professor_id, field, career_stage, visibility_band, n_papers_in_packet, packet_complete` |
-| `data/professors_private.csv` | **Gitignored.** `professor_id, real_name, faculty_url, orcid, notes` |
+| `data/professors_private.csv` | **Gitignored legacy pilot path.** `professor_id, real_name, faculty_url, orcid, notes`; expanded mapping uses `data/private/professor_identity_map.csv` |
 | `data/evidence/CS-01.json` … `BIO-04.json` | 12 packets matching the schema |
 | `docs/dataset_policy.md` | Updated with any policy decisions made during collection |
 
@@ -54,7 +59,9 @@ evidence.
 ## Agent Notes
 
 - When fetching abstracts programmatically, prefer OpenAlex/Semantic Scholar APIs and
-  reconcile DOIs via Crossref; keep raw API responses out of the repo (scratch only).
+  reconcile DOIs via Crossref. For new collection runs, store immutable, timestamped
+  raw responses under `data/raw/` as required by the expanded policy; do not hand-edit
+  them or mix them with final packets. Private PDFs remain under ignored `data/private/`.
 - If a professor lacks 6 recent papers or a usable faculty page, replace them and note
   the swap in `docs/decision_log.md`.
 - Focal passages should target methods/results details that the abstracts omit —

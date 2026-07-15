@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 
-SCAFFOLD_VERSION = "dataset-cli-v1"
+SCAFFOLD_VERSION = "dataset-cli-v2"
 ABSTRACT_RECONSTRUCTION_VERSION = "openalex-inverted-index-v1"
 
 
@@ -41,6 +41,27 @@ def build_parser(spec: StageSpec) -> argparse.ArgumentParser:
     parser.add_argument("--output", default=spec.default_output, help="Output file or directory")
     parser.add_argument("--cache-dir", default="data/raw/cache", help="HTTP response cache directory")
     parser.add_argument("--log-file", default="logs/dataset_collection.log", help="Structured failure log")
+    parser.add_argument(
+        "--state-dir",
+        default="data/raw/progress",
+        help="Local per-command progress checkpoint directory",
+    )
+    parser.add_argument(
+        "--resume", action="store_true", help="Resume the matching incomplete collection job"
+    )
+    parser.add_argument(
+        "--status",
+        action="store_true",
+        help="Print a saved job's current profile/cursor and resume command",
+    )
+    parser.add_argument(
+        "--job-id", default=None, help="Saved progress job ID used with --status or explicit resume"
+    )
+    parser.add_argument(
+        "--restart",
+        action="store_true",
+        help="Start a new attempt; requires --force and preserves prior raw data",
+    )
     parser.add_argument("--seed", type=int, default=None, help="Deterministic random seed")
     parser.add_argument("--dry-run", action="store_true", help="Print a deterministic execution plan without network calls or writes")
     parser.add_argument("--force", action="store_true", help="Permit replacing a derived output; raw data must use a new versioned path")
@@ -113,6 +134,9 @@ def stage_plan(spec: StageSpec, arguments: argparse.Namespace, config: Mapping[s
         "output": arguments.output,
         "cache_dir": arguments.cache_dir,
         "log_file": arguments.log_file,
+        "state_dir": arguments.state_dir,
+        "resume": bool(arguments.resume),
+        "job_id": arguments.job_id,
         "seed": seed,
         "force": bool(arguments.force),
         "network_provider": spec.network_provider,
@@ -124,9 +148,31 @@ def stage_plan(spec: StageSpec, arguments: argparse.Namespace, config: Mapping[s
     }
 
 
+def handle_progress_action(
+    arguments: argparse.Namespace, parser: argparse.ArgumentParser
+) -> int | None:
+    if arguments.restart and not arguments.force:
+        parser.error("--restart requires --force; prior raw data are never deleted silently")
+    if not arguments.status:
+        return None
+    if not arguments.job_id:
+        parser.error("--status requires --job-id")
+    from _collection_progress import ProgressStore, render_status
+
+    try:
+        progress = ProgressStore(arguments.state_dir).load(arguments.job_id)
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        parser.error(str(error))
+    print(render_status(progress))
+    return 0
+
+
 def run_scaffold(spec: StageSpec, argv: Sequence[str] | None = None) -> int:
     parser = build_parser(spec)
     arguments = parser.parse_args(argv)
+    progress_result = handle_progress_action(arguments, parser)
+    if progress_result is not None:
+        return progress_result
     try:
         config = load_config(arguments.config)
     except (OSError, ValueError, RuntimeError) as error:

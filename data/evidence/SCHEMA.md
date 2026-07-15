@@ -21,4 +21,10 @@ One JSON file per professor: `data/evidence/<PROFESSOR_ID>.json` (e.g. `CS-01.js
 
 Every item carries `provenance` (source URL + retrieval date + access method).
 
+This is the **pilot runtime schema**. The expanded `benchmark-v1` collection uses
+`schemas/professor.schema.json`, `schemas/paper.schema.json`, and
+`schemas/evidence_packet.schema.json`, including exactly eight selected papers and two
+focal papers. Moving expanded packets into the runtime pipeline requires a versioned,
+logged migration; do not regenerate this file from the expanded schema after pilot freeze.
+
 **Freeze notice:** this schema is frozen after the 16-email pilot sign-off.

@@ -11,6 +11,7 @@ from _dataset_cli import (
     StageSpec,
     build_parser,
     configure_logging,
+    handle_progress_action,
     load_config,
     log_failure,
     read_jsonl,
@@ -25,6 +26,9 @@ SPEC = StageSpec(5, "reconstruct_abstracts", __doc__, "data/raw/author_works.jso
 def main() -> int:
     parser = build_parser(SPEC)
     arguments = parser.parse_args()
+    progress_result = handle_progress_action(arguments, parser)
+    if progress_result is not None:
+        return progress_result
     try:
         config = load_config(arguments.config)
     except (OSError, ValueError, RuntimeError) as error:

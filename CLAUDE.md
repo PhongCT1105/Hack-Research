@@ -13,10 +13,11 @@ Full rationale: `docs/research_proposal.md`. Design: `docs/experimental_design.m
 
 1. Find your workstream spec in `tasks/` (01_dataset, 02_pipeline, 03_annotation, 04_paper).
    Each spec lists objective, dependencies, exact file contracts, steps, and completion criteria.
-2. Data contracts live in `src/outreach_eval/schemas.py` (Pydantic) and
-   `data/evidence/evidence_packet.schema.json`. **Schemas are the source of truth** —
-   if code and schema disagree, the schema wins; if a schema must change before the
-   freeze, update both and log it in `docs/decision_log.md`.
+2. Pilot/runtime data contracts live in `src/outreach_eval/schemas.py` (Pydantic) and
+   `data/evidence/evidence_packet.schema.json` when those runtime files are present.
+   Expanded `benchmark-v1` collection contracts live in `schemas/`. **The applicable
+   versioned schema is the source of truth** — do not silently use an expanded collection
+   schema to alter a frozen pilot runtime contract. Log migrations in `docs/decision_log.md`.
 
 ## Hard rules — never violate these
 
@@ -31,10 +32,11 @@ Full rationale: `docs/research_proposal.md`. Design: `docs/experimental_design.m
    experimental condition, whether text is original or verified, or the professor's real
    name. The blinding map (`annotations/blinding_map.csv`, gitignored) is maintained by
    the pipeline owner only.
-4. **Anonymization.** Professors' real names appear ONLY inside `data/evidence/*.json`
-   packets and the private roster (`data/professors_private.csv`, gitignored). Everything
-   else — outputs, annotations, analysis, paper, commit messages — uses anonymous IDs
-   (`CS-01`, `PSY-02`, `BIO-03`, …).
+4. **Anonymization.** Public outputs, annotations, analysis, paper text, examples, and
+   commit messages use anonymous IDs (`CS-01`, `PSY-02`, `BIO-03`, …). Expanded-benchmark
+   identity mappings belong only in `data/private/professor_identity_map.csv` (gitignored).
+   Identity-bearing internal evidence may be used for controlled verification, but it is
+   not a public output and must be sanitized before release.
 5. **One owner per file.** Check the ownership table in `README.md` before editing an
    artifact owned by another workstream; coordinate via `docs/decision_log.md`.
 6. **Versioned prompts.** Prompts are named `<role>_v<N>.md` (e.g. `writer_v1.md`).
@@ -45,6 +47,10 @@ Full rationale: `docs/research_proposal.md`. Design: `docs/experimental_design.m
    A run that isn't in the manifest doesn't exist.
 8. **Emails are never sent.** This is an offline benchmark. No code in this repo may
    contact an email service or any professor.
+9. **Raw collection data are immutable.** Never hand-edit `data/raw/` captures or silently
+   overwrite collection outputs. Corrections create a new version with provenance.
+10. **No raw PDFs in Git.** Local copies belong under `data/private/raw_pdfs/`; public
+    evidence uses legal URLs, permitted abstracts, and short attributed passages.
 
 ## Key definitions (use these words precisely)
 
@@ -74,3 +80,5 @@ Full rationale: `docs/research_proposal.md`. Design: `docs/experimental_design.m
   client) and `scripts/validate_packet.py` on all packets.
 - Update `docs/decision_log.md` for any choice that affects another workstream
   (schema tweaks, label definitions, sampling changes, prompt bumps).
+- Before scaling expanded collection, complete
+  `docs/first_10_collection_checklist.md` and record GO/REVISE/STOP in the decision log.
