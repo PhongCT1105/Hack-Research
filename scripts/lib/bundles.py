@@ -7,6 +7,7 @@ import hashlib
 import json
 import re
 from typing import Any, Mapping, Sequence
+import unicodedata
 
 from .normalization import canonical_openalex_id
 
@@ -34,20 +35,20 @@ PORTFOLIO_DIMENSIONS = (
     "synthesis_difficulty",
 )
 _SHA256 = re.compile(r"^[0-9a-fA-F]{64}$")
-_IDENTITY_KEYS = frozenset(
+_FORBIDDEN_KEY_TOKENS = frozenset(
     {
         "author",
         "authors",
         "authorship",
         "authorships",
-        "display_name",
-        "faculty_title",
+        "displayname",
+        "facultytitle",
         "name",
         "passage",
         "passages",
-        "passage_text",
-        "reconstructed_abstract",
-        "abstract_inverted_index",
+        "passagetext",
+        "reconstructedabstract",
+        "abstractinvertedindex",
     }
 )
 
@@ -173,6 +174,7 @@ def validate_openalex_bundle_semantics(bundle: Mapping[str, Any]) -> None:
 
     if not isinstance(bundle, Mapping):
         raise TypeError("bundle must be a mapping")
+    _validate_anonymous_keys(bundle)
     papers = _mapping_sequence(bundle.get("selected_papers"), "selected_papers")
     if len(papers) != 8:
         raise ValueError("selected_papers must contain exactly 8 records")
@@ -504,8 +506,25 @@ def _sanitize_value(value: Any) -> Any:
         return {
             str(key): _sanitize_value(item)
             for key, item in value.items()
-            if str(key).casefold() not in _IDENTITY_KEYS
+            if not _is_forbidden_metadata_key(key)
         }
     if isinstance(value, (list, tuple)):
         return [_sanitize_value(item) for item in value]
     return deepcopy(value)
+
+
+def _validate_anonymous_keys(value: Any, path: str = "$") -> None:
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            if _is_forbidden_metadata_key(key):
+                raise ValueError(f"forbidden bundle key at {path}: {key!r}")
+            _validate_anonymous_keys(item, f"{path}.{key}")
+    elif isinstance(value, (list, tuple)):
+        for index, item in enumerate(value):
+            _validate_anonymous_keys(item, f"{path}[{index}]")
+
+
+def _is_forbidden_metadata_key(value: Any) -> bool:
+    normalized = unicodedata.normalize("NFKC", str(value)).casefold()
+    token = "".join(character for character in normalized if character.isalnum())
+    return token in _FORBIDDEN_KEY_TOKENS

@@ -19,6 +19,7 @@ from lib.bundles import (  # noqa: E402
     build_enrichment_tasks,
     build_openalex_bundle,
     validate_enrichment_tasks,
+    validate_openalex_bundle_semantics,
 )
 
 
@@ -248,6 +249,61 @@ def test_schema_rejects_forbidden_keys_anywhere_in_provisional_metadata(
 
     validator = Draft202012Validator(bundle_schema, format_checker=FormatChecker())
     assert not validator.is_valid(bundle)
+
+
+@pytest.mark.parametrize(
+    ("container", "forbidden_key"),
+    [
+        (("openalex_profile", "career_estimate"), "Display_Name"),
+        (("selected_papers", 0, "complexity", "components"), "NAME"),
+        (("openalex_profile", "career_estimate"), "Passages"),
+        (("selected_papers", 0, "primary_topic"), "Passage_Text"),
+        (("openalex_profile", "career_estimate"), "Ｄｉｓｐｌａｙ＿Ｎａｍｅ"),
+        (("selected_papers", 0, "primary_topic"), "Passage-Text"),
+    ],
+)
+def test_semantics_reject_case_unicode_and_separator_variants_of_forbidden_keys(
+    bundle_inputs: dict[str, Any],
+    container: tuple[str | int, ...],
+    forbidden_key: str,
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    target: Any = bundle
+    for segment in container:
+        target = target[segment]
+    target[forbidden_key] = "forbidden"
+
+    with pytest.raises(ValueError, match="forbidden bundle key"):
+        validate_openalex_bundle_semantics(bundle)
+
+
+def test_builder_sanitizes_case_unicode_and_separator_variants_recursively(
+    bundle_inputs: dict[str, Any],
+) -> None:
+    inputs = deepcopy(bundle_inputs)
+    inputs["profile"]["career_estimate"].update(
+        {
+            "Display_Name": "Real Person",
+            "ＮＡＭＥ": "Real Person",
+            "Passages": ["forbidden"],
+            "Passage Text": "forbidden",
+        }
+    )
+    inputs["selected_papers"][0]["complexity"]["components"].update(
+        {"display-name": "Real Person", "PASSAGE_TEXT": "forbidden"}
+    )
+
+    bundle = build_openalex_bundle(**inputs)
+
+    assert set(bundle["openalex_profile"]["career_estimate"]) == {
+        "stage",
+        "source",
+        "first_publication_year",
+    }
+    assert set(bundle["selected_papers"][0]["complexity"]["components"]) == {
+        "technical_vocabulary_density",
+        "method_count",
+    }
 
 
 def test_enrichment_task_ids_are_stable_and_cover_every_missing_gate(
