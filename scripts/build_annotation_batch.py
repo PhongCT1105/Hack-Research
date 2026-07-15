@@ -64,26 +64,39 @@ MAP_FIELDS = [
     "original_claim_id",
 ]
 
-# Honorifics that must never be treated as a surname during name scrubbing.
+# Honorifics that must never be treated as a name token during scrubbing.
 _NAME_STOPWORDS = {"professor", "prof", "dr", "phd", "mr", "ms", "mrs", "mx"}
+
+# Two-letter English words we refuse to scrub, so a common word is not blanked out of
+# every email. LIMITATION: a real surname that is also one of these (e.g. "He", "An",
+# "Le") will NOT be scrubbed as a standalone token — the full name still is. Emails
+# address professors by surname, so flag such professors for manual review.
+_COMMON_SHORT_WORDS = {
+    "an", "he", "we", "in", "on", "at", "to", "of", "is", "it", "so", "or", "no",
+    "by", "up", "as", "me", "my", "do", "if", "be", "us", "go", "am", "hi",
+}
 
 
 def name_variants(real_name: str) -> list[str]:
     """Name strings to scrub from claim text, longest first.
 
-    Full name (minus any parenthetical) plus the trailing surname token. Honorifics
-    are excluded so we never blank out the word "Professor".
+    Full name (minus any parenthetical) plus every individual name token — including
+    short surnames like "Du" or "Li" that the model typically uses to address the
+    professor. Honorifics and ambiguous two-letter English words are excluded.
+    Ordered longest-first so the full name is replaced before its parts.
     """
     base = re.sub(r"\(.*?\)", "", real_name).strip()
     if not base:
         return []
     variants = {base}
-    tokens = [t for t in re.split(r"\s+", base) if t]
-    for token in reversed(tokens):
+    for token in re.split(r"\s+", base):
         clean = token.strip(".,")
-        if len(clean) >= 3 and clean.lower() not in _NAME_STOPWORDS:
-            variants.add(clean)
-            break
+        low = clean.lower()
+        if len(clean) < 2 or low in _NAME_STOPWORDS:
+            continue  # skip initials and honorifics
+        if len(clean) == 2 and low in _COMMON_SHORT_WORDS:
+            continue  # avoid mangling common words (documented limitation)
+        variants.add(clean)
     return sorted(variants, key=len, reverse=True)
 
 

@@ -50,8 +50,22 @@ class NameScrubTests(unittest.TestCase):
         variants = name_variants("Jane Q. Smith")
         self.assertIn("Jane Q. Smith", variants)
         self.assertIn("Smith", variants)
-        # "Professor" must never be picked as a surname to blank out.
+        # "Professor" must never be picked as a standalone token to blank out.
         self.assertNotIn("Professor", name_variants("Professor Ada Lovelace"))
+
+    def test_short_surname_is_scrubbed(self) -> None:
+        # Regression: a 2-char surname (common in Chinese/Korean names) must be caught,
+        # since emails address the professor by surname ("Dear Prof. Du").
+        variants = name_variants("Zhaoping Du")
+        self.assertIn("Du", variants)
+        self.assertIn("Zhaoping", variants)
+        out = scrub_names("Prof. Du's work; DU studies control.", variants)
+        self.assertNotIn("Du", out)
+        self.assertNotIn("DU", out)
+
+    def test_common_word_surname_not_over_scrubbed(self) -> None:
+        # Ambiguous 2-letter English words are left alone to avoid mangling text.
+        self.assertNotIn("He", name_variants("Ada He"))
 
     def test_scrub_replaces_name_case_insensitive_and_possessive(self) -> None:
         text = "Smith studies calibration; SMITH's 2024 paper is on triage."
