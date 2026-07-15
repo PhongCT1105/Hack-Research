@@ -8,15 +8,24 @@ import json
 import logging
 import os
 import random
-import tempfile
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from lib.config import DatasetConfig
+from lib.io import atomic_write_json, atomic_write_jsonl, read_jsonl as read_jsonl
+
 
 SCAFFOLD_VERSION = "dataset-cli-v2"
 ABSTRACT_RECONSTRUCTION_VERSION = "openalex-inverted-index-v1"
+
+
+def _positive_integer(value: str) -> int:
+    parsed = int(value)
+    if parsed < 1:
+        raise argparse.ArgumentTypeError("must be at least 1")
+    return parsed
 
 
 @dataclass(frozen=True)
@@ -36,11 +45,17 @@ def build_parser(spec: StageSpec) -> argparse.ArgumentParser:
         description=spec.description,
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    parser.add_argument("--config", default="config/dataset.yaml", help="Dataset YAML configuration")
+    parser.add_argument(
+        "--config", default="config/dataset.yaml", help="Dataset YAML configuration"
+    )
     parser.add_argument("--input", default=spec.default_input, help="Input file or directory")
     parser.add_argument("--output", default=spec.default_output, help="Output file or directory")
-    parser.add_argument("--cache-dir", default="data/raw/cache", help="HTTP response cache directory")
-    parser.add_argument("--log-file", default="logs/dataset_collection.log", help="Structured failure log")
+    parser.add_argument(
+        "--cache-dir", default="data/raw/cache", help="HTTP response cache directory"
+    )
+    parser.add_argument(
+        "--log-file", default="logs/dataset_collection.log", help="Structured failure log"
+    )
     parser.add_argument(
         "--state-dir",
         default="data/raw/progress",
@@ -63,24 +78,42 @@ def build_parser(spec: StageSpec) -> argparse.ArgumentParser:
         help="Start a new attempt; requires --force and preserves prior raw data",
     )
     parser.add_argument("--seed", type=int, default=None, help="Deterministic random seed")
-    parser.add_argument("--dry-run", action="store_true", help="Print a deterministic execution plan without network calls or writes")
-    parser.add_argument("--force", action="store_true", help="Permit replacing a derived output; raw data must use a new versioned path")
+    parser.add_argument(
+        "--limit",
+        type=_positive_integer,
+        default=None,
+        help="Maximum number of institutions or author profiles to process",
+    )
+    parser.add_argument(
+        "--full-run",
+        action="store_true",
+        help="Permit author-processing stages to exceed the configured safe limit",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print a deterministic execution plan without network calls or writes",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Permit replacing a derived output; raw data must use a new versioned path",
+    )
     parser.add_argument("--version", action="version", version=SCAFFOLD_VERSION)
     return parser
 
 
 def load_config(path: str | Path) -> dict[str, Any]:
-    try:
-        import yaml
-    except ModuleNotFoundError as error:
-        raise RuntimeError('PyYAML is required; install project dependencies with pip install -e ".[dev]"') from error
-    config_path = Path(path)
-    if not config_path.is_file():
-        raise FileNotFoundError(f"configuration not found: {config_path}")
-    loaded = yaml.safe_load(config_path.read_text(encoding="utf-8"))
-    if not isinstance(loaded, dict):
-        raise ValueError(f"configuration must contain a YAML mapping: {config_path}")
-    return loaded
+    return DatasetConfig.load(path).raw
+
+
+def enforce_author_limit(limit: int | None, full_run: bool, safe_limit: int = 10) -> int:
+    resolved = safe_limit if limit is None else limit
+    if resolved < 1:
+        raise ValueError("--limit must be at least 1")
+    if resolved > safe_limit and not full_run:
+        raise ValueError(f"author limit above {safe_limit} requires --full-run")
+    return resolved
 
 
 def resolved_seed(arguments: argparse.Namespace, config: Mapping[str, Any]) -> int:
@@ -100,7 +133,9 @@ def configure_logging(path: str | Path) -> logging.Logger:
     return logger
 
 
-def log_failure(logger: logging.Logger, spec: StageSpec, entity_id: str | None, error: BaseException) -> None:
+def log_failure(
+    logger: logging.Logger, spec: StageSpec, entity_id: str | None, error: BaseException
+) -> None:
     event = {
         "timestamp": datetime.now(UTC).isoformat(),
         "stage": f"{spec.number:02d}_{spec.name}",
@@ -112,12 +147,20 @@ def log_failure(logger: logging.Logger, spec: StageSpec, entity_id: str | None, 
 
 
 def canonical_request_hash(provider: str, endpoint: str, params: Mapping[str, Any]) -> str:
-    redacted = {key: value for key, value in params.items() if key.lower() not in {"api_key", "key", "token"}}
-    payload = json.dumps([provider, endpoint, sorted(redacted.items())], separators=(",", ":"), ensure_ascii=True)
+    redacted = {
+        key: value
+        for key, value in params.items()
+        if key.lower() not in {"api_key", "key", "token"}
+    }
+    payload = json.dumps(
+        [provider, endpoint, sorted(redacted.items())], separators=(",", ":"), ensure_ascii=True
+    )
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
-def stage_plan(spec: StageSpec, arguments: argparse.Namespace, config: Mapping[str, Any]) -> dict[str, Any]:
+def stage_plan(
+    spec: StageSpec, arguments: argparse.Namespace, config: Mapping[str, Any]
+) -> dict[str, Any]:
     seed = resolved_seed(arguments, config)
     provider_environment = None
     if spec.network_provider:
@@ -138,6 +181,8 @@ def stage_plan(spec: StageSpec, arguments: argparse.Namespace, config: Mapping[s
         "resume": bool(arguments.resume),
         "job_id": arguments.job_id,
         "seed": seed,
+        "limit": arguments.limit,
+        "full_run": bool(arguments.full_run),
         "force": bool(arguments.force),
         "network_provider": spec.network_provider,
         "credential_environment_variable": provider_environment,
@@ -174,8 +219,20 @@ def run_scaffold(spec: StageSpec, argv: Sequence[str] | None = None) -> int:
     if progress_result is not None:
         return progress_result
     try:
-        config = load_config(arguments.config)
+        typed_config = DatasetConfig.load(arguments.config)
     except (OSError, ValueError, RuntimeError) as error:
+        parser.error(str(error))
+    config = typed_config.raw
+    try:
+        if spec.number == 1:
+            arguments.limit = (
+                typed_config.safe_author_limit if arguments.limit is None else arguments.limit
+            )
+        else:
+            arguments.limit = enforce_author_limit(
+                arguments.limit, arguments.full_run, typed_config.safe_author_limit
+            )
+    except ValueError as error:
         parser.error(str(error))
     random.seed(resolved_seed(arguments, config))
     if arguments.dry_run:
@@ -208,43 +265,14 @@ def reconstruct_abstract(inverted_index: Mapping[str, Iterable[int]] | None) -> 
     return " ".join(positioned[position] for position in sorted(positioned))
 
 
-def _atomic_text_write(destination: Path, content: str, force: bool) -> None:
-    if destination.exists() and not force:
-        raise FileExistsError(f"refusing to overwrite existing output: {destination}")
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    handle, temporary_name = tempfile.mkstemp(prefix=f".{destination.name}.", suffix=".tmp", dir=destination.parent)
-    temporary = Path(temporary_name)
-    try:
-        with os.fdopen(handle, "w", encoding="utf-8", newline="") as stream:
-            stream.write(content)
-            stream.flush()
-            os.fsync(stream.fileno())
-        temporary.replace(destination)
-    except BaseException:
-        temporary.unlink(missing_ok=True)
-        raise
-
-
 def write_json_atomic(destination: str | Path, value: Any, force: bool = False) -> None:
-    content = json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
-    _atomic_text_write(Path(destination), content, force)
+    atomic_write_json(destination, value, force=force)
 
 
-def write_jsonl_atomic(destination: str | Path, records: Iterable[Mapping[str, Any]], force: bool = False) -> None:
-    content = "".join(json.dumps(record, sort_keys=True, ensure_ascii=False) + "\n" for record in records)
-    _atomic_text_write(Path(destination), content, force)
-
-
-def read_jsonl(source: str | Path) -> list[dict[str, Any]]:
-    records: list[dict[str, Any]] = []
-    for line_number, line in enumerate(Path(source).read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        value = json.loads(line)
-        if not isinstance(value, dict):
-            raise ValueError(f"JSONL line {line_number} is not an object")
-        records.append(value)
-    return records
+def write_jsonl_atomic(
+    destination: str | Path, records: Iterable[Mapping[str, Any]], force: bool = False
+) -> None:
+    atomic_write_jsonl(destination, records, force=force)
 
 
 def describe_stage(spec: StageSpec) -> dict[str, Any]:

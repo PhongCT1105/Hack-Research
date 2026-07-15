@@ -4,6 +4,10 @@ candidate_pool_version: candidate-pool-v1
 random_seed: 42
 target_professors: 100
 
+institution_seed:
+  countries: [US, CA, GB, AU, DE, NL, SG]
+  types: [education, healthcare]
+
 pilot:
   preserved: true
   professors: 12
@@ -101,6 +105,7 @@ candidate_pool:
   require_valid_institution: true
   require_usable_topics: true
   require_orcid: false
+  recent_activity_year: 2021
 
 papers_per_professor: 8
 candidate_papers_per_professor:
@@ -133,6 +138,8 @@ providers:
     use_cursor_pagination: true
     maximum_retries: 5
     timeout_seconds: 30
+    mailto_environment_variable: OPENALEX_MAILTO
+    user_agent: outreach-eval/0.1
   crossref:
     api_key_environment_variable: CROSSREF_API_KEY
   semantic_scholar:
@@ -157,6 +164,11 @@ collection_progress:
   persist_after_each_page: true
   persist_after_each_item: true
   include_api_credentials: false
+
+collection:
+  raw_envelope_version: openalex-raw-envelope-v1
+  safe_author_limit: 10
+  bundle_version: openalex-provisional-bundle-v1
 
 privacy:
   identity_map: data/private/professor_identity_map.csv

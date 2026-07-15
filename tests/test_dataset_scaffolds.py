@@ -47,6 +47,8 @@ class DatasetScaffoldTests(unittest.TestCase):
             self.assertIn("--status", completed.stdout)
             self.assertIn("--job-id", completed.stdout)
             self.assertIn("--restart", completed.stdout)
+            self.assertIn("--limit", completed.stdout)
+            self.assertIn("--full-run", completed.stdout)
 
     def test_abstract_reconstruction_is_deterministic(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))
