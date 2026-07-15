@@ -76,6 +76,25 @@ class PageThenRateLimitClient(StaticClient):
         )
 
 
+class PageThenInterruptClient(StaticClient):
+    def __init__(self, pages: list[Page], checkpoint_path: Path | None = None) -> None:
+        super().__init__(pages)
+        self.checkpoint_path = checkpoint_path
+
+    def iter_pages(
+        self,
+        endpoint: str,
+        params: Mapping[str, Any],
+        start_cursor: str = "*",
+    ) -> Iterator[Page]:
+        self.calls.append((endpoint, dict(params), start_cursor))
+        if self.checkpoint_path is not None:
+            checkpoint = json.loads(self.checkpoint_path.read_text(encoding="utf-8"))
+            assert checkpoint["status"] == "running"
+        yield from self.pages
+        raise RuntimeError("synthetic process interruption")
+
+
 def endpoint_for_author(item: Mapping[str, str]) -> tuple[str, dict[str, str]]:
     return "works", {"filter": f"author.id:{item['provider_id']}"}
 
@@ -257,6 +276,78 @@ def test_resume_continues_at_exact_saved_cursor(tmp_path: Path) -> None:
     assert checkpoint["completed_item_ids"] == ["MOCK-01"]
     assert checkpoint["records_written"] == 2
     assert checkpoint["pages_written"] == 2
+
+
+def test_resume_saves_running_status_before_and_after_next_nonterminal_page(
+    tmp_path: Path,
+) -> None:
+    first_client = PageThenRateLimitClient([page("*", "cursor-2", "hash-1")])
+    first_job = create_job(tmp_path, first_client)
+    with pytest.raises(CollectionPaused):
+        first_job.collect_items([ITEM], endpoint_for_author)
+
+    checkpoint_path = first_job.progress_store.path_for(first_job.progress["job_id"])
+    second_client = PageThenInterruptClient(
+        [page("cursor-2", "cursor-3", "hash-2")], checkpoint_path
+    )
+    resumed = create_job(
+        tmp_path,
+        second_client,
+        resume=True,
+        job_id=first_job.progress["job_id"],
+    )
+
+    with pytest.raises(RuntimeError, match="synthetic process interruption"):
+        resumed.collect_items([ITEM], endpoint_for_author)
+
+    checkpoint = load_only_checkpoint(tmp_path)
+    assert checkpoint["status"] == "running"
+    assert checkpoint["current_cursor"] == "cursor-3"
+    assert checkpoint["pages_written"] == 2
+
+
+def test_corrupted_existing_raw_page_fails_before_retry_advances_checkpoint(
+    tmp_path: Path,
+) -> None:
+    retried_page = page("*", "cursor-2", "hash-1")
+    job = create_job(tmp_path, StaticClient([retried_page]))
+    reference = job.raw_page_store.persist(retried_page, "MOCK-01")
+    envelope_path = tmp_path / "raw" / reference["path"]
+    envelope = json.loads(envelope_path.read_text(encoding="utf-8"))
+    envelope["response"]["results"][0]["id"] = "CORRUPTED"
+    envelope_path.write_text(json.dumps(envelope), encoding="utf-8")
+
+    with pytest.raises(RuntimeError, match="immutable raw page"):
+        job.collect_items([ITEM], endpoint_for_author)
+
+    checkpoint = load_only_checkpoint(tmp_path)
+    assert checkpoint["current_cursor"] == "*"
+    assert checkpoint["pages_written"] == 0
+    assert checkpoint["raw_pages"] == []
+
+
+@pytest.mark.parametrize(
+    ("field", "corrupted_value"),
+    [
+        ("job_id", "0" * 64),
+        ("item_id", "MOCK-02"),
+        ("cursor_in", "wrong-input-cursor"),
+        ("cursor_out", "wrong-output-cursor"),
+    ],
+)
+def test_existing_raw_page_must_match_job_item_and_cursor_identity(
+    tmp_path: Path, field: str, corrupted_value: str
+) -> None:
+    persisted_page = page("*", "cursor-2", "hash-1")
+    _job_id, _progress_store, raw_store = stores(tmp_path)
+    reference = raw_store.persist(persisted_page, "MOCK-01")
+    envelope_path = tmp_path / "raw" / reference["path"]
+    envelope = json.loads(envelope_path.read_text(encoding="utf-8"))
+    envelope[field] = corrupted_value
+    envelope_path.write_text(json.dumps(envelope), encoding="utf-8")
+
+    with pytest.raises(RuntimeError, match="immutable raw page"):
+        raw_store.persist(persisted_page, "MOCK-01")
 
 
 def test_raw_page_envelope_is_redacted_and_immutable(tmp_path: Path) -> None:

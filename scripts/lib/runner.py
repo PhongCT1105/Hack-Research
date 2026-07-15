@@ -123,7 +123,7 @@ class RawPageStore:
         try:
             atomic_write_json(destination, envelope)
         except FileExistsError:
-            self._validate_existing(destination, page.request_hash, response_checksum)
+            self._validate_existing(destination, envelope)
 
         return {
             "path": relative.as_posix(),
@@ -134,18 +134,30 @@ class RawPageStore:
         }
 
     @staticmethod
-    def _validate_existing(
-        destination: Path, request_hash: str, response_checksum: str
-    ) -> None:
+    def _validate_existing(destination: Path, expected: Mapping[str, Any]) -> None:
         try:
             existing = json.loads(destination.read_text(encoding="utf-8"))
         except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
             raise RuntimeError(f"existing raw page is unreadable: {destination}") from error
         if not isinstance(existing, dict):
             raise RuntimeError(f"existing raw page is not an envelope: {destination}")
-        if (
-            existing.get("request_hash") != request_hash
-            or existing.get("response_checksum") != response_checksum
+        existing_response_checksum = _value_checksum(existing.get("response"))
+        identity_fields = (
+            "envelope_version",
+            "provider",
+            "job_id",
+            "item_id",
+            "request",
+            "http_status",
+            "request_hash",
+            "response_checksum",
+            "cursor_in",
+            "cursor_out",
+            "client_version",
+            "response",
+        )
+        if existing_response_checksum != existing.get("response_checksum") or any(
+            existing.get(field) != expected.get(field) for field in identity_fields
         ):
             raise RuntimeError(f"immutable raw page conflicts with response: {destination}")
 
@@ -319,6 +331,8 @@ class CollectionJob:
                     self.progress_store.save(self.progress)
                     completed.add(item_id)
                     continue
+                start_item(self.progress, index, cursor=start_cursor)
+                self.progress_store.save(self.progress)
             else:
                 start_cursor = "*"
                 start_item(self.progress, index, cursor=start_cursor)
