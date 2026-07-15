@@ -15,7 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from lib.bundles import build_enrichment_tasks, build_openalex_bundle  # noqa: E402
+from lib.bundles import (  # noqa: E402
+    build_enrichment_tasks,
+    build_openalex_bundle,
+    validate_enrichment_tasks,
+)
 
 
 stage_11 = importlib.import_module("11_build_evidence_packets")
@@ -199,6 +203,53 @@ def test_bundle_rejects_wrong_or_inconsistent_paper_counts(bundle_inputs: dict[s
         build_openalex_bundle(**{**bundle_inputs, "focal_ids": ["W100000001", "W999999999"]})
 
 
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("openalex_work_id", "https://openalex.org/W999999991"),
+        ("openalex_url", "https://openalex.org/W999999992"),
+    ],
+)
+def test_bundle_rejects_mismatched_selected_paper_openalex_identifiers(
+    bundle_inputs: dict[str, Any], field: str, value: str
+) -> None:
+    papers = deepcopy(bundle_inputs["selected_papers"])
+    papers[0][field] = value
+
+    with pytest.raises(ValueError, match="identifiers.*same OpenAlex work"):
+        build_openalex_bundle(**{**bundle_inputs, "selected_papers": papers})
+
+
+@pytest.mark.parametrize(
+    ("container", "forbidden_key", "value"),
+    [
+        (("openalex_profile", "career_estimate"), "display_name", "Real Person"),
+        (
+            ("selected_papers", 0, "complexity", "components"),
+            "name",
+            "Real Person",
+        ),
+        (("openalex_profile", "career_estimate"), "passages", []),
+        (("selected_papers", 0, "primary_topic"), "passage_text", "forbidden text"),
+    ],
+)
+def test_schema_rejects_forbidden_keys_anywhere_in_provisional_metadata(
+    bundle_inputs: dict[str, Any],
+    bundle_schema: dict[str, Any],
+    container: tuple[str | int, ...],
+    forbidden_key: str,
+    value: Any,
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    target: Any = bundle
+    for segment in container:
+        target = target[segment]
+    target[forbidden_key] = value
+
+    validator = Draft202012Validator(bundle_schema, format_checker=FormatChecker())
+    assert not validator.is_valid(bundle)
+
+
 def test_enrichment_task_ids_are_stable_and_cover_every_missing_gate(
     bundle_inputs: dict[str, Any],
 ) -> None:
@@ -232,6 +283,75 @@ def test_enrichment_task_ids_are_stable_and_cover_every_missing_gate(
     assert {task["task_id"] for task in build_enrichment_tasks(changed)}.isdisjoint(
         {task["task_id"] for task in bundle["enrichment_tasks"]}
     )
+
+
+def test_schema_caps_enrichment_tasks_and_rejects_exact_duplicates(
+    bundle_inputs: dict[str, Any], bundle_schema: dict[str, Any]
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    validator = Draft202012Validator(bundle_schema, format_checker=FormatChecker())
+
+    duplicated = deepcopy(bundle)
+    duplicated["enrichment_tasks"].append(deepcopy(duplicated["enrichment_tasks"][0]))
+
+    assert not validator.is_valid(duplicated)
+    assert bundle_schema["properties"]["enrichment_tasks"]["maxItems"] == 10
+    assert bundle_schema["properties"]["enrichment_tasks"]["uniqueItems"] is True
+
+
+@pytest.mark.parametrize("mutation", ["wrong_hash", "general_has_paper", "focal_missing_paper"])
+def test_enrichment_semantics_reject_wrong_hash_or_scope(
+    bundle_inputs: dict[str, Any], mutation: str
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    tasks = bundle["enrichment_tasks"]
+    if mutation == "wrong_hash":
+        tasks[0]["task_id"] = "0" * 64
+    elif mutation == "general_has_paper":
+        tasks[0]["paper_id"] = bundle["focal_paper_ids"][0]
+    else:
+        focal_task = next(task for task in tasks if task["task_type"] == "extract_focal_passages")
+        focal_task.pop("paper_id")
+
+    with pytest.raises(ValueError, match="enrichment task"):
+        validate_enrichment_tasks(bundle)
+
+
+@pytest.mark.parametrize("mutation", ["missing", "repeated_type", "duplicate_id"])
+def test_enrichment_semantics_reject_missing_repeated_or_duplicate_tasks(
+    bundle_inputs: dict[str, Any], mutation: str
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    tasks = bundle["enrichment_tasks"]
+    if mutation == "missing":
+        tasks.pop()
+    elif mutation == "repeated_type":
+        tasks[-1] = deepcopy(tasks[-2])
+    else:
+        tasks[-1]["task_id"] = tasks[0]["task_id"]
+
+    with pytest.raises(ValueError, match="enrichment task"):
+        validate_enrichment_tasks(bundle)
+
+
+def test_stage_11_semantic_validation_rejects_schema_valid_task_tampering(
+    bundle_inputs: dict[str, Any],
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    bundle["enrichment_tasks"][0]["task_id"] = "0" * 64
+
+    with pytest.raises(ValueError, match="enrichment task"):
+        stage_11.validate_profile_bundles([bundle])
+
+
+def test_stage_11_semantic_validation_rejects_selected_paper_identity_mismatch(
+    bundle_inputs: dict[str, Any],
+) -> None:
+    bundle = build_openalex_bundle(**bundle_inputs)
+    bundle["selected_papers"][0]["openalex_work_id"] = "W999999999"
+
+    with pytest.raises(ValueError, match="identifiers.*same OpenAlex work"):
+        stage_11.validate_profile_bundles([bundle])
 
 
 def test_stage_11_builds_and_validates_profile_bundles(

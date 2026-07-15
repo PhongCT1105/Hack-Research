@@ -138,6 +138,58 @@ def build_enrichment_tasks(bundle: Mapping[str, Any]) -> list[dict[str, Any]]:
     return tasks
 
 
+def validate_enrichment_tasks(bundle: Mapping[str, Any]) -> None:
+    """Require exactly the deterministic global and per-focal tasks for this bundle."""
+
+    if not isinstance(bundle, Mapping):
+        raise TypeError("bundle must be a mapping")
+    actual = _mapping_sequence(bundle.get("enrichment_tasks"), "enrichment_tasks")
+    expected = build_enrichment_tasks(bundle)
+    if len(actual) != len(expected):
+        raise ValueError(f"enrichment task count must be exactly {len(expected)}")
+
+    task_ids = [_required_string(task.get("task_id"), "enrichment task_id") for task in actual]
+    if len(set(task_ids)) != len(task_ids):
+        raise ValueError("enrichment task IDs must be unique")
+
+    expected_by_scope = {(task["task_type"], task.get("paper_id")): task for task in expected}
+    actual_by_scope: dict[tuple[str, Any], Mapping[str, Any]] = {}
+    for task in actual:
+        task_type = _required_string(task.get("task_type"), "enrichment task_type")
+        scope = (task_type, task.get("paper_id"))
+        if scope in actual_by_scope:
+            raise ValueError(f"enrichment task scope is repeated: {scope!r}")
+        actual_by_scope[scope] = task
+
+    if set(actual_by_scope) != set(expected_by_scope):
+        raise ValueError("enrichment task types and focal-paper scopes do not match required gates")
+    for scope, expected_task in expected_by_scope.items():
+        if actual_by_scope[scope].get("task_id") != expected_task["task_id"]:
+            raise ValueError(f"enrichment task has an invalid stable hash: {scope!r}")
+
+
+def validate_openalex_bundle_semantics(bundle: Mapping[str, Any]) -> None:
+    """Validate cross-field invariants that JSON Schema cannot express."""
+
+    if not isinstance(bundle, Mapping):
+        raise TypeError("bundle must be a mapping")
+    papers = _mapping_sequence(bundle.get("selected_papers"), "selected_papers")
+    if len(papers) != 8:
+        raise ValueError("selected_papers must contain exactly 8 records")
+    paper_ids = [_paper_work_id(paper) for paper in papers]
+    if len(set(paper_ids)) != len(paper_ids):
+        raise ValueError("selected paper OpenAlex work IDs must be unique")
+    focal_ids = _focal_paper_ids(bundle.get("focal_paper_ids"), paper_ids)
+    focal_set = set(focal_ids)
+    if any(
+        (paper.get("focal") is True) != (_paper_work_id(paper) in focal_set) for paper in papers
+    ):
+        raise ValueError("selected paper focal flags must match focal_paper_ids")
+    if set(bundle.get("missing_final_gates", ())) != set(MISSING_FINAL_GATES):
+        raise ValueError("missing_final_gates must enumerate every provisional enrichment gate")
+    validate_enrichment_tasks(bundle)
+
+
 def _task(
     bundle_version: str,
     professor_id: str,
@@ -173,15 +225,8 @@ def _selected_paper_records(
             and _required_string(source_professor_id, "selected paper professor_id") != professor_id
         ):
             raise ValueError("selected paper professor_id does not match bundle professor_id")
-        work_id = _required_openalex_id(
-            source.get("openalex_work_id") or source.get("paper_id") or source.get("id"),
-            "W",
-            "selected paper OpenAlex work ID",
-        )
-        paper_id = canonical_openalex_id(
-            _required_string(source.get("paper_id") or work_id, "selected paper_id")
-        )
-        assert paper_id is not None
+        work_id = _paper_work_id(source)
+        paper_id = work_id
         if paper_id in seen:
             raise ValueError(f"duplicate selected paper_id {paper_id}")
         seen.add(paper_id)
@@ -234,6 +279,23 @@ def _focal_paper_ids(value: Any, selected_ids: Sequence[str]) -> list[str]:
     if not set(focal_ids).issubset(set(selected_ids)):
         raise ValueError("every focal paper must be selected")
     return focal_ids
+
+
+def _paper_work_id(paper: Mapping[str, Any]) -> str:
+    candidates: dict[str, str] = {}
+    for key in ("paper_id", "openalex_work_id", "openalex_url", "id"):
+        value = paper.get(key)
+        if value is None:
+            continue
+        candidates[key] = _required_openalex_id(value, "W", f"selected paper {key}")
+    if not candidates:
+        raise ValueError("selected paper must contain an OpenAlex work identifier")
+    if len(set(candidates.values())) != 1:
+        raise ValueError(
+            "selected paper identifiers must reference the same OpenAlex work: "
+            + ", ".join(f"{key}={value}" for key, value in candidates.items())
+        )
+    return next(iter(candidates.values()))
 
 
 def _openalex_profile(profile: Mapping[str, Any]) -> dict[str, Any]:

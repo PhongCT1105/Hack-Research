@@ -40,7 +40,8 @@
     },
     "openalex_profile": {
       "type": "object",
-      "additionalProperties": {"$ref": "#/$defs/jsonValue"},
+      "propertyNames": {"$ref": "#/$defs/safePropertyName"},
+      "additionalProperties": {"$ref": "#/$defs/safeMetadata"},
       "required": ["institutions", "topic_ids", "career_estimate"],
       "properties": {
         "institutions": {
@@ -61,7 +62,11 @@
         "primary_field": {"type": ["string", "null"]},
         "primary_subfield": {"type": ["string", "null"]},
         "orcid": {"type": ["string", "null"]},
-        "career_estimate": {"type": "object", "additionalProperties": {"$ref": "#/$defs/jsonValue"}}
+        "career_estimate": {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/safePropertyName"},
+          "additionalProperties": {"$ref": "#/$defs/safeMetadata"}
+        }
       }
     },
     "portfolio_dimensions": {
@@ -86,7 +91,8 @@
     },
     "openalex_consistency": {
       "type": "object",
-      "additionalProperties": {"$ref": "#/$defs/jsonValue"},
+      "propertyNames": {"$ref": "#/$defs/safePropertyName"},
+      "additionalProperties": {"$ref": "#/$defs/safeMetadata"},
       "required": ["status", "issue_codes", "scope", "externally_verified"],
       "properties": {
         "status": {
@@ -161,19 +167,43 @@
     "enrichment_tasks": {
       "type": "array",
       "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
       "items": {"$ref": "#/$defs/enrichmentTask"}
     },
     "final_evidence_packet_ready": {"const": false}
   },
   "$defs": {
-    "jsonValue": {
+    "safePropertyName": {
+      "not": {
+        "enum": [
+          "author",
+          "authors",
+          "authorship",
+          "authorships",
+          "display_name",
+          "faculty_title",
+          "name",
+          "passage",
+          "passages",
+          "passage_text",
+          "reconstructed_abstract",
+          "abstract_inverted_index"
+        ]
+      }
+    },
+    "safeMetadata": {
       "oneOf": [
         {"type": "null"},
         {"type": "boolean"},
         {"type": "number"},
         {"type": "string"},
-        {"type": "array", "items": {"$ref": "#/$defs/jsonValue"}},
-        {"type": "object", "additionalProperties": {"$ref": "#/$defs/jsonValue"}}
+        {"type": "array", "items": {"$ref": "#/$defs/safeMetadata"}},
+        {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/safePropertyName"},
+          "additionalProperties": {"$ref": "#/$defs/safeMetadata"}
+        }
       ]
     },
     "institution": {
@@ -195,11 +225,13 @@
     },
     "scoreAid": {
       "type": "object",
-      "additionalProperties": {"$ref": "#/$defs/jsonValue"}
+      "propertyNames": {"$ref": "#/$defs/safePropertyName"},
+      "additionalProperties": {"$ref": "#/$defs/safeMetadata"}
     },
     "selectedPaper": {
       "type": "object",
-      "additionalProperties": {"$ref": "#/$defs/jsonValue"},
+      "propertyNames": {"$ref": "#/$defs/safePropertyName"},
+      "additionalProperties": {"$ref": "#/$defs/safeMetadata"},
       "required": [
         "paper_id",
         "openalex_work_id",

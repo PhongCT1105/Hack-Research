@@ -18,7 +18,7 @@ from _dataset_cli import (
     read_jsonl,
     stage_plan,
 )
-from lib.bundles import build_openalex_bundle
+from lib.bundles import build_openalex_bundle, validate_openalex_bundle_semantics
 from lib.config import DatasetConfig
 from lib.io import atomic_write_json
 
@@ -76,6 +76,7 @@ def validate_profile_bundles(
     validator = load_bundle_validator(schema_path)
     for bundle in bundles:
         validator.validate(bundle)
+        validate_openalex_bundle_semantics(bundle)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
