@@ -23,6 +23,11 @@ MANIFEST_FIELDS = [
     "writer_model",
     "verifier_provider",
     "verifier_model",
+    "extractor_provider",
+    "extractor_model",
+    "writer_prompt",
+    "verifier_prompt",
+    "extractor_prompt",
     "prompt_version",
     "temperature",
     "timestamp",
@@ -40,14 +45,19 @@ def read_jsonl(path: Path) -> list[EmailRecord]:
         return [EmailRecord.model_validate_json(line) for line in f if line.strip()]
 
 
-def append_manifest_row(path: Path, row: dict) -> None:
+def append_csv_row(path: Path, fieldnames: list[str], row: dict) -> None:
+    """Append one row to a CSV, writing the header first if the file is new."""
     path.parent.mkdir(parents=True, exist_ok=True)
     exists = path.exists()
     with path.open("a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=MANIFEST_FIELDS)
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
         if not exists:
             writer.writeheader()
         writer.writerow(row)
+
+
+def append_manifest_row(path: Path, row: dict) -> None:
+    append_csv_row(path, MANIFEST_FIELDS, row)
 
 
 def utc_now() -> str:

@@ -22,10 +22,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from outreach_eval.extract_claims import extract_claims
 from outreach_eval.generate import generate_email
-from outreach_eval.io_utils import append_jsonl, append_manifest_row, utc_now
+from outreach_eval.io_utils import append_csv_row, append_jsonl, append_manifest_row, utc_now
 from outreach_eval.llm import get_client, role_config_from_dict
 from outreach_eval.schemas import Condition, EvidencePacket
 from outreach_eval.verify import verify_email
+
+FAILED_FIELDS = ["run_id", "professor_id", "condition", "seed", "error", "timestamp"]
 
 
 def main() -> int:
@@ -58,17 +60,42 @@ def main() -> int:
     verifier_prompt = Path(cfg["prompts"]["verifier"])
     extractor_prompt = Path(cfg["prompts"]["claim_extractor"])
 
+    failed_path = Path(cfg["paths"]["logs_dir"]) / "failed_runs.csv"
     n = 0
+    failures = 0
     for pid in professor_ids:
         packet = EvidencePacket.model_validate_json((evidence_dir / f"{pid}.json").read_text())
         for condition in conditions:
             for seed in seeds:
-                record = generate_email(packet, condition, seed, writer, writer_prompt, word_limit)
-                if condition.verification_applied:
-                    record = verify_email(record, packet, verifier, verifier_prompt)
-                record = record.model_copy(
-                    update={"extracted_claims": extract_claims(record, extractor, extractor_prompt)}
-                )
+                run_id = f"{pid}_{condition.value}_{seed}"
+                try:
+                    record = generate_email(
+                        packet, condition, seed, writer, writer_prompt, word_limit
+                    )
+                    if condition.verification_applied:
+                        record = verify_email(record, packet, verifier, verifier_prompt)
+                    record = record.model_copy(
+                        update={
+                            "extracted_claims": extract_claims(record, extractor, extractor_prompt)
+                        }
+                    )
+                except Exception as exc:  # noqa: BLE001 — one bad cell must not abort the run
+                    failures += 1
+                    append_csv_row(
+                        failed_path,
+                        FAILED_FIELDS,
+                        {
+                            "run_id": run_id,
+                            "professor_id": pid,
+                            "condition": condition.value,
+                            "seed": seed,
+                            "error": f"{type(exc).__name__}: {exc}",
+                            "timestamp": utc_now(),
+                        },
+                    )
+                    print(f"[!] {run_id} FAILED: {type(exc).__name__}: {exc}", file=sys.stderr)
+                    continue
+
                 append_jsonl(out_path, record)
                 append_manifest_row(
                     manifest_path,
@@ -79,8 +106,17 @@ def main() -> int:
                         "seed": seed,
                         "writer_provider": roles["writer"].provider,
                         "writer_model": writer.model,
-                        "verifier_provider": roles["verifier"].provider if condition.verification_applied else "",
+                        "verifier_provider": roles["verifier"].provider
+                        if condition.verification_applied
+                        else "",
                         "verifier_model": verifier.model if condition.verification_applied else "",
+                        "extractor_provider": roles["claim_extractor"].provider,
+                        "extractor_model": extractor.model,
+                        "writer_prompt": writer_prompt.name,
+                        "verifier_prompt": verifier_prompt.name
+                        if condition.verification_applied
+                        else "",
+                        "extractor_prompt": extractor_prompt.name,
                         "prompt_version": record.prompt_version,
                         "temperature": roles["writer"].temperature,
                         "timestamp": utc_now(),
@@ -90,7 +126,9 @@ def main() -> int:
                 print(f"[{n}] {record.run_id} ok")
 
     print(f"\nWrote {n} records to {out_path}; manifest at {manifest_path}")
-    return 0
+    if failures:
+        print(f"{failures} run(s) failed — see {failed_path}. Re-run to retry (never hand-patch).")
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":
