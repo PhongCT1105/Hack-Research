@@ -297,6 +297,40 @@ def test_oa_completeness_accepts_boolean_or_valid_status_and_matches_distributio
     ] == pytest.approx(distribution["papers_available"] / len(papers))
 
 
+@pytest.mark.parametrize(
+    "open_access",
+    [
+        {"is_oa": False, "oa_status": "gold"},
+        {"is_oa": True, "oa_status": "closed"},
+    ],
+)
+def test_conflicting_valid_oa_fields_count_as_missing(open_access: dict[str, Any]) -> None:
+    result = score_portfolio([{"paper_id": "W1", "open_access": open_access}])
+
+    distribution = result["open_access_distribution"]
+    assert distribution["rate"] is None
+    assert distribution["status_counts"] == {}
+    assert distribution["papers_available"] == 0
+    assert distribution["papers_missing"] == 1
+    assert result["evidence_completeness"]["components"]["open_access_metadata_rate"] == 0.0
+
+
+def test_consistent_boolean_and_status_oa_pairs_remain_available() -> None:
+    papers = [
+        {"paper_id": "W1", "open_access": {"is_oa": True, "oa_status": "gold"}},
+        {"paper_id": "W2", "open_access": {"is_oa": False, "oa_status": "closed"}},
+    ]
+
+    result = score_portfolio(papers)
+    distribution = result["open_access_distribution"]
+
+    assert distribution["rate"] == pytest.approx(0.5)
+    assert distribution["status_counts"] == {"closed": 1, "gold": 1}
+    assert distribution["papers_available"] == 2
+    assert distribution["papers_missing"] == 0
+    assert result["evidence_completeness"]["components"]["open_access_metadata_rate"] == 1.0
+
+
 def test_score_portfolios_groups_records_without_mixing_professors() -> None:
     papers = related_multi_field_papers()
     papers.append({**papers[0], "paper_id": "W5", "professor_id": "CS-02"})

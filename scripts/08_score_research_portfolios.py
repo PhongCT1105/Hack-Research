@@ -725,6 +725,8 @@ def _open_access_observation(paper: Mapping[str, Any]) -> tuple[bool, str | None
     status = normalized_status if normalized_status in OA_STATUS_IS_OPEN else None
     if is_oa is None and status is None:
         return None
+    if is_oa is not None and status is not None and is_oa != OA_STATUS_IS_OPEN[status]:
+        return None
     return (OA_STATUS_IS_OPEN[status] if is_oa is None else is_oa), status
 
 
