@@ -159,6 +159,20 @@ def test_topic_clusters_use_stable_openalex_hierarchy_ids() -> None:
     assert first[0]["topic_ids"] == ["T1", "T2", "T4"]
 
 
+def test_topic_cluster_label_is_deterministic_when_hierarchy_labels_differ() -> None:
+    papers = related_multi_field_papers()[:2]
+    papers[0]["primary_topic"] = {**papers[0]["primary_topic"], "field": "Zeta label"}
+    papers[0]["topics"] = [papers[0]["primary_topic"]]
+    papers[1]["primary_topic"] = {**papers[1]["primary_topic"], "field": "alpha label"}
+    papers[1]["topics"] = [papers[1]["primary_topic"]]
+
+    forward = build_topic_clusters(papers)
+    reversed_order = build_topic_clusters(list(reversed(papers)))
+
+    assert forward == reversed_order
+    assert forward[0]["label"] == "alpha label"
+
+
 def test_broad_portfolio_can_still_have_high_coherence_aid() -> None:
     result = score_portfolio(related_multi_field_papers())
 
@@ -245,6 +259,42 @@ def test_missing_portfolio_evidence_is_explicit_not_imputed() -> None:
     assert result["synthesis_difficulty"]["score"] is None
     assert result["synthesis_difficulty"]["weight_denominator"] == pytest.approx(0.0)
     assert set(result["synthesis_difficulty"]["missing_components"]) == set(SYNTHESIS_WEIGHTS)
+
+
+@pytest.mark.parametrize(
+    "open_access",
+    [
+        {},
+        {"is_oa": "yes"},
+        {"oa_status": ""},
+        {"oa_status": "unknown"},
+    ],
+)
+def test_malformed_oa_mapping_counts_as_missing(open_access: dict[str, Any]) -> None:
+    result = score_portfolio([{"paper_id": "W1", "open_access": open_access}])
+
+    distribution = result["open_access_distribution"]
+    assert distribution["papers_available"] == 0
+    assert distribution["papers_missing"] == 1
+    assert result["evidence_completeness"]["components"]["open_access_metadata_rate"] == 0.0
+
+
+def test_oa_completeness_accepts_boolean_or_valid_status_and_matches_distribution() -> None:
+    papers = [
+        {"paper_id": "W1", "open_access": {"is_oa": True}},
+        {"paper_id": "W2", "open_access": {"oa_status": "closed"}},
+        {"paper_id": "W3", "open_access": {}},
+    ]
+
+    result = score_portfolio(papers)
+    distribution = result["open_access_distribution"]
+
+    assert distribution["rate"] == pytest.approx(0.5)
+    assert distribution["papers_available"] == 2
+    assert distribution["papers_missing"] == 1
+    assert result["evidence_completeness"]["components"][
+        "open_access_metadata_rate"
+    ] == pytest.approx(distribution["papers_available"] / len(papers))
 
 
 def test_score_portfolios_groups_records_without_mixing_professors() -> None:

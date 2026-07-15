@@ -9,6 +9,7 @@ import math
 from pathlib import Path
 from statistics import fmean, median
 from typing import Any, Iterable, Mapping, Sequence
+import unicodedata
 
 from _dataset_cli import (
     StageSpec,
@@ -38,6 +39,14 @@ SYNTHESIS_WEIGHTS = {
     "temporal_research_evolution": 0.10,
     "cross_domain_breadth": 0.10,
     "inverse_topic_coherence": 0.20,
+}
+OA_STATUS_IS_OPEN = {
+    "diamond": True,
+    "gold": True,
+    "green": True,
+    "hybrid": True,
+    "bronze": True,
+    "closed": False,
 }
 
 SPEC = StageSpec(
@@ -80,6 +89,7 @@ def build_topic_clusters(papers: Sequence[Mapping[str, Any]]) -> list[dict[str, 
     """Group papers deterministically by OpenAlex field hierarchy IDs, without embeddings."""
 
     clusters: dict[str, dict[str, Any]] = {}
+    cluster_labels: dict[str, set[str]] = {}
     for index, paper in enumerate(papers):
         topic = _primary_topic(paper)
         if topic is None:
@@ -91,11 +101,12 @@ def build_topic_clusters(papers: Sequence[Mapping[str, Any]]) -> list[dict[str, 
                 "cluster_id": cluster_id,
                 "hierarchy_level": level,
                 "hierarchy_id": hierarchy_id,
-                "label": label,
                 "paper_ids": [],
                 "topic_ids": [],
             },
         )
+        if label is not None:
+            cluster_labels.setdefault(cluster_id, set()).add(label)
         paper_id = _paper_identifier(paper, index)
         cluster["paper_ids"].append(paper_id)
         topic_id = _topic_identifier(topic)
@@ -110,6 +121,9 @@ def build_topic_clusters(papers: Sequence[Mapping[str, Any]]) -> list[dict[str, 
         result.append(
             {
                 **cluster,
+                "label": min(cluster_labels.get(cluster_id, ()), key=_deterministic_label_key)
+                if cluster_labels.get(cluster_id)
+                else None,
                 "paper_ids": paper_ids,
                 "topic_ids": topic_ids,
                 "paper_count": len(paper_ids),
@@ -397,23 +411,18 @@ def _collaboration_distribution(papers: Sequence[Mapping[str, Any]]) -> dict[str
 
 
 def _open_access_distribution(papers: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
-    flags: list[bool] = []
-    statuses: Counter[str] = Counter()
-    for paper in papers:
-        open_access = paper.get("open_access")
-        if not isinstance(open_access, Mapping):
-            continue
-        is_oa = open_access.get("is_oa")
-        if isinstance(is_oa, bool):
-            flags.append(is_oa)
-        status = _clean_string(open_access.get("oa_status"))
-        if status is not None:
-            statuses[status] += 1
+    observations = [
+        observation
+        for paper in papers
+        if (observation := _open_access_observation(paper)) is not None
+    ]
+    flags = [is_oa for is_oa, _ in observations]
+    statuses = Counter(status for _, status in observations if status is not None)
     return {
         "rate": sum(flags) / len(flags) if flags else None,
         "status_counts": dict(sorted(statuses.items())),
-        "papers_available": len(flags),
-        "papers_missing": len(papers) - len(flags),
+        "papers_available": len(observations),
+        "papers_missing": len(papers) - len(observations),
     }
 
 
@@ -480,7 +489,7 @@ def _evidence_completeness(papers: Sequence[Mapping[str, Any]]) -> dict[str, Any
         / denominator,
         "topic_metadata_rate": sum(bool(_paper_topics(paper)) for paper in papers) / denominator,
         "open_access_metadata_rate": sum(
-            isinstance(paper.get("open_access"), Mapping) for paper in papers
+            _open_access_observation(paper) is not None for paper in papers
         )
         / denominator,
         "complexity_metadata_rate": sum(_complexity_score(paper) is not None for paper in papers)
@@ -650,6 +659,12 @@ def _hierarchy_label(topic: Mapping[str, Any], level: str) -> str | None:
     return _clean_string(value)
 
 
+def _deterministic_label_key(value: str) -> tuple[str, str]:
+    """Order labels by normalized casefolded text, then stable original spelling."""
+
+    return unicodedata.normalize("NFKC", value).casefold(), value
+
+
 def _topic_label(topic: Mapping[str, Any]) -> str | None:
     return _clean_string(topic.get("topic")) or _clean_string(topic.get("display_name"))
 
@@ -695,6 +710,22 @@ def _portfolio_author_id(paper: Mapping[str, Any]) -> str | None:
     if isinstance(consistency, Mapping):
         return _clean_string(consistency.get("expected_author_id"))
     return None
+
+
+def _open_access_observation(paper: Mapping[str, Any]) -> tuple[bool, str | None] | None:
+    open_access = paper.get("open_access")
+    if not isinstance(open_access, Mapping):
+        return None
+    raw_flag = open_access.get("is_oa")
+    is_oa = raw_flag if isinstance(raw_flag, bool) else None
+    raw_status = _clean_string(open_access.get("oa_status"))
+    normalized_status = (
+        unicodedata.normalize("NFKC", raw_status).casefold() if raw_status is not None else None
+    )
+    status = normalized_status if normalized_status in OA_STATUS_IS_OPEN else None
+    if is_oa is None and status is None:
+        return None
+    return (OA_STATUS_IS_OPEN[status] if is_oa is None else is_oa), status
 
 
 def _numeric_distribution(values: Sequence[float], total: int) -> dict[str, Any]:
