@@ -120,6 +120,83 @@ def test_sampler_requires_eight_unique_selected_papers() -> None:
     assert result.exclusion_reasons == {"DUPLICATE": ("selected_paper_count_not_eight",)}
 
 
+@pytest.mark.parametrize(
+    "selected_papers",
+    [
+        8,
+        [{} for _ in range(8)],
+        [{"paper_id": f"W{index}"} for index in range(7)] + [{}],
+    ],
+    ids=["integer", "anonymous-records", "one-missing-id"],
+)
+def test_sampler_rejects_selected_papers_without_eight_identifiable_ids(
+    selected_papers: Any,
+) -> None:
+    invalid = candidate("INVALID", institution="I1", region="north", domain="systems")
+    invalid["selected_papers"] = selected_papers
+
+    result = stage_10.sample_professors([invalid], {"domain": {"systems": 1}}, seed=42, limit=1)
+
+    assert result.selected_ids == ()
+    assert result.exclusion_reasons == {"INVALID": ("selected_paper_count_not_eight",)}
+
+
+def test_sampler_rejects_declared_paper_count_without_actual_selected_records() -> None:
+    invalid = candidate("COUNT-ONLY", institution="I1", region="north", domain="systems")
+    invalid.pop("selected_papers")
+    invalid["selected_paper_count"] = 8
+
+    result = stage_10.sample_professors([invalid], {"domain": {"systems": 1}}, seed=42, limit=1)
+
+    assert result.selected_ids == ()
+    assert result.exclusion_reasons == {"COUNT-ONLY": ("selected_paper_count_not_eight",)}
+
+
+@pytest.mark.parametrize(
+    "consistency",
+    [
+        None,
+        {"status": "unknown_status"},
+        {"status": 123},
+        [],
+    ],
+    ids=["missing", "unknown", "non-string-status", "malformed-container"],
+)
+def test_sampler_rejects_missing_unknown_or_malformed_consistency_status(
+    consistency: Any,
+) -> None:
+    invalid = candidate("INVALID", institution="I1", region="north", domain="systems")
+    if consistency is None:
+        invalid.pop("openalex_consistency")
+    else:
+        invalid["openalex_consistency"] = consistency
+
+    result = stage_10.sample_professors([invalid], {"domain": {"systems": 1}}, seed=42, limit=1)
+
+    assert result.selected_ids == ()
+    assert result.exclusion_reasons == {"INVALID": ("unrecognized_openalex_consistency_status",)}
+
+
+def test_sampler_intentionally_accepts_needs_metadata_enrichment() -> None:
+    candidate_with_metadata_issue = candidate(
+        "METADATA", institution="I1", region="north", domain="systems"
+    )
+    candidate_with_metadata_issue["openalex_consistency"] = {
+        "status": "needs_metadata_enrichment",
+        "issue_codes": ["conflicting_doi_titles"],
+    }
+
+    result = stage_10.sample_professors(
+        [candidate_with_metadata_issue],
+        {"domain": {"systems": 1}},
+        seed=42,
+        limit=1,
+    )
+
+    assert result.selected_ids == ("METADATA",)
+    assert result.exclusion_reasons == {}
+
+
 def test_concentration_penalties_prefer_new_institution_and_region() -> None:
     candidates = [
         candidate("P1", institution="I1", region="north", domain="systems"),
@@ -197,7 +274,7 @@ def test_stage_10_cli_writes_selected_rows_and_sampling_report(tmp_path: Path) -
             "institution_id": "I1",
             "region": "north",
             "domain": "systems",
-            "selected_paper_count": "8",
+            "selected_paper_ids": json.dumps([f"P1-W{index}" for index in range(8)]),
             "collection_complete": "true",
             "consistency_status": "openalex_consistent",
         },
@@ -206,7 +283,7 @@ def test_stage_10_cli_writes_selected_rows_and_sampling_report(tmp_path: Path) -
             "institution_id": "I2",
             "region": "south",
             "domain": "health",
-            "selected_paper_count": "8",
+            "selected_paper_ids": json.dumps([f"P2-W{index}" for index in range(8)]),
             "collection_complete": "true",
             "consistency_status": "openalex_consistent",
         },
@@ -215,7 +292,7 @@ def test_stage_10_cli_writes_selected_rows_and_sampling_report(tmp_path: Path) -
             "institution_id": "I3",
             "region": "east",
             "domain": "systems",
-            "selected_paper_count": "7",
+            "selected_paper_ids": json.dumps([f"P3-W{index}" for index in range(7)]),
             "collection_complete": "true",
             "consistency_status": "openalex_consistent",
         },

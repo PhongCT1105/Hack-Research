@@ -27,6 +27,7 @@ INSTITUTION_CONCENTRATION_WEIGHT = 0.05
 REGION_CONCENTRATION_WEIGHT = 0.02
 HUMAN_REVIEW_DIMENSIONS = frozenset({"domain", "research_breadth", "synthesis_difficulty"})
 BLOCKING_CONSISTENCY_STATUSES = frozenset({"needs_identity_review"})
+ALLOWED_CONSISTENCY_STATUSES = frozenset({"openalex_consistent", "needs_metadata_enrichment"})
 BLOCKING_CONSISTENCY_ISSUES = frozenset(
     {
         "cross_profile_work_overlap",
@@ -226,24 +227,23 @@ def _hard_gate_reasons(candidate: Mapping[str, Any]) -> tuple[str, ...]:
         reasons.append("selected_paper_count_not_eight")
     if not _collection_complete(candidate):
         reasons.append("incomplete_work_history")
-    if _has_blocking_consistency_issue(candidate):
-        reasons.append("blocking_openalex_consistency_issue")
+    reasons.extend(_openalex_consistency_reasons(candidate))
     return tuple(reasons)
 
 
 def _selected_paper_count(candidate: Mapping[str, Any]) -> int | None:
-    selected = candidate.get("selected_papers")
-    if isinstance(selected, int) and not isinstance(selected, bool):
-        return selected
-    if isinstance(selected, (list, tuple)):
-        return _unique_paper_count(selected)
-    selected_ids = candidate.get("selected_paper_ids")
-    if isinstance(selected_ids, (list, tuple)):
-        return len(
-            {paper_id for item in selected_ids if (paper_id := _clean_string(item)) is not None}
+    if "selected_papers" in candidate:
+        selected = candidate.get("selected_papers")
+        return _unique_paper_count(selected) if isinstance(selected, (list, tuple)) else None
+    if "selected_paper_ids" in candidate:
+        selected_ids = candidate.get("selected_paper_ids")
+        return (
+            _unique_paper_count(selected_ids) if isinstance(selected_ids, (list, tuple)) else None
         )
-    papers = candidate.get("papers")
-    if isinstance(papers, (list, tuple)):
+    if "papers" in candidate:
+        papers = candidate.get("papers")
+        if not isinstance(papers, (list, tuple)):
+            return None
         return _unique_paper_count(
             [
                 paper
@@ -251,15 +251,11 @@ def _selected_paper_count(candidate: Mapping[str, Any]) -> int | None:
                 if isinstance(paper, Mapping) and paper.get("selected") is True
             ]
         )
-    value = candidate.get("selected_paper_count")
-    if isinstance(value, int) and not isinstance(value, bool):
-        return value
     return None
 
 
-def _unique_paper_count(papers: Sequence[Any]) -> int:
+def _unique_paper_count(papers: Sequence[Any]) -> int | None:
     identities: set[str] = set()
-    unidentified = 0
     for paper in papers:
         if isinstance(paper, str):
             paper_id = _clean_string(paper)
@@ -275,10 +271,9 @@ def _unique_paper_count(papers: Sequence[Any]) -> int:
         else:
             paper_id = None
         if paper_id is None:
-            unidentified += 1
-        else:
-            identities.add(paper_id)
-    return len(identities) + unidentified
+            return None
+        identities.add(paper_id)
+    return len(identities)
 
 
 def _collection_complete(candidate: Mapping[str, Any]) -> bool:
@@ -291,22 +286,50 @@ def _collection_complete(candidate: Mapping[str, Any]) -> bool:
     return False
 
 
-def _has_blocking_consistency_issue(candidate: Mapping[str, Any]) -> bool:
-    if candidate.get("blocking_openalex_issue") is True:
-        return True
-    statuses = {_clean_string(candidate.get("consistency_status"))}
+def _openalex_consistency_reasons(candidate: Mapping[str, Any]) -> tuple[str, ...]:
+    statuses: list[str] = []
+    malformed = False
+    if "consistency_status" in candidate:
+        direct_status = _clean_string(candidate.get("consistency_status"))
+        if direct_status is None:
+            malformed = True
+        else:
+            statuses.append(direct_status)
     issue_codes = _string_values(candidate.get("consistency_issue_codes"))
-    consistency = candidate.get("openalex_consistency")
-    if isinstance(consistency, Mapping):
-        statuses.add(_clean_string(consistency.get("status")))
-        issue_codes.update(_string_values(consistency.get("issue_codes")))
-        if consistency.get("blocking") is True:
-            return True
-    statuses.discard(None)
-    return bool(
-        BLOCKING_CONSISTENCY_STATUSES.intersection(statuses)
+    nested_blocking = False
+    if "openalex_consistency" in candidate:
+        consistency = candidate.get("openalex_consistency")
+        if not isinstance(consistency, Mapping):
+            malformed = True
+        else:
+            nested_status = _clean_string(consistency.get("status"))
+            if nested_status is None:
+                malformed = True
+            else:
+                statuses.append(nested_status)
+            issue_codes.update(_string_values(consistency.get("issue_codes")))
+            nested_blocking = consistency.get("blocking") is True
+
+    blocking = bool(
+        candidate.get("blocking_openalex_issue") is True
+        or nested_blocking
+        or BLOCKING_CONSISTENCY_STATUSES.intersection(statuses)
         or BLOCKING_CONSISTENCY_ISSUES.intersection(issue_codes)
     )
+    unrecognized = (
+        malformed
+        or not statuses
+        or any(
+            status not in ALLOWED_CONSISTENCY_STATUSES | BLOCKING_CONSISTENCY_STATUSES
+            for status in statuses
+        )
+    )
+    reasons: list[str] = []
+    if blocking:
+        reasons.append("blocking_openalex_consistency_issue")
+    if unrecognized:
+        reasons.append("unrecognized_openalex_consistency_status")
+    return tuple(reasons)
 
 
 def _objective(
@@ -460,9 +483,6 @@ def _sampling_targets(config: Mapping[str, Any]) -> dict[str, dict[str, int]]:
 
 def _typed_candidate(row: Mapping[str, str]) -> dict[str, Any]:
     candidate: dict[str, Any] = dict(row)
-    count = row.get("selected_paper_count")
-    if isinstance(count, str) and count.strip().isdigit():
-        candidate["selected_paper_count"] = int(count)
     for key in ("collection_complete", "blocking_openalex_issue"):
         value = row.get(key)
         if isinstance(value, str) and value.strip().casefold() in {"true", "false"}:
