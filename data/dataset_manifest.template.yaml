@@ -1,5 +1,6 @@
 template_only: true
-status: not_started
+status: provisional_template
+release_boundary: openalex_collection_only
 dataset_version: benchmark-v1
 schema_version: 1.0.0
 candidate_pool_version: null
@@ -63,8 +64,24 @@ quality_control:
   source_urls_and_dates_passed: false
   authorship_verification_passed: false
   public_identity_scan_passed: false
+  secret_scan_passed: false
   raw_pdf_commit_scan_passed: false
   validation_report_path: null
+  final_evidence_packet_ready: false
+
+validation:
+  openalex_collection_valid: false
+  provisional_bundle_valid: false
+  final_evidence_packet_ready: false
+  final_blockers:
+    - faculty_status_unverified
+    - author_identity_unverified
+    - crossref_metadata_unreconciled
+    - semantic_scholar_authorship_unverified
+    - legal_full_text_not_retrieved
+    - focal_passages_missing
+    - topic_coherence_unreviewed
+    - synthesis_difficulty_unreviewed
 
 known_limitations: []
 release_notes: null
