@@ -1,7 +1,9 @@
 # OpenAlex-Only Dataset Pipeline Design
 
-**Status:** Approved in conversation on 2026-07-14; awaiting written-spec review  
-**Dataset:** `benchmark-v1`  
+**Status:** Approved in conversation on 2026-07-14; awaiting written-spec review
+
+**Dataset:** `benchmark-v1`
+
 **Scope:** OpenAlex collection and deterministic derivation only; no live run during implementation
 
 ## Objective
