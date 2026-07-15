@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "count": 2,
+    "db_response_time_ms": 3,
+    "page": null,
+    "per_page": 2,
+    "groups_count": null,
+    "cost_usd": 0.0002,
+    "next_cursor": null
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/A100000001",
+      "orcid": "https://orcid.org/0000-0001-0000-0001",
+      "display_name": "Ada Synthetic",
+      "display_name_alternatives": ["A. Synthetic"],
+      "works_count": 12,
+      "cited_by_count": 345,
+      "summary_stats": {
+        "2yr_mean_citedness": 4.5,
+        "h_index": 7,
+        "i10_index": 5
+      },
+      "ids": {
+        "openalex": "https://openalex.org/A100000001",
+        "orcid": "https://orcid.org/0000-0001-0000-0001",
+        "scopus": "synthetic-scopus-1"
+      },
+      "last_known_institutions": [
+        {
+          "id": "https://openalex.org/I100000001",
+          "ror": "https://ror.org/000000001",
+          "display_name": "Synthetic Northern Institute",
+          "country_code": "CA",
+          "type": "education",
+          "lineage": ["https://openalex.org/I100000001"]
+        }
+      ],
+      "affiliations": [
+        {
+          "institution": {
+            "id": "https://openalex.org/I100000001",
+            "ror": "https://ror.org/000000001",
+            "display_name": "Synthetic Northern Institute",
+            "country_code": "CA",
+            "type": "education",
+            "lineage": ["https://openalex.org/I100000001"]
+          },
+          "years": [2024, 2023, 2022]
+        }
+      ],
+      "topics": [
+        {
+          "id": "https://openalex.org/T100000001",
+          "display_name": "Synthetic Language Models",
+          "count": 9,
+          "score": 0.91,
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          }
+        }
+      ],
+      "topic_share": [
+        {
+          "id": "https://openalex.org/T100000001",
+          "display_name": "Synthetic Language Models",
+          "value": 0.75
+        }
+      ],
+      "x_concepts": [],
+      "counts_by_year": [
+        {"year": 2024, "works_count": 2, "cited_by_count": 30},
+        {"year": 2022, "works_count": 0, "cited_by_count": 12},
+        {"year": 2013, "works_count": 1, "cited_by_count": 4}
+      ],
+      "works_api_url": "https://api.openalex.org/works?filter=author.id:A100000001",
+      "updated_date": "2026-07-01T00:00:00.000000",
+      "created_date": "2018-01-01"
+    },
+    {
+      "id": "https://openalex.org/A100000002",
+      "orcid": null,
+      "display_name": "Missing Fields Author",
+      "display_name_alternatives": [],
+      "works_count": 7,
+      "cited_by_count": 0,
+      "summary_stats": null,
+      "ids": {"openalex": "https://openalex.org/A100000002"},
+      "last_known_institutions": null,
+      "affiliations": null,
+      "topics": null,
+      "topic_share": null,
+      "x_concepts": null,
+      "counts_by_year": null,
+      "works_api_url": "https://api.openalex.org/works?filter=author.id:A100000002",
+      "updated_date": null,
+      "created_date": null
+    }
+  ]
+}

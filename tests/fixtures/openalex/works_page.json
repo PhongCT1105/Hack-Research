@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "count": 2,
+    "db_response_time_ms": 5,
+    "page": null,
+    "per_page": 2,
+    "groups_count": null,
+    "cost_usd": 0.0004,
+    "next_cursor": null
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/W100000001",
+      "doi": "https://doi.org/10.0000/synthetic.1",
+      "title": "A Synthetic Study of Evidence",
+      "display_name": "A Synthetic Study of Evidence",
+      "publication_year": 2024,
+      "publication_date": "2024-04-01",
+      "ids": {
+        "openalex": "https://openalex.org/W100000001",
+        "doi": "https://doi.org/10.0000/synthetic.1",
+        "mag": null,
+        "pmid": null,
+        "pmcid": null
+      },
+      "language": "en",
+      "primary_location": {
+        "id": "doi:10.0000/synthetic.1",
+        "is_oa": true,
+        "landing_page_url": "https://journal.example.invalid/synthetic.1",
+        "pdf_url": "https://repository.example.invalid/synthetic.1.pdf",
+        "source": {
+          "id": "https://openalex.org/S100000001",
+          "display_name": "Journal of Synthetic Evidence",
+          "issn_l": "0000-0001",
+          "issn": ["0000-0001"],
+          "is_oa": true,
+          "is_in_doaj": true,
+          "is_core": false,
+          "host_organization": "https://openalex.org/I100000001",
+          "host_organization_name": "Synthetic Northern Institute",
+          "host_organization_lineage": ["https://openalex.org/I100000001"],
+          "host_organization_lineage_names": ["Synthetic Northern Institute"],
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true,
+        "raw_source_name": "Journal of Synthetic Evidence",
+        "raw_type": "journal-article"
+      },
+      "type": "article",
+      "indexed_in": ["crossref"],
+      "open_access": {
+        "is_oa": true,
+        "oa_status": "gold",
+        "oa_url": "https://repository.example.invalid/synthetic.1.pdf",
+        "any_repository_has_fulltext": true
+      },
+      "authorships": [
+        {
+          "author_position": "first",
+          "author": {
+            "id": "https://openalex.org/A100000001",
+            "display_name": "Ada Synthetic",
+            "orcid": "https://orcid.org/0000-0001-0000-0001"
+          },
+          "institutions": [
+            {
+              "id": "https://openalex.org/I100000001",
+              "display_name": "Synthetic Northern Institute",
+              "ror": "https://ror.org/000000001",
+              "country_code": "CA",
+              "type": "education",
+              "lineage": ["https://openalex.org/I100000001"]
+            }
+          ],
+          "countries": ["CA"],
+          "is_corresponding": true,
+          "raw_author_name": "A. Synthetic",
+          "raw_affiliation_strings": ["Synthetic Northern Institute"],
+          "affiliations": [
+            {
+              "raw_affiliation_string": "Synthetic Northern Institute",
+              "institution_ids": ["https://openalex.org/I100000001"]
+            }
+          ]
+        },
+        {
+          "author_position": "last",
+          "author": {
+            "id": "https://openalex.org/A100000099",
+            "display_name": "Grace Fixture",
+            "orcid": null
+          },
+          "institutions": [],
+          "countries": [],
+          "is_corresponding": false,
+          "raw_author_name": "G. Fixture",
+          "raw_affiliation_strings": [],
+          "affiliations": []
+        }
+      ],
+      "institutions": [],
+      "countries_distinct_count": 1,
+      "institutions_distinct_count": 1,
+      "corresponding_author_ids": ["https://openalex.org/A100000001"],
+      "corresponding_institution_ids": ["https://openalex.org/I100000001"],
+      "apc_list": {"value": 1000, "currency": "USD", "value_usd": 1000},
+      "apc_paid": null,
+      "fwci": 2.5,
+      "has_fulltext": true,
+      "fulltext_origin": "pdf",
+      "cited_by_count": 11,
+      "citation_normalized_percentile": {
+        "value": 0.88,
+        "is_in_top_1_percent": false,
+        "is_in_top_10_percent": true
+      },
+      "cited_by_percentile_year": {"min": 90, "max": 95},
+      "biblio": {"volume": "1", "issue": "2", "first_page": "10", "last_page": "20"},
+      "is_retracted": false,
+      "is_paratext": false,
+      "locations_count": 2,
+      "locations": [
+        {
+          "id": "doi:10.0000/synthetic.1",
+          "is_oa": true,
+          "landing_page_url": "https://journal.example.invalid/synthetic.1",
+          "pdf_url": "https://repository.example.invalid/synthetic.1.pdf",
+          "source": {
+            "id": "https://openalex.org/S100000001",
+            "display_name": "Journal of Synthetic Evidence",
+            "type": "journal"
+          },
+          "license": "cc-by",
+          "license_id": "https://openalex.org/licenses/cc-by",
+          "version": "publishedVersion",
+          "is_accepted": true,
+          "is_published": true
+        },
+        {
+          "id": "pmh:oai:example.invalid:synthetic.1",
+          "is_oa": false,
+          "landing_page_url": "https://index.example.invalid/synthetic.1",
+          "pdf_url": null,
+          "source": null,
+          "license": null,
+          "license_id": null,
+          "version": "submittedVersion",
+          "is_accepted": false,
+          "is_published": false
+        }
+      ],
+      "best_oa_location": {
+        "id": "doi:10.0000/synthetic.1",
+        "is_oa": true,
+        "landing_page_url": "https://journal.example.invalid/synthetic.1",
+        "pdf_url": "https://repository.example.invalid/synthetic.1.pdf",
+        "source": {
+          "id": "https://openalex.org/S100000001",
+          "display_name": "Journal of Synthetic Evidence",
+          "type": "journal"
+        },
+        "license": "cc-by",
+        "license_id": "https://openalex.org/licenses/cc-by",
+        "version": "publishedVersion",
+        "is_accepted": true,
+        "is_published": true
+      },
+      "sustainable_development_goals": [
+        {"id": "https://metadata.un.org/sdg/4", "display_name": "Quality Education", "score": 0.7}
+      ],
+      "grants": [
+        {"funder": "https://openalex.org/F100000001", "funder_display_name": "Fixture Fund", "award_id": "FF-1"}
+      ],
+      "datasets": [],
+      "versions": [],
+      "referenced_works_count": 1,
+      "referenced_works": ["https://openalex.org/W100000099"],
+      "related_works": ["https://openalex.org/W100000098"],
+      "abstract_inverted_index": {"Synthetic": [0], "abstract": [1]},
+      "counts_by_year": [
+        {"year": 2025, "cited_by_count": 7},
+        {"year": 2024, "cited_by_count": 4}
+      ],
+      "updated_date": "2026-07-01T00:00:00.000000",
+      "created_date": "2024-04-02",
+      "topics": [
+        {
+          "id": "https://openalex.org/T100000001",
+          "display_name": "Synthetic Language Models",
+          "score": 0.98,
+          "subfield": {
+            "id": "https://openalex.org/subfields/1702",
+            "display_name": "Artificial Intelligence"
+          },
+          "field": {
+            "id": "https://openalex.org/fields/17",
+            "display_name": "Computer Science"
+          },
+          "domain": {
+            "id": "https://openalex.org/domains/3",
+            "display_name": "Physical Sciences"
+          }
+        }
+      ],
+      "primary_topic": {
+        "id": "https://openalex.org/T100000001",
+        "display_name": "Synthetic Language Models",
+        "score": 0.98,
+        "subfield": {
+          "id": "https://openalex.org/subfields/1702",
+          "display_name": "Artificial Intelligence"
+        },
+        "field": {
+          "id": "https://openalex.org/fields/17",
+          "display_name": "Computer Science"
+        },
+        "domain": {
+          "id": "https://openalex.org/domains/3",
+          "display_name": "Physical Sciences"
+        }
+      },
+      "keywords": [
+        {"id": "https://openalex.org/keywords/synthetic-evidence", "display_name": "Synthetic evidence", "score": 0.8}
+      ],
+      "concepts": [],
+      "mesh": [],
+      "type_crossref": "journal-article",
+      "cited_by_api_url": "https://api.openalex.org/works?filter=cites:W100000001"
+    },
+    {
+      "id": "https://openalex.org/W100000002",
+      "doi": null,
+      "title": null,
+      "display_name": "Untitled synthetic record",
+      "publication_year": null,
+      "publication_date": null,
+      "ids": {"openalex": "https://openalex.org/W100000002", "doi": null},
+      "language": null,
+      "primary_location": null,
+      "type": null,
+      "indexed_in": null,
+      "open_access": null,
+      "authorships": null,
+      "cited_by_count": 0,
+      "is_retracted": null,
+      "is_paratext": null,
+      "locations_count": 0,
+      "locations": null,
+      "best_oa_location": null,
+      "referenced_works_count": 0,
+      "referenced_works": null,
+      "related_works": null,
+      "abstract_inverted_index": null,
+      "counts_by_year": null,
+      "topics": null,
+      "primary_topic": null,
+      "keywords": null,
+      "concepts": null,
+      "mesh": null,
+      "updated_date": null,
+      "created_date": null
+    }
+  ]
+}
