@@ -22,6 +22,7 @@ from _collection_progress import (  # noqa: E402
     render_status,
     start_item,
 )
+from lib import progress as progress_module  # noqa: E402
 
 
 SYNTHETIC_ITEMS = [
@@ -68,6 +69,11 @@ class CollectionProgressTests(unittest.TestCase):
             self.assertEqual(store.list_job_ids(), sorted([first["job_id"], second["job_id"]]))
             state_text = (Path(directory) / f"{first['job_id']}.json").read_text()
             self.assertNotIn("secret-api-key", state_text)
+
+    def test_compatibility_module_reexports_shared_progress_objects(self) -> None:
+        self.assertIs(ProgressStore, progress_module.ProgressStore)
+        self.assertIs(make_job_id, progress_module.make_job_id)
+        self.assertIs(record_page, progress_module.record_page)
 
     def test_saved_commands_redact_inline_api_key(self) -> None:
         setup = {"endpoint": "works", "filter": "author.id:A1"}
