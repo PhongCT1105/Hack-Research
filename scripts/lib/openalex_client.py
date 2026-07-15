@@ -7,15 +7,17 @@ import json
 import os
 import time
 from dataclasses import dataclass
+from math import isfinite
 from pathlib import Path
 from typing import Any, Callable, Iterator, Mapping, Protocol, runtime_checkable
-from urllib.parse import urlencode
 
 from .config import OpenAlexSettings
 from .io import atomic_write_json
 
 
-SECRET_PARAMETER_NAMES = frozenset({"api_key", "apikey", "key", "token", "access_token"})
+PRIVATE_PARAMETER_NAMES = frozenset(
+    {"api_key", "apikey", "key", "token", "access_token", "mailto"}
+)
 
 
 @dataclass(frozen=True)
@@ -27,36 +29,75 @@ class HttpResponse:
     body: bytes
 
 
+class TransportError(RuntimeError):
+    """A sanitized transport failure that is safe to report or retry."""
+
+
 @runtime_checkable
 class Transport(Protocol):
     """Minimal injectable HTTP transport used by :class:`OpenAlexClient`."""
 
     def request(
-        self, url: str, *, headers: dict[str, str], timeout: int
+        self,
+        base_url: str,
+        endpoint: str,
+        params: Mapping[str, Any],
+        *,
+        api_key: str,
+        mailto: str | None,
+        headers: dict[str, str],
+        timeout: int,
     ) -> HttpResponse: ...
 
 
 class UrllibTransport:
     """Production transport implemented only with the Python standard library."""
 
-    def request(self, url: str, *, headers: dict[str, str], timeout: int) -> HttpResponse:
+    def request(
+        self,
+        base_url: str,
+        endpoint: str,
+        params: Mapping[str, Any],
+        *,
+        api_key: str,
+        mailto: str | None,
+        headers: dict[str, str],
+        timeout: int,
+    ) -> HttpResponse:
         import urllib.error
+        import urllib.parse
         import urllib.request
 
-        request = urllib.request.Request(url, headers=headers, method="GET")
         try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
-                return HttpResponse(
-                    status_code=response.getcode(),
-                    headers=dict(response.headers.items()),
-                    body=response.read(),
+            query = dict(params)
+            if mailto:
+                query["mailto"] = mailto
+            query["api_key"] = api_key
+            query_string = urllib.parse.urlencode(sorted(query.items()), doseq=True)
+            url = f"{base_url.rstrip('/')}/{endpoint}?{query_string}"
+            request = urllib.request.Request(url, headers=headers, method="GET")
+            try:
+                with urllib.request.urlopen(request, timeout=timeout) as response:
+                    status_code = response.getcode()
+                    response_headers = dict(response.headers.items())
+                    body = response.read()
+            except urllib.error.HTTPError as error:
+                status_code = error.code
+                response_headers = (
+                    dict(error.headers.items()) if error.headers is not None else {}
                 )
-        except urllib.error.HTTPError as error:
+                body = error.read()
+        except Exception:
+            # Nothing raised below may retain the credential-bearing URL in its
+            # cause or context, regardless of which urllib phase failed.
+            pass
+        else:
             return HttpResponse(
-                status_code=error.code,
-                headers=dict(error.headers.items()) if error.headers is not None else {},
-                body=error.read(),
+                status_code=status_code,
+                headers=response_headers,
+                body=body,
             )
+        raise TransportError("OpenAlex transport request failed") from None
 
 
 class OpenAlexError(RuntimeError):
@@ -145,8 +186,15 @@ class OpenAlexClient:
             raise ValueError("start_cursor must be a non-empty string")
 
         cursor = start_cursor
+        visited_cursors: set[str] = set()
         while True:
             request = self._canonical_request(normalized_endpoint, params, cursor)
+            if cursor in visited_cursors:
+                raise MalformedResponseError(
+                    "OpenAlex response contains a cursor cycle",
+                    request=request,
+                )
+            visited_cursors.add(cursor)
             request_hash = self._request_hash(request)
             payload, rate_limit, cache_status = self._load_or_fetch(request, request_hash)
             results, meta, next_cursor = self._validate_payload(payload, request)
@@ -162,21 +210,18 @@ class OpenAlexClient:
             )
             if next_cursor is None:
                 return
-            if next_cursor == cursor:
-                raise MalformedResponseError(
-                    "OpenAlex response repeated the input cursor",
-                    request=request,
-                )
             cursor = next_cursor
 
     def _canonical_request(
         self, endpoint: str, params: Mapping[str, Any], cursor: str
     ) -> dict[str, Any]:
-        redacted_params = {
-            str(key): value
-            for key, value in params.items()
-            if str(key).lower() not in SECRET_PARAMETER_NAMES
-        }
+        redacted_params: dict[str, Any] = {}
+        for key, value in params.items():
+            if not isinstance(key, str):
+                raise ValueError("OpenAlex request parameter names must be strings")
+            if key.lower() in PRIVATE_PARAMETER_NAMES:
+                continue
+            redacted_params[key] = _canonical_parameter_value(value)
         redacted_params["cursor"] = cursor
         redacted_params["per-page"] = self.settings.per_page
         return {
@@ -217,8 +262,10 @@ class OpenAlexClient:
         try:
             atomic_write_json(cache_path, cache_entry)
         except FileExistsError:
-            # Another process populated the same immutable cache entry first.
-            pass
+            # Another process populated the same immutable cache entry first; its
+            # immutable value wins over the response fetched by this process.
+            cached_payload, cached_rate_limit = self._read_cache(cache_path, request)
+            return cached_payload, cached_rate_limit, "hit"
         return payload, rate_limit, "miss"
 
     def _read_cache(
@@ -258,20 +305,30 @@ class OpenAlexClient:
             )
 
         for attempt in range(self.settings.maximum_retries + 1):
+            transport_failed = False
             try:
                 response = self.transport.request(
-                    self._transport_url(request, api_key),
+                    self.settings.base_url,
+                    str(request["endpoint"]),
+                    dict(request["params"]),
+                    api_key=api_key,
+                    mailto=os.environ.get(self.settings.mailto_environment_variable),
                     headers={"Accept": "application/json", "User-Agent": self.settings.user_agent},
                     timeout=self.settings.timeout_seconds,
                 )
-            except (OSError, TimeoutError) as error:
+            except Exception:
+                # The transport is the only component that receives credentials.
+                # Normalize every implementation failure before it can escape.
+                transport_failed = True
+
+            if transport_failed:
                 if attempt < self.settings.maximum_retries:
                     self._backoff(attempt)
                     continue
                 raise TransientOpenAlexError(
                     "OpenAlex transport failed after retry budget was exhausted",
                     request=request,
-                ) from error
+                ) from None
 
             rate_limit = _parse_rate_limit_headers(response.headers)
             if 200 <= response.status_code < 300:
@@ -309,15 +366,6 @@ class OpenAlexClient:
             )
 
         raise AssertionError("unreachable OpenAlex retry state")
-
-    def _transport_url(self, request: Mapping[str, Any], api_key: str) -> str:
-        query = dict(request["params"])
-        mailto = os.environ.get(self.settings.mailto_environment_variable)
-        if mailto:
-            query["mailto"] = mailto
-        query["api_key"] = api_key
-        query_string = urlencode(sorted(query.items()), doseq=True)
-        return f"{self.settings.base_url.rstrip('/')}/{request['endpoint']}?{query_string}"
 
     @staticmethod
     def _decode_json(body: bytes, request: Mapping[str, Any]) -> dict[str, Any]:
@@ -381,3 +429,15 @@ def _parse_rate_limit_headers(headers: Mapping[str, Any]) -> dict[str, Any]:
         except (TypeError, ValueError):
             continue
     return parsed
+
+
+def _canonical_parameter_value(value: Any) -> Any:
+    if isinstance(value, (list, tuple)):
+        return [_canonical_parameter_value(item) for item in value]
+    if value is None or isinstance(value, (str, bool, int)):
+        return value
+    if isinstance(value, float) and isfinite(value):
+        return value
+    raise ValueError(
+        "OpenAlex request parameter values must be JSON scalar values or sequences of scalars"
+    )

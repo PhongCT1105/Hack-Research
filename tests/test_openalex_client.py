@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import json
 import sys
+import traceback
+import urllib.request
 from collections import deque
+from http.client import IncompleteRead
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, urlsplit
 
 import pytest
 
@@ -21,7 +23,9 @@ from scripts.lib.openalex_client import (  # noqa: E402
     OpenAlexClient,
     PermanentRequestError,
     RateLimitExhausted,
+    TransportError,
     TransientOpenAlexError,
+    UrllibTransport,
 )
 
 
@@ -55,8 +59,28 @@ class QueueTransport:
         self.outcomes = deque(outcomes)
         self.calls: list[dict[str, Any]] = []
 
-    def request(self, url: str, *, headers: dict[str, str], timeout: int) -> HttpResponse:
-        self.calls.append({"url": url, "headers": dict(headers), "timeout": timeout})
+    def request(
+        self,
+        base_url: str,
+        endpoint: str,
+        params: dict[str, Any],
+        *,
+        api_key: str,
+        mailto: str | None,
+        headers: dict[str, str],
+        timeout: int,
+    ) -> HttpResponse:
+        self.calls.append(
+            {
+                "base_url": base_url,
+                "endpoint": endpoint,
+                "params": dict(params),
+                "api_key": api_key,
+                "mailto": mailto,
+                "headers": dict(headers),
+                "timeout": timeout,
+            }
+        )
         if not self.outcomes:
             raise AssertionError("unexpected transport request")
         outcome = self.outcomes.popleft()
@@ -97,12 +121,9 @@ def test_cursor_pagination_uses_next_cursor_and_redacts_key(
     assert [page.cursor_out for page in pages] == ["cursor-2", None]
     assert [len(page.results) for page in pages] == [2, 1]
     assert "secret" not in json.dumps([page.request for page in pages])
-    assert all(SECRET in call["url"] for call in fake_transport.calls)
+    assert all(call["api_key"] == SECRET for call in fake_transport.calls)
     assert all(call["headers"]["User-Agent"] == settings().user_agent for call in fake_transport.calls)
-    assert [parse_qs(urlsplit(call["url"]).query)["cursor"] for call in fake_transport.calls] == [
-        ["*"],
-        ["cursor-2"],
-    ]
+    assert [call["params"]["cursor"] for call in fake_transport.calls] == ["*", "cursor-2"]
     assert pages[0].rate_limit == {
         "credits_limit": 100000,
         "credits_remaining": 99998,
@@ -154,6 +175,74 @@ def test_request_hash_is_independent_of_parameter_order_and_secret_values(tmp_pa
     assert second.cache_hit
     assert not second_transport.calls
     assert "ignored" not in json.dumps(first.request)
+
+
+def test_sequence_parameters_are_canonicalized_for_cache_reuse(tmp_path: Path) -> None:
+    transport = QueueTransport(fixture_response("institutions_page_2.json"))
+    first = next(
+        OpenAlexClient(settings(), transport, tmp_path).iter_pages(
+            "institutions", {"select": ("id", "display_name")}, start_cursor="cursor-2"
+        )
+    )
+    second = next(
+        OpenAlexClient(settings(), transport, tmp_path).iter_pages(
+            "institutions", {"select": ["id", "display_name"]}, start_cursor="cursor-2"
+        )
+    )
+
+    assert first.request_hash == second.request_hash
+    assert first.request["params"]["select"] == ["id", "display_name"]
+    assert second.cache_hit
+    assert len(transport.calls) == 1
+
+
+def test_caller_mailto_is_excluded_from_request_and_cache_identity(tmp_path: Path) -> None:
+    transport = QueueTransport(fixture_response("institutions_page_2.json"))
+    first = next(
+        OpenAlexClient(settings(), transport, tmp_path).iter_pages(
+            "institutions", {"mailto": "first@example.invalid"}, start_cursor="cursor-2"
+        )
+    )
+    second = next(
+        OpenAlexClient(settings(), transport, tmp_path).iter_pages(
+            "institutions", {"mailto": "second@example.invalid"}, start_cursor="cursor-2"
+        )
+    )
+
+    assert first.request_hash == second.request_hash
+    assert "mailto" not in first.request["params"]
+    assert second.cache_hit
+    cache_text = "\n".join(path.read_text(encoding="utf-8") for path in tmp_path.glob("*.json"))
+    assert "first@example.invalid" not in cache_text
+    assert "second@example.invalid" not in cache_text
+
+
+def test_concurrent_cache_winner_replaces_losing_fetch(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from scripts.lib import openalex_client
+
+    transport = QueueTransport(fixture_response("institutions_page_2.json"))
+
+    def publish_winner(destination: Path, entry: dict[str, Any]) -> None:
+        winner = json.loads(json.dumps(entry))
+        winner["payload"]["results"][0]["id"] = "https://openalex.org/I_FAKE_WINNER"
+        winner["rate_limit"] = {"credits_remaining": 777}
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(json.dumps(winner), encoding="utf-8")
+        raise FileExistsError("synthetic cache race")
+
+    monkeypatch.setattr(openalex_client, "atomic_write_json", publish_winner)
+
+    page = next(
+        OpenAlexClient(settings(), transport, tmp_path).iter_pages(
+            "institutions", {}, start_cursor="cursor-2"
+        )
+    )
+
+    assert page.results[0]["id"] == "https://openalex.org/I_FAKE_WINNER"
+    assert page.rate_limit == {"credits_remaining": 777}
+    assert page.cache_hit
 
 
 def test_429_raises_rate_limit_with_reset(tmp_path: Path) -> None:
@@ -233,6 +322,104 @@ def test_transient_status_raises_after_retry_budget_is_exhausted(tmp_path: Path)
         )
 
     assert len(transport.calls) == 3
+
+
+def test_transport_failure_traceback_never_contains_secret_url(tmp_path: Path) -> None:
+    failures = [
+        RuntimeError(f"failed URL https://api.openalex.invalid/works?api_key={SECRET}"),
+        RuntimeError(f"failed URL https://api.openalex.invalid/works?api_key={SECRET}"),
+    ]
+    transport = QueueTransport(*failures)
+
+    with pytest.raises(TransientOpenAlexError) as caught:
+        next(
+            OpenAlexClient(settings(maximum_retries=1), transport, tmp_path, sleep=lambda _: None)
+            .iter_pages("works", {})
+        )
+
+    rendered = "".join(traceback.format_exception(caught.value))
+    assert SECRET not in rendered
+    assert caught.value.__cause__ is None
+    assert caught.value.__context__ is None
+
+
+def test_urllib_transport_normalizes_incomplete_body_read(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class BrokenResponse:
+        headers: dict[str, str] = {}
+
+        def __enter__(self) -> BrokenResponse:
+            return self
+
+        def __exit__(self, *args: object) -> None:
+            return None
+
+        def getcode(self) -> int:
+            return 200
+
+        def read(self) -> bytes:
+            raise IncompleteRead(b"partial", 100)
+
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *args, **kwargs: BrokenResponse())
+
+    with pytest.raises(TransportError, match="transport request failed") as caught:
+        UrllibTransport().request(
+            "https://api.openalex.invalid",
+            "works",
+            {"cursor": "*", "per-page": 2},
+            api_key=SECRET,
+            mailto="collector@example.invalid",
+            headers={"User-Agent": "outreach-eval-tests/1.0"},
+            timeout=3,
+        )
+
+    assert caught.value.__cause__ is None
+    assert caught.value.__context__ is None
+    assert SECRET not in "".join(traceback.format_exception(caught.value))
+
+
+def test_urllib_transport_sanitizes_secret_bearing_construction_failure(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fail_with_url(url: str, **kwargs: Any) -> None:
+        raise OSError(f"could not construct request for {url}")
+
+    monkeypatch.setattr(urllib.request, "Request", fail_with_url)
+
+    with pytest.raises(TransportError) as caught:
+        UrllibTransport().request(
+            "https://api.openalex.invalid",
+            "works",
+            {"cursor": "*", "per-page": 2},
+            api_key=SECRET,
+            mailto=None,
+            headers={"User-Agent": "outreach-eval-tests/1.0"},
+            timeout=3,
+        )
+
+    assert caught.value.__context__ is None
+    assert SECRET not in "".join(traceback.format_exception(caught.value))
+
+
+def test_cursor_pagination_rejects_nonadjacent_cycles(tmp_path: Path) -> None:
+    def response(cursor: str) -> HttpResponse:
+        payload = {
+            "meta": {"next_cursor": cursor},
+            "results": [{"id": f"https://openalex.org/I_FAKE_{cursor}"}],
+        }
+        return HttpResponse(200, {}, json.dumps(payload).encode("utf-8"))
+
+    transport = QueueTransport(response("B"), response("A"))
+    pages = OpenAlexClient(settings(), transport, tmp_path).iter_pages(
+        "institutions", {}, start_cursor="A"
+    )
+
+    assert next(pages).cursor_out == "B"
+    assert next(pages).cursor_out == "A"
+    with pytest.raises(MalformedResponseError, match="cursor cycle"):
+        next(pages)
+    assert len(transport.calls) == 2
 
 
 @pytest.mark.parametrize(
