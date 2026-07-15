@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "count": 3,
+    "db_response_time_ms": 3,
+    "page": null,
+    "per_page": 2,
+    "groups_count": null,
+    "cost_usd": 0.0001,
+    "next_cursor": null
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/I_FAKE_0003",
+      "display_name": "Synthetic Prairie College",
+      "country_code": "CA"
+    }
+  ]
+}

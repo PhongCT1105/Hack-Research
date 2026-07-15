@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "count": 3,
+    "db_response_time_ms": 4,
+    "page": null,
+    "per_page": 2,
+    "groups_count": null,
+    "cost_usd": 0.0001,
+    "next_cursor": "cursor-2"
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/I_FAKE_0001",
+      "display_name": "Synthetic Northern Institute",
+      "country_code": "CA"
+    },
+    {
+      "id": "https://openalex.org/I_FAKE_0002",
+      "display_name": "Synthetic Lakes University",
+      "country_code": "CA"
+    }
+  ]
+}
