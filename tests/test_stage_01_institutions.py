@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Iterator, Mapping
 
 import pytest
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,6 +21,7 @@ sys.path.insert(0, str(SCRIPTS))
 
 from lib.config import DatasetConfig  # noqa: E402
 from lib.openalex_client import Page  # noqa: E402
+from lib.progress import ProgressStore, new_progress  # noqa: E402
 
 
 stage_01 = importlib.import_module("01_fetch_institutions")
@@ -32,6 +34,14 @@ def config() -> DatasetConfig:
         institution_seed_countries=("CA", "DE", "GB"),
         institution_seed_types=("education",),
     )
+
+
+def write_config(tmp_path: Path, **paths: str) -> Path:
+    raw_config = deepcopy(config().raw)
+    raw_config["paths"].update(paths)
+    destination = tmp_path / "dataset.yaml"
+    destination.write_text(yaml.safe_dump(raw_config), encoding="utf-8")
+    return destination
 
 
 def fixture_institution(
@@ -217,3 +227,95 @@ def test_stage_1_uses_configured_raw_progress_and_interim_paths(
     assert result.output_path == tmp_path / "custom/interim/institutions.csv"
     assert list((tmp_path / "custom/raw/pages").rglob("*.json"))
     assert (tmp_path / "custom/state" / f"{result.job_id}.json").is_file()
+
+
+def test_stage_1_main_uses_configured_output_and_progress_defaults(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    config_path = write_config(
+        tmp_path,
+        interim="configured/interim",
+        progress="configured/progress",
+    )
+    monkeypatch.chdir(tmp_path)
+
+    assert stage_01.main(["--config", str(config_path), "--dry-run", "--limit", "1"]) == 0
+
+    plan = json.loads(capsys.readouterr().out)
+    assert plan["output"] == "configured/interim/institutions.csv"
+    assert plan["state_dir"] == "configured/progress"
+
+
+def test_stage_1_main_explicit_paths_override_configured_defaults(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    config_path = write_config(
+        tmp_path,
+        interim="configured/interim",
+        progress="configured/progress",
+    )
+    monkeypatch.chdir(tmp_path)
+
+    assert (
+        stage_01.main(
+            [
+                "--config",
+                str(config_path),
+                "--dry-run",
+                "--limit",
+                "1",
+                "--output",
+                "explicit/institutions.csv",
+                "--state-dir=explicit/progress",
+            ]
+        )
+        == 0
+    )
+
+    plan = json.loads(capsys.readouterr().out)
+    assert plan["output"] == "explicit/institutions.csv"
+    assert plan["state_dir"] == "explicit/progress"
+
+
+def test_stage_1_status_uses_configured_progress_default(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    config_path = write_config(tmp_path, progress="configured/progress")
+    job_id = "a" * 64
+    progress = new_progress(
+        job_id=job_id,
+        stage="01_fetch_institutions",
+        setup={"endpoint": "institutions"},
+        input_checksum="no-input",
+        items=[],
+        original_command="python scripts/01_fetch_institutions.py",
+        output_path="configured/interim/institutions.csv",
+    )
+    ProgressStore(tmp_path / "configured/progress").save(progress)
+    monkeypatch.chdir(tmp_path)
+
+    assert stage_01.main(["--config", str(config_path), "--status", "--job-id", job_id]) == 0
+    assert f"Job ID: {job_id}" in capsys.readouterr().out
+
+
+def test_stage_1_skips_blank_non_string_and_malformed_institution_ids(
+    tmp_path: Path, fake_client: FixtureClient
+) -> None:
+    fake_client.pages_by_filter["country_code:CA,type:education"][0].extend(
+        [
+            {"id": "", "display_name": "Blank ID"},
+            {"id": 42, "display_name": "Non-string ID"},
+            {"id": "https://openalex.org/", "display_name": "Malformed ID"},
+            {"id": "not-an-institution-id", "display_name": "Wrong ID shape"},
+        ]
+    )
+
+    result = stage_01.collect_institutions(config(), fake_client, tmp_path, limit=3)
+
+    assert [row["openalex_id"] for row in result.rows] == [
+        "I100000001",
+        "I100000002",
+    ]
+    assert result.summary["invalid records skipped"] == 4
+    assert result.output_path.is_file()
+    assert result.summary_path.is_file()

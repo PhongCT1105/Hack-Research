@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shlex
 import sys
 from dataclasses import dataclass
@@ -194,6 +195,16 @@ def _endpoint_for_filter(item: Mapping[str, str]) -> tuple[str, Mapping[str, Any
     return "institutions", {"filter": item["filter"]}
 
 
+def _canonical_institution_id(value: Any) -> str | None:
+    try:
+        canonical = canonical_openalex_id(value)
+    except (TypeError, ValueError):
+        return None
+    if canonical is None or re.fullmatch(r"I\d+", canonical) is None:
+        return None
+    return canonical
+
+
 def _materialize_rows(
     job: CollectionJob,
     items: Sequence[Mapping[str, str]],
@@ -213,7 +224,7 @@ def _materialize_rows(
             if not isinstance(raw, Mapping):
                 invalid_records += 1
                 continue
-            openalex_id = canonical_openalex_id(raw.get("id"))
+            openalex_id = _canonical_institution_id(raw.get("id"))
             if not openalex_id:
                 invalid_records += 1
                 continue
@@ -274,17 +285,39 @@ def dry_run_plan(config: DatasetConfig, arguments: Any) -> dict[str, Any]:
     return plan
 
 
+def _option_supplied(argv: Sequence[str], option: str) -> bool:
+    return any(argument == option or argument.startswith(f"{option}=") for argument in argv)
+
+
+def _resolve_stage_paths(arguments: Any, config: DatasetConfig, argv: Sequence[str]) -> None:
+    paths = config.raw.get("paths", {})
+    if not isinstance(paths, Mapping):
+        return
+    if not _option_supplied(argv, "--output"):
+        arguments.output = str(Path(paths.get("interim", "data/interim")) / "institutions.csv")
+    if not _option_supplied(argv, "--state-dir"):
+        arguments.state_dir = str(paths.get("progress", "data/raw/progress"))
+
+
 def main(argv: Sequence[str] | None = None) -> int:
+    raw_argv = list(sys.argv[1:] if argv is None else argv)
     parser = build_parser(SPEC)
-    arguments = parser.parse_args(argv)
+    arguments = parser.parse_args(raw_argv)
+    config: DatasetConfig | None = None
+    config_error: OSError | RuntimeError | ValueError | None = None
+    try:
+        config = DatasetConfig.load(arguments.config)
+    except (OSError, RuntimeError, ValueError) as error:
+        config_error = error
+    if config is not None:
+        _resolve_stage_paths(arguments, config, raw_argv)
+
     progress_result = handle_progress_action(arguments, parser)
     if progress_result is not None:
         return progress_result
-    try:
-        config = DatasetConfig.load(arguments.config)
-        arguments.limit = _institution_limit(config, arguments.limit)
-    except (OSError, RuntimeError, ValueError) as error:
-        parser.error(str(error))
+    if config is None:
+        parser.error(str(config_error))
+    arguments.limit = _institution_limit(config, arguments.limit)
 
     if arguments.dry_run:
         print(json.dumps(dry_run_plan(config, arguments), indent=2, sort_keys=True))
@@ -311,7 +344,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             resume=arguments.resume,
             job_id=arguments.job_id,
             force=arguments.force,
-            original_command=shlex.join([sys.executable, __file__, *(argv or sys.argv[1:])]),
+            original_command=shlex.join([sys.executable, __file__, *raw_argv]),
         )
     except (OSError, RuntimeError, ValueError) as error:
         parser.error(str(error))
