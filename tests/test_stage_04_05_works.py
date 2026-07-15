@@ -166,6 +166,7 @@ def test_stage_4_fetches_every_page_but_not_referenced_work_records(
         "W100000003",
     ]
     assert result.works[0]["professor_id"] == "MOCK-01"
+    assert all(record["openalex_author_id"] == "A100000001" for record in result.works)
     assert "W100000099" in result.works[0]["referenced_works"]
     assert client.calls == [Call("works", {"filter": "author.id:A100000001"}, "*")]
 
@@ -239,13 +240,17 @@ def test_stage_4_rejects_unsafe_professor_marker_id_before_writing(tmp_path: Pat
 
 def test_stage_5_reconstructs_abstract_without_discarding_inverted_index() -> None:
     inverted = {"evidence": [2], "Verified": [0], "helps": [1, 3]}
-    original = work("W100000001", abstract_inverted_index=inverted)
+    original = {
+        **work("W100000001", abstract_inverted_index=inverted),
+        "openalex_author_id": "A100000001",
+    }
 
     transformed = stage_05.reconstruct_work_abstracts([original])
 
     assert original["abstract_inverted_index"] == inverted
     assert "reconstructed_abstract" not in original
     assert transformed[0]["abstract_inverted_index"] == inverted
+    assert transformed[0]["openalex_author_id"] == "A100000001"
     assert transformed[0]["reconstructed_abstract"] == "Verified helps evidence helps"
     assert transformed[0]["abstract_reconstruction_version"] == ("openalex-inverted-index-v1")
 

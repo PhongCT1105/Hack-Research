@@ -7,6 +7,8 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "scripts"
@@ -24,9 +26,11 @@ def work(
     author_name: str = "Ada Synthetic",
     domain: str | None = None,
     professor_id: str = "MOCK-01",
+    profile_author_id: str = "A100000001",
 ) -> dict[str, Any]:
     return {
         "professor_id": professor_id,
+        "openalex_author_id": profile_author_id,
         "openalex_work_id": work_id,
         "doi": doi,
         "title": title or f"Synthetic work {work_id}",
@@ -171,7 +175,12 @@ def test_reconciliation_adds_provisional_profile_fields_to_every_work() -> None:
 def test_reconciliation_marks_overlap_on_each_affected_profile() -> None:
     rows = [
         work("W1", professor_id="MOCK-01", author_id="A100000001"),
-        work("W1", professor_id="MOCK-02", author_id="A200000002"),
+        work(
+            "W1",
+            professor_id="MOCK-02",
+            author_id="A200000002",
+            profile_author_id="A200000002",
+        ),
     ]
 
     reconciled = stage_06.reconcile_openalex_records(
@@ -188,12 +197,16 @@ def test_reconciliation_marks_overlap_on_each_affected_profile() -> None:
     )
 
 
-def test_reconciliation_infers_dominant_profile_author_and_flags_missing_entry() -> None:
+def test_stage_4_shaped_rows_use_target_id_when_coauthor_is_more_frequent() -> None:
     rows = [
         work("W1"),
         work("W2"),
-        work("W3", author_id="A999999999"),
+        work("W3", author_id="A999999999", author_name="Frequent Coauthor"),
     ]
+    for row in rows[:2]:
+        row["authorships"].append(
+            {"author": {"id": "A999999999", "display_name": "Frequent Coauthor"}}
+        )
 
     reconciled = stage_06.reconcile_openalex_records(rows)
 
@@ -202,6 +215,28 @@ def test_reconciliation_infers_dominant_profile_author_and_flags_missing_entry()
     assert all(
         row["openalex_consistency"]["expected_author_id"] == "A100000001" for row in reconciled
     )
+
+
+def test_reconciliation_rejects_group_without_authoritative_author_id() -> None:
+    rows = [work("W1"), work("W2")]
+    for row in rows:
+        row.pop("openalex_author_id")
+
+    with pytest.raises(
+        ValueError,
+        match="missing authoritative OpenAlex author ID for MOCK-01",
+    ):
+        stage_06.reconcile_openalex_records(rows)
+
+
+def test_reconciliation_rejects_conflicting_authoritative_author_ids() -> None:
+    rows = [work("W1"), work("W2", profile_author_id="A200000002")]
+
+    with pytest.raises(
+        ValueError,
+        match="conflicting authoritative OpenAlex author IDs for MOCK-01",
+    ):
+        stage_06.reconcile_openalex_records(rows)
 
 
 def test_stage_6_cli_writes_offline_provisional_records(tmp_path: Path) -> None:

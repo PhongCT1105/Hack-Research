@@ -237,7 +237,9 @@ def _materialize_histories(
                 if not isinstance(raw, Mapping):
                     raise ValueError(f"work record is not a mapping for {professor_id}")
                 work_id = _work_id(raw.get("id"))
-                records.setdefault(work_id, normalize_work(raw, professor_id=professor_id))
+                normalized_work = normalize_work(raw, professor_id=professor_id)
+                normalized_work["openalex_author_id"] = item["provider_id"]
+                records.setdefault(work_id, normalized_work)
         if references and terminal_cursor is not None:
             raise RuntimeError(f"work history ended before the terminal cursor for {professor_id}")
         normalized = [records[work_id] for work_id in sorted(records)]

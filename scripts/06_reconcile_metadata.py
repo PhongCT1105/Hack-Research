@@ -75,13 +75,11 @@ def reconcile_openalex_records(
 
     assessments: dict[str, tuple[str, ConsistencyAssessment]] = {}
     for professor_id, profile_records in records_by_profile.items():
-        expected_author_id = (
-            expected_author_ids.get(professor_id)
-            if expected_author_ids is not None
-            else _infer_expected_author_id(profile_records, professor_id)
+        expected_author_id = _authoritative_expected_author_id(
+            profile_records,
+            professor_id,
+            expected_author_ids,
         )
-        if not isinstance(expected_author_id, str) or not expected_author_id.strip():
-            raise ValueError(f"missing expected OpenAlex author ID for {professor_id}")
         assessment = assess_openalex_consistency(
             profile_records, expected_author_id=expected_author_id
         )
@@ -249,31 +247,53 @@ def _normalize_title(value: str) -> str:
     return " ".join(re.sub(r"[^\w\s]", " ", normalized).split())
 
 
-def _infer_expected_author_id(records: Sequence[Mapping[str, Any]], professor_id: str) -> str:
-    declared_ids = {
-        canonical_openalex_id(value)
-        for record in records
-        if isinstance(
-            (value := record.get("profile_openalex_author_id") or record.get("openalex_author_id")),
-            str,
-        )
-    }
-    declared_ids.discard(None)
-    if len(declared_ids) == 1:
-        return next(iter(declared_ids))
-    if len(declared_ids) > 1:
-        raise ValueError(f"conflicting expected OpenAlex author IDs for {professor_id}")
+def _authoritative_expected_author_id(
+    records: Sequence[Mapping[str, Any]],
+    professor_id: str,
+    expected_author_ids: Mapping[str, str] | None,
+) -> str:
+    carried_values = [record.get("openalex_author_id") for record in records]
+    if expected_author_ids is not None:
+        mapped_value = expected_author_ids.get(professor_id)
+        if not isinstance(mapped_value, str) or not mapped_value.strip():
+            raise ValueError(f"missing authoritative OpenAlex author ID mapping for {professor_id}")
+        mapped_id = _canonical_author_id(mapped_value, professor_id)
+        carried_ids = {
+            _canonical_author_id(value, professor_id)
+            for value in carried_values
+            if isinstance(value, str) and value.strip()
+        }
+        if carried_ids and carried_ids != {mapped_id}:
+            raise ValueError(f"conflicting authoritative OpenAlex author IDs for {professor_id}")
+        return mapped_id
 
-    author_counts = Counter(
-        author_id for record in records for author_id in _authorship_author_ids(record)
-    )
-    ranked_ids = author_counts.most_common()
-    if not ranked_ids or (len(ranked_ids) > 1 and ranked_ids[0][1] == ranked_ids[1][1]):
+    if not records or any(
+        not isinstance(value, str) or not value.strip() for value in carried_values
+    ):
         raise ValueError(
-            f"cannot infer one expected OpenAlex author ID for {professor_id}; "
-            "add profile_openalex_author_id to the work records"
+            f"missing authoritative OpenAlex author ID for {professor_id}; "
+            "every work record must carry openalex_author_id"
         )
-    return ranked_ids[0][0]
+    carried_ids = {
+        _canonical_author_id(value, professor_id)
+        for value in carried_values
+        if isinstance(value, str)
+    }
+    if len(carried_ids) != 1:
+        raise ValueError(f"conflicting authoritative OpenAlex author IDs for {professor_id}")
+    return next(iter(carried_ids))
+
+
+def _canonical_author_id(value: str, professor_id: str) -> str:
+    try:
+        author_id = canonical_openalex_id(value)
+    except (TypeError, ValueError) as error:
+        raise ValueError(
+            f"invalid authoritative OpenAlex author ID for {professor_id}: {value!r}"
+        ) from error
+    if author_id is None or re.fullmatch(r"A\d+", author_id) is None:
+        raise ValueError(f"invalid authoritative OpenAlex author ID for {professor_id}: {value!r}")
+    return author_id
 
 
 def _limit_records_by_profile(records: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
