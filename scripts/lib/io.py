@@ -13,8 +13,6 @@ from typing import Any, Iterable, Mapping, Sequence
 
 
 def _atomic_text_write(destination: Path, content: str, force: bool) -> None:
-    if destination.exists() and not force:
-        raise FileExistsError(f"refusing to overwrite existing output: {destination}")
     destination.parent.mkdir(parents=True, exist_ok=True)
     handle, temporary_name = tempfile.mkstemp(
         prefix=f".{destination.name}.", suffix=".tmp", dir=destination.parent
@@ -25,7 +23,16 @@ def _atomic_text_write(destination: Path, content: str, force: bool) -> None:
             stream.write(content)
             stream.flush()
             os.fsync(stream.fileno())
-        temporary.replace(destination)
+        if force:
+            temporary.replace(destination)
+        else:
+            try:
+                os.link(temporary, destination)
+            except FileExistsError as error:
+                raise FileExistsError(
+                    f"refusing to overwrite existing output: {destination}"
+                ) from error
+            temporary.unlink()
     except BaseException:
         temporary.unlink(missing_ok=True)
         raise

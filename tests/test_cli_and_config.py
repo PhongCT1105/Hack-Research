@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import pytest
@@ -20,6 +22,18 @@ def run_script(name: str, *arguments: str) -> subprocess.CompletedProcess[str]:
         text=True,
         check=False,
     )
+
+
+def write_atomic_format(destination: Path, format_name: str, marker: str) -> None:
+    from lib.io import atomic_write_csv, atomic_write_json, atomic_write_jsonl
+
+    record = {"id": marker}
+    if format_name == "json":
+        atomic_write_json(destination, record)
+    elif format_name == "jsonl":
+        atomic_write_jsonl(destination, [record])
+    else:
+        atomic_write_csv(destination, [record], fieldnames=("id",))
 
 
 def test_author_limit_requires_full_run() -> None:
@@ -108,3 +122,76 @@ def test_input_checksum_changes_with_file_content(tmp_path: Path) -> None:
 
     assert len(first) == 64
     assert input_checksum(source) != first
+
+
+@pytest.mark.parametrize("format_name", ["json", "jsonl", "csv"])
+def test_atomic_writers_refuse_existing_destination(tmp_path: Path, format_name: str) -> None:
+    destination = tmp_path / f"records.{format_name}"
+    destination.write_text("sentinel\n", encoding="utf-8")
+
+    with pytest.raises(FileExistsError):
+        write_atomic_format(destination, format_name, "FAKE-NEW")
+
+    assert destination.read_text(encoding="utf-8") == "sentinel\n"
+
+
+@pytest.mark.parametrize("format_name", ["json", "jsonl", "csv"])
+def test_atomic_writers_allow_only_one_concurrent_no_clobber_publish(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, format_name: str
+) -> None:
+    destination = tmp_path / f"concurrent.{format_name}"
+    start_barrier = threading.Barrier(2)
+    exists_barrier = threading.Barrier(2)
+    original_exists = Path.exists
+
+    def synchronized_exists(path: Path) -> bool:
+        if path == destination:
+            exists_barrier.wait(timeout=5)
+            return False
+        return original_exists(path)
+
+    def attempt(marker: str) -> BaseException | None:
+        start_barrier.wait(timeout=5)
+        try:
+            write_atomic_format(destination, format_name, marker)
+        except BaseException as error:
+            return error
+        return None
+
+    with monkeypatch.context() as patch:
+        patch.setattr(Path, "exists", synchronized_exists)
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            results = list(executor.map(attempt, ["FAKE-ONE", "FAKE-TWO"]))
+
+    assert sum(result is None for result in results) == 1
+    assert sum(isinstance(result, FileExistsError) for result in results) == 1
+    assert all(result is None or isinstance(result, FileExistsError) for result in results)
+    published = destination.read_text(encoding="utf-8")
+    assert ("FAKE-ONE" in published) != ("FAKE-TWO" in published)
+
+
+def test_directory_input_checksum_is_creation_order_independent(tmp_path: Path) -> None:
+    from lib.io import input_checksum
+
+    files = {
+        "alpha.json": '{"id":"FAKE-01"}\n',
+        "nested/beta.csv": "id\nFAKE-02\n",
+        "nested/deeper/gamma.jsonl": '{"id":"FAKE-03"}\n',
+    }
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+    for relative, content in files.items():
+        destination = first / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(content, encoding="utf-8")
+    for relative, content in reversed(files.items()):
+        destination = second / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(content, encoding="utf-8")
+
+    first_checksum = input_checksum(first)
+    assert len(first_checksum) == 64
+    assert input_checksum(second) == first_checksum
+
+    (second / "nested" / "beta.csv").write_text("id\nFAKE-CHANGED\n", encoding="utf-8")
+    assert input_checksum(second) != first_checksum
