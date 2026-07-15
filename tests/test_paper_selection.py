@@ -152,7 +152,41 @@ def test_selector_rejects_fewer_than_eight_unique_papers_and_duplicate_ids() -> 
         select_representative_papers(duplicates, seed=42)
 
 
-def test_candidate_pool_filters_explicitly_ineligible_records_and_caps_deterministically() -> None:
+def test_candidate_pool_rejects_nineteen_eligible_papers() -> None:
+    with pytest.raises(ValueError, match="at least 20 eligible papers"):
+        select_candidate_pool(thirty_papers()[:19])
+
+
+def test_candidate_pool_accepts_twenty_eligible_papers() -> None:
+    selected = select_candidate_pool(thirty_papers()[:20])
+
+    assert len(selected) == 20
+
+
+def test_candidate_pool_accepts_thirty_and_caps_larger_histories_at_thirty() -> None:
+    exactly_thirty = select_candidate_pool(thirty_papers())
+    capped = select_candidate_pool(thirty_papers() + [paper(31), paper(32)])
+
+    assert len(exactly_thirty) == 30
+    assert len(capped) == 30
+
+
+@pytest.mark.parametrize(
+    ("minimum_size", "maximum_size", "message"),
+    [
+        (19, 30, "minimum_size must be at least 20"),
+        (20, 31, "maximum_size must be at most 30"),
+        (25, 20, "minimum_size must not exceed maximum_size"),
+    ],
+)
+def test_candidate_pool_rejects_invalid_configured_bounds(
+    minimum_size: int, maximum_size: int, message: str
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        select_candidate_pool(thirty_papers(), minimum_size=minimum_size, maximum_size=maximum_size)
+
+
+def test_candidate_pool_filters_explicitly_ineligible_records_deterministically() -> None:
     papers = thirty_papers() + [paper(31), paper(32)]
     papers[0]["is_retracted"] = True
     papers[1]["is_paratext"] = True

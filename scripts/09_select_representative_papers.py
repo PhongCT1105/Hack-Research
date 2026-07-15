@@ -23,10 +23,12 @@ from lib.config import DatasetConfig
 from lib.io import atomic_write_csv
 from lib.normalization import CANDIDATE_PAPER_CSV_COLUMNS
 from lib.selection import (
+    DEFAULT_MINIMUM_POOL_SIZE,
     DEFAULT_MAXIMUM_POOL_SIZE,
     select_candidate_pool,
     select_focal_candidates,
     select_representative_papers,
+    validate_candidate_pool_bounds,
 )
 
 
@@ -45,6 +47,7 @@ def select_paper_records(
     records: Sequence[Mapping[str, Any]],
     seed: int,
     *,
+    minimum_pool_size: int = DEFAULT_MINIMUM_POOL_SIZE,
     maximum_pool_size: int = DEFAULT_MAXIMUM_POOL_SIZE,
 ) -> list[dict[str, Any]]:
     """Select and annotate one deterministic candidate pool per professor."""
@@ -60,7 +63,11 @@ def select_paper_records(
 
     output: list[dict[str, Any]] = []
     for professor_id in sorted(grouped):
-        pool = select_candidate_pool(grouped[professor_id], maximum_size=maximum_pool_size)
+        pool = select_candidate_pool(
+            grouped[professor_id],
+            minimum_size=minimum_pool_size,
+            maximum_size=maximum_pool_size,
+        )
         selected = select_representative_papers(pool, seed)
         selected_by_id = {_paper_id(paper): paper for paper in selected}
         focal_by_id = {_paper_id(paper): paper for paper in select_focal_candidates(selected)}
@@ -215,21 +222,22 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
         seed = resolved_seed(arguments, config.raw)
         pool_settings = config.raw.get("candidate_papers_per_professor", {})
+        minimum_pool_size = (
+            pool_settings.get("minimum", DEFAULT_MINIMUM_POOL_SIZE)
+            if isinstance(pool_settings, Mapping)
+            else DEFAULT_MINIMUM_POOL_SIZE
+        )
         maximum_pool_size = (
             pool_settings.get("maximum", DEFAULT_MAXIMUM_POOL_SIZE)
             if isinstance(pool_settings, Mapping)
             else DEFAULT_MAXIMUM_POOL_SIZE
         )
-        if (
-            isinstance(maximum_pool_size, bool)
-            or not isinstance(maximum_pool_size, int)
-            or maximum_pool_size < 8
-        ):
-            raise ValueError("candidate_papers_per_professor.maximum must be at least 8")
+        validate_candidate_pool_bounds(minimum_pool_size, maximum_pool_size)
     except (OSError, RuntimeError, TypeError, ValueError) as error:
         parser.error(str(error))
     if arguments.dry_run:
         plan = stage_plan(SPEC, arguments, config.raw)
+        plan["minimum_candidate_pool_size"] = minimum_pool_size
         plan["maximum_candidate_pool_size"] = maximum_pool_size
         plan["focal_selection_status"] = "provisional_metadata_only"
         print(json.dumps(plan, indent=2, sort_keys=True))
@@ -242,7 +250,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     logger = configure_logging(arguments.log_file)
     try:
         records = _limit_records_by_profile(read_jsonl(arguments.input), arguments.limit)
-        selected = select_paper_records(records, seed, maximum_pool_size=maximum_pool_size)
+        selected = select_paper_records(
+            records,
+            seed,
+            minimum_pool_size=minimum_pool_size,
+            maximum_pool_size=maximum_pool_size,
+        )
         csv_records = [_candidate_csv_record(paper) for paper in selected]
         atomic_write_csv(
             Path(arguments.output),

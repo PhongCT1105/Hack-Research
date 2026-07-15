@@ -17,15 +17,17 @@ SELECTION_SLOTS = (
     ("diversifying", 2),
     ("random", 1),
 )
+DEFAULT_MINIMUM_POOL_SIZE = 20
 DEFAULT_MAXIMUM_POOL_SIZE = 30
 
 
 def select_candidate_pool(
     papers: Sequence[Mapping[str, Any]],
     *,
+    minimum_size: int = DEFAULT_MINIMUM_POOL_SIZE,
     maximum_size: int = DEFAULT_MAXIMUM_POOL_SIZE,
 ) -> list[dict[str, Any]]:
-    """Return at most ``maximum_size`` deterministic, explicitly eligible paper copies.
+    """Return a bounded deterministic pool of explicitly eligible paper copies.
 
     Retractions, paratext, records explicitly marked ineligible, and records carrying an
     unresolved OpenAlex identity-consistency status are excluded. When a complete history is
@@ -33,10 +35,14 @@ def select_candidate_pool(
     before the remaining places greedily add topic/method coverage.
     """
 
-    if isinstance(maximum_size, bool) or not isinstance(maximum_size, int) or maximum_size < 8:
-        raise ValueError("maximum_size must be an integer of at least 8")
+    validate_candidate_pool_bounds(minimum_size, maximum_size)
     materialized = _materialize_unique(papers)
     eligible = [paper for paper in materialized if _candidate_is_eligible(paper)]
+    if len(eligible) < minimum_size:
+        raise ValueError(
+            f"candidate pool requires at least {minimum_size} eligible papers; "
+            f"found {len(eligible)}"
+        )
     if len(eligible) <= maximum_size:
         return sorted(eligible, key=_paper_id)
 
@@ -53,6 +59,21 @@ def select_candidate_pool(
         next_paper, _ = _most_diversifying(remaining, chosen)
         _append_copy(next_paper, "candidate", chosen, chosen_ids)
     return sorted(chosen, key=_paper_id)
+
+
+def validate_candidate_pool_bounds(minimum_size: int, maximum_size: int) -> None:
+    """Validate the configured 20-to-30-paper candidate-pool contract."""
+
+    if isinstance(minimum_size, bool) or not isinstance(minimum_size, int):
+        raise ValueError("minimum_size must be an integer")
+    if minimum_size < 20:
+        raise ValueError("minimum_size must be at least 20")
+    if isinstance(maximum_size, bool) or not isinstance(maximum_size, int):
+        raise ValueError("maximum_size must be an integer")
+    if maximum_size > 30:
+        raise ValueError("maximum_size must be at most 30")
+    if minimum_size > maximum_size:
+        raise ValueError("minimum_size must not exceed maximum_size")
 
 
 def select_representative_papers(
