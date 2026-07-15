@@ -4,6 +4,7 @@ import csv
 import hashlib
 import importlib
 import json
+import subprocess
 import sys
 from copy import deepcopy
 from pathlib import Path
@@ -252,6 +253,7 @@ def test_public_enrichment_queue_omits_real_names(
 def test_real_name_mapping_is_written_only_to_private_identity_map(
     tmp_path: Path, candidate_rows: list[dict[str, Any]]
 ) -> None:
+    initialize_git_repository(tmp_path, "data/private/*\n")
     output = tmp_path / "data/interim/faculty_identity_enrichment_queue.csv"
     identity_map = tmp_path / "data/private/professor_identity_map.csv"
 
@@ -260,6 +262,8 @@ def test_real_name_mapping_is_written_only_to_private_identity_map(
         "candidate-pool-v1",
         output,
         identity_map,
+        private_dir=tmp_path / "data/private",
+        repository_root=tmp_path,
     )
 
     public_text = output.read_text(encoding="utf-8")
@@ -271,3 +275,104 @@ def test_real_name_mapping_is_written_only_to_private_identity_map(
     assert "display_name" in private_text
     assert "Ada Synthetic" in private_text
     assert "Grace Synthetic" in private_text
+
+
+def initialize_git_repository(root: Path, ignore_rules: str) -> None:
+    subprocess.run(
+        ["git", "init", "--quiet", str(root)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    (root / ".gitignore").write_text(ignore_rules, encoding="utf-8")
+
+
+def test_enrichment_destinations_must_differ_before_writing(
+    tmp_path: Path, candidate_rows: list[dict[str, Any]]
+) -> None:
+    initialize_git_repository(tmp_path, "data/private/*\n")
+    shared = tmp_path / "data/private/professor_identity_map.csv"
+
+    with pytest.raises(ValueError, match="must differ"):
+        stage_03.write_enrichment_queue(
+            candidate_rows,
+            "candidate-pool-v1",
+            shared,
+            shared,
+            private_dir=tmp_path / "data/private",
+            repository_root=tmp_path,
+        )
+
+    assert not shared.exists()
+
+
+def test_identity_map_must_be_beneath_configured_private_directory(
+    tmp_path: Path, candidate_rows: list[dict[str, Any]]
+) -> None:
+    initialize_git_repository(tmp_path, "data/private/*\n")
+    output = tmp_path / "data/interim/faculty_identity_enrichment_queue.csv"
+    identity_map = tmp_path / "data/public/professor_identity_map.csv"
+
+    with pytest.raises(ValueError, match="beneath configured private directory"):
+        stage_03.write_enrichment_queue(
+            candidate_rows,
+            "candidate-pool-v1",
+            output,
+            identity_map,
+            private_dir=tmp_path / "data/private",
+            repository_root=tmp_path,
+        )
+
+    assert not output.exists()
+    assert not identity_map.exists()
+
+
+def test_identity_map_must_be_git_ignored_before_writing(
+    tmp_path: Path, candidate_rows: list[dict[str, Any]]
+) -> None:
+    initialize_git_repository(tmp_path, "data/other-private/*\n")
+    output = tmp_path / "data/interim/faculty_identity_enrichment_queue.csv"
+    identity_map = tmp_path / "data/private/professor_identity_map.csv"
+
+    with pytest.raises(ValueError, match="must be Git-ignored"):
+        stage_03.write_enrichment_queue(
+            candidate_rows,
+            "candidate-pool-v1",
+            output,
+            identity_map,
+            private_dir=tmp_path / "data/private",
+            repository_root=tmp_path,
+        )
+
+    assert not output.exists()
+    assert not identity_map.exists()
+
+
+def test_tracked_identity_map_is_rejected_before_public_write(
+    tmp_path: Path, candidate_rows: list[dict[str, Any]]
+) -> None:
+    initialize_git_repository(tmp_path, "data/private/*\n")
+    output = tmp_path / "data/interim/faculty_identity_enrichment_queue.csv"
+    identity_map = tmp_path / "data/private/professor_identity_map.csv"
+    identity_map.parent.mkdir(parents=True)
+    identity_map.write_text("preexisting tracked secret\n", encoding="utf-8")
+    subprocess.run(
+        ["git", "-C", str(tmp_path), "add", "--force", str(identity_map)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+
+    with pytest.raises(ValueError, match="must not be tracked"):
+        stage_03.write_enrichment_queue(
+            candidate_rows,
+            "candidate-pool-v1",
+            output,
+            identity_map,
+            private_dir=tmp_path / "data/private",
+            repository_root=tmp_path,
+            force=True,
+        )
+
+    assert not output.exists()
+    assert identity_map.read_text(encoding="utf-8") == "preexisting tracked secret\n"

@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -110,10 +111,18 @@ def write_enrichment_queue(
     output_path: str | Path,
     identity_map_path: str | Path,
     *,
+    private_dir: str | Path = "data/private",
+    repository_root: str | Path = ".",
     force: bool = False,
 ) -> list[dict[str, str]]:
     """Write the public/provisional queue and separate private identity mapping."""
 
+    output_destination, identity_destination = _validated_enrichment_paths(
+        output_path,
+        identity_map_path,
+        private_dir=private_dir,
+        repository_root=repository_root,
+    )
     queue = build_enrichment_queue(candidate_rows, candidate_pool_version)
     assignments = {row["openalex_author_id"]: row["professor_id"] for row in queue}
     rows_by_id = _eligible_rows_by_id(candidate_rows)
@@ -125,14 +134,88 @@ def write_enrichment_queue(
         }
         for author_id in sorted(assignments, key=lambda value: assignments[value])
     ]
-    atomic_write_csv(output_path, queue, fieldnames=QUEUE_COLUMNS, force=force)
+    atomic_write_csv(output_destination, queue, fieldnames=QUEUE_COLUMNS, force=force)
     atomic_write_csv(
-        identity_map_path,
+        identity_destination,
         identity_rows,
         fieldnames=IDENTITY_MAP_COLUMNS,
         force=force,
     )
     return queue
+
+
+def _validated_enrichment_paths(
+    output_path: str | Path,
+    identity_map_path: str | Path,
+    *,
+    private_dir: str | Path,
+    repository_root: str | Path,
+) -> tuple[Path, Path]:
+    root = Path(repository_root).expanduser().resolve()
+    output = _resolve_from_root(output_path, root)
+    identity_map = _resolve_from_root(identity_map_path, root)
+    private = _resolve_from_root(private_dir, root)
+
+    if output == identity_map:
+        raise ValueError("public queue and private identity map destinations must differ")
+    try:
+        relative_to_private = identity_map.relative_to(private)
+    except ValueError as error:
+        raise ValueError("identity map must be beneath configured private directory") from error
+    if not relative_to_private.parts:
+        raise ValueError("identity map must be a file beneath configured private directory")
+
+    try:
+        relative_to_repository = identity_map.relative_to(root)
+    except ValueError as error:
+        raise ValueError(
+            "configured private identity map must be inside the Git repository"
+        ) from error
+    relative = relative_to_repository.as_posix()
+    _require_git_repository(root)
+    tracked = subprocess.run(
+        ["git", "-C", str(root), "ls-files", "--error-unmatch", "--", relative],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if tracked.returncode == 0:
+        raise ValueError("private identity map must not be tracked by Git")
+    if tracked.returncode not in {0, 1}:
+        raise ValueError(
+            f"could not determine identity map tracking status: {tracked.stderr.strip()}"
+        )
+
+    ignored = subprocess.run(
+        ["git", "-C", str(root), "check-ignore", "--quiet", "--", relative],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if ignored.returncode == 1:
+        raise ValueError("private identity map must be Git-ignored before writing")
+    if ignored.returncode != 0:
+        raise ValueError(f"could not verify identity map ignore status: {ignored.stderr.strip()}")
+    return output, identity_map
+
+
+def _resolve_from_root(path: str | Path, root: Path) -> Path:
+    candidate = Path(path).expanduser()
+    return (candidate if candidate.is_absolute() else root / candidate).resolve()
+
+
+def _require_git_repository(root: Path) -> None:
+    result = subprocess.run(
+        ["git", "-C", str(root), "rev-parse", "--show-toplevel"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise ValueError(f"repository root is not a Git work tree: {root}")
+    actual_root = Path(result.stdout.strip()).resolve()
+    if actual_root != root:
+        raise ValueError(f"repository root must be the Git work-tree root: {actual_root}")
 
 
 def _eligible_rows_by_id(
@@ -257,16 +340,22 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         candidates = read_csv(arguments.input)[: arguments.limit]
         privacy = config.raw.get("privacy", {})
+        paths = config.raw.get("paths", {})
         configured_map = (
             privacy.get("identity_map", "data/private/professor_identity_map.csv")
             if isinstance(privacy, Mapping)
             else "data/private/professor_identity_map.csv"
+        )
+        configured_private = (
+            paths.get("private", "data/private") if isinstance(paths, Mapping) else "data/private"
         )
         write_enrichment_queue(
             candidates,
             config.candidate_pool_version,
             arguments.output,
             configured_map,
+            private_dir=configured_private,
+            repository_root=Path.cwd(),
             force=arguments.force,
         )
     except (OSError, RuntimeError, ValueError) as error:
