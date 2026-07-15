@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/outreach-eval/schemas/openalex_profile_bundle.schema.json",
+  "title": "Anonymous provisional OpenAlex profile bundle",
+  "description": "OpenAlex-derived collection artifact that is never a final evidence packet.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "candidate_pool_version",
+    "bundle_version",
+    "professor_id",
+    "openalex_author_id",
+    "openalex_author_url",
+    "openalex_profile",
+    "portfolio_dimensions",
+    "openalex_consistency",
+    "selected_papers",
+    "focal_paper_ids",
+    "provenance",
+    "missing_final_gates",
+    "enrichment_tasks",
+    "final_evidence_packet_ready"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "candidate_pool_version": {"type": "string", "minLength": 1},
+    "bundle_version": {"type": "string", "minLength": 1},
+    "professor_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]{1,15}-[0-9]{2,3}$"
+    },
+    "openalex_author_id": {"type": "string", "pattern": "^A[0-9]+$"},
+    "openalex_author_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://openalex\\.org/A[0-9]+$"
+    },
+    "openalex_profile": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/jsonValue"},
+      "required": ["institutions", "topic_ids", "career_estimate"],
+      "properties": {
+        "institutions": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/institution"}
+        },
+        "topic_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^T[0-9]+$"}
+        },
+        "works_count": {"type": "integer", "minimum": 0},
+        "cited_by_count": {"type": "integer", "minimum": 0},
+        "h_index": {"type": "integer", "minimum": 0},
+        "first_publication_year": {"type": "integer", "minimum": 1800, "maximum": 2200},
+        "last_publication_year": {"type": "integer", "minimum": 1800, "maximum": 2200},
+        "primary_domain": {"type": ["string", "null"]},
+        "primary_field": {"type": ["string", "null"]},
+        "primary_subfield": {"type": ["string", "null"]},
+        "orcid": {"type": ["string", "null"]},
+        "career_estimate": {"type": "object", "additionalProperties": {"$ref": "#/$defs/jsonValue"}}
+      }
+    },
+    "portfolio_dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visibility",
+        "research_breadth",
+        "topic_coherence_aid",
+        "method_diversity",
+        "paper_complexity",
+        "synthesis_difficulty"
+      ],
+      "properties": {
+        "visibility": {"$ref": "#/$defs/scoreAid"},
+        "research_breadth": {"$ref": "#/$defs/scoreAid"},
+        "topic_coherence_aid": {"$ref": "#/$defs/scoreAid"},
+        "method_diversity": {"$ref": "#/$defs/scoreAid"},
+        "paper_complexity": {"$ref": "#/$defs/scoreAid"},
+        "synthesis_difficulty": {"$ref": "#/$defs/scoreAid"}
+      }
+    },
+    "openalex_consistency": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/jsonValue"},
+      "required": ["status", "issue_codes", "scope", "externally_verified"],
+      "properties": {
+        "status": {
+          "enum": [
+            "openalex_consistent",
+            "needs_identity_review",
+            "needs_metadata_enrichment",
+            "unassessed"
+          ]
+        },
+        "issue_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "scope": {"const": "within_openalex"},
+        "externally_verified": {"const": false}
+      }
+    },
+    "selected_papers": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {"$ref": "#/$defs/selectedPaper"}
+    },
+    "focal_paper_ids": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^W[0-9]+$"}
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_source_hashes",
+        "openalex_urls",
+        "retrieved_at",
+        "collection_code_version"
+      ],
+      "properties": {
+        "raw_source_hashes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        },
+        "openalex_urls": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://openalex\\.org/[AISTW][0-9]+$"
+          }
+        },
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "collection_code_version": {"type": "string", "minLength": 1},
+        "raw_envelope_version": {"type": "string", "minLength": 1},
+        "job_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "missing_final_gates": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/taskType"}
+    },
+    "enrichment_tasks": {
+      "type": "array",
+      "minItems": 10,
+      "items": {"$ref": "#/$defs/enrichmentTask"}
+    },
+    "final_evidence_packet_ready": {"const": false}
+  },
+  "$defs": {
+    "jsonValue": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "boolean"},
+        {"type": "number"},
+        {"type": "string"},
+        {"type": "array", "items": {"$ref": "#/$defs/jsonValue"}},
+        {"type": "object", "additionalProperties": {"$ref": "#/$defs/jsonValue"}}
+      ]
+    },
+    "institution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["openalex_institution_id", "openalex_url"],
+      "properties": {
+        "openalex_institution_id": {"type": "string", "pattern": "^I[0-9]+$"},
+        "openalex_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://openalex\\.org/I[0-9]+$"
+        },
+        "country_code": {"type": ["string", "null"]},
+        "region": {"type": ["string", "null"]},
+        "institution_type": {"type": ["string", "null"]},
+        "ror_id": {"type": ["string", "null"]}
+      }
+    },
+    "scoreAid": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/jsonValue"}
+    },
+    "selectedPaper": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/jsonValue"},
+      "required": [
+        "paper_id",
+        "openalex_work_id",
+        "openalex_url",
+        "title",
+        "selected",
+        "focal"
+      ],
+      "properties": {
+        "paper_id": {"type": "string", "pattern": "^W[0-9]+$"},
+        "openalex_work_id": {"type": "string", "pattern": "^W[0-9]+$"},
+        "openalex_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://openalex\\.org/W[0-9]+$"
+        },
+        "title": {"type": "string", "minLength": 1},
+        "publication_year": {"type": "integer", "minimum": 1800, "maximum": 2200},
+        "publication_date": {"type": ["string", "null"], "format": "date"},
+        "doi": {"type": ["string", "null"]},
+        "selected": {"const": true},
+        "focal": {"type": "boolean"}
+      }
+    },
+    "taskType": {
+      "enum": [
+        "verify_faculty_status",
+        "resolve_author_identity",
+        "reconcile_crossref_metadata",
+        "reconcile_semantic_scholar_ownership",
+        "retrieve_legal_full_text",
+        "extract_focal_passages",
+        "review_topic_coherence",
+        "review_synthesis_difficulty"
+      ]
+    },
+    "enrichmentTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task_id", "task_type", "status", "required_for_final"],
+      "properties": {
+        "task_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "task_type": {"$ref": "#/$defs/taskType"},
+        "paper_id": {"type": "string", "pattern": "^W[0-9]+$"},
+        "status": {"const": "pending"},
+        "required_for_final": {"const": true}
+      }
+    }
+  }
+}
