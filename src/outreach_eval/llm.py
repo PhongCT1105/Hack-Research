@@ -11,7 +11,28 @@ import os
 from dataclasses import dataclass
 from typing import Protocol
 
-from tenacity import retry, stop_after_attempt, wait_exponential
+from tenacity import RetryCallState, retry, stop_after_attempt, wait_exponential
+
+_FALLBACK_WAIT = wait_exponential(min=2, max=30)
+
+
+def _wait_respecting_retry_after(retry_state: RetryCallState) -> float:
+    """Honor a 429 response's Retry-After header; fall back to exponential backoff.
+
+    Both the OpenAI and Anthropic SDKs raise a RateLimitError carrying an httpx
+    Response with this header. Providers (notably OpenRouter's shared free-tier
+    pool) report the real wait needed; a blind fixed backoff under-waits and burns
+    the whole retry budget on a request that was never going to succeed in time.
+    """
+    exc = retry_state.outcome.exception() if retry_state.outcome else None
+    response = getattr(exc, "response", None)
+    header = response.headers.get("retry-after") if response is not None else None
+    if header:
+        try:
+            return float(header) + 1.0
+        except ValueError:
+            pass
+    return _FALLBACK_WAIT(retry_state)
 
 
 @dataclass(frozen=True)
@@ -34,11 +55,15 @@ class AnthropicClient:
     def __init__(self, cfg: RoleConfig):
         from anthropic import Anthropic
 
-        self._client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+        # max_retries=0: tenacity below is the single retry authority. Letting the SDK
+        # retry internally too compounds wait time (SDK retries, each one exhausting a
+        # blind backoff, wrapped in tenacity's own attempts) without helping — a
+        # congested endpoint stays congested regardless of who's asking twice.
+        self._client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=0)
         self._cfg = cfg
         self.model = cfg.model
 
-    @retry(stop=stop_after_attempt(4), wait=wait_exponential(min=2, max=30))
+    @retry(stop=stop_after_attempt(4), wait=_wait_respecting_retry_after)
     def complete(self, system: str, user: str, *, seed: int | None = None) -> str:
         # The Anthropic API has no seed parameter; the seed is still recorded in the
         # run manifest as the run key (see CLAUDE.md provenance rule).
@@ -56,11 +81,11 @@ class OpenAIClient:
     def __init__(self, cfg: RoleConfig):
         from openai import OpenAI
 
-        self._client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        self._client = OpenAI(api_key=os.environ["OPENAI_API_KEY"], max_retries=0)
         self._cfg = cfg
         self.model = cfg.model
 
-    @retry(stop=stop_after_attempt(4), wait=wait_exponential(min=2, max=30))
+    @retry(stop=stop_after_attempt(4), wait=_wait_respecting_retry_after)
     def complete(self, system: str, user: str, *, seed: int | None = None) -> str:
         resp = self._client.chat.completions.create(
             model=self._cfg.model,
@@ -89,11 +114,12 @@ class OpenRouterClient:
         self._client = OpenAI(
             api_key=os.environ["OPENROUTER_API_KEY"],
             base_url="https://openrouter.ai/api/v1",
+            max_retries=0,
         )
         self._cfg = cfg
         self.model = cfg.model
 
-    @retry(stop=stop_after_attempt(4), wait=wait_exponential(min=2, max=30))
+    @retry(stop=stop_after_attempt(4), wait=_wait_respecting_retry_after)
     def complete(self, system: str, user: str, *, seed: int | None = None) -> str:
         resp = self._client.chat.completions.create(
             model=self._cfg.model,
