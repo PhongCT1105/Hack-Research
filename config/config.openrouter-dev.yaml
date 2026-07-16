@@ -1,0 +1,58 @@
+# Dev/testing config: free-tier OpenRouter models, for pipeline development and
+# smoke-testing BEFORE spending on the pinned paid models in config/config.yaml.
+#
+# Do NOT use this config for the reported pilot/final run — free models are not
+# version-pinned or guaranteed available (CLAUDE.md rule 7: reproducibility).
+# config/config.yaml (Anthropic + OpenAI) remains the frozen pilot config.
+#
+# Setup: put OPENROUTER_API_KEY=... in .env (see .env.example), then:
+#   python scripts/run_pilot.py --config config/config.openrouter-dev.yaml --out /tmp/dev_pilot.jsonl
+#
+# Free-model slugs rotate on OpenRouter. If a model below 404s, check current free
+# listings at https://openrouter.ai/models?max_price=0 and swap the `model:` value —
+# no code change needed, just the string.
+#
+# CAUTION - reasoning models: several current free models (e.g. openai/gpt-oss-20b:free,
+# nvidia/nemotron-nano-9b-v2:free) spend the whole max_tokens budget on a hidden
+# `reasoning` field and return content=null with finish_reason="length" if max_tokens
+# is too small — this pipeline then fails the run (JSONDecodeError on empty content),
+# which is correct fail-safe behavior, but wastes the run. Prefer a plain instruct
+# model for smoke testing unless you deliberately raise max_tokens for reasoning
+# overhead. google/gemma-4-26b-a4b-it:free is confirmed to return real content in
+# both roles as of 2026-07-16.
+
+roles:
+  writer:
+    provider: openrouter
+    model: google/gemma-4-26b-a4b-it:free
+    temperature: 0.7
+    max_tokens: 600
+  verifier:
+    provider: openrouter
+    model: google/gemma-4-26b-a4b-it:free
+    temperature: 0.0
+    max_tokens: 1500
+  claim_extractor:
+    provider: openrouter
+    model: google/gemma-4-26b-a4b-it:free
+    temperature: 0.0
+    max_tokens: 1500
+
+prompts:
+  writer: prompts/writer_v1.md
+  verifier: prompts/verifier_v1.md
+  claim_extractor: prompts/claim_extractor_v1.md
+
+experiment:
+  conditions: [A, B, C, D]
+  seeds: [1, 2]
+  email_word_limit: 220
+
+paths:
+  evidence_dir: data/evidence
+  professors_csv: data/professors.csv
+  outputs_dir: outputs
+  logs_dir: logs
+
+pilot:
+  professor_ids: [CS-01, PSY-01]

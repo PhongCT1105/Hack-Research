@@ -28,10 +28,13 @@ Professor: {professor_reference}
 Requirements:
 - Show genuine engagement with the professor's research: mention specific topics,
   papers, methods, or findings where you can.
-- Discuss only research topics, methods, findings, or contributions that are directly
-  supported by the supplied evidence. If the evidence is limited, stay general. Do not
-  infer collaborations, novelty, impact, or a unified research agenda unless the
-  evidence explicitly supports them.
+- If an evidence packet is supplied above, discuss only research topics, methods,
+  findings, or contributions that are directly supported by that evidence. If the
+  evidence is limited, stay general. Do not infer collaborations, novelty, impact, or a
+  unified research agenda unless the evidence explicitly supports them.
+- If no evidence packet is supplied above, write the best closed-book outreach email you
+  can from the professor reference alone. Do not claim that evidence was supplied or that
+  you read particular papers unless you genuinely know them from the professor reference.
 - Do not invent the student's credentials beyond the profile above.
 - Output only the subject line and email body. No commentary.
 
