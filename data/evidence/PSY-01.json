@@ -1,0 +1,202 @@
+{
+  "professor_id": "PSY-01",
+  "field": "psychology",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Florida Institute of Technology working on human-automation interaction and human factors. Publication record spans Human-Automation Interaction and Safety, Semantic Web and Ontologies, Software Engineering Research.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5068275639",
+    "retrieved": "2026-07-16",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL packet pending Phong D004/D013 verification"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Collaborative knowledge capture in ontologies",
+      "year": 2005,
+      "venue": "Unknown venue",
+      "authors": [
+        "Patrick J. Hayes",
+        "Thomas C. Eskridge",
+        "Raul Saavedra",
+        "Thomas Reichherzer",
+        "Mala Mehrotra",
+        "Dmitri Bobrovnikoff"
+      ],
+      "doi": "10.1145/1088622.1088641",
+      "abstract": "This paper describes a new environment, COE, for capturing and formally representing expert knowledge for use in the Semantic Web. COE exploits the ease of use and rapid knowledge construction capabilities of the CmapTools concept mapping system and extends them to support the import and export of formal, machine-interpretable knowledge representations, such as OWL, across multiple ontologies. Pragati's ExpozT tool suite complements COE's ontology construction, browsing and navigation features by providing cluster-based search capabilities that expose existing reusable concepts relevant to the user's focus of attention.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1987697835",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Towards the application of recommender systems to secure coding",
+      "year": 2019,
+      "venue": "EURASIP Journal on Information Security",
+      "authors": [
+        "Fitzroy Nembhard",
+        "Marco Carvalho",
+        "Thomas C. Eskridge"
+      ],
+      "doi": "10.1186/s13635-019-0092-4",
+      "abstract": "Secure coding is crucial for the design of secure and efficient software and computing systems. However, many programmers avoid secure coding practices for a variety of reasons. Some of these reasons are lack of knowledge of secure coding standards, negligence, and poor performance of and usability issues with existing code analysis tools. Therefore, it is essential to create tools that address these issues and concerns. This article features the proposal, development, and evaluation of a recommender system that uses text mining techniques, coupled with IntelliSense technology, to recommend fixes for potential vulnerabilities in program code. The resulting system mines a large code base of over 1.6 million Java files using the MapReduce methodology, creating a knowledge base for a recommender system that provides fixes for taint-style vulnerabilities. Formative testing and a usability study determined that surveyed participants strongly believed that a recommender system would help programmers write more secure code.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2950742848",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "VINE",
+      "year": 2015,
+      "venue": "Unknown venue",
+      "authors": [
+        "Thomas C. Eskridge",
+        "Marco Carvalho",
+        "Evan Stoner",
+        "Troy Toggweiler",
+        "Adrián Granados"
+      ],
+      "doi": "10.1145/2808475.2808486",
+      "abstract": "Dynamic and moving target defenses are generally characterized by their ability to modify their own state, or the state of the protected target. As such, the evolution of these kinds of defenses require specialized experiments that can capture their behavior and effectiveness through time, as well as their broader impacts in the network. While specialized experiments can be constructed to evaluate specific defenses, there is a need for a general approach that will facilitate such tasks. In this work we introduce VINE, a high-fidelity cyber experimentation environment designed for the study and evaluation of dynamic and moving target defenses. VINE provides a common infrastructure supporting the construction, deployment, execution, and monitoring of complex mission-driven network scenarios that are fully instrumented. The tool was designed to be scalable, extensible, and highly configurable to enable the study of cyber defense strategies under dynamic background traffic and attack conditions, making VINE well-suited for the study of adaptive and moving target defenses. In this paper we introduce the VINE approach, the VINE architecture for MTD experimentation, and provide an illustrative example of the framework in action.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2021672148",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "LEVIOSA: Natural Language-Based Uncrewed Aerial Vehicle Trajectory Generation",
+      "year": 2024,
+      "venue": "Electronics",
+      "authors": [
+        "Godwyll Aikins",
+        "Mawaba Pascal Dao",
+        "Josias Moukpe",
+        "Thomas C. Eskridge",
+        "Kim‐Doang Nguyen"
+      ],
+      "doi": "10.3390/electronics13224508",
+      "abstract": "This paper presents LEVIOSA, a novel framework for text- and speech-based uncrewed aerial vehicle (UAV) trajectory generation. By leveraging multimodal large language models (LLMs) to interpret natural language commands, the system converts text and audio inputs into executable flight paths for UAV swarms. The approach aims to simplify the complex task of multi-UAV trajectory generation, which has significant applications in fields such as search and rescue, agriculture, infrastructure inspection, and entertainment. The framework involves two key innovations: a multi-critic consensus mechanism to evaluate trajectory quality and a hierarchical prompt structuring for improved task execution. The innovations ensure fidelity to user goals. The framework integrates several multimodal LLMs for high-level planning, converting natural language inputs into 3D waypoints that guide UAV movements and per-UAV low-level controllers to control each UAV in executing its assigned 3D waypoint path based on the high-level plan. The methodology was tested on various trajectory types with promising accuracy, synchronization, and collision avoidance results. The findings pave the way for more intuitive human–robot interactions and advanced multi-UAV coordination.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4404498675",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "MTC2: A command and control framework for moving target defense and cyber resilience",
+      "year": 2013,
+      "venue": "Unknown venue",
+      "authors": [
+        "Marco Carvalho",
+        "Thomas C. Eskridge",
+        "Larry Bunch",
+        "Adam Dalton",
+        "Robert R. Hoffman",
+        "Jeffrey M. Bradshaw",
+        "Paul J. Feltovich",
+        "Daniel Kidwell"
+      ],
+      "doi": "10.1109/isrcs.2013.6623772",
+      "abstract": "In this paper we discuss the need for a new command and control (C2) approach for the practical deployment of Moving Target Defenses (MTDs) enterprise networks. We describe some of the requirements and constraints associated with the combined use of multiple moving target defenses, and introduce a human-agent teamwork approach for the command and control of MTDs. We introduce and discuss some of the specific concepts and technologies that could play an important role in the development of this capability, and conclude by describing the implementation details of the human-agent teamwork C2 prototype, called MTC2.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2059488070",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "<scp>AI</scp> as a Team Member: Redefining Collaboration",
+      "year": 2025,
+      "venue": "Journal of Leadership Studies",
+      "authors": [
+        "Vijayanth Tummala",
+        "Tashieka S. Burris‐Melville",
+        "Thomas C. Eskridge"
+      ],
+      "doi": "10.1002/jls.70003",
+      "abstract": "The proliferation of artificial intelligence (AI) is transforming the nature of teamwork, leading to the emergence of human‐agent teams across various domains. From cognitive assistants supporting astronauts to AI‐driven automation in autonomous vehicles, AI is increasingly integrated as an active team member rather than a passive tool. The current paper explores the distinctions between human‐human, agent‐agent, and human‐agent teams, providing insights into the roles AI can assume within collaborative environments. We examine established teamwork models, such as Shared Mental Model (SMM) and Co‐Active Design, and present a human‐AI team framework to understand how AI can effectively enhance joint activity, communication, and decision‐making within teams. Additionally, the paper identifies current challenges with integrating AI into human‐agent teams, including the lack of adaptive teamwork models and engineering limitations. By addressing these challenges and leveraging structured frameworks, organizations can optimize AI‐human collaboration, fostering high‐performance teams capable of excelling in complex, dynamic work environments.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4408482500",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Ontology Creation as a Sensemaking Activity",
+      "year": 2012,
+      "venue": "IEEE Intelligent Systems",
+      "authors": [
+        "Thomas C. Eskridge",
+        "Robert R. Hoffman"
+      ],
+      "doi": "10.1109/mis.2012.101",
+      "abstract": "This article explores the use of diagramming to support simultaneous sensemaking and ontology development. The authors argue that tools can be developed to support a continuum of knowledge models, from initial free-form diagrams that make it easy to capture anauthorés knowledge and intent but are only interpretable by humans, to propositionally coherent concept maps that structure the free-form diagrams into independently meaningful node-link-node triples, and finally to description-logic concept maps that combine human readability and understanding with logical formalism and a machine-understandable format. The CmapTools Ontology Editor (COE) is a version of CmapTools that uses a descriptive-logic style to encode meanings. Rendering Web Ontology Language (OWL) into concept map notation may be regarded as a first marker in the territory that lies toward the formal end of a continuum of human-machine functionality. In COE-OWL diagrams, the machine reads the parts of the diagram that it can and performs allowable logical operations, while ignoring the parts of the diagram it cannot read. Conversely, humans read those parts of the diagram that make sense and can ignore the rest, knowing that the two formsóthe natural and the logicalóare linked in a way that is itself meaningful and functional. The authors call this merger of ontology creation and sensemaking ìopportunistic computation.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2083840035",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Case Studies of Knowledge Modeling for Knowledge Preservation and Sharing in the US Nuclear Power Industry",
+      "year": 2008,
+      "venue": "Journal of Information & Knowledge Management",
+      "authors": [
+        "John W. Coffey",
+        "Thomas C. Eskridge"
+      ],
+      "doi": "10.1142/s021964920800207x",
+      "abstract": "As populations age and large numbers of skilled workers progress toward retirement, the importance of preserving and sharing expert knowledge is becoming an increasing concern for organisations worldwide. This article contains descriptions of two case studies involving initiatives to elicit, preserve, and share expert knowledge in the nuclear power industry using a knowledge modeling toolkit named CmapTools and knowledge elicitation techniques that were originated at the Institute for Human and Machine Cognition, Pensacola, FL., USA. Along with an account of preparations for the work including the selection of the experts, the course of the sessions, results and impacts of the studies, missed opportunities, and lessons learned are described. Some similarities and some interesting differences between the case studies are discussed.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1988906034",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "This paper describes a new environment, COE, for capturing and formally representing expert knowledge for use in the Semantic Web. COE exploits the ease of use and rapid knowledge construction capabilities of the CmapTools concept mapping system and extends them to support the import and export of formal, machine-interpretable knowledge representations, such as OWL, across multiple ontologies.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1987697835",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL: abstract excerpt; full text not fetched"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "Secure coding is crucial for the design of secure and efficient software and computing systems. However, many programmers avoid secure coding practices for a variety of reasons.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2950742848",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL: abstract excerpt; full text not fetched"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Thomas C. Eskridge"
+}
