@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
 import logging
 import os
 import random
+import re
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -18,7 +20,32 @@ from lib.io import atomic_write_json, atomic_write_jsonl, read_jsonl as read_jso
 
 
 SCAFFOLD_VERSION = "dataset-cli-v2"
-ABSTRACT_RECONSTRUCTION_VERSION = "openalex-inverted-index-v1"
+# v2: strip residual JATS/HTML/TeX markup that OpenAlex leaves as inverted-index tokens
+# (e.g. "<formula ...>", "<tex Notation=\"TeX\">${H_\\infty}$</tex>"). Left in, this markup
+# pollutes the evidence packet and breaks downstream JSON generation. See docs/decision_log.md.
+ABSTRACT_RECONSTRUCTION_VERSION = "openalex-inverted-index-v2"
+
+# Only match tags whose name starts with a letter right after "<" or "</", so plain-text
+# inequalities like "x < 5 and y > 3" are never treated as markup.
+_MARKUP_TAG = re.compile(r"</?[A-Za-z][\w:.\-]*(?:\s[^<>]*)?>")
+# Inline TeX math is stripped only when it contains a backslash command, so prices such as
+# "$5 million ... $10" survive while "${H_\infty}$" does not.
+_TEX_MATH = re.compile(r"\$[^$]*\\[^$]*\$")
+_TEX_COMMAND = re.compile(r"\\[A-Za-z]+")
+_WHITESPACE = re.compile(r"\s+")
+
+
+def normalize_abstract_markup(text: str) -> str:
+    """Remove residual JATS/HTML/TeX markup from a reconstructed abstract.
+
+    Conservative on purpose: only recognized tags and backslash-bearing math are removed,
+    so ordinary mathematical/notation text in an abstract is preserved.
+    """
+    text = _MARKUP_TAG.sub(" ", text)
+    text = _TEX_MATH.sub(" ", text)
+    text = _TEX_COMMAND.sub(" ", text)
+    text = html.unescape(text)
+    return _WHITESPACE.sub(" ", text).strip()
 
 
 def _positive_integer(value: str) -> int:
@@ -262,7 +289,8 @@ def reconstruct_abstract(inverted_index: Mapping[str, Iterable[int]] | None) -> 
             positioned[position] = token
     if not positioned:
         return ""
-    return " ".join(positioned[position] for position in sorted(positioned))
+    joined = " ".join(positioned[position] for position in sorted(positioned))
+    return normalize_abstract_markup(joined)
 
 
 def write_json_atomic(destination: str | Path, value: Any, force: bool = False) -> None:

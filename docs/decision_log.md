@@ -100,3 +100,17 @@ This log records design choices that affect multiple workstreams. Entries marked
 - **Decision:** Store one atomic JSON checkpoint per logical collection command under `data/raw/progress/`. Derive its stable job ID from the stage, normalized non-secret setup, input checksum, dataset/candidate-pool versions, and seed. Save the current institution/professor, provider ID, cursor, completed IDs, next item, counts, and redacted resume command after every page and item. On exhausted credits, save `paused_rate_limit` and exit 75. Do not use a shared database or commit checkpoints.
 - **Reason:** Different API calls and filters are independent jobs. Local per-command files make the exact stopping point visible, prevent unrelated commands from overwriting one another, and let a teammate continue by copying only the checkpoint and partial raw-output directory. API keys are deliberately excluded so each teammate supplies their own credential.
 - **Implementation boundary:** The checkpoint engine and status interface are implemented; guarded network-stage bodies must invoke their lifecycle transitions when live fetching is enabled.
+
+## D017 - Abstract reconstruction strips residual markup
+
+- **Status:** Accepted 2026-07-16
+- **Decision:** `reconstruct_abstract` now removes residual JATS/HTML/TeX markup that OpenAlex
+  leaves as inverted-index tokens (e.g. `<formula ...>`, `<tex Notation="TeX">${H_\infty}$</tex>`).
+  `ABSTRACT_RECONSTRUCTION_VERSION` bumped `v1 -> v2`. Stripping is conservative: only recognized
+  tags and backslash-bearing inline math are removed, so plain-text inequalities and currency in
+  abstracts are preserved.
+- **Reason:** A real-data smoke test found 2/8 reconstructed abstracts (control-theory / IEEE
+  papers) carried raw markup into the evidence packet; it fed the writer/verifier verbatim and
+  broke one verifier's JSON output. This affects Workstream 2 (generation quality) and Workstream 3
+  (annotation on polluted claims), so it is logged as a cross-workstream change.
+- **Owner note:** Change touches Workstream 1 (`scripts/_dataset_cli.py`). Raised for Phong's review.

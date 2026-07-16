@@ -61,6 +61,34 @@ class DatasetScaffoldTests(unittest.TestCase):
         finally:
             sys.path.pop(0)
 
+    def test_abstract_reconstruction_strips_markup(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        try:
+            from _dataset_cli import normalize_abstract_markup, reconstruct_abstract
+
+            # JATS/TeX markup arrives as separate inverted-index tokens.
+            tokens = [
+                "We",
+                "study",
+                "<formula",
+                'formulatype="inline">',
+                "<tex",
+                'Notation="TeX">${H_\\infty}$</tex>',
+                "</formula>",
+                "control.",
+            ]
+            inverted = {tok: [i] for i, tok in enumerate(tokens)}
+            self.assertEqual(reconstruct_abstract(inverted), "We study control.")
+            # Plain-text math and currency must be preserved.
+            self.assertEqual(
+                normalize_abstract_markup("error is x < 5 and cost was $5 million"),
+                "error is x < 5 and cost was $5 million",
+            )
+            # HTML entities are unescaped.
+            self.assertEqual(normalize_abstract_markup("A &amp; B"), "A & B")
+        finally:
+            sys.path.pop(0)
+
     def test_numbered_script_can_print_local_checkpoint_status(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))
         try:
