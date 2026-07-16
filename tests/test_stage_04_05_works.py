@@ -252,7 +252,7 @@ def test_stage_5_reconstructs_abstract_without_discarding_inverted_index() -> No
     assert transformed[0]["abstract_inverted_index"] == inverted
     assert transformed[0]["openalex_author_id"] == "A100000001"
     assert transformed[0]["reconstructed_abstract"] == "Verified helps evidence helps"
-    assert transformed[0]["abstract_reconstruction_version"] == ("openalex-inverted-index-v1")
+    assert transformed[0]["abstract_reconstruction_version"] == ("openalex-inverted-index-v2")
 
 
 def test_stage_5_limit_counts_authors_not_work_records(tmp_path: Path) -> None:
