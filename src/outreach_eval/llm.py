@@ -75,6 +75,44 @@ class OpenAIClient:
         return resp.choices[0].message.content or ""
 
 
+class OpenRouterClient:
+    """OpenAI-compatible client pointed at OpenRouter (https://openrouter.ai).
+
+    Gives access to many model families (including free-tier ':free' variants) through
+    one API key — useful for dev/pilot testing before spending on pinned paid models.
+    Model id format: 'vendor/model', e.g. 'meta-llama/llama-3.3-70b-instruct:free'.
+    """
+
+    def __init__(self, cfg: RoleConfig):
+        from openai import OpenAI
+
+        self._client = OpenAI(
+            api_key=os.environ["OPENROUTER_API_KEY"],
+            base_url="https://openrouter.ai/api/v1",
+        )
+        self._cfg = cfg
+        self.model = cfg.model
+
+    @retry(stop=stop_after_attempt(4), wait=wait_exponential(min=2, max=30))
+    def complete(self, system: str, user: str, *, seed: int | None = None) -> str:
+        resp = self._client.chat.completions.create(
+            model=self._cfg.model,
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            temperature=self._cfg.temperature,
+            max_tokens=self._cfg.max_tokens,
+            seed=seed,
+            extra_headers={
+                # Optional per OpenRouter docs; harmless if the values are generic.
+                "HTTP-Referer": "https://github.com/PhongCT1105/Hack-Research",
+                "X-Title": "outreach-eval",
+            },
+        )
+        return resp.choices[0].message.content or ""
+
+
 class MockClient:
     """Deterministic offline client for tests and --dry-run.
 
@@ -111,6 +149,7 @@ class MockClient:
 _PROVIDERS = {
     "anthropic": AnthropicClient,
     "openai": OpenAIClient,
+    "openrouter": OpenRouterClient,
     "mock": MockClient,
 }
 

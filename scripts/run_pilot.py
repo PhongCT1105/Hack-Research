@@ -17,6 +17,7 @@ import sys
 from pathlib import Path
 
 import yaml
+from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
@@ -31,6 +32,8 @@ FAILED_FIELDS = ["run_id", "professor_id", "condition", "seed", "error", "timest
 
 
 def main() -> int:
+    load_dotenv()  # picks up ANTHROPIC_API_KEY / OPENAI_API_KEY / OPENROUTER_API_KEY from .env
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="config/config.yaml")
     ap.add_argument("--dry-run", action="store_true", help="mock provider + MOCK-01 packet")

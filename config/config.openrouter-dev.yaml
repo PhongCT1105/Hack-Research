@@ -1,0 +1,49 @@
+# Dev/testing config: free-tier OpenRouter models, for pipeline development and
+# smoke-testing BEFORE spending on the pinned paid models in config/config.yaml.
+#
+# Do NOT use this config for the reported pilot/final run — free models are not
+# version-pinned or guaranteed available (CLAUDE.md rule 7: reproducibility).
+# config/config.yaml (Anthropic + OpenAI) remains the frozen pilot config.
+#
+# Setup: put OPENROUTER_API_KEY=... in .env (see .env.example), then:
+#   python scripts/run_pilot.py --config config/config.openrouter-dev.yaml --out /tmp/dev_pilot.jsonl
+#
+# Free-model slugs rotate on OpenRouter. If a model below 404s, check current free
+# listings at https://openrouter.ai/models?max_price=0 and swap the `model:` value —
+# no code change needed, just the string.
+
+roles:
+  writer:
+    provider: openrouter
+    model: meta-llama/llama-3.3-70b-instruct:free
+    temperature: 0.7
+    max_tokens: 600
+  verifier:
+    provider: openrouter
+    model: deepseek/deepseek-chat-v3.1:free   # different family from writer
+    temperature: 0.0
+    max_tokens: 1500
+  claim_extractor:
+    provider: openrouter
+    model: deepseek/deepseek-chat-v3.1:free
+    temperature: 0.0
+    max_tokens: 1500
+
+prompts:
+  writer: prompts/writer_v1.md
+  verifier: prompts/verifier_v1.md
+  claim_extractor: prompts/claim_extractor_v1.md
+
+experiment:
+  conditions: [A, B, C, D]
+  seeds: [1, 2]
+  email_word_limit: 220
+
+paths:
+  evidence_dir: data/evidence
+  professors_csv: data/professors.csv
+  outputs_dir: outputs
+  logs_dir: logs
+
+pilot:
+  professor_ids: [CS-01, PSY-01]
