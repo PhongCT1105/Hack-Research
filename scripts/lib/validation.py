@@ -96,10 +96,7 @@ def validate_openalex_collection(dataset_root: str | Path) -> dict[str, Any]:
         errors,
         prefix="I",
     )
-    professor_ids = _unique_ids(
-        candidates, ("professor_id",), "candidate professor", errors, professor=True
-    )
-    _unique_ids(
+    candidate_author_ids = _unique_ids(
         candidates,
         ("openalex_author_id", "openalex_author_url"),
         "candidate author",
@@ -109,19 +106,33 @@ def validate_openalex_collection(dataset_root: str | Path) -> dict[str, Any]:
     sampled_ids = _unique_ids(
         sampled, ("professor_id",), "selected professor", errors, professor=True
     )
+    optional_candidate_professor_ids = {
+        professor_id
+        for row in candidates
+        if (professor_id := _string(row.get("professor_id"))) is not None
+    }
+    for index, professor_id in enumerate(sorted(optional_candidate_professor_ids), start=1):
+        if not _PROFESSOR_ID.fullmatch(professor_id):
+            errors.append(f"candidate professor row {index} has an invalid ID")
+    professor_ids = sampled_ids | optional_candidate_professor_ids
     checks["unique_ids"] = not any("duplicate" in error for error in errors)
 
-    candidate_by_professor = {
+    sampled_by_professor = {
         _first_id(row, ("professor_id",)): row
-        for row in candidates
+        for row in sampled
         if _first_id(row, ("professor_id",))
     }
     candidate_author_by_professor = {
         professor_id: _canonical_openalex_id(
             row.get("openalex_author_id") or row.get("openalex_author_url"), "A"
         )
-        for professor_id, row in candidate_by_professor.items()
+        for professor_id, row in sampled_by_professor.items()
     }
+    for professor_id, author_id in candidate_author_by_professor.items():
+        if author_id is None:
+            errors.append(f"selected professor {professor_id} has an invalid OpenAlex author ID")
+        elif author_id not in candidate_author_ids:
+            errors.append(f"selected professor {professor_id} is absent from author candidates")
     for row in candidates:
         for institution_id in _id_list(row.get("discovery_institution_ids"), "I"):
             if institution_id not in institution_ids:
@@ -186,7 +197,7 @@ def validate_openalex_collection(dataset_root: str | Path) -> dict[str, Any]:
 
     for professor_id in sampled_ids:
         if professor_id not in professor_ids:
-            errors.append(f"selected professor {professor_id} is absent from author candidates")
+            errors.append(f"selected professor {professor_id} is absent from collection tables")
             continue
         papers = selected_by_professor.get(professor_id, [])
         paper_ids = [paper_id for paper_id, _ in papers]
@@ -429,7 +440,9 @@ def build_manifest(
     root = Path(dataset_root).resolve()
     template = _resolve_manifest_template(root, template_path)
     manifest = deepcopy(_read_yaml_mapping(template, [], "manifest template"))
-    config = _read_yaml_mapping(root / "config/dataset.yaml", [], "configuration")
+    config_path = root / "config/dataset.yaml"
+    config = _read_yaml_mapping(config_path, [], "configuration")
+    public_scan_valid = bool(public_scan.get("valid"))
     counts = dict(manifest.get("counts", {}))
     counts.update(collection.get("counts", {}))
     counts["verified_professors"] = 0
@@ -442,11 +455,13 @@ def build_manifest(
             "schema_version": config.get("schema_version"),
             "candidate_pool_version": config.get("candidate_pool_version"),
             "configuration_path": "config/dataset.yaml",
-            "configuration_checksum_sha256": _file_sha256(root / "config/dataset.yaml"),
+            "configuration_checksum_sha256": _file_sha256(config_path)
+            if config_path.is_file()
+            else None,
             "counts": counts,
             "validation": {
-                "openalex_collection_valid": bool(collection.get("valid")),
-                "provisional_bundle_valid": bool(bundles.get("valid")),
+                "openalex_collection_valid": bool(collection.get("valid") and public_scan_valid),
+                "provisional_bundle_valid": bool(bundles.get("valid") and public_scan_valid),
                 "final_evidence_packet_ready": False,
                 "final_blockers": list(FINAL_BLOCKERS),
             },
@@ -660,10 +675,15 @@ def _validate_deterministic_metadata(
     for row in selected:
         if not _truthy(row.get("selected")):
             continue
-        if _integer(row.get("selection_seed")) != seed:
+        selection_seed = _integer(row.get("selection_seed"))
+        if selection_seed is not None and selection_seed != seed:
             errors.append("paper-selection seed does not match configuration")
             valid = False
-        if row.get("selection_algorithm_version") != "representative-paper-selection-v1":
+        selection_algorithm = _string(row.get("selection_algorithm_version"))
+        if (
+            selection_algorithm is not None
+            and selection_algorithm != "representative-paper-selection-v1"
+        ):
             errors.append("paper-selection algorithm version is missing or inconsistent")
             valid = False
     return valid
