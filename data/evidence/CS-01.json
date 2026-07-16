@@ -1,0 +1,210 @@
+{
+  "professor_id": "CS-01",
+  "field": "cs_ai",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Institut Informatika Indonesia working on data mining, machine learning, and applied AI. Publication record spans Edcuational Technology Systems, Data Mining and Machine Learning Applications, Topic Modeling.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5072639039",
+    "retrieved": "2026-07-16",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL packet pending Phong D004/D013 verification"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Aspect Based Sentiment Analysis Marketplace Product Reviews Using BERT, LSTM, and CNN",
+      "year": 2023,
+      "venue": "Jurnal RESTI (Rekayasa Sistem dan Teknologi Informasi)",
+      "authors": [
+        "Syaiful Imron",
+        "Esther Irawati Setiawan",
+        "Joan Santoso",
+        "Mauridhi Hery Purnomo"
+      ],
+      "doi": "10.29207/resti.v7i3.4751",
+      "abstract": "Bukalapak is one of the largest marketplaces in Indonesia. Reviews on Bukalapak are only in the form of text, images, videos, and stars without any special filters. Reading and analyzing manually makes it difficult for potential buyers. To help with this, we can extract this review by using aspect-based sentiment analysis because an entity cannot be represented by just one sentiment. Several previous research stated that using LSTM-CNN got better results than using LSTM or CNN. In addition, using BERT as word embedding gets better results than using word2vec or glove. For this reason, this study aims to classify aspect-based sentiment analysis from the Bukalapak marketplace with BERT as word embedding and using the LSTM-CNN method, where LSTM is for aspect extraction and CNN for sentiment extraction. Based on testing the LSTM-CNN method, it gets better results than LSTM or CNN. The LSTM-CNN model gets an accuracy of 93.91%. Unbalanced dataset distribution can affect model performance. With the increasing number of datasets used, the accuracy of a model will increase. Classification without using stemming on datasets can increase accuracy by 2.04%.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4379260878",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Bidirectional GRU for Targeted Aspect-Based Sentiment Analysis Based on Character-Enhanced Token-Embedding and Multi-Level Attention",
+      "year": 2020,
+      "venue": "International journal of intelligent engineering and systems",
+      "authors": [
+        "Institut Teknologi Sepuluh Nopember",
+        "Esther Irawati Setiawan",
+        "Ferry Ferry",
+        "Institut Sains dan Teknologi Terpadu Surabaya",
+        "Joan Santoso",
+        "Institut Teknologi Sepuluh Nopember",
+        "Surya Sumpeno",
+        "Institut Teknologi Sepuluh Nopember"
+      ],
+      "doi": "10.22266/ijies2020.1031.35",
+      "abstract": "The user's feedback on healthcare services is usually based on ratings from post-service questionnaires. However, in order to get a clear view of the user's perspective, online text reviews need to be analyzed. We combined targeted and aspect-based sentiment analysis by multi-level attention to get a specific user sentiment on a target of an aspect. The multi-level attention consists of Target-level and Sentence-level attention. Our proposed framework is based on Bidirectional Gated Recurrent Unit. Bi-GRU is commonly known to have comparable results compared to LSTM while having lesser computational complexity. We also utilized Bidirectional LSTM based Character-Enhanced Token-Embedding to handle out of vocabulary words and misspelling to avoid error in detecting sentiment. We created a dataset of online healthcare reviews from 2018-2020, targeting the name of the hospital or department, with ten aspects: cleanliness, cost, doctor, food, nurse, parking, receptionist and billing, safety, test and examination, and waiting time. To improve the results of our proposed method, we calculated polarity weight to handle imbalanced aspects in the dataset. We classified these reviews into three polarities, which are positive, negative, and neutral. Based on our experiments, we achieved the best F1-Score of 88%.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3080910531",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Stemming Bahasa Tetun Menggunakan Pendekatan Rule Based",
+      "year": 2019,
+      "venue": "Teknika",
+      "authors": [
+        "Anita Guterres",
+        "Gunawan Gunawan",
+        "Joan Santoso"
+      ],
+      "doi": "10.34148/teknika.v8i2.224",
+      "abstract": "Stemming adalah proses yang sangat penting untuk mencari kata dasar dari sebuah kata derivatif. Inti dari proses stemming adalah menghilangkan imbuhan pada suatu kata. Stemming sangat dibutuhkan untuk proses information retrieval system. Algoritma pada proses stemming bisa berbeda-beda pada setiap bahasa di berbeda negara. Data yang digunakan adalah 176 kata dasar dalam bahasa Tetun yang merupakan bahasa asli warga negara Timor Leste. Penelitian ini bertujuan untuk merancang algoritma baru yang tepat untuk stemming bahasa Tetun. Tahap awal stemming bahasa Tetun adalah proses filterisasi untuk menghilangkan tanda baca, angka, dan kata yang tidak penting. Lalu tahap tokenisasi untuk membuat variabel yang terdiri dari satu kata. Lalu setiap kata melalui proses stemming untuk menghilangkan imbuhan awalan, akhiran, dan konfiks. Analisis dilakukan berdasarkan kasus error stemming seperti overstemming, understemming, unchanged, dan spelling exception. Hasil uji coba yang didapatkan adalah algoritma stemming bahasa Tetun menghasilkan akurasi sebesar 90.52%.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2987073080",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Stance Classification Post Kesehatan di Media Sosial Dengan FastText Embedding dan Deep Learning",
+      "year": 2019,
+      "venue": "Journal of Intelligent System and Computation",
+      "authors": [
+        "Ernest Lim",
+        "Esther Irawati Setiawan",
+        "Joan Santoso"
+      ],
+      "doi": "10.52985/insyst.v1i2.86",
+      "abstract": "Misinformasi merupakan fenomena yang semakin sering terjadi di media sosial, tidak terkecuali Facebook, salah satu media sosial terbesar di Indonesia. Beberapa penelitian telah dilakukan mengenai teknik identifikasi dan klasifikasi stance di media sosial Indonesia. Akan tetapi, penggunaan Word2Vec sebagai word embedding dalam penelitian tersebut memiliki keterbatasan pada pengenalan kata baru. Hal ini menjadi dasar penggunaan fastText embedding dalam penelitian ini. Dengan menggunakan pendekatan deep learning, penelitian berfokus pada performa model dalam klasifikasi stance suatu judul post kesehatan di Facebook terhadap judul post lainnya. Stance berupa for (setuju), observing (netral), dan against (berlawanan). Dataset terdiri dari 3500 judul post yang terdiri dari 500 kalimat klaim dengan enam kalimat stance terhadap setiap klaim. Model dengan fastText pada penelitian ini mampu menghasilkan F1 macro score sebesar 64%.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3043817335",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Distant Supervision for Relation Extraction via Piecewise Attention and Bag-Level Contextual Inference",
+      "year": 2019,
+      "venue": "IEEE Access",
+      "authors": [
+        "Van-Thuy Phi",
+        "Joan Santoso",
+        "Van-Hien Tran",
+        "Hiroyuki Shindo",
+        "Masashi Shimbo",
+        "Yūji Matsumoto"
+      ],
+      "doi": "10.1109/access.2019.2932041",
+      "abstract": "Distant supervision (DS) has become an efficient approach for relation extraction (RE) to alleviate the lack of labeled examples in supervised learning. In this paper, we propose a novel neural RE model that combines a bidirectional gated recurrent unit model with a form of hierarchical attention that is better suited to RE. We demonstrate that an additional attention mechanism called piecewise attention, which builds itself upon segment level representations, significantly enhances the performance of the distantly supervised relation extraction task. Our piecewise attention mechanism not only captures crucial segments in each sentence but also reflects the direction of relations between two entities. Furthermore, we propose a contextual inference method that can infer the most likely positive examples of an entity pair in bags with very limited contextual information. In addition, we provide an annotated dataset without false positive examples based on the Riedel testing dataset, and report on the actual performance of several RE models. The experimental results show that our proposed methods outperform the previous state-of-the-art baselines on both original and annotated datasets for the distantly supervised RE task.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2965721744",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Hybrid Conditional Random Fields and K-Means for Named Entity Recognition on Indonesian News Documents",
+      "year": 2020,
+      "venue": "International journal of intelligent engineering and systems",
+      "authors": [
+        "Institut Teknologi Sepuluh Nopember",
+        "Joan Santoso",
+        "Esther Irawati Setiawan",
+        "Institut Teknologi Sepuluh Nopember",
+        "Eko Mulyanto Yuniarno",
+        "Institut Teknologi Sepuluh Nopember",
+        "Mochamad Hariadi",
+        "Institut Teknologi Sepuluh Nopember"
+      ],
+      "doi": "10.22266/ijies2020.0630.22",
+      "abstract": "The hybrid approach has been widely used in several Natural Language Processing, including Named Entity Recognition (NER). This research proposes a NER system for Indonesian News Documents using Hybrid Conditional Random Fields (CRF) and K-Means. The hybrid approach is to try incorporating word embedding as a cluster from K-Means and take as a feature in CRF. Word embedding is a word representation technique, and it can capture the semantic meaning of the words. The clustering result from K-Means shows that similar meaning word is grouped in the cluster. We believe this feature can improve the performance of the baseline model by adding the semantic relatedness of the word from the cluster features. Word embedding in this research uses Indonesian Word2Vec. The dataset is consisting of 51,241 entities from Indonesian Online News. We conducted some experiments by dividing the corpus into training and testing dataset using percentage splitting. We used 4 scenarios for our experiments, which are 60-40, 70-30, 80-20, and 90-10. The best performance for our model was achieved in 60-40 scenario with F1-Score around 87.18% and also improves about 5.01% compared to the baseline models. We also compare our proposed methods with several models, which are BILSTM and BILSTM-CRF, from previous research. The experiments show that our model can achieve better performance by giving the best improvement of around 4.3%.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3023412646",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Ranking-Based Automatic Seed Selection and Noise Reduction for Weakly Supervised Relation Extraction",
+      "year": 2018,
+      "venue": "Unknown venue",
+      "authors": [
+        "Van-Thuy Phi",
+        "Joan Santoso",
+        "Masashi Shimbo",
+        "Yūji Matsumoto"
+      ],
+      "doi": "10.18653/v1/p18-2015",
+      "abstract": "This paper addresses the tasks of automatic seed selection for bootstrapping relation extraction, and noise reduction for distantly supervised relation extraction. We first point out that these tasks are related. Then, inspired by ranking relation instances and patterns computed by the HITS algorithm, and selecting cluster centroids using the K-means, LSA, or NMF method, we propose methods for selecting the initial seeds from an existing resource, or reducing the level of noise in the distantly labeled data. Experiments show that our proposed methods achieve a better performance than the baseline systems in both tasks.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2798507502",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "3-D Visualization for Lung Covid-19 Infection Based on U-Net CNN Segmentation",
+      "year": 2023,
+      "venue": "IEEE Transactions on Instrumentation and Measurement",
+      "authors": [
+        "FX Ferdinandus",
+        "Joan Santoso",
+        "Esther Irawati Setiawan",
+        "Eko Mulyanto Yuniarno",
+        "I Ketut Eddy Purnama",
+        "Mauridhi Hery Purnomo"
+      ],
+      "doi": "10.1109/tim.2023.3280491",
+      "abstract": "Covid-19 is still the attention of researchers in medical image analysis. Following the initial respiratory diagnosis, a CT-scan examination will be performed. Segmentation of infection within the lung area is needed as the next step after the examination. In recent years, image segmentation has been carried out with the help of Deep Learning. U-Net CNN is one of the Deep Learning-based architectures widely used in medical image segmentation. Our research aims to support radiologists in visualizing Covid-19 infection in 3D based on CNN’s U-Net segmentation. It results in two types of visualization: 3D bitmap and 3D Mesh. 3D visualization can contribute to seeing the extent of infection and calculating the predicted percentage of Covid-19 infection volume in the patient’s lungs. The dataset for training model CNN is relatively small, consisting of 20 CT scans of Zenodo’s Covid-19 patients, divided into 17 patients, 2808 images (80%) for training, and three patients, 712 images (20%) for testing. The segmentation evaluation metrics used are DICE, Precision, and Accuracy, while the evaluation metrics for 3D volume are Relative Volume Difference (RVD) and Volumetric Similarity (VS). Finally, the prediction of the percentage of infection volume to the patient’s lung volume is given. The evaluation results were satisfactory, obtaining 95% DICE scores for lung image segmentation and 75% for infection segmentation. The predicted 3D visualization volume also scored higher than 90% for both lung volume and infection. Furthermore, for calculating the prediction of infection volume against lung volume, we achieved a maximum difference of 3% from the ground truth value.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4378697070",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "abstract reconstructed (D017 markup-normalized)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "Bukalapak is one of the largest marketplaces in Indonesia. Reviews on Bukalapak are only in the form of text, images, videos, and stars without any special filters.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4379260878",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL: abstract excerpt; full text not fetched"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "The user's feedback on healthcare services is usually based on ratings from post-service questionnaires. However, in order to get a clear view of the user's perspective, online text reviews need to be analyzed.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3080910531",
+        "retrieved": "2026-07-16",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL: abstract excerpt; full text not fetched"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Joan Santoso"
+}
