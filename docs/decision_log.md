@@ -114,3 +114,20 @@ This log records design choices that affect multiple workstreams. Entries marked
   broke one verifier's JSON output. This affects Workstream 2 (generation quality) and Workstream 3
   (annotation on polluted claims), so it is logged as a cross-workstream change.
 - **Owner note:** Change touches Workstream 1 (`scripts/_dataset_cli.py`). Raised for Phong's review.
+
+## D018 - Pilot checkpoint passed; run models + JSON robustness
+
+- **Status:** Accepted 2026-07-17
+- **Decision:** The 16-email pilot (CS-01 + PSY-01, provisional packets) ran clean end-to-end
+  on real models via OpenRouter. Reviewed against the checkpoint questions: condition A
+  produces vague/hallucinated claims, B/D use grounded specifics, the verifier makes real
+  soften/delete edits — the A->B->D gradient is present. Prompts, evidence schema, output
+  schema, and rubric are FROZEN for the full run per the freeze rule.
+- **Run models (config/config.pilot-openrouter.yaml):** writer `openai/gpt-4o-mini` (audit
+  target), verifier `anthropic/claude-haiku-4.5`, extractor `anthropic/claude-3-haiku` —
+  cross-family (OpenAI writer vs Anthropic checkers). Total pilot cost ~$0.16.
+- **JSON robustness (verify.py, extract_claims.py):** parse with `strict=False` (real models
+  emit literal newlines inside JSON string values) and recover a `{...}` object from
+  prose-wrapped output. Verifier `max_tokens` raised to 6000 and moved to claude-haiku-4.5
+  because claude-3-haiku's 4096 output ceiling truncated long verified emails. Code-only,
+  not a frozen artifact.

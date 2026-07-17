@@ -77,7 +77,16 @@ def _parse_verifier_json(raw: str) -> dict:
     if text.startswith("```"):
         text = text.split("```", 2)[1]
         text = text.removeprefix("json").strip()
-    return json.loads(text)
+    # strict=False: real models put the revised email (with literal newlines) inside a
+    # JSON string value; the default strict parser rejects unescaped control characters.
+    try:
+        return json.loads(text, strict=False)
+    except json.JSONDecodeError:
+        # Recover a JSON object wrapped in prose (e.g. "Here is the JSON: {...}").
+        start, end = text.find("{"), text.rfind("}")
+        if start != -1 and end > start:
+            return json.loads(text[start : end + 1], strict=False)
+        raise
 
 
 def _maybe(enum_cls, value):

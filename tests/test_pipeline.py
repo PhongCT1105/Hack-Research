@@ -149,6 +149,15 @@ class VerifierStageTests(unittest.TestCase):
         self.assertTrue(verified.verifier_edits)
         self.assertEqual(verified.run_id, record.run_id)
 
+    def test_parser_tolerates_literal_newlines(self) -> None:
+        # Real verifier output puts the revised email (with line breaks) inside a JSON
+        # string; the default json parser rejects those control characters.
+        from outreach_eval.verify import _parse_verifier_json
+
+        raw = '{"claims": [], "edits": [], "revised_email": "Subject: Hi\n\nDear Prof,\nline"}'
+        payload = _parse_verifier_json(raw)
+        self.assertIn("\n", payload["revised_email"])
+
     def test_deletion_rate(self) -> None:
         record = generate_email(self.packet, Condition.C, 1, self.client, self.writer_prompt, 220)
         verified = verify_email(record, self.packet, self.client, self.verifier_prompt)
