@@ -1,0 +1,361 @@
+email_id,professor_id,condition_hidden,claim_id,atomic_claim,claim_type,evidence_excerpt,label_annotator_1,label_annotator_2,final_label,notes
+E-0024,,machine,E-0024_c01,The professor's research is on artificial intelligence and its application in complex systems.,research_topic,,supported,,supported,auto-evaluator
+E-0024,,machine,E-0024_c02,The professor has done recent work on a specific paper or topic.,research_topic,,supported,,supported,auto-evaluator
+E-0024,,machine,E-0024_c03,The professor explored specific findings or methods in their recent work.,research_topic,,supported,,supported,auto-evaluator
+E-0024,,machine,E-0024_c04,The professor used specific methods or techniques to address a specific problem or question.,method,,supported,,supported,auto-evaluator
+E-0005,,machine,E-0005_c01,The professor's research is on specific topic,research_topic,,supported,,supported,auto-evaluator
+E-0005,,machine,E-0005_c02,The professor has recent findings on a relevant topic,research_topic,,supported,,supported,auto-evaluator
+E-0005,,machine,E-0005_c03,The student has taken graduate coursework in machine learning and natural language processing,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0005,,machine,E-0005_c04,The student explored a relevant research project in a recent project,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0005,,machine,E-0005_c05,The student's recent project deepened their understanding of a specific method or finding related to the professor's work,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0048,,machine,E-0048_c01,The professor's research focuses on aspect-based sentiment analysis.,research_topic,,supported,,supported,auto-evaluator
+E-0048,,machine,E-0048_c02,The professor has published a recent paper analyzing Bukalapak reviews using LSTM-CNN and BERT.,research_topic,,supported,,supported,auto-evaluator
+E-0048,,machine,E-0048_c03,The professor's work on applying LSTM-CNN and BERT to sentiment analysis is innovative.,novelty,,partially_supported,,partially_supported,auto-evaluator
+E-0048,,machine,E-0048_c04,The professor's lab focuses on applied AI and its practical implications in fields such as healthcare and education technology.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0093,,machine,E-0093_c01,The professor's research focuses on aspect-based sentiment analysis.,research_topic,,supported,,supported,auto-evaluator
+E-0093,,machine,E-0093_c02,The professor's research also focuses on healthcare data processing.,research_topic,,supported,,supported,auto-evaluator
+E-0093,,machine,E-0093_c03,The professor recently published a paper on aspect-based sentiment analysis of Bukalapak reviews.,authorship,,supported,,supported,auto-evaluator
+E-0093,,machine,E-0093_c04,The professor combined BERT with LSTM-CNN methods in the paper on aspect-based sentiment analysis of Bukalapak reviews.,method,,supported,,supported,auto-evaluator
+E-0093,,machine,E-0093_c05,The combination of BERT and LSTM-CNN methods in the paper on aspect-based sentiment analysis of Bukalapak reviews enhanced classification accuracy.,result,,supported,,supported,auto-evaluator
+E-0093,,machine,E-0093_c06,The student believes that a deeper understanding of the methods used in the professor's research would significantly benefit their academic journey.,impact,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0039,,machine,E-0039_c01,"The professor's research is on data mining, machine learning, and applied AI.",research_topic,,supported,,supported,auto-evaluator
+E-0039,,machine,E-0039_c02,The professor has done recent work on a specific paper or topic.,research_topic,,supported,,supported,auto-evaluator
+E-0039,,machine,E-0039_c03,The professor explored specific findings or methods in their recent work.,method,,supported,,supported,auto-evaluator
+E-0039,,machine,E-0039_c04,The student has delved into relevant coursework or topics in their graduate studies.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0039,,machine,E-0039_c05,The student completed a small research project on a brief description of their project.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0029,,machine,E-0029_c01,Your research interests align with advanced machine learning and natural language processing.,research_topic,,supported,,supported,auto-evaluator
+E-0029,,machine,E-0029_c02,The professor conducts research in your lab.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0053,,machine,E-0053_c01,"The professor's research is on data mining, machine learning, and applied AI.",research_topic,,supported,,supported,auto-evaluator
+E-0053,,machine,E-0053_c02,The professor's recent work is on aspect-based sentiment analysis.,research_topic,,supported,,supported,auto-evaluator
+E-0053,,machine,E-0053_c03,The professor uses advanced models like LSTM and BERT for aspect-based sentiment analysis.,method,,supported,,supported,auto-evaluator
+E-0053,,machine,E-0053_c04,The student is particularly fascinated by the professor's paper on sentiment analysis of marketplace product reviews.,,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0053,,machine,E-0053_c05,The student believes that the LSTM-CNN approach used by the professor resonates with the student's academic interests and aspirations.,,,supported,,supported,auto-evaluator
+E-0041,,machine,E-0041_c01,The professor's research is on aspect-based sentiment analysis.,research_topic,,supported,,supported,auto-evaluator
+E-0041,,machine,E-0041_c02,The professor's research applies aspect-based sentiment analysis to healthcare and medical imaging.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0041,,machine,E-0041_c03,"The professor published a paper titled ""Aspect Based Sentiment Analysis Marketplace Product Reviews Using BERT, LSTM, and CNN"".",authorship,,supported,,supported,auto-evaluator
+E-0041,,machine,E-0041_c04,"The professor used LSTM-CNN models in the paper ""Aspect Based Sentiment Analysis Marketplace Product Reviews Using BERT, LSTM, and CNN"".",method,,supported,,supported,auto-evaluator
+E-0041,,machine,E-0041_c05,"The professor's approach in the paper ""Aspect Based Sentiment Analysis Marketplace Product Reviews Using BERT, LSTM, and CNN"" enhanced sentiment classification accuracy.",result,,supported,,supported,auto-evaluator
+E-0041,,machine,E-0041_c06,The student has taken relevant coursework and completed a small research project focused on sentiment analysis.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0042,,machine,E-0042_c01,The professor's research is on artificial intelligence and its application in natural language processing or computer vision.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0042,,machine,E-0042_c02,The professor has done work on a specific paper or topic that the student is particularly intrigued by.,research_topic,,supported,,supported,auto-evaluator
+E-0042,,machine,E-0042_c03,The professor's approach to a specific technique or application resonates deeply with the student's academic interests.,research_topic,,supported,,supported,auto-evaluator
+E-0018,,machine,E-0018_c01,The professor's research focuses on artificial intelligence.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0018,,machine,E-0018_c02,The professor has conducted research on a specific topic or method relevant to the student.,research_topic,,supported,,supported,auto-evaluator
+E-0018,,machine,E-0018_c03,The professor has used a specific method or technique in their research that the student finds inspiring.,method,,supported,,supported,auto-evaluator
+E-0018,,machine,E-0018_c04,The student believes that working under the professor's guidance would provide invaluable experience and support their goal of making meaningful contributions to AI research.,impact,,supported,,supported,auto-evaluator
+E-0034,,machine,E-0034_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0034,,machine,E-0034_c02,The professor's research includes work on natural language processing techniques.,research_topic,,supported,,supported,auto-evaluator
+E-0034,,machine,E-0034_c03,The professor's research includes work on the development of organic solid electrolytes for all-solid-state batteries.,research_topic,,supported,,supported,auto-evaluator
+E-0034,,machine,E-0034_c04,The professor has published a recent paper on multicomponent covalent organic framework solid electrolytes.,cross_paper_synthesis,,supported,,supported,auto-evaluator
+E-0034,,machine,E-0034_c05,The professor's work on multicomponent covalent organic framework solid electrolytes addresses challenges regarding Li-ion dissociation and transport.,result,,supported,,supported,auto-evaluator
+E-0034,,machine,E-0034_c06,The student has completed a small project involving [briefly describe your project relevant to the topic].,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0066,,machine,E-0066_c01,The professor's research is on topics such as natural language processing and the development of organic solid electrolytes for all-solid-state batteries.,research_topic,,supported,,supported,auto-evaluator
+E-0066,,machine,E-0066_c02,The professor's work on organic solid electrolytes involves the development of materials that facilitate Li-ion dissociation and transport.,research_topic,,supported,,supported,auto-evaluator
+E-0033,,machine,E-0033_c01,"The professor's research is on machine learning and applied AI, including natural language processing.",research_topic,,supported,,supported,auto-evaluator
+E-0033,,machine,E-0033_c02,The professor has done work on a specific paper or topic related to the student's interests.,research_topic,,supported,,supported,auto-evaluator
+E-0033,,machine,E-0033_c03,The student finds the professor's approach to the specific method or finding to be innovative and impactful.,,,partially_supported,,partially_supported,auto-evaluator
+E-0023,,machine,E-0023_c01,The professor's research is on specific topic,research_topic,,supported,,supported,auto-evaluator
+E-0023,,machine,E-0023_c02,The professor has recent findings on a relevant paper or topic,research_topic,,supported,,supported,auto-evaluator
+E-0023,,machine,E-0023_c03,The student has taken graduate coursework in machine learning and natural language processing,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0023,,machine,E-0023_c04,The student's recent project explored a relevant research project or experience,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0023,,machine,E-0023_c05,The student's recent project deepened their understanding of relevant methods or findings,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0050,,machine,E-0050_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0050,,machine,E-0050_c02,The professor's research includes work on natural language processing techniques.,research_topic,,supported,,supported,auto-evaluator
+E-0032,,machine,E-0032_c01,The professor's research is on topics such as natural language processing.,research_topic,,supported,,supported,auto-evaluator
+E-0032,,machine,E-0032_c02,The student is eager to contribute to and learn from the professor's team's innovative research.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0061,,machine,E-0061_c01,The professor's research is on artificial intelligence.,research_topic,,supported,,supported,auto-evaluator
+E-0061,,machine,E-0061_c02,The professor has done work on a specific topic or paper related to artificial intelligence.,research_topic,,supported,,supported,auto-evaluator
+E-0061,,machine,E-0061_c03,The student has taken graduate coursework in machine learning and natural language processing.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0061,,machine,E-0061_c04,The student recently completed a small research project focusing on enhancing model interpretability in AI systems.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0061,,machine,E-0061_c05,The student is particularly drawn to the professor's innovative approaches.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0061,,machine,E-0061_c06,The student's background aligns well with the professor's research objectives.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0017,,machine,E-0017_c01,The professor's work focuses on the application of deep learning techniques to enhance decision-making processes in autonomous systems.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0017,,machine,E-0017_c02,The professor has published a recent paper on reinforcement learning strategies for optimizing resource allocation in dynamic environments.,research_topic,,contradicted,,contradicted,auto-evaluator
+E-0036,,machine,E-0036_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0036,,machine,E-0036_c02,The professor's research includes work on Quantum Machine Learning applications in the biomedical domain.,research_topic,,supported,,supported,auto-evaluator
+E-0036,,machine,E-0036_c03,The professor has published a recent systematic review.,authorship,,supported,,supported,auto-evaluator
+E-0036,,machine,E-0036_c04,The student is particularly fascinated by the potential of quantum-enhanced methods in healthcare.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0036,,machine,E-0036_c05,"The student is interested in exploring how advanced computational techniques can improve healthcare outcomes, especially in predictive modeling.",,,supported,,supported,auto-evaluator
+E-0015,,machine,E-0015_c01,"The professor's research is on machine learning and applied AI, particularly in the context of quantum machine learning and its applications in healthcare.",research_topic,,supported,,supported,auto-evaluator
+E-0015,,machine,E-0015_c02,The professor has done recent work on a systematic review of quantum machine learning applications in the biomedical domain.,research_topic,,supported,,supported,auto-evaluator
+E-0013,,machine,E-0013_c01,Your research is on artificial intelligence,research_topic,,supported,,supported,auto-evaluator
+E-0013,,machine,E-0013_c02,Your research is on machine learning and applied AI,research_topic,,supported,,supported,auto-evaluator
+E-0073,,machine,E-0073_c01,The professor's work includes research on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0073,,machine,E-0073_c02,The professor's research includes work on deep learning approaches for speech emotion recognition.,research_topic,,supported,,supported,auto-evaluator
+E-0073,,machine,E-0073_c03,The professor's research includes work on deep learning approaches for natural language processing applications.,research_topic,,supported,,supported,auto-evaluator
+E-0073,,machine,E-0073_c04,The professor's research includes work on neural networks and their applications in human-computer interactions.,research_topic,,supported,,supported,auto-evaluator
+E-0084,,machine,E-0084_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0084,,machine,E-0084_c02,The professor's research includes work on quantum machine learning applications in healthcare.,research_topic,,supported,,supported,auto-evaluator
+E-0084,,machine,E-0084_c03,The professor has published a recent systematic review.,authorship,,supported,,supported,auto-evaluator
+E-0021,,machine,E-0021_c01,"The professor's research is on machine learning and applied AI, particularly in the context of quantum machine learning and its applications in healthcare.",research_topic,,supported,,supported,auto-evaluator
+E-0021,,machine,E-0021_c02,"The professor has recently published a systematic review on ""Quantum Machine Learning Applications in the Biomedical Domain"".",authorship,,supported,,supported,auto-evaluator
+E-0021,,machine,E-0021_c03,"Quantum algorithms can enhance data processing capabilities, as mentioned in the professor's research.",result,,supported,,supported,auto-evaluator
+E-0046,,machine,E-0046_c01,The professor's research is in the field of artificial intelligence.,research_topic,,supported,,supported,auto-evaluator
+E-0046,,machine,E-0046_c02,The professor's research focuses on machine learning optimization.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0046,,machine,E-0046_c03,The professor's research applies machine learning optimization to real-world scenarios.,research_topic,,supported,,supported,auto-evaluator
+E-0046,,machine,E-0046_c04,The student is fascinated by the professor's findings on the robustness of models in dynamic environments.,result,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0046,,machine,E-0046_c05,The student has completed a small research project that explored the implementation of reinforcement learning algorithms for enhancing decision-making processes.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0046,,machine,E-0046_c06,The student is interested in joining the professor's lab.,collaboration,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0046,,machine,E-0046_c07,The student believes the professor's innovative approach to addressing challenges in AI aligns well with the student's academic interests and aspirations.,novelty,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0071,,machine,E-0071_c01,The professor's work focuses on artificial intelligence.,research_topic,,supported,,supported,auto-evaluator
+E-0071,,machine,E-0071_c02,The professor has recent findings on a specific paper or result.,result,,supported,,supported,auto-evaluator
+E-0071,,machine,E-0071_c03,The professor employs innovative approaches in a relevant method or technique.,method,,supported,,supported,auto-evaluator
+E-0056,,machine,E-0056_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0056,,machine,E-0056_c02,The professor's research includes predicting stock prices.,research_topic,,supported,,supported,auto-evaluator
+E-0056,,machine,E-0056_c03,The professor's research includes identifying human voice emotions.,research_topic,,supported,,supported,auto-evaluator
+E-0056,,machine,E-0056_c04,The professor published a paper on Indonesian Stock Price Prediction.,authorship,,supported,,supported,auto-evaluator
+E-0056,,machine,E-0056_c05,The professor's paper on Indonesian Stock Price Prediction highlighted the complexity of economic variables during the Covid-19 era.,result,,supported,,supported,auto-evaluator
+E-0056,,machine,E-0056_c06,The professor's research on identifying emotions through prosodic and spectral feature extraction resonates with the student's interest in multimodal data processing.,cross_paper_synthesis,,partially_supported,,partially_supported,auto-evaluator
+E-0002,,machine,E-0002_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0002,,machine,E-0002_c02,The professor's research includes work on predicting stock prices.,research_topic,,supported,,supported,auto-evaluator
+E-0002,,machine,E-0002_c03,The professor's research includes work on human voice emotion identification.,research_topic,,supported,,supported,auto-evaluator
+E-0002,,machine,E-0002_c04,The professor published a paper on Indonesian Stock Price Prediction using Decision Tree Regression.,authorship,,supported,,supported,auto-evaluator
+E-0002,,machine,E-0002_c05,The professor's paper on Indonesian Stock Price Prediction using Decision Tree Regression discussed challenges posed by the Covid-19 era in economic forecasting.,result,,supported,,supported,auto-evaluator
+E-0010,,machine,E-0010_c01,The professor's research is in the field of artificial intelligence.,research_topic,,supported,,supported,auto-evaluator
+E-0010,,machine,E-0010_c02,The professor's research focuses on machine learning optimization.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0010,,machine,E-0010_c03,The professor's research on machine learning optimization has applications in real-world scenarios.,research_topic,,supported,,supported,auto-evaluator
+E-0010,,machine,E-0010_c04,The student recently completed a small research project that explored the implementation of reinforcement learning algorithms for enhancing decision-making processes in dynamic environments.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0062,,machine,E-0062_c01,The professor's research is on machine learning and data mining applications.,research_topic,,supported,,supported,auto-evaluator
+E-0062,,machine,E-0062_c02,The student has completed a small research project on [brief description of the project].,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0062,,machine,E-0062_c03,The student has foundational skills in [relevant methods or techniques].,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0003,,machine,E-0003_c01,The professor's research focuses on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0003,,machine,E-0003_c02,The professor has conducted research on predicting stock prices.,research_topic,,supported,,supported,auto-evaluator
+E-0003,,machine,E-0003_c03,The professor has published a paper titled 'Indonesian Stock Price Prediction including Covid19 Era Using Decision Tree Regression'.,authorship,,supported,,supported,auto-evaluator
+E-0003,,machine,E-0003_c04,"The professor's paper on 'Indonesian Stock Price Prediction including Covid19 Era Using Decision Tree Regression' highlights the complex interplay of various factors influencing stock prices, especially during the COVID-19 pandemic.",result,,supported,,supported,auto-evaluator
+E-0011,,machine,E-0011_c01,The professor's research is on machine learning and applied AI.,research_topic,,supported,,supported,auto-evaluator
+E-0011,,machine,E-0011_c02,The professor has done research on predicting stock prices.,research_topic,,supported,,supported,auto-evaluator
+E-0011,,machine,E-0011_c03,The professor has published a paper on Indonesian Stock Price Prediction using Decision Tree Regression.,authorship,,supported,,supported,auto-evaluator
+E-0011,,machine,E-0011_c04,The professor's paper on Indonesian Stock Price Prediction using Decision Tree Regression discussed challenges posed by the Covid-19 era in economic forecasting.,result,,supported,,supported,auto-evaluator
+E-0078,,machine,E-0078_c01,The professor's research focuses on cognitive processes and emotional regulation.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0078,,machine,E-0078_c02,The professor's research examines the interaction between attention and emotional responses.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0019,,machine,E-0019_c01,The professor's work focuses on the interplay between cognitive biases and decision-making.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0019,,machine,E-0019_c02,The professor has published a recent paper on the impact of framing effects.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0019,,machine,E-0019_c03,The professor uses experimental methods to study how subtle changes in presentation can significantly alter outcomes.,method,,unsupported,,unsupported,auto-evaluator
+E-0019,,machine,E-0019_c04,The student's research project investigated the effects of cognitive load on decision-making accuracy.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0054,,machine,E-0054_c01,The professor's research focuses on human-automation interaction and the critical role of human factors in technology.,research_topic,,supported,,supported,auto-evaluator
+E-0054,,machine,E-0054_c02,The professor has a forthcoming paper on AI as a Team Member.,research_topic,,supported,,supported,auto-evaluator
+E-0054,,machine,E-0054_c03,The professor's research explores how AI can effectively collaborate with humans in dynamic environments.,research_topic,,supported,,supported,auto-evaluator
+E-0026,,machine,E-0026_c01,The professor's research focuses on the integration of recommender systems to enhance secure coding practices.,research_topic,,supported,,supported,auto-evaluator
+E-0026,,machine,E-0026_c02,The professor has conducted research on UAV trajectory generation.,research_topic,,supported,,supported,auto-evaluator
+E-0026,,machine,E-0026_c03,The professor has studied dynamic defenses and how they can be evaluated through innovative experimentation environments like VINE.,research_topic,,supported,,supported,auto-evaluator
+E-0026,,machine,E-0026_c04,The student has completed a small research project that explored the usability challenges in software engineering.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0026,,machine,E-0026_c05,The student is interested in understanding how human factors can improve system interaction and safety.,research_topic,,supported,,supported,auto-evaluator
+E-0026,,machine,E-0026_c06,The student is planning to apply for PhD programs this fall.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0008,,machine,E-0008_c01,The professor conducts research.,research_topic,,supported,,supported,auto-evaluator
+E-0008,,machine,E-0008_c02,The student has completed coursework in advanced research methods and cognitive psychology.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0008,,machine,E-0008_c03,The student is eager to apply to PhD programs this fall.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0087,,machine,E-0087_c01,The professor has ongoing research.,research_topic,,supported,,supported,auto-evaluator
+E-0087,,machine,E-0087_c02,The professor has expertise that the student wants to learn from.,research_topic,,supported,,supported,auto-evaluator
+E-0045,,machine,E-0045_c01,The professor's research focuses on human-automation interaction and the critical role of human factors in technology.,research_topic,,supported,,supported,auto-evaluator
+E-0045,,machine,E-0045_c02,The professor has a forthcoming paper on AI as a Team Member.,authorship,,supported,,supported,auto-evaluator
+E-0045,,machine,E-0045_c03,"The professor's research explores how AI can effectively enhance collaboration, communication, and decision-making within human-agent teams.",research_topic,,supported,,supported,auto-evaluator
+E-0045,,machine,E-0045_c04,The student believes their background in psychology and interest in the intersection of human behavior and technology would allow them to contribute meaningfully to the professor's research group.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0076,,machine,E-0076_c01,The professor's research focuses on collaborative knowledge capture in ontologies.,research_topic,,supported,,supported,auto-evaluator
+E-0076,,machine,E-0076_c02,The professor's research focuses on recommender systems for secure coding.,research_topic,,supported,,supported,auto-evaluator
+E-0076,,machine,E-0076_c03,The student has taken graduate coursework relevant to the professor's research topics.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0022,,machine,E-0022_c01,The professor's research focuses on the cognitive mechanisms underlying decision-making processes.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0022,,machine,E-0022_c02,The professor's research explores the interplay between emotion and cognition.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0022,,machine,E-0022_c03,The professor has published recent work on the topic of emotional factors influencing cognitive bias.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0065,,machine,E-0065_c01,The professor's research focuses on the interplay between cognitive and emotional processes.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0065,,machine,E-0065_c02,The professor's research examines decision-making under uncertainty.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0065,,machine,E-0065_c03,The professor's research has found that emotional regulation can influence cognitive biases in decision-making under uncertainty.,result,,unsupported,,unsupported,auto-evaluator
+E-0014,,machine,E-0014_c01,The professor's research focuses on the cerebellum's role within the cerebello-basal ganglia-thalamo-cortical system.,research_topic,,supported,,supported,auto-evaluator
+E-0014,,machine,E-0014_c02,The professor has published a consensus paper discussing the interplay between these brain regions and their implications for motor and cognitive functions.,cross_paper_synthesis,,supported,,supported,auto-evaluator
+E-0014,,machine,E-0014_c03,The professor's research has highlighted how action observation therapy and motor imagery can enhance rehabilitation for Parkinson's disease.,result,,supported,,supported,auto-evaluator
+E-0085,,machine,E-0085_c01,"The professor's research focuses on the interplay between the cerebellum, basal ganglia, and cortex in motor and cognitive functions.",research_topic,,supported,,supported,auto-evaluator
+E-0085,,machine,E-0085_c02,The professor has published a consensus paper on cerebellar function.,authorship,,supported,,supported,auto-evaluator
+E-0085,,machine,E-0085_c03,"The professor's consensus paper on cerebellar function provided insights into the reciprocal interactions among the cerebellum, basal ganglia, and cortex.",result,,supported,,supported,auto-evaluator
+E-0085,,machine,E-0085_c04,The professor has published a systematic review on action observation therapy for Parkinson's disease.,authorship,,supported,,supported,auto-evaluator
+E-0085,,machine,E-0085_c05,The professor's systematic review on action observation therapy for Parkinson's disease has inspired the student's own research endeavors.,impact,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0085,,machine,E-0085_c06,"The professor's research on the interplay between the cerebellum, basal ganglia, and cortex, as well as action observation therapy for Parkinson's disease, resonates with the student's academic interests.",research_topic,,supported,,supported,auto-evaluator
+E-0085,,machine,E-0085_c07,The student believes their background in psychology and recent research experience align well with the professor's work.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0030,,machine,E-0030_c01,The professor's research is of interest to the student.,research_topic,,supported,,supported,auto-evaluator
+E-0030,,machine,E-0030_c02,The professor's lab has potential openings for PhD students.,collaboration,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0030,,machine,E-0030_c03,The professor's research environment is collaborative and innovative.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0044,,machine,E-0044_c01,The lab's focus is on motor control and neural dynamics.,research_topic,,supported,,supported,auto-evaluator
+E-0044,,machine,E-0044_c02,The student is eager to contribute to research in the area of motor control and neural dynamics.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0049,,machine,E-0049_c01,"The professor's research focuses on the interplay between the cerebellum, basal ganglia, and cortex.",research_topic,,supported,,supported,auto-evaluator
+E-0049,,machine,E-0049_c02,"The professor advocates for an integrated systems-level perspective on the interactions between the cerebellum, basal ganglia, and cortex.",research_topic,,supported,,supported,auto-evaluator
+E-0049,,machine,E-0049_c03,"The professor's research explores how the interactions between the cerebellum, basal ganglia, and cortex influence both motor and cognitive functions.",research_topic,,supported,,supported,auto-evaluator
+E-0049,,machine,E-0049_c04,The professor's research has insights into action observation therapy and motor imagery practice for Parkinson's disease.,research_topic,,supported,,supported,auto-evaluator
+E-0049,,machine,E-0049_c05,The professor's research explores the potential for integrating action observation therapy and motor imagery practice for Parkinson's disease.,research_topic,,supported,,supported,auto-evaluator
+E-0049,,machine,E-0049_c06,"The student is interested in contributing to the professor's research on motor behavior and rehabilitation strategies, particularly through computational modeling techniques.",research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0049,,machine,E-0049_c07,The student has taken graduate coursework relevant to the professor's research area.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0049,,machine,E-0049_c08,The student has completed a small research project that explored aspects of motor control.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0031,,machine,E-0031_c01,"The professor's research focuses on the interplay between the cerebellum, basal ganglia, and cortex in motor and cognitive functions.",research_topic,,supported,,supported,auto-evaluator
+E-0031,,machine,E-0031_c02,The professor has published a consensus paper on cerebellar function.,authorship,,supported,,supported,auto-evaluator
+E-0031,,machine,E-0031_c03,The professor's work discusses understanding Parkinson's disease from a system-level perspective.,research_topic,,supported,,supported,auto-evaluator
+E-0031,,machine,E-0031_c04,"The student is impressed by the insights provided in the professor's work on the reciprocal interactions among the cerebellum, basal ganglia, and cortex.",,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0025,,machine,E-0025_c01,The professor's research focuses on the cognitive processes underlying decision-making and the impact of social influences on psychological outcomes.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0025,,machine,E-0025_c02,The professor has published a recent paper on the role of social validation in enhancing individual performance.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0025,,machine,E-0025_c03,The professor employed methodologies to analyze the interplay between social cues and cognitive bias.,method,,unsupported,,unsupported,auto-evaluator
+E-0025,,machine,E-0025_c04,The student recently completed a small research project that explored how group dynamics influence individual decision-making.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0096,,machine,E-0096_c01,The professor's research focuses on cognitive processes and their implications for psychological well-being.,research_topic,,supported,,supported,auto-evaluator
+E-0096,,machine,E-0096_c02,The professor has published a recent publication on the relationship between cognitive flexibility and emotional regulation.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0096,,machine,E-0096_c03,The student finds the professor's research methodologies compelling.,,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0037,,machine,E-0037_c01,The professor's research is on adolescent psychosocial development and substance use.,research_topic,,supported,,supported,auto-evaluator
+E-0037,,machine,E-0037_c02,The professor's research has findings on the reciprocal relationships between behavioral impulsivity and alcohol involvement.,result,,supported,,supported,auto-evaluator
+E-0037,,machine,E-0037_c03,The professor published a paper on the reciprocal relationships between behavioral impulsivity and alcohol involvement in 2013.,authorship,,supported,,supported,auto-evaluator
+E-0037,,machine,E-0037_c04,The professor uses structural equation modeling and cross-lagged analyses to assess the associations between automatic processes and drinking behavior among at-risk adolescents.,method,,supported,,supported,auto-evaluator
+E-0037,,machine,E-0037_c05,The professor's research provides valuable insights into developmental trajectories.,impact,,supported,,supported,auto-evaluator
+E-0067,,machine,E-0067_c01,The professor's research focuses on the interplay between impulsivity and alcohol involvement in adolescents.,research_topic,,supported,,supported,auto-evaluator
+E-0067,,machine,E-0067_c02,"The professor has published a paper titled ""Multiple behavioural impulsivity tasks predict prospective alcohol involvement in adolescents"".",authorship,,supported,,supported,auto-evaluator
+E-0067,,machine,E-0067_c03,The professor's research has provided insights on how impulsivity can predict future substance use.,result,,supported,,supported,auto-evaluator
+E-0067,,machine,E-0067_c04,The professor's research has examined the influence of automatic alcohol-approach tendencies on drinking behavior among at-risk adolescents.,research_topic,,supported,,supported,auto-evaluator
+E-0067,,machine,E-0067_c05,The professor's research has employed experimental design methodology.,method,,supported,,supported,auto-evaluator
+E-0001,,machine,E-0001_c01,"The professor's research focuses on cognitive and behavioral processes in adolescent risk behavior, particularly regarding substance use and online behavior.",research_topic,,supported,,supported,auto-evaluator
+E-0001,,machine,E-0001_c02,The professor's research sheds light on important aspects of human behavior and decision-making dynamics.,impact,,supported,,supported,auto-evaluator
+E-0081,,machine,E-0081_c01,"The professor's research focuses on cognitive and behavioral processes in adolescent development, particularly as they relate to substance use and risk behavior.",research_topic,,supported,,supported,auto-evaluator
+E-0081,,machine,E-0081_c02,The professor employs methodologies in their studies.,method,,supported,,supported,auto-evaluator
+E-0081,,machine,E-0081_c03,Working under the professor's guidance would significantly enhance the student's research skills.,impact,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0088,,machine,E-0088_c01,The professor's research is on adolescent psychosocial development and substance use.,research_topic,,supported,,supported,auto-evaluator
+E-0088,,machine,E-0088_c02,The professor's research has found reciprocal relationships between behavioral impulsivity and alcohol involvement among adolescents.,result,,supported,,supported,auto-evaluator
+E-0088,,machine,E-0088_c03,The professor published a paper on these findings in 2013.,authorship,,supported,,supported,auto-evaluator
+E-0088,,machine,E-0088_c04,"The student recently completed a research project that explored cognitive factors influencing adolescent decision-making, which parallels the professor's investigations into automatic processes and drinking behavior among at-risk adolescents.",cross_paper_synthesis,,partially_supported,,partially_supported,auto-evaluator
+E-0088,,machine,E-0088_c05,The professor uses cross-lagged analyses to assess the associations between automatic processes and drinking behavior among at-risk adolescents.,method,,supported,,supported,auto-evaluator
+E-0088,,machine,E-0088_c06,The student believes the professor's use of cross-lagged analyses provides valuable insights into developmental trajectories.,impact,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0074,,machine,E-0074_c01,The professor's research is on adolescent psychosocial and emotional development.,research_topic,,supported,,supported,auto-evaluator
+E-0074,,machine,E-0074_c02,The professor's research examines the interplay between impulsivity and alcohol involvement among young individuals.,research_topic,,supported,,supported,auto-evaluator
+E-0074,,machine,E-0074_c03,The professor has conducted a study on the prospective relationships between behavioral impulsivity tasks and alcohol involvement in adolescents.,research_topic,,supported,,supported,auto-evaluator
+E-0074,,machine,E-0074_c04,The professor employed cross-lagged analyses in their study.,method,,supported,,supported,auto-evaluator
+E-0063,,machine,E-0063_c01,The professor's research focuses on the cognitive processes underlying decision-making and the impact of social influences on psychological outcomes.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0063,,machine,E-0063_c02,The professor has published a recent paper on a specific topic or finding related to the cognitive processes underlying decision-making and the impact of social influences on psychological outcomes.,research_topic,,unsupported,,unsupported,auto-evaluator
+E-0063,,machine,E-0063_c03,"The professor's recent paper used specific methods, such as experimental designs and statistical analyses, to explore the dynamics between individual cognition and social context.",method,,unsupported,,unsupported,auto-evaluator
+E-0016,,machine,E-0016_c01,The professor's recent work is on the cognitive effects of stress on decision-making.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0016,,machine,E-0016_c02,The professor explores how stress influences cognitive biases.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0016,,machine,E-0016_c03,The professor uses experimental designs and psychophysiological measures to uncover the relationships between stress and cognitive biases.,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0072,,machine,E-0072_c01,The professor's research focuses on dropout rates in inpatient treatment for Anorexia Nervosa.,research_topic,,supported,,supported,auto-evaluator
+E-0072,,machine,E-0072_c02,The professor's research examines the role of Expressed Emotion in family dynamics surrounding eating disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0072,,machine,E-0072_c03,The student recently completed a small research project exploring the psychological factors that contribute to treatment adherence in eating disorders.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0072,,machine,E-0072_c04,The student's research project parallels the professor's findings regarding predictors of dropout from inpatient care.,cross_paper_synthesis,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0072,,machine,E-0072_c05,"The student is intrigued by the professor's systematic review of Expressed Emotion, as it highlights the complex interplay between family dynamics and treatment outcomes in eating disorders.",research_topic,,supported,,supported,auto-evaluator
+E-0027,,machine,E-0027_c01,"The professor's research focuses on eating disorders, particularly on dropout rates from inpatient treatment for Anorexia Nervosa.",research_topic,,supported,,supported,auto-evaluator
+E-0027,,machine,E-0027_c02,The professor's research examines the dynamics of Expressed Emotion among families of patients with eating disorders and its potential predictive value on treatment compliance.,research_topic,,supported,,supported,auto-evaluator
+E-0070,,machine,E-0070_c01,The professor's research examines how family relationships and parental emotional states relate to patient outcomes in eating disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0070,,machine,E-0070_c02,"The professor's research employs both clinical and empirical methods to explore the connections between family relationships, parental emotional states, and patient outcomes in eating disorders.",method,,supported,,supported,auto-evaluator
+E-0082,,machine,E-0082_c01,The professor's research is on eating disorders and family dynamics.,research_topic,,supported,,supported,auto-evaluator
+E-0082,,machine,E-0082_c02,The professor's research approaches include clinical and psychopathological approaches.,method,,supported,,supported,auto-evaluator
+E-0082,,machine,E-0082_c03,The professor's research focuses on expressed emotion and parental burden in anorexia nervosa.,research_topic,,supported,,supported,auto-evaluator
+E-0035,,machine,E-0035_c01,The professor's work focuses on dropout rates in inpatient treatment for Anorexia Nervosa.,research_topic,,supported,,supported,auto-evaluator
+E-0035,,machine,E-0035_c02,The professor's work examines the role of Expressed Emotion in family dynamics surrounding eating disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0035,,machine,E-0035_c03,The professor has published a critical review on dropout rates in inpatient treatment.,research_topic,,supported,,supported,auto-evaluator
+E-0035,,machine,E-0035_c04,The professor's work has identified the need for targeted strategies to enhance patient retention in inpatient treatment.,result,,supported,,supported,auto-evaluator
+E-0077,,machine,E-0077_c01,The professor has conducted research on eating disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0077,,machine,E-0077_c02,The professor has published a critical review on dropout rates in inpatient treatment for Anorexia Nervosa.,research_topic,,supported,,supported,auto-evaluator
+E-0077,,machine,E-0077_c03,The professor has published a systematic review of Expressed Emotion among families of patients with eating disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0077,,machine,E-0077_c04,The professor's critical review on dropout rates underscores the importance of understanding the factors leading to treatment discontinuation.,impact,,supported,,supported,auto-evaluator
+E-0077,,machine,E-0077_c05,The professor's systematic review of Expressed Emotion highlights the nuanced family dynamics that influence patient outcomes.,impact,,supported,,supported,auto-evaluator
+E-0069,,machine,E-0069_c01,The professor's research is in biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0069,,machine,E-0069_c02,The professor's research involves a specific topic or project.,research_topic,,supported,,supported,auto-evaluator
+E-0069,,machine,E-0069_c03,The student recently completed a small research project involving specific methods or findings relevant to the professor's work.,method,,unsupported,,unsupported,auto-evaluator
+E-0069,,machine,E-0069_c04,The student is fascinated by the professor's findings on a specific paper or method and how they could potentially contribute to advancements in a specific application or implication.,result,,partially_supported,,partially_supported,auto-evaluator
+E-0007,,machine,E-0007_c01,The professor's research focuses on the molecular mechanisms underlying disease progression.,research_topic,,supported,,supported,auto-evaluator
+E-0007,,machine,E-0007_c02,The professor has used advanced imaging techniques to visualize cellular interactions.,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0007,,machine,E-0007_c03,The professor's research has focused on the role of specific biomolecules in cancer metastasis.,research_topic,,supported,,supported,auto-evaluator
+E-0007,,machine,E-0007_c04,The student finds the professor's research compelling.,,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0051,,machine,E-0051_c01,The professor's research focuses on immunotherapy and virus-based gene therapy.,research_topic,,supported,,supported,auto-evaluator
+E-0051,,machine,E-0051_c02,The professor's recent work focuses on CAR-T cell therapy and its challenges in targeting solid tumors.,research_topic,,supported,,supported,auto-evaluator
+E-0051,,machine,E-0051_c03,"The professor published a paper titled ""Improving the ability of CAR-T cells to hit solid tumors: Challenges and strategies"".",authorship,,supported,,supported,auto-evaluator
+E-0051,,machine,E-0051_c04,The professor's research on CAR-T cell therapy and its challenges in targeting solid tumors deeply resonated with the student.,impact,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0051,,machine,E-0051_c05,The student has been exploring the intricacies of immune cell therapies in their coursework and a recent research project.,cross_paper_synthesis,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0094,,machine,E-0094_c01,The professor's research is in biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0094,,machine,E-0094_c02,The professor's research focuses on CAR-T cell therapy.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0094,,machine,E-0094_c03,The professor's research investigates the potential of CAR-T cell therapy to target solid tumors.,research_topic,,supported,,supported,auto-evaluator
+E-0094,,machine,E-0094_c04,The professor has published a recent publication on the challenges and strategies involved in CAR-T cell therapy.,,,supported,,supported,auto-evaluator
+E-0083,,machine,E-0083_c01,The professor's research is in biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0083,,machine,E-0083_c02,The professor's research involves a specific topic or project.,research_topic,,supported,,supported,auto-evaluator
+E-0083,,machine,E-0083_c03,The professor has published a recent publication on a specific topic.,authorship,,supported,,supported,auto-evaluator
+E-0083,,machine,E-0083_c04,The professor's recent publication discussed a specific key aspect that interests the student.,cross_paper_synthesis,,supported,,supported,auto-evaluator
+E-0083,,machine,E-0083_c05,The professor employed specific techniques or approaches in their research.,method,,supported,,supported,auto-evaluator
+E-0058,,machine,E-0058_c01,"The professor's research focuses on immune responses, metabolic signaling, and viral immunology.",research_topic,,supported,,supported,auto-evaluator
+E-0058,,machine,E-0058_c02,The student recently completed a small research project that involved analyzing the effects of specific biomolecules on cell proliferation.,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0058,,machine,E-0058_c03,The student believes their background in relevant coursework or skills aligns well with the professor's research objectives.,collaboration,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0059,,machine,E-0059_c01,The professor's research focuses on immunotherapy and virus-based gene therapy.,research_topic,,supported,,supported,auto-evaluator
+E-0059,,machine,E-0059_c02,The professor has conducted recent work on CAR-T cell therapy and its challenges in targeting solid tumors.,research_topic,,supported,,supported,auto-evaluator
+E-0059,,machine,E-0059_c03,The professor published a paper titled 'Improving the ability of CAR-T cells to hit solid tumors: Challenges and strategies'.,authorship,,supported,,supported,auto-evaluator
+E-0059,,machine,E-0059_c04,The professor's paper highlights crucial advances in enhancing CAR-T cell efficacy.,result,,supported,,supported,auto-evaluator
+E-0047,,machine,E-0047_c01,The professor's research is in biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0047,,machine,E-0047_c02,The professor's research focuses on CAR-T cell therapy.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0047,,machine,E-0047_c03,The professor's research investigates the potential of CAR-T cell therapy to target solid tumors.,research_topic,,supported,,supported,auto-evaluator
+E-0047,,machine,E-0047_c04,The professor has published a recent paper on the challenges and strategies involved in enhancing CAR-T cell effectiveness.,research_topic,,supported,,supported,auto-evaluator
+E-0047,,machine,E-0047_c05,The professor's research also focuses on virus-based approaches.,research_topic,,supported,,supported,auto-evaluator
+E-0047,,machine,E-0047_c06,The professor's research focuses on immune responses.,research_topic,,supported,,supported,auto-evaluator
+E-0028,,machine,E-0028_c01,The professor's research is on biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0028,,machine,E-0028_c02,The professor has done research on a specific topic or method in biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0028,,machine,E-0028_c03,The student recently completed a small research project focused on [briefly describe your project relevant to the professor's work].,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0028,,machine,E-0028_c04,The professor has a recent paper on [specific paper or finding].,authorship,,supported,,supported,auto-evaluator
+E-0028,,machine,E-0028_c05,The professor's findings on [specific detail or method] in the recent paper resonated with the student.,result,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0028,,machine,E-0028_c06,The student found the professor's approach to [specific aspect of the research] particularly inspiring.,impact,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0004,,machine,E-0004_c01,The professor's research focuses on the mechanisms underlying cellular responses to stress.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0004,,machine,E-0004_c02,The professor's recent work has focused on autophagy and its implications for disease models.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0004,,machine,E-0004_c03,The professor's research has explored the role of autophagy in cancer progression.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0004,,machine,E-0004_c04,The professor has utilized CRISPR-based techniques to elucidate the pathways involved in cellular responses to stress.,method,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0004,,machine,E-0004_c05,The student is enthusiastic about the prospect of contributing to the professor's ongoing research.,,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0012,,machine,E-0012_c01,"The professor's research focuses on biomedical issues, particularly urological disorders and assisted reproductive technology.",research_topic,,supported,,supported,auto-evaluator
+E-0012,,machine,E-0012_c02,The professor has studied the beneficial effects of hysteroscopic metroplasty for women with a T-shaped uterus.,research_topic,,supported,,supported,auto-evaluator
+E-0012,,machine,E-0012_c03,The professor's surgical approach utilizes fiberoptic hysteroscopic guidance.,method,,supported,,supported,auto-evaluator
+E-0012,,machine,E-0012_c04,The professor's research on innovative methods aims to improve reproductive outcomes.,impact,,supported,,supported,auto-evaluator
+E-0086,,machine,E-0086_c01,The professor's research focuses on urological disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0086,,machine,E-0086_c02,The professor's research involves the innovative applications of hysteroscopic metroplasty in improving reproductive outcomes.,research_topic,,supported,,supported,auto-evaluator
+E-0086,,machine,E-0086_c03,The professor's study found beneficial effects of hysteroscopic metroplasty.,result,,supported,,supported,auto-evaluator
+E-0086,,machine,E-0086_c04,The professor's findings highlight the transformative potential of surgical interventions in complex cases.,impact,,supported,,supported,auto-evaluator
+E-0038,,machine,E-0038_c01,The professor's research is on biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0038,,machine,E-0038_c02,"The professor's research focuses on a specific topic or method, which is not specified.",research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0089,,machine,E-0089_c01,The professor's research is in biomedical and health sciences.,research_topic,,supported,,supported,auto-evaluator
+E-0089,,machine,E-0089_c02,The professor's research involves clinical and reproductive research.,research_topic,,supported,,supported,auto-evaluator
+E-0095,,machine,E-0095_c01,"The professor's research focuses on biomedical and health topics, particularly urological disorders and assisted reproductive technology.",research_topic,,supported,,supported,auto-evaluator
+E-0095,,machine,E-0095_c02,The professor explored the 'T-shaped' uterus in a paper on hysteroscopic metroplasty.,research_topic,,supported,,supported,auto-evaluator
+E-0095,,machine,E-0095_c03,The professor reported improvements in reproductive outcomes following surgical intervention.,result,,supported,,supported,auto-evaluator
+E-0009,,machine,E-0009_c01,The professor's research focuses on urological disorders.,research_topic,,supported,,supported,auto-evaluator
+E-0009,,machine,E-0009_c02,The professor's research involves the innovative applications of hysteroscopic metroplasty in improving reproductive outcomes.,research_topic,,supported,,supported,auto-evaluator
+E-0009,,machine,E-0009_c03,The professor's study on the beneficial effects of hysteroscopic metroplasty demonstrates the potential of surgical interventions to improve reproductive outcomes in specific cases.,result,,supported,,supported,auto-evaluator
+E-0052,,machine,E-0052_c01,The professor's research is on biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0052,,machine,E-0052_c02,The professor's research focuses on the role of biomolecular interactions in disease mechanisms.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0090,,machine,E-0090_c01,The professor's research is on biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0090,,machine,E-0090_c02,The professor's research focuses on the molecular mechanisms of disease pathways.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0090,,machine,E-0090_c03,The student recently completed a small research project that explored the impact of certain biomolecules on cellular responses.,result,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0090,,machine,E-0090_c04,The student is fascinated by the professor's findings on the application of novel imaging techniques to track cellular processes in real-time.,result,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0043,,machine,E-0043_c01,"The professor's research is on biomedicine, particularly the Cry4Aa delta-endotoxin from Bacillus thuringiensis.",research_topic,,supported,,supported,auto-evaluator
+E-0043,,machine,E-0043_c02,The professor has studied the structural determination of the Cry4Aa delta-endotoxin.,research_topic,,supported,,supported,auto-evaluator
+E-0043,,machine,E-0043_c03,The professor's research has provided detailed insights into the toxic mechanisms of Cry toxins and their specificity toward mosquito larvae.,result,,supported,,supported,auto-evaluator
+E-0043,,machine,E-0043_c04,The professor's research on the Cry toxins has implications for designing modified biopesticides to combat mosquito-borne diseases.,impact,,supported,,supported,auto-evaluator
+E-0064,,machine,E-0064_c01,"The professor's research is on biomedicine, particularly on Bacillus thuringiensis and its application in pest control.",research_topic,,supported,,supported,auto-evaluator
+E-0064,,machine,E-0064_c02,The professor has published a paper on the structure of the Cry4Aa delta-endotoxin.,authorship,,supported,,supported,auto-evaluator
+E-0064,,machine,E-0064_c03,The professor's work on the Cry4Aa delta-endotoxin provides molecular insights into its functional form and implications for improved toxin design.,result,,supported,,supported,auto-evaluator
+E-0068,,machine,E-0068_c01,"The professor's research focuses on biomedical and health topics, particularly insect resistance, genetics, and entomopathogenic microorganisms in pest control.",research_topic,,supported,,supported,auto-evaluator
+E-0060,,machine,E-0060_c01,"The professor's research is on biomedicine, particularly on mosquito-specific toxins from Bacillus thuringiensis or dengue virus proteases.",research_topic,,supported,,supported,auto-evaluator
+E-0055,,machine,E-0055_c01,The professor's research is on the Cry4Aa delta-endotoxin from Bacillus thuringiensis.,research_topic,,supported,,supported,auto-evaluator
+E-0055,,machine,E-0055_c02,The professor's research has gained insights into the structure and potential applications of the Cry4Aa delta-endotoxin as a biopesticide for mosquito larvae.,result,,supported,,supported,auto-evaluator
+E-0055,,machine,E-0055_c03,The professor's research has focused on the NS2B-NS3 protease of the dengue virus.,research_topic,,supported,,supported,auto-evaluator
+E-0040,,machine,E-0040_c01,"The professor's research is on biomedicine, particularly on Bacillus thuringiensis and its application in pest control.",research_topic,,supported,,supported,auto-evaluator
+E-0040,,machine,E-0040_c02,The professor published a paper on the structure of the Cry4Aa delta-endotoxin.,authorship,,supported,,supported,auto-evaluator
+E-0040,,machine,E-0040_c03,The professor's work on the Cry4Aa delta-endotoxin provides molecular insights into its functional form and implications for improved toxin design.,result,,supported,,supported,auto-evaluator
+E-0057,,machine,E-0057_c01,The professor's research is on biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0057,,machine,E-0057_c02,The professor has done research on a specific topic or method.,research_topic,,supported,,supported,auto-evaluator
+E-0057,,machine,E-0057_c03,The student was particularly fascinated by the professor's recent paper.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0057,,machine,E-0057_c04,The professor explored a specific topic or finding in their recent paper.,research_topic,,supported,,supported,auto-evaluator
+E-0075,,machine,E-0075_c01,The professor's research focuses on the mechanisms underlying cellular responses to disease.,research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0075,,machine,E-0075_c02,The professor's recent work is on a specific topic or finding.,research_topic,,supported,,supported,auto-evaluator
+E-0075,,machine,E-0075_c03,"The professor uses innovative methods and technologies, including [mention specific methods or technologies used in the professor's work], to elucidate complex biological processes.",method,,partially_supported,,partially_supported,auto-evaluator
+E-0075,,machine,E-0075_c04,"The student recently completed a small research project focused on [briefly describe your project, ensuring it relates to the professor's work, if applicable].",research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0075,,machine,E-0075_c05,The student's academic background and research interests align well with the professor's work.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0075,,machine,E-0075_c06,The student is inspired by the professor's innovative research.,,,subjective_or_generic,,subjective_or_generic,auto-evaluator
+E-0006,,machine,E-0006_c01,"The professor's research is on biomedicine, particularly on osteopontin and its implications in various cancers.",research_topic,,supported,,supported,auto-evaluator
+E-0006,,machine,E-0006_c02,The professor has studied the role of osteopontin in atherosclerosis and cardiac fibrosis.,research_topic,,supported,,supported,auto-evaluator
+E-0006,,machine,E-0006_c03,The professor explores the molecular mechanisms involved in cancer progression and treatment responses.,research_topic,,supported,,supported,auto-evaluator
+E-0006,,machine,E-0006_c04,The student has completed a research project focusing on topics relevant to the professor's work.,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0080,,machine,E-0080_c01,"The professor's research is on biomedicine, particularly on osteopontin (OPN) and its implications in various cancer treatments, including endometrial and gastric cancers.",research_topic,,supported,,supported,auto-evaluator
+E-0080,,machine,E-0080_c02,The professor's studies have focused on the role of OPN in cardiac fibrosis and its potential as a therapeutic target in atherosclerosis.,research_topic,,supported,,supported,auto-evaluator
+E-0091,,machine,E-0091_c01,Your research is on biomedicine.,research_topic,,supported,,supported,auto-evaluator
+E-0091,,machine,E-0091_c02,"Your recent work is on [specific topic or method from your research that interests me, if known].",research_topic,,partially_supported,,partially_supported,auto-evaluator
+E-0079,,machine,E-0079_c01,The professor's research focuses on the mechanisms underlying cellular responses to disease.,research_topic,,supported,,supported,auto-evaluator
+E-0079,,machine,E-0079_c02,The student has completed a small research project focused on [a specific area].,research_topic,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0079,,machine,E-0079_c03,The student is eager to contribute to the professor's ongoing research and to develop their skills under the professor's guidance.,,,outside_evidence_scope,,outside_evidence_scope,auto-evaluator
+E-0020,,machine,E-0020_c01,"The professor's research focuses on biomedicine, particularly osteopontin and cancer biology.",research_topic,,supported,,supported,auto-evaluator
+E-0020,,machine,E-0020_c02,The professor has studied the role of osteopontin in atherosclerosis and cardiac fibrosis.,research_topic,,supported,,supported,auto-evaluator
+E-0020,,machine,E-0020_c03,The professor explores the molecular mechanisms that underlie disease progression.,research_topic,,supported,,supported,auto-evaluator
+E-0020,,machine,E-0020_c04,The professor employs methodologies in the analysis of gene expression and pathway interactions.,method,,supported,,supported,auto-evaluator
+E-0092,,machine,E-0092_c01,"The professor's research is on cancer biology, including endometrial and gastric cancer.",research_topic,,supported,,supported,auto-evaluator
+E-0092,,machine,E-0092_c02,The professor's research is on osteopontin (OPN).,research_topic,,supported,,supported,auto-evaluator
+E-0092,,machine,E-0092_c03,The professor has studied the effects of OPN in cardiac remodeling.,research_topic,,supported,,supported,auto-evaluator
+E-0092,,machine,E-0092_c04,The professor's research has focused on OPN's role in cardiac fibrosis and its potential therapeutic implications.,research_topic,,supported,,supported,auto-evaluator

@@ -1,0 +1,5 @@
+condition,n_emails,n_factual_claims,severe_error_rate,ser_ci_low,ser_ci_high,overstatement_rate,email_level_severe_rate,supported_personalization_density,verifier_deletion_rate,verifier_rewrite_rate
+A,24,61,0.3443,0.1742,0.5455,0.0,0.4545,0.6499,,
+B,24,90,0.0,0.0,0.0,0.0,0.0,1.7057,,
+C,24,50,0.02,0.0,0.0625,0.0,0.0417,1.0385,0.551,0.2857
+D,24,87,0.0,0.0,0.0,0.0,0.0,1.7562,0.25,0.25

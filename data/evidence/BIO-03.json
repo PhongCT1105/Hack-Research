@@ -1,0 +1,200 @@
+{
+  "professor_id": "BIO-03",
+  "field": "biomedicine",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Siriraj Hospital working on biomedical and health research. Publication record spans Insect Resistance and Genetics, Insect and Pesticide Research, Entomopathogenic Microorganisms in Pest Control.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5047765846",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Structure of the Functional Form of the Mosquito Larvicidal Cry4Aa Toxin from <i>Bacillus thuringiensis</i> at a 2.8-Angstrom Resolution",
+      "year": 2006,
+      "venue": "Journal of Bacteriology",
+      "authors": [
+        "Panadda Boonserm",
+        "Min Mo",
+        "Chanan Angsuthanasombat",
+        "Julien Lescar"
+      ],
+      "doi": "10.1128/jb.188.9.3391-3401.2006",
+      "abstract": "The Cry4Aa delta-endotoxin from Bacillus thuringiensis is toxic to larvae of Culex, Anopheles, and Aedes mosquitoes, which are vectors of important human tropical diseases. With the objective of designing modified toxins with improved potency that could be used as biopesticides, we determined the structure of this toxin in its functional form at a resolution of 2.8 angstroms. Like other Cry delta-endotoxins, the activated Cry4Aa toxin consists of three globular domains, a seven-alpha-helix bundle responsible for pore formation (domain I) and the following two other domains having structural similarities with carbohydrate binding proteins: a beta-prism (domain II) and a plant lectin-like beta-sandwich (domain III). We also studied the effect on toxicity of amino acid substitutions and deletions in three loops located at the surface of the putative receptor binding domain II of Cry4Aa. Our results indicate that one loop is an important determinant of toxicity, presumably through attachment of Cry4Aa to the surface of mosquito cells. The availability of the Cry4Aa structure should guide further investigations aimed at the molecular basis of the target specificity and membrane insertion of Cry endotoxins.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2059422874",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Identification of Residues in the Dengue Virus Type 2 NS2B Cofactor That Are Critical for NS3 Protease Activation",
+      "year": 2004,
+      "venue": "Journal of Virology",
+      "authors": [
+        "Pornwaratt Niyomrattanakit",
+        "Pakorn Winoyanuwattikun",
+        "Santad Chanprapaph",
+        "Chanan Angsuthanasombat",
+        "Sakol Panyim",
+        "Gerd Katzenmeier"
+      ],
+      "doi": "10.1128/jvi.78.24.13708-13716.2004",
+      "abstract": "Proteolytic processing of the dengue virus polyprotein is mediated by host cell proteases and the virus-encoded NS2B-NS3 two-component protease. The NS3 protease represents an attractive target for the development of antiviral inhibitors. The three-dimensional structure of the NS3 protease domain has been determined, but the structural determinants necessary for activation of the enzyme by the NS2B cofactor have been characterized only to a limited extent. To test a possible functional role of the recently proposed Phix(3)Phi motif in NS3 protease activation, we targeted six residues within the NS2B cofactor by site-specific mutagenesis. Residues Trp62, Ser71, Leu75, Ile77, Thr78, and Ile79 in NS2B were replaced with alanine, and in addition, an L75A/I79A double mutant was generated. The effects of these mutations on the activity of the NS2B(H)-NS3pro protease were analyzed in vitro by sodium dodecyl sulfate-polyacrylamide gel electrophoresis analysis of autoproteolytic cleavage at the NS2B/NS3 site and by assay of the enzyme with the fluorogenic peptide substrate GRR-AMC. Compared to the wild type, the L75A, I77A, and I79A mutants demonstrated inefficient autoproteolysis, whereas in the W62A and the L75A/I79A mutants self-cleavage appeared to be almost completely abolished. With exception of the S71A mutant, which had a k(cat)/K(m) value for the GRR-AMC peptide similar to that of the wild type, all other mutants exhibited drastically reduced k(cat) values. These results indicate a pivotal function of conserved residues Trp62, Leu75, and Ile79 in the NS2B cofactor in the structural activation of the dengue virus NS3 serine protease.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2002185589",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Comparison of<i>Bacillus thuringiensis</i>subsp.<i>israelensis</i>CryIVA and CryIVB cloned toxins reveals synergism in vivo",
+      "year": 1992,
+      "venue": "FEMS Microbiology Letters",
+      "authors": [
+        "Chanan Angsuthanasombat",
+        "Neil Crickmore",
+        "David J. Ellar"
+      ],
+      "doi": "10.1111/j.1574-6968.1992.tb05290.x",
+      "abstract": "When the gene for the mosquitocidal protein CryIVA was expressed in two strains of Bacillus thuringiensis (Bt) cured of their resident delta-endotoxin genes, the protein accumulated as large inclusions. The inclusions produced in the Bt subsp. kurstaki recipient strain were twice as soluble at alkaline pH as the inclusions produced in Bt subsp. israelensis. Solubilized protoxins were activated by treatment with mosquito gut extracts or trypsin for varying lengths of time and tested for in vitro cytotoxicity on cell lines of three genera of mosquito. CryIVA treated with any of the mosquito gut extracts for 6 h showed significant toxicity against Anopheles gambiae cells and slight activity on Culex quinquefasciatus cells. For CryIVB, the only significant cytotoxicity observed was against Aedes aegypti cells after treatment with Aedes gut extract. In in vivo bioassays, both CryIVA, purified from either of the Bt recipient strains, and CryIVB inclusions were similarly toxic to A. aegypti and A. gambiae larvae but CryIVA was 25-fold more toxic to C. quinquefasciatus. Synergism in vivo between the two toxins was revealed when results from assaying single toxins and mixtures were compared. Mixtures of CryIVA and CryIVB proved to be 5-fold more toxic to Culex than either toxin used singly and showed a reduced but similar synergism when tested against Aedes and Anopheles larvae. The synergism was not duplicated in vitro using cell lines from these three insects.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2034599121",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Common features of <i>Bacillus thuringiensis</i> toxins specific for Diptera and Lepidoptera",
+      "year": 1988,
+      "venue": "European Journal of Biochemistry",
+      "authors": [
+        "Wipa Chungjatupornchai",
+        "Herman Höfte",
+        "Jozef Seurinck",
+        "Chanan Angsuthanasombat",
+        "Mark Vaeck"
+      ],
+      "doi": "10.1111/j.1432-1033.1988.tb13960.x",
+      "abstract": "The complete nucleotide sequence of a cloned gene encoding a 130-kDa crystal protein of Bacillus thuringiensis (B.t.) subspecies israelensis has been determined. The recombinant protein (Bt8) was purified and shown to be a mosquito-specific toxin with a LC50 value of 43 ng/ml to third-instar larvae of Aedes aegypti. Bt8 is processed by proteases or midgut extracts of mosquito larvae into toxic fragments of 68-78 kDa. Deletion mapping indicated that the active fragment of Bt8 is localized in the N-terminal half of the protoxin molecule. The deduced amino acid sequence of Bt8 has been compared with that of Bt2, a Lepidoptera-specific toxin, previously cloned from Bacillus thuringiensis berliner. Highly homologous amino acid stretches are present in the C-terminal half of the proteins. The N-terminal parts show much less sequence homology but they display a strikingly similar distribution of hydrophilic and hydrophobic amino acids. In addition, Bt8 and Bt2 show a significant immunological cross-reaction. The data indicate that although these B.t. delta endotoxins exhibit a different insect-host specificity, they are structurally related and might use a similar mechanism to interact with insect cell membranes.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2079275760",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Biosynthesis of 130-kilodalton mosquito larvicide in the cyanobacterium Agmenellum quadruplicatum PR-6",
+      "year": 1989,
+      "venue": "Applied and Environmental Microbiology",
+      "authors": [
+        "Chanan Angsuthanasombat",
+        "Sakol Panyim"
+      ],
+      "doi": "10.1128/aem.55.9.2428-2430.1989",
+      "abstract": "The 130-kilodalton mosquito larvicidal gene, cloned from Bacillus thuringiensis var. israelensis, was introduced into the cyanobacterium Agmenellum quadruplicatum PR-6 by plasmid transformation. Transformed cells synthesized 130-kilodalton delta-endotoxin protein and showed mosquito larvicidal activity. Results demonstrate a potential use of a cyanobacterium for biological control of mosquitoes.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2109601274",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Ion channels formed in planar lipid bilayers by the dipteran-specific Cry4B<i>Bacillus thuringiensis</i>toxin and its α1–α5 fragment",
+      "year": 2003,
+      "venue": "Molecular Membrane Biology",
+      "authors": [
+        "Theeraporn Puntheeranurak",
+        "Panapat Uawithya",
+        "L. Potvin",
+        "Chanan Angsuthanasombat",
+        "Jean‐Louis Schwartz"
+      ],
+      "doi": "10.1080/09687680310001625792",
+      "abstract": "Trypsin activation of Cry4B, a 130-kDa Bacillus thuringiensis (Bt) protein, produces a 65-kDa toxin active against mosquito larvae. The active toxin is made of two protease resistant-products of ca. 45 kDa and ca. 20 kDa. The cloned 21-kDa fragment consisting of the N-terminal region of the toxin was previously shown to be capable of permeabilizing liposomes. The present study was designed to test the following hypotheses: (1) Cry4B, like several other Bt toxins, is a channel-forming toxin in plannar lipid bilayers; and (2) the 21-kDa N-terminal region, which maps for the first five helices (alpha1-alpha5) of domain 1 in other Cry toxins, and which putatively shares a similar tri-dimensional structure, is sufficient to account for the ion channel activity of the whole toxin. Using circular dichroism spectroscopy and planar lipid bilayers, we showed that the 21-kDa polypeptide existed as an alpha-helical structure and that both Cry4B and its alpha1-alpha5 fragment formed ion channels of 248 +/- 44 pS and 207 +/- 23 pS, respectively. The channels were cation-selective with a potassium-to-chloride permeability ratio of 6.7 for Cry4B and 4.5 for its fragment. However, contrary to the full-length toxin, the alpha1-alpha5 region formed channels at low dose; they tended to remain locked in their open state and displayed flickering activity bouts. Thus, like the full-length toxin, the alpha1-alpha5 region is a functional channel former. A pH-dependent, yet undefined region of the toxin may be involved in regulating the channel properties.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2131724845",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Effects on toxicity of eliminating a cleavage site in a predicted interhelical loop in<i>Bacillus thuringiensis</i>CryIVB Î´-endotoxin",
+      "year": 1993,
+      "venue": "FEMS Microbiology Letters",
+      "authors": [
+        "Chanan Angsuthanasombat",
+        "Neil Crickmore",
+        "David J. Ellar"
+      ],
+      "doi": "10.1111/j.1574-6968.1993.tb06395.x",
+      "abstract": "When activated by treatment with mosquito (Aedes aegypti) gut extract, the Bacillus thuringiensis CryIVB delta-endotoxin lysed A. aegypti cells in vitro. SDS-PAGE and N-terminal sequence determination showed that in addition to removal of the C-terminal half of the molecule, the activated toxin had undergone proteolytic cleavage at two internal regions producing 47-48-kDa and 16-18-kDa polypeptides. Aligning the CryIVB protein sequence with the crystallographic structure of the CryIIIA toxin suggested that one set of cleavages occurred in a region before the start of the N-terminal helical bundle and the second cleavage site occurred in a predicted loop between helices 5 and 6 in the bundle at arginine-203. To investigate the suggestion by Li et al. that interhelical proteolysis is important in the cytolytic mechanism of these toxins, arginine-203 was substituted by alanine. The mutated toxin now resisted proteolysis at this position and showed a marked decrease in cytolysis in vitro but an increase in larvicidal activity.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2098657806",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "In Vitro Determination of Dengue Virus Type 2 NS2B-NS3 Protease Activity with Fluorescent Peptide Substrates",
+      "year": 2002,
+      "venue": "BMB Reports",
+      "authors": [
+        "Rabuesak Khumthong",
+        "Chanan Angsuthanasombat",
+        "Sakol Panyim",
+        "Gerd Katzenmeier"
+      ],
+      "doi": "10.5483/bmbrep.2002.35.2.206",
+      "abstract": "The NS2B-NS3(pro) polyprotein segment from the dengue virus serotype 2 strain 16681 was purified from overexpressing E. coli by metal chelate affinity chromatography and gel filtration. Enzymatic activity of the refolded NS2B-NS3(pro) protease complex was determined in vitro with dansyl-labeled peptide substrates, based upon native dengue virus type 2 cleavage sites. The 12mer substrate peptides and the cleavage products could be separated by reversed-phase HPLC, and were identified by UV and fluorescence detection. All of the peptide substrates (representing the DEN polyprotein junction sequences at the NS2A/NS2B, NS2B/NS3, NS3/NS4A and NS4B/NS5 sites) were cleaved by the recombinant protease NS2B-NS3(pro). No cleavage was observed with an enzymatically inactive S135A mutant of the NS3 protein, or with a modified substrate peptide of the NS3/NS4A polyprotein site that contained a K2093A substitution. Enzymatic activity was dependent on the salt concentration. A 50% decrease of activity was observed in the presence of 0.1 M sodium chloride. Our results show that the NS3 protease activity of the refolded NS2BNS3(pro) protein can be assayed in vitro with high specificity by using cleavage-junction derived peptide substrates.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2149459759",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "The Cry4Aa delta-endotoxin from Bacillus thuringiensis is toxic to larvae of Culex, Anopheles, and Aedes mosquitoes, which are vectors of important human tropical diseases. With the objective of designing modified toxins with improved potency that could be used as biopesticides, we determined the structure of this toxin in its functional form at a resolution of 2.8 angstroms.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2059422874",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "Proteolytic processing of the dengue virus polyprotein is mediated by host cell proteases and the virus-encoded NS2B-NS3 two-component protease. The NS3 protease represents an attractive target for the development of antiviral inhibitors.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2002185589",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Chanan Angsuthanasombat"
+}

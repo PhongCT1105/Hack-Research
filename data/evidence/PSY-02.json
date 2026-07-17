@@ -1,0 +1,208 @@
+{
+  "professor_id": "PSY-02",
+  "field": "psychology",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Libera Università Maria SS. Assunta working on psychology and cognitive science. Publication record spans Action Observation and Synchronization, Neural dynamics and brain function, Motor Control and Adaptation.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5060335674",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Consensus Paper: Towards a Systems-Level View of Cerebellar Function: the Interplay Between Cerebellum, Basal Ganglia, and Cortex",
+      "year": 2016,
+      "venue": "The Cerebellum",
+      "authors": [
+        "Daniele Caligiore",
+        "Giovanni Pezzulo",
+        "Gianluca Baldassarre",
+        "Andreea C. Bostan",
+        "Peter L. Strick",
+        "Kenji Doya",
+        "Rick C. Helmich",
+        "Michiel F. Dirkx"
+      ],
+      "doi": "10.1007/s12311-016-0763-3",
+      "abstract": "Despite increasing evidence suggesting the cerebellum works in concert with the cortex and basal ganglia, the nature of the reciprocal interactions between these three brain regions remains unclear. This consensus paper gathers diverse recent views on a variety of important roles played by the cerebellum within the cerebello-basal ganglia-thalamo-cortical system across a range of motor and cognitive functions. The paper includes theoretical and empirical contributions, which cover the following topics: recent evidence supporting the dynamical interplay between cerebellum, basal ganglia, and cortical areas in humans and other animals; theoretical neuroscience perspectives and empirical evidence on the reciprocal influences between cerebellum, basal ganglia, and cortex in learning and control processes; and data suggesting possible roles of the cerebellum in basal ganglia movement disorders. Although starting from different backgrounds and dealing with different topics, all the contributors agree that viewing the cerebellum, basal ganglia, and cortex as an integrated system enables us to understand the function of these areas in radically different ways. In addition, there is unanimous consensus between the authors that future experimental and computational work is needed to understand the function of cerebellar-basal ganglia circuitry in both motor and non-motor functions. The paper reports the most advanced perspectives on the role of the cerebellum within the cerebello-basal ganglia-thalamo-cortical system and illustrates other elements of consensus as well as disagreements and open questions in the field.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2261666310",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Action observation and motor imagery for rehabilitation in Parkinson's disease: A systematic review and an integrative hypothesis",
+      "year": 2016,
+      "venue": "Neuroscience & Biobehavioral Reviews",
+      "authors": [
+        "Daniele Caligiore",
+        "Magda Mustile",
+        "Gianfranco Spalletta",
+        "Gianluca Baldassarre"
+      ],
+      "doi": "10.1016/j.neubiorev.2016.11.005",
+      "abstract": "This article discusses recent evidence supporting the use of action observation therapy and motor imagery practice for rehabilitation of Parkinson's disease. A main question that emerges from the review regards the different effectiveness of these approaches and the possibility of integrating them into a single method to enhance motor behaviour in subjects with Parkinson's disease. In particular, the reviewed studies suggest that action observation therapy can have a positive effect on motor facilitation of patients and that a long-term rehabilitation program based on action observation therapy or motor imagery practice can bring some benefit on their motor recovery. Moreover, the paper discusses how the research on the combined use of action observation and motor imagery for motor improvements in healthy subjects may encourage the combined use of action observation therapy and motor imagery practice for therapeutic aims in Parkinson's disease. To date, this hypothesis has never been experimented.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2550796360",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Parkinson’s disease as a system-level disorder",
+      "year": 2016,
+      "venue": "npj Parkinson s Disease",
+      "authors": [
+        "Daniele Caligiore",
+        "Rick C. Helmich",
+        "Mark Hallett",
+        "Ahmed A. Moustafa",
+        "Lars Timmermann",
+        "Ivan Toni",
+        "Gianluca Baldassarre"
+      ],
+      "doi": "10.1038/npjparkd.2016.25",
+      "abstract": "Traditionally, the basal ganglia have been considered the main brain region implicated in Parkinson's disease. This single area perspective gives a restricted clinical picture and limits therapeutic approaches because it ignores the influence of altered interactions between the basal ganglia and other cerebral components on Parkinsonian symptoms. In particular, the basal ganglia work closely in concert with cortex and cerebellum to support motor and cognitive functions. This article proposes a theoretical framework for understanding Parkinson's disease as caused by the dysfunction of the entire basal ganglia-cortex-cerebellum system rather than by the basal ganglia in isolation. In particular, building on recent evidence, we propose that the three key symptoms of tremor, freezing, and impairments in action sequencing may be explained by considering partially overlapping neural circuits including basal ganglia, cortical and cerebellar areas. Studying the involvement of this system in Parkinson's disease is a crucial step for devising innovative therapeutic approaches targeting it rather than only the basal ganglia. Possible future therapies based on this different view of the disease are discussed.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2559687221",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "TRoPICALS: A computational embodied neuroscience model of compatibility effects.",
+      "year": 2010,
+      "venue": "Psychological Review",
+      "authors": [
+        "Daniele Caligiore",
+        "Anna M. Borghi",
+        "Domenico Parisi",
+        "Gianluca Baldassarre"
+      ],
+      "doi": "10.1037/a0020887",
+      "abstract": "Perceiving objects activates the representation of their affordances. For example, experiments on compatibility effects showed that categorizing objects by producing certain handgrips (power or precision) is faster if the requested responses are compatible with the affordance elicited by the size of objects (e.g., small or large). The article presents a neural-network architecture that provides a general framework to account for compatibility effects. The model was designed with a methodological approach (computational embodied neuroscience) that aims to provide increasingly general accounts of brain and behavior (4 sources of constraints are used: neuroscientific data, behavioral data, embodied systems, reproduction of learning processes). The model is based on 4 principles of brain organization that we claim underlie most compatibility effects. First, visual perception and action are organized in the brain along a dorsal neural pathway encoding affordances and a ventral pathway encoding goals. Second, the prefrontal cortex within the ventral pathway gives a top-down bias to action selection by integrating information on stimuli, context, and goals. Third, reaction times depend on dynamic neural competitions for action selection that integrate bottom-up and top-down information. The congruence or incongruence between affordances and goals explains the different reaction times found in the experiments. Fourth, as words trigger internal simulations of their referents, they can cause compatibility effects as objects do. We validated the model by reproducing and explaining 3 types of compatibility effects and showed its heuristic power by producing 2 testable predictions. We also assessed the explicative power of the model by comparing it with related models and showed how it can be extended to account for other compatibility effects.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2027243898",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Dysfunctions of the basal ganglia-cerebellar-thalamo-cortical system produce motor tics in Tourette syndrome",
+      "year": 2017,
+      "venue": "PLoS Computational Biology",
+      "authors": [
+        "Daniele Caligiore",
+        "Francesco Mannella",
+        "Michael A. Arbib",
+        "Gianluca Baldassarre"
+      ],
+      "doi": "10.1371/journal.pcbi.1005395",
+      "abstract": "Motor tics are a cardinal feature of Tourette syndrome and are traditionally associated with an excess of striatal dopamine in the basal ganglia. Recent evidence increasingly supports a more articulated view where cerebellum and cortex, working closely in concert with basal ganglia, are also involved in tic production. Building on such evidence, this article proposes a computational model of the basal ganglia-cerebellar-thalamo-cortical system to study how motor tics are generated in Tourette syndrome. In particular, the model: (i) reproduces the main results of recent experiments about the involvement of the basal ganglia-cerebellar-thalamo-cortical system in tic generation; (ii) suggests an explanation of the system-level mechanisms underlying motor tic production: in this respect, the model predicts that the interplay between dopaminergic signal and cortical activity contributes to triggering the tic event and that the recently discovered basal ganglia-cerebellar anatomical pathway may support the involvement of the cerebellum in tic production; (iii) furnishes predictions on the amount of tics generated when striatal dopamine increases and when the cortex is externally stimulated. These predictions could be important in identifying new brain target areas for future therapies. Finally, the model represents the first computational attempt to study the role of the recently discovered basal ganglia-cerebellar anatomical links. Studying this non-cortex-mediated basal ganglia-cerebellar interaction could radically change our perspective about how these areas interact with each other and with the cortex. Overall, the model also shows the utility of casting Tourette syndrome within a system-level perspective rather than viewing it as related to the dysfunction of a single brain area.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2600179491",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "The super-learning hypothesis: Integrating learning processes across cortex, cerebellum and basal ganglia",
+      "year": 2019,
+      "venue": "Neuroscience & Biobehavioral Reviews",
+      "authors": [
+        "Daniele Caligiore",
+        "Michael A. Arbib",
+        "R. Chris Miall",
+        "Gianluca Baldassarre"
+      ],
+      "doi": "10.1016/j.neubiorev.2019.02.008",
+      "abstract": "Despite wide evidence suggesting anatomical and functional interactions between cortex, cerebellum and basal ganglia, the learning processes operating within them --often viewed as respectively unsupervised, supervised and reinforcement learning-- are studied in isolation, neglecting their strong interdependence. We discuss how those brain areas form a highly integrated system combining different learning mechanisms into an effective super-learning process supporting the acquisition of flexible motor behaviour. The term \"super-learning\" does not indicate a new learning paradigm. Rather, it refers to the fact that different learning mechanisms act in synergy as they: (a) affect neural structures often relying on the widespread action of neuromodulators; (b) act within various stages of cortical/subcortical pathways that are organised in pipeline to support multiple sensation-to-action mappings operating at different levels of abstraction; (c) interact through the reciprocal influence of the output compartments of different brain structures, most notably in the cerebello-cortical and basal ganglia-cortical loops. Here we articulate this new hypothesis and discuss empirical evidence supporting it by specifically referring to motor adaptation and sequence learning.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2918154744",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "The contribution of brain sub-cortical loops in the expression and acquisition of action understanding abilities",
+      "year": 2013,
+      "venue": "Neuroscience & Biobehavioral Reviews",
+      "authors": [
+        "Daniele Caligiore",
+        "Giovanni Pezzulo",
+        "R. Chris Miall",
+        "Gianluca Baldassarre"
+      ],
+      "doi": "10.1016/j.neubiorev.2013.07.016",
+      "abstract": "Research on action understanding in cognitive neuroscience has led to the identification of a wide \"action understanding network\" mainly encompassing parietal and premotor cortical areas. Within this cortical network mirror neurons are critically involved implementing a neural mechanism according to which, during action understanding, observed actions are reflected in the motor patterns for the same actions of the observer. We suggest that focusing only on cortical areas and processes could be too restrictive to explain important facets of action understanding regarding, for example, the influence of the observer's motor experience, the multiple levels at which an observed action can be understood, and the acquisition of action understanding ability. In this respect, we propose that aside from the cortical action understanding network, sub-cortical processes pivoting on cerebellar and basal ganglia cortical loops could crucially support both the expression and the acquisition of action understanding abilities. Within the paper we will discuss how this extended view can overcome some limitations of the \"pure\" cortical perspective, supporting new theoretical predictions on the brain mechanisms underlying action understanding that could be tested by future empirical investigations.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2106205767",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "The embodied mind extended: using words as social tools",
+      "year": 2013,
+      "venue": "Frontiers in Psychology",
+      "authors": [
+        "Anna M. Borghi",
+        "Claudia Scorolli",
+        "Daniele Caligiore",
+        "Gianluca Baldassarre",
+        "Luca Tummolini"
+      ],
+      "doi": "10.3389/fpsyg.2013.00214",
+      "abstract": "The extended mind view and the embodied-grounded view of cognition and language are typically considered as rather independent perspectives. In this paper we propose a possible integration of the two views and support it proposing the idea of \"Words As social Tools\" (WAT). In this respect, we will propose that words, also due to their social and public character, can be conceived as quasi-external devices that extend our cognition. Moreover, words function like tools in that they enlarge the bodily space of action thus modifying our sense of body. To support our proposal, we review the relevant literature on tool-use and on words as tools and report recent evidence indicating that word use leads to an extension of space close to the body. In addition, we outline a model of the neural processes that may underpin bodily space extension via word use and may reflect possible effects on cognition of the use of words as external means. We also discuss how reconciling the two perspectives can help to overcome the limitations they encounter if considered independently.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1994644020",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "Despite increasing evidence suggesting the cerebellum works in concert with the cortex and basal ganglia, the nature of the reciprocal interactions between these three brain regions remains unclear. This consensus paper gathers diverse recent views on a variety of important roles played by the cerebellum within the cerebello-basal ganglia-thalamo-cortical system across a range of motor and cognitive functions.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2261666310",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "This article discusses recent evidence supporting the use of action observation therapy and motor imagery practice for rehabilitation of Parkinson's disease. A main question that emerges from the review regards the different effectiveness of these approaches and the possibility of integrating them into a single method to enhance motor behaviour in subjects with Parkinson's disease.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2550796360",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Daniele Caligiore"
+}
