@@ -1,0 +1,206 @@
+{
+  "professor_id": "BIO-02",
+  "field": "biomedicine",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at University of the Witwatersrand working on biomedical and health research. Publication record spans Urological Disorders and Treatments, Ectopic Pregnancy Diagnosis and Management, Assisted Reproductive Technology and Twin Pregnancy.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5110247445",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Beneficial Effect of Hysteroscopic Metroplasty on the Reproductive Outcome in a ‘T-Shaped’ Uterus",
+      "year": 2010,
+      "venue": "Gynecologic and Obstetric Investigation",
+      "authors": [
+        "Z. Katz",
+        "Alon Ben‐Arie",
+        "Samuel Lurie",
+        "Moshe Manor",
+        "Vaclav Insler"
+      ],
+      "doi": "10.1159/000292033",
+      "abstract": "Eight women (aged 27-43) with reproductive dysfunction who were diagnosed by hysterosalpingogram and hysteroscopy as having a 'T-shaped' uterus were operated on using fiberoptic hysteroscopic guidance; the uterine side walls were incised until a normal uterine cavity was achieved. The women's gynecologic and obstetric records were compared before and after the operation. In all the 8 women the operation was without complications and resulted in a satisfactory uterine cavity. Before the operative procedure, the women had had 10 spontaneous abortions and 1 ectopic pregnancy. The postoperative performance available for 7 of the 8 women showed 4 term pregnancies in 3 women, 1 ectopic pregnancy, and no abortions. Our study suggests that hysteroscopic metroplasty in women with a T-shaped uterus improves the reproductive outcome, mainly in women with repeated abortions. We conclude that women with a T-shaped uterus who want to improve their reproductive function should be encouraged to undergo hysteroscopic metroplasty.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1996124174",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Pathognomonic echo patterns of benign cystic teratomas of the ovary: classification, incidence and accuracy rate of sonographic diagnosis",
+      "year": 1996,
+      "venue": "Ultrasound in Obstetrics and Gynecology",
+      "authors": [
+        "B. Caspi",
+        "Z. Appelman",
+        "David Rabinerson",
+        "U. Elchalal",
+        "Y. Zalel",
+        "Z. Katz"
+      ],
+      "doi": "10.1046/j.1469-0705.1996.07040275.x",
+      "abstract": "The great variability in the sonographic appearance of ovarian cystic teratomas poses difficulties for their diagnosis and classification. To overcome such difficulties, we have proposed a simplified classification of the pathognomonic echo patterns of ovarian cystic teratomas based on three basic types of echo pattern. In a prospective study of 118 echogenic adnexal masses, with postoperative histological confirmation, this classification enabled the correct diagnosis to be made in 115 cases (accuracy rate, 97.45%). In the three cases misdiagnosed preoperatively as ovarian cystic teratoma, the tumors proved to be benign and included a serous cyst adenoma, a serous cyst adenofibroma and a Brenner tumor. We suggest that, with our proposed classification of the echo patterns of ovarian cystic teratomas, sonography can become a quick and accurate tool in the recognition of this condition.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2082245483",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Treatment of premature labor contractions with combined ritodrine and indomethacine",
+      "year": 1983,
+      "venue": "International Journal of Gynecology & Obstetrics",
+      "authors": [
+        "Z. Katz",
+        "M Lancet",
+        "M. Yemini",
+        "B.M. Mogilner",
+        "Ami Feigl",
+        "H. Ben Hur"
+      ],
+      "doi": "10.1016/0020-7292(83)90026-7",
+      "abstract": "The results of combined ritodrine and indomethacine treatment (RI) in premature labor contractions were compared with ritodrine alone (R). One hundred and twenty patients with threatened premature labor in weeks 26-34 were studied. Sixty RI women received 100 mg ritodrine in infusion followed by 60 mg daily orally until 35 weeks and indomethacine 200 mg on the first day of treatment only. The R group included 60 women with identical tocolysis indices, age of pregnancy and anamnestic parameters who received ritodrine only. The mean prolongation index (PI) was 18.2 in the RI group, against 11.5 in the R patients (P less than 0.05). The mean prolongation of pregnancy was 5.6 weeks in the first and 3.6 in the control group (P less than 0.05). Birthweight and Apgar scores were similar in the two groups. In order to examine the possible early closure of the ductus arteriosus due to the indomethacin therapy, echocardiograms were done on all newborn in the RI group: the pre-ejection period and right ventricular ejection time ratio was 0.19-0.26 after delivery and 0.17-0.22 1 month later, which excludes pulmonary diastolic hypertension due to premature closure of the duct. The combined RI treatment is more effective that R alone and does not give rise to any complications in the mother or the fetus.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2054837981",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "The outcome of pregnancies complicated by preterm rupture of the membranes with and without cerclage",
+      "year": 1989,
+      "venue": "International Journal of Gynecology & Obstetrics",
+      "authors": [
+        "Isaac Blickstein",
+        "Z. Katz",
+        "M Lancet",
+        "B.M. Molgilner"
+      ],
+      "doi": "10.1016/0020-7292(89)90724-8",
+      "abstract": "Thirty-two patients with cerclage were compared to 76 patients without cerclage. All pregnancies were complicated with preterm (less than 36 weeks) rupture of the membranes (PTROM). The management following removal of the cerclage was the same for the two groups and consisted of conservative treatment unless chorioamnionitis ensued. It was found that under similar conditions and treatment there was no significant difference between the outcomes of PTROM-complicated gestations with and without a cerclage. The low added risk of cerclage to PTROM should not deter its use when indicated.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2095554927",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Management of puerperal separation of the symphysis pubis",
+      "year": 1985,
+      "venue": "International Journal of Gynecology & Obstetrics",
+      "authors": [
+        "Zvi Schwartz",
+        "Z. Katz",
+        "M Lancet"
+      ],
+      "doi": "10.1016/0020-7292(85)90056-6",
+      "abstract": "Thirteen post-partum patients with symphysiolysis were treated by intra-symphysial injection of a combination of hydrocortisone, chymotrypsin and lidocain. The injection was given once a day and the full treatment consisted of between three to seven injections according to the severity of the symptoms. No other medication was given. Immediate relief was obtained in all cases after the first injection and all symptoms disappeared after the completion of treatment. The average time of hospitalization was 9.8 days. No complications were seen as a result of the treatment and the patients resumed their normal activities after being discharged from hospital. In comparison with other modes of treatment, the intra-symphysial injection of the above drug combination shortened the time of morbidity and effected complete recovery.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1983469427",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Constriction of the Umbilical Cord by an Amniotic Band After Midtrimester Amniocentesis",
+      "year": 1982,
+      "venue": "Acta Obstetricia Et Gynecologica Scandinavica",
+      "authors": [
+        "M. Ashkenazy",
+        "Ρ Borenstein",
+        "Z. Katz",
+        "Michael M. Segal"
+      ],
+      "doi": "10.3109/00016348209156959",
+      "abstract": "Constriction of the umbilical cord by an amniotic band after previous midtrimester amniocentesis is an extremely rare entity. A case report of fetal asphyxia caused by partial occlusion of the umbilical cord by an amniotic band is presented. Clinical and experimental evidence strongly suggests that the pathogenesis of this defect is related to early rupture of the membranes during gestation with subsequent encirclement and ligation of fetal umbilical cord, or extremities. In this case, formation of the amniotic band caused by midtrimester amniocentesis is strongly suggested. Obstetricians should be aware of this hazardous complication during pregnancy and labor in women who had had a midtrimester amniocentesis.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2161059317",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Prenatal diagnosis of Meckel syndrome: alpha‐feto protein and beta‐trace protein in amniotic fluid",
+      "year": 1977,
+      "venue": "Clinical Genetics",
+      "authors": [
+        "Juan Chemke",
+        "Abraham Miskin",
+        "Zipora Rav‐Acha",
+        "Avi Porath",
+        "Marinel Sagiv",
+        "Z. Katz"
+      ],
+      "doi": "10.1111/j.1399-0004.1977.tb01314.x",
+      "abstract": "Meckel syndrome was diagnosed prenatally by alpha-feto protein and beta-trace protein determinations in amniotic fluid. No central nervous system anomalies were detected in the affected fetus, who presented with large polycystic kidneys and polydactyly. An excessive synthesis of these fetal proteins by the dysplastic kidneys is suggested, allowing for the possibility of prenatal diagnosis of polycystic kidneys in families at risk for this disease. The present family emphasized the importance of amniocentesis in pregnancies at risk for Meckel syndrome, regardless of the presence of a defect in neural tube closure.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2155777701",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Endocervical-type epithelium in endometrial carcinoma",
+      "year": 1980,
+      "venue": "The American Journal of Surgical Pathology",
+      "authors": [
+        "Bernard Czernobilsky",
+        "Z. Katz",
+        "M Lancet",
+        "Edith Gaton"
+      ],
+      "doi": "10.1097/00000478-198010000-00008",
+      "abstract": "A review of the histologic material from 100 patients with endometrial carcinoma revealed 10 cases in which endocervical-type epithelium constituted an integral component of endometrial adenocarcinoma. In nine of these, the endocervical epithelium was focal while in one patient, reported in detail, the curetted endometrial carcinoma presented as an almost pure endocervical-type lesion. In most instances, the endocervical epithelium was papillary and mature, but areas of tufting, pseudostratification and atypism were also evident. Endocervical-type epithelium in endometrial cancers was more common in curettings than in hysterectomy specimens probably because of its superficial location within the tumor. The endocervical nature of these components, which are most likely of metaplastic origin, was evident on light and electron microscopy. Histochemical stains established the similarities of the cytoplasmic mucins of these cells to that of normal endocervix and well-differentiated endocervical adenocarcinoma and emphasized the dissimilarities to the mucin content of papillary, secretory and clear-cell endometrial carcinoma. Thus, awareness of this type of lesion, application of strict histologic criteria and use of histochemical stains make it possible to reach the correct diagnosis in most cases, even in those in which the endocervical-type epithelium composes the major portion of curettings from an endometrial adenocarcinoma.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2026595200",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "Eight women (aged 27-43) with reproductive dysfunction who were diagnosed by hysterosalpingogram and hysteroscopy as having a 'T-shaped' uterus were operated on using fiberoptic hysteroscopic guidance; the uterine side walls were incised until a normal uterine cavity was achieved. The women's gynecologic and obstetric records were compared before and after the operation.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1996124174",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "The great variability in the sonographic appearance of ovarian cystic teratomas poses difficulties for their diagnosis and classification. To overcome such difficulties, we have proposed a simplified classification of the pathognomonic echo patterns of ovarian cystic teratomas based on three basic types of echo pattern.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2082245483",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Z. Katz"
+}

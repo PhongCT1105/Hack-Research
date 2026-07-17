@@ -1,0 +1,225 @@
+{
+  "professor_id": "BIO-04",
+  "field": "biomedicine",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at China-Japan Friendship Hospital working on biomedical and health research. Publication record spans Endometrial and Cervical Cancer Treatments, Advanced Photocatalysis Techniques, Gastric Cancer Management and Outcomes.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5100765294",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Osteopontin Deficiency Attenuates Atherosclerosis in Female Apolipoprotein E–Deficient Mice",
+      "year": 2003,
+      "venue": "Arteriosclerosis Thrombosis and Vascular Biology",
+      "authors": [
+        "Yutaka Matsui",
+        "Susan R. Rittling",
+        "Hiroshi Okamoto",
+        "Manabu Inobe",
+        "Nan Jia",
+        "Toshihiro Shimizu",
+        "M Akino",
+        "Takeshi Sugawara"
+      ],
+      "doi": "10.1161/01.atv.0000074878.29805.d0",
+      "abstract": "OBJECTIVE: Osteopontin (OPN), a noncollagenous adhesive protein, is implicated in atherosclerosis, in which macrophages within atherosclerotic plaques express OPN. However, it is not known whether the elevated OPN expression is a cause or result of atherosclerosis. METHODS AND RESULTS: We generated mice that lacked OPN and crossed them with apolipoprotein (apo) E-deficient mice and analyzed these mice with a mixed C57BL/6x129 background after 36 weeks on a normal chow diet. In female mice, OP+/-E-/- and OP-/-E-/- mice had significantly smaller atherosclerotic and inflammatory lesions compared with OP+/+E-/- mice, and that was reflected by smaller area of MOMA-2-positive staining. In male mice, however, there was no significant difference in the atherosclerosis lesion areas among 3 genotypes. In both OP-/-E-/- and OP+/+E-/- mice, typical atherosclerotic lesions were detected, which include necrotic core, foamy cell collections, and cholesterol clefts. However, we found that vascular mineral-deposited areas in 60-week-old male OP-/-E-/- mice were significantly increased compared with those in OP+/+E-/- male mice. CONCLUSIONS: These results suggest that OPN plays a promoting effect in atherosclerosis and inhibitory effect in vascular calcification. The suppression of OPN expression in females should be considered a therapeutic possibility in atherosclerosis.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2162332295",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Role of Osteopontin in Cardiac Fibrosis and Remodeling in Angiotensin II-Induced Cardiac Hypertrophy",
+      "year": 2004,
+      "venue": "Hypertension",
+      "authors": [
+        "Yutaka Matsui",
+        "Nan Jia",
+        "Hiroshi Okamoto",
+        "Shigeyuki Kon",
+        "Hisao Onozuka",
+        "M Akino",
+        "Lizhi Liu",
+        "Junko Morimoto"
+      ],
+      "doi": "10.1161/01.hyp.0000128621.68160.dd",
+      "abstract": "Osteopontin (OPN) is upregulated in several experimental models of cardiac fibrosis and remodeling. However, its direct effects remain unclear. We examined the hypothesis that OPN is important for the development of cardiac fibrosis and remodeling. Moreover, we examined whether the inhibitory effect of eplerenone (Ep), a novel aldosterone receptor antagonist, was mediated through the inhibition of OPN expression against cardiac fibrosis and remodeling. Wild-type (WT) and OPN-deficient mice were treated with angiotensin II (Ang II) for 4 weeks. WT mice receiving Ang II were divided into 2 groups: a control group and an Ep treatment group. Ang II treatment significantly elevated blood pressure and caused cardiac hypertrophy and fibrosis in WT mice. Ep treatment and OPN deficiency could reduce the Ang II-induced elevation of blood pressure and ameliorate the development of cardiac fibrosis, whereas Ep-only treatment abolished the development of cardiac hypertrophy. Most compelling, the reduction of cardiac fibrosis led to an impairment of cardiac systolic function and subsequent left ventricular dilatation in Ang II-treated OPN-deficient mice. These results suggest that OPN has a pivotal role in the development of Ang II-induced cardiac fibrosis and remodeling. Moreover, the effect of Ep on the prevention of cardiac fibrosis, but not cardiac hypertrophy, might be partially mediated through the inhibition of OPN expression.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2109967971",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Huaier Aqueous Extract Inhibits Ovarian Cancer Cell Motility via the AKT/GSK3β/β-Catenin Pathway",
+      "year": 2013,
+      "venue": "PLoS ONE",
+      "authors": [
+        "Xiaohui Yan",
+        "Tianjiao Lyu",
+        "Nan Jia",
+        "Yinhua Yu",
+        "Keqin Hua",
+        "Weiwei Feng"
+      ],
+      "doi": "10.1371/journal.pone.0063731",
+      "abstract": "Traditional Chinese medicine has gained popularity due to its ability to kill tumor cells. Recently, the apoptotic and anti-angiogenic effects of Trametes robiniophila murr (Huaier) have been investigated. The aim of this study was to investigate its effect on cell mobility and tumor growth in ovarian cancer. Cell viability and motility were measured using SRB, scratch and migration assays. Cell apoptosis was analysed by annexin V/PI staining. Using a reverse-phase protein array (RPPA) assay, we analyzed the levels of 153 proteins and/or phosphorylations in Huaier-treated and untreated cells. Huaier inhibited cell viability and induced both early and late apoptosis in SKOV3, SKOV3.ip1 and Hey cells in a time- and dose-dependent manner. Cell invasiveness and migration were also suppressed significantly. The RPPA results showed significant differences (of at least 30%; P <0.05) in the levels of 7 molecules in SKOV3 cells and 10 in SKOV3.ip1 cells between the untreated and treated cells. Most of the molecules identified play roles in cell proliferation, apoptosis or cell adhesion/invasion. Western blot analysis further validated that Huaier treatment resulted in decreased AKT phosphorylation, enhanced expression of total GSK3β, inhibition of the phosphorylation of GSK3β on S9, reduction of both cytoplasmic β-catenin expression and nuclear β-catenin translocation, and transcriptional repression of several Wnt/β-catenin target genes (DIXDC1, LRP6, WNT5A, and cyclin D1). After knocking down GSK3β, β-catenin expression could not be inhibited by Huaier. Finally, Huaier inhibited the growth of ovarian tumor xenografts in vivo. These studies indicate that Huaier inhibits tumor cell mobility in ovarian cancer via the AKT/GSK3β/β-catenin signaling pathway.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1996956985",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Elevated expression of p53 gain-of-function mutation R175H in endometrial cancer cells can increase the invasive phenotypes by activation of the EGFR/PI3K/AKT pathway",
+      "year": 2009,
+      "venue": "Molecular Cancer",
+      "authors": [
+        "Peixin Dong",
+        "Zhujie Xu",
+        "Nan Jia",
+        "Da‐Jin Li",
+        "Youji Feng"
+      ],
+      "doi": "10.1186/1476-4598-8-103",
+      "abstract": "BACKGROUND: p53 is the most commonly mutated tumor suppressor gene in human cancers. In addition to the loss of tumor suppression function and exertion of dominant-negative effects over the remaining wild-type protein, several p53 mutants can gain novel oncogenic functions (gain-of-function, GOF) that actively regulate cancer development and progression. In human endometrial cancer, p53 mutation is more often associated with aggressive nonendometrioid cancer. However, it was unknown if p53 mutants contributed to endometrial cancer progression through the GOF properties. METHODS: To clarify the relationship between expression of p53 GOF mutation (p53-R175H) and invasive potential of human endometrial cancer KLE cells, we tested the consequences of up-regulation and down-regulation of p53-R175H in KLE cells by inducing p53-R175H expression vector or suppressing the p53 gene with short hairpin RNA. RESULTS: We found that forced over-expression of p53-R175H significantly promoted cell migration and invasion, and induced activation of the epidermal growth factor receptor (EGFR)/phosphatidylinositol 3-kinase (PI3K)/AKT pathway. Conversely, suppression of p53-R175H with short hairpin RNA significantly inhibited cell migration and invasion, and resulted in attenuation of EGFR/PI3K/AKT pathway. CONCLUSION: These findings show for the first time that elevated expression of p53-R175H mutant may exert gain-of-function activity to activate the EGFR/PI3K/AKT pathway and thus may contribute to the invasive phenotype in endometrial cancer.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2102641687",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "LBA1 Durvalumab in combination with chemoradiotherapy for patients with unresectable stage III NSCLC: Final results from PACIFIC-2",
+      "year": 2024,
+      "venue": "ESMO Open",
+      "authors": [
+        "Jeffrey D. Bradley",
+        "Shunichi Sugawara",
+        "K.H. Lee",
+        "Gyula Ostoros",
+        "Ahmet Demirkazık",
+        "Milada Zemanová",
+        "Virote Sriuranpong",
+        "Ana Caroline Zimmer Gelatti"
+      ],
+      "doi": "10.1016/j.esmoop.2024.102986",
+      "abstract": "The PACIFIC trial established consolidation durvalumab (D) after chemoradiotherapy (CRT) as SoC for pts with unresectable stage III NSCLC. However, up to 30% of pts are ineligible due to progression during/shortly after CRT or inadequate recovery from CRT-related toxicity. The phase III PACIFIC-2 trial evaluated D initiated concurrently with platinum-based concurrent CRT (cCRT) followed by consolidation D, compared with cCRT alone, in pts with unresectable stage III NSCLC. PACIFIC-2 (NCT03519971) was a randomized double-blind study. Treatment (Tx)-naïve pts with WHO PS 0/1 and histologically/cytologically confirmed stage III NSCLC were randomized (2:1) to receive SoC cCRT concurrently with D or placebo (PBO) IV Q4W, stratified by age and disease stage. Pts then received consolidation D/PBO until progression, unacceptable toxicity, consent withdrawal, or other discontinuation criteria. The primary endpoint was PFS (BICR; RECIST v1.1). 327/328 randomized pts received Tx (D arm, n=219; PBO arm, n=108). A higher % of pts in the D vs PBO arm had T4 tumors (57.5% vs 48.6%) and squamous histology (55.3% vs 47.7%). As of 7 Sep 2023 (data cutoff), median follow-up in all (censored) pts was 30.5 (55.5) months. There was a trend (not statistically significant) toward improved PFS with D vs PBO (HR, 0.85; 95% CI: 0.65–1.12; P=0.247); median PFS was 13.8 vs 9.4 months. There was no significant difference in OS (HR, 1.03; 95% CI: 0.78–1.39; P=0.823); median OS was 36.4 vs 29.5 months. Max grade 3/4 any-cause AEs occurred in 53.4% vs 59.3% with D vs PBO; 25.6% vs 12.0% had AEs that led to discontinuation of D/PBO (14.2% vs 5.6% in the first 4 months); 47.0% vs 51.9% had serious AEs; and 13.7% vs 10.2% had AEs with outcome of death. Pneumonitis/radiation pneumonitis occurred in 28.8% vs 28.7%. In PACIFIC-2, concurrent D and CRT did not improve outcomes vs CRT alone. Overall, safety and tolerability were consistent with the known profiles for D and CRT, although one quarter of pts had AEs leading to discontinuation of D, the majority of which occurred in the first 4 months. Consolidation D remains SoC for pts with unresectable stage III NSCLC who do not progress on definitive CRT.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4393166246",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Circulating tumor DNA as a prognostic marker in high-risk endometrial cancer",
+      "year": 2021,
+      "venue": "Journal of Translational Medicine",
+      "authors": [
+        "Weiwei Feng",
+        "Nan Jia",
+        "Haining Jiao",
+        "Jun Chen",
+        "Yan Chen",
+        "Yueru Zhang",
+        "Menghan Zhu",
+        "Chongying Zhu"
+      ],
+      "doi": "10.1186/s12967-021-02722-8",
+      "abstract": "BACKGROUND: Currently, there is no reliable blood-based marker to track tumor recurrence in endometrial cancer (EC) patients. Liquid biopsies, specifically, circulating tumor DNA (ctDNA) analysis emerged as a way to monitor tumor metastasis. The objective of this study was to examine the feasibility of ctDNA in recurrence surveillance and prognostic evaluation of high-risk EC. METHODS: Tumor tissues from nine high-risk EC patients were collected during primary surgery and tumor DNA was subjected to next generation sequencing to obtain the initial mutation spectrum using a 78 cancer-associated gene panel. Baseline and serial post-operative plasma samples were collected and droplet digital PCR (ddPCR) assays for patient-specific mutations were developed to track the mutations in the ctDNA in serial plasma samples. Log-rank test was used to assess the association between detection of ctDNA before or after surgery and disease-free survival. RESULTS: Somatic mutations were identified in all of the cases. The most frequent mutated genes were PTEN, FAT4, ARID1A, TP53, ZFHX3, ATM, and FBXW7. For each patient, personalized ddPCR assays were designed for one-to-three high-frequent mutations. DdPCR analysis and tumor panel sequencing had a high level of agreement in the assessment of the mutant allele fractions in baseline tumor tissue DNA. CtDNA was detected in 67% (6 of 9) of baseline plasma samples, which was not predictive of disease-free survival (DFS). CtDNA was detected in serial post-operative plasma samples (ctDNA tracking) of 44% (4 of 9) of the patients, which predicted tumor relapse. The DFS was a median of 9 months (ctDNA detected) versus median DFS undefined (ctDNA not detected), with a hazard ratio of 17.43 (95% CI, 1.616-188.3). The sensitivity of post-operative ctDNA detection in estimating tumor relapse was 100% and specificity was 83.3%, which was superior to CA125 or HE4. CONCLUSIONS: Personalized ctDNA detection was effective and stable for high-risk EC. CtDNA tracking in post-operative plasma is valuable for predicting tumor recurrence.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3126444173",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Overexpression of SMYD3 in Ovarian Cancer is Associated with Ovarian Cancer Proliferation and Apoptosis via Methylating H3K4 and H4K20",
+      "year": 2019,
+      "venue": "Journal of Cancer",
+      "authors": [
+        "Yahui Jiang",
+        "Tianjiao Lyu",
+        "Xiaoxia Che",
+        "Nan Jia",
+        "Qin Li",
+        "Weiwei Feng"
+      ],
+      "doi": "10.7150/jca.29861",
+      "abstract": "Background: Epigenetic regulation has been verified as a key mechanism in tumorigenesis. SET and MYND domain-containing protein 3 (SMYD3), a histone methyltransferase, is a promising epigenetic therapeutic target and is overexpressed in numerous human tumors. SMYD3 can promote oncogenic progression by methylating lysines to integrate cytoplasmic kinase signaling cascades or by methylating histone lysines to regulate specific gene transcription. However, the exact role of SMYD3 in the progression of ovarian cancer is still unknown. Methods: Immunohistochemistry was employed to test SMYD3 expression in ovarian cancer tissues from clinical patients. CCK-8 assay, Real-time cell analysis (RTCA), colony formation assay, cell cycle and apoptosis tested by Flow cytometer were employed to test the effects of SMYD3 on cell proliferation and apoptosis in ovarian cancer cell lines. A PCR array was used to identify the downstream targets of SMYD3. And, PCR and Western blot were used to verify their expression. The binding of SMYD3 on the promoter of target genes were tested by ChIP assays. We also use nude mice subcutaneous tumor model and patient-derived xenograft (PDX) model to investigate the tumor promotive function of SMYD3 in vivo. Results: SMYD3 expression was higher in ovarian cancer tissues and cell lines than in normal ovarian epithelial tissue and human ovarian surface epithelial cells (HOSEpiC). After silencing SMYD3, the proliferation of ovarian cancer cells was significantly inhibited in vitro. In addition, the SMYD3-specific small-molecule inhibitor BCI-121 suppressed ovarian cancer cell proliferation. Downregulation of SMYD3 led to S phase arrest and increased the cell apoptosis rate. Furthermore, a PCR array revealed that SMYD3 knockdown caused the upregulation of the cyclin-dependent kinase (CDK) inhibitors CDKN2A (p16 INK4 ), CDKN2B (p15 INK4B ), CDKN3 and CDC25A, which may be responsible for the S phase arrest. In addition, the upregulation of CD40LG and downregulation of BIRC3 may explain the increased cell apoptosis rate after silencing SMYD3. We also discovered that SMYD3 bound on the promoter of CDKN2A and down-regulated its expression by triple-methylating H4K20. In addition, SMYD3 bound on the promoter of BIRC3 and up-regulated its expression by triple-methylating H3K4. Finally, knocking down SMYD3 could inhibit ovarian cancer growth in nude mice subcutaneous tumor model and PDX model.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2962818280",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Expression and epigenetic regulation of angiogenesis-related factors during dormancy and recurrent growth of ovarian carcinoma",
+      "year": 2013,
+      "venue": "Epigenetics",
+      "authors": [
+        "Tianjiao Lyu",
+        "Nan Jia",
+        "Jieyu Wang",
+        "Xiaohui Yan",
+        "Yinhua Yu",
+        "Zhen Lü",
+        "Robert C. Bast",
+        "Keqin Hua"
+      ],
+      "doi": "10.4161/epi.26675",
+      "abstract": "The initiation of angiogenesis can mark the transition from tumor dormancy to active growth and recurrence. Mechanisms that regulate recurrence in human cancers are poorly understood, in part because of the absence of relevant models. The induction of ARHI (DIRAS3) induces dormancy and autophagy in human ovarian cancer xenografts but produces autophagic cell death in culture. The addition of VEGF to cultures maintains the viability of dormant autophagic cancer cells, thereby permitting active growth when ARHI is downregulated, which mimics the \"recurrence\" of growth in xenografts. Two inducible ovarian cancer cell lines, SKOv3-ARHI and Hey-ARHI, were used. The expression level of angiogenesis factors was evaluated by real-time PCR, immunohistochemistry, immunocytochemistry and western blot; their epigenetic regulation was measured by bisulfite sequencing and chromatin immunoprecipitation. Six of the 15 angiogenesis factors were upregulated in dormant cancer cells (tissue inhibitor of metalloproteinases-3, TIMP3; thrombospondin-1, TSP1; angiopoietin-1; angiopoietin-2; angiopoietin-4; E-cadherin, CDH1). We found that TIMP3 and CDH1 expression was regulated epigenetically and was related inversely to the DNA methylation of their promoters in cell cultures and in xenografts. Increased H3K9 acetylation was associated with higher TIMP3 expression in dormant SKOv3-ARHI cells, while decreased H3K27me3 resulted in the upregulation of TIMP3 in dormant Hey-ARHI cells. Elevated CDH1 expression during dormancy was associated with an increase in both H3K4me3 and H3K9Ac in two cell lines. CpG demethylating agents and/or histone deacetylase inhibitors inhibited the re-growth of dormant cancer cells, which was associated with the re-expression of anti-angiogenic genes. The expression of the anti-angiogenic genes TIMP3 and CDH1 is elevated during dormancy and is reduced during the transition to active growth by changes in DNA methylation and histone modification.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2000285730",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "OBJECTIVE: Osteopontin (OPN), a noncollagenous adhesive protein, is implicated in atherosclerosis, in which macrophages within atherosclerotic plaques express OPN. However, it is not known whether the elevated OPN expression is a cause or result of atherosclerosis.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2162332295",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "Osteopontin (OPN) is upregulated in several experimental models of cardiac fibrosis and remodeling. However, its direct effects remain unclear.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2109967971",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Nan Jia"
+}

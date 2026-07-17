@@ -1,0 +1,225 @@
+{
+  "professor_id": "BIO-01",
+  "field": "biomedicine",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Hebei Medical University working on biomedical and health research. Publication record spans Immunotherapy and Immune Responses, Hepatitis B Virus Studies, Virus-based gene therapy research.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5102202050",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Improving the ability of CAR-T cells to hit solid tumors: Challenges and strategies",
+      "year": 2021,
+      "venue": "Pharmacological Research",
+      "authors": [
+        "Zhengzheng Zhang",
+        "Tian Wang",
+        "Xiaofeng Wang",
+        "Yuqing Zhang",
+        "Shuxia Song",
+        "Cuiqing Ma"
+      ],
+      "doi": "10.1016/j.phrs.2021.106036",
+      "abstract": "Chimeric antigen receptor T cell (CAR-T) therapy is a late-model of immune cell therapy that has been shown to be effective in refractory/recurrent B-cell leukemia and lymphoma. Compared with the traditional anti-tumor methods, CAR-T cell therapy has the advantages of higher specificity, stronger lethality and longer-lasting efficacy. Although CAR-T cells have made significant progress in the treatment of hematologic malignancies, diverse difficulties remain in the treatment of solid tumors, including immune escape due to tumor antigen heterogeneity, preventing entry or limiting the persistence of CAR-T cells by physical or cytokine barriers and along with other immunosuppressive molecule and cells in the tumor microenvironment (TME). Otherwise, the intracellular signaling of CAR also impact on CAR-T cells persistence. Appropriate modification of intracellular costimulatory molecular signal in the structure of CAR or coexpression of CAR and cytokines can provide a way to enhance CAR-T cells activity. Additionally, CAR-T cells dysfunction due to T cell exhaustion is associated with multi-factors, especially transcription factors, such as c-Jun, NR4A. Engineering CAR-T cells to coexpress or knockout transcription factors in favor of TCM memory CAR-T cells differentiation was proved to prolonged the survival of CAR-T cells. Finally, combination of CAR-T cells with oncolytic viruses, nanoparticles or immune checkpoint inhibitors provides an effective measure to improve CAR-T cells function. Here, we discuss all of these advances and challenges and review promising strategies for treating solid tumors. In particular, we also highlight that CAR-T cells have enormous potential to be used in combination with other immunotherapies.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4200181335",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Molecular Mechanism of Cell Apoptosis by Paclitaxel and Pirarubicin in a Human Osteosarcoma Cell Line",
+      "year": 2010,
+      "venue": "Chemotherapy",
+      "authors": [
+        "Siyuan Liu",
+        "Shuxia Song",
+        "Liang Lin",
+        "Xing Liu"
+      ],
+      "doi": "10.1159/000305257",
+      "abstract": "BACKGROUND: Paclitaxel and pirarubicin exhibit cytotoxic and antitumor activities. However, little is known about the apoptosis-inducing effects of paclitaxel and pirarubicin on human osteosarcoma MG-63 cells. METHODS: The effects of paclitaxel and pirarubicin on cell cycle arrest and apoptosis were studied in MG-63 cells using flow cytometry. PCNA, Bcl-2, Bax, cyclin D1 and cyclin E expression was assessed by Western blotting. RESULTS: Paclitaxel and pirarubicin caused G2/M and G0/G1 cell cycle arrest in MG-63 cells, respectively. Apoptosis of MG-63 cells mediated by paclitaxel was dependent on treatment duration. Interestingly, in cells treated with pirarubicin, apoptosis was related to treatment duration at concentrations of 10(2)-10(3) nM, whereas the effect of treatment duration was less marked at concentrations >10(4)-10(5) nM. Furthermore, paclitaxel and pirarubicin suppressed the expression of PCNA, cyclin D1, cyclin E and Bcl-2, and increased Bax expression. CONCLUSION: These results suggest that the G2/M or G0/G1 cell cycle arrest and apoptosis induced by paclitaxel and pirarubicin are Bcl-2/Bax dependent, suggesting favorable effects of combination therapy with paclitaxel and pirarubicin in the treatment of osteosarcoma.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2000129278",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Ginsenoside Rb1, Compound K and 20(S)-Protopanaxadiol Attenuate High-Fat Diet-Induced Hyperlipidemia in Rats via Modulation of Gut Microbiota and Bile Acid Metabolism",
+      "year": 2024,
+      "venue": "Molecules",
+      "authors": [
+        "Kang-Xi Zhang",
+        "Yue Zhu",
+        "Shuxia Song",
+        "Qingyun Bu",
+        "Xiaoyan You",
+        "Hong Yan Zou",
+        "Guoping Zhao"
+      ],
+      "doi": "10.3390/molecules29051108",
+      "abstract": "Hyperlipidemia, characterized by elevated serum lipid concentrations resulting from lipid metabolism dysfunction, represents a prevalent global health concern. Ginsenoside Rb1, compound K (CK), and 20(S)-protopanaxadiol (PPD), bioactive constituents derived from Panax ginseng, have shown promise in mitigating lipid metabolism disorders. However, the comparative efficacy and underlying mechanisms of these compounds in hyperlipidemia prevention remain inadequately explored. This study investigates the impact of ginsenoside Rb1, CK, and PPD supplementation on hyperlipidemia in rats induced by a high-fat diet. Our findings demonstrate that ginsenoside Rb1 significantly decreased body weight and body weight gain, ameliorated hepatic steatosis, and improved dyslipidemia in HFD-fed rats, outperforming CK and PPD. Moreover, ginsenoside Rb1, CK, and PPD distinctly modified gut microbiota composition and function. Ginsenoside Rb1 increased the relative abundance of Blautia and Eubacterium, while PPD elevated Akkermansia levels. Both CK and PPD increased Prevotella and Bacteroides, whereas Clostridium-sensu-stricto and Lactobacillus were reduced following treatment with all three compounds. Notably, only ginsenoside Rb1 enhanced lipid metabolism by modulating the PPARγ/ACC/FAS signaling pathway and promoting fatty acid β-oxidation. Additionally, all three ginsenosides markedly improved bile acid enterohepatic circulation via the FXR/CYP7A1 pathway, reducing hepatic and serum total bile acids and modulating bile acid pool composition by decreasing primary/unconjugated bile acids (CA, CDCA, and β-MCA) and increasing conjugated bile acids (TCDCA, GCDCA, GDCA, and TUDCA), correlated with gut microbiota changes. In conclusion, our results suggest that ginsenoside Rb1, CK, and PPD supplementation offer promising prebiotic interventions for managing HFD-induced hyperlipidemia in rats, with ginsenoside Rb1 demonstrating superior efficacy.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4392366264",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Local radiotherapy for murine breast cancer increases risk of metastasis by promoting the recruitment of M-MDSCs in lung",
+      "year": 2023,
+      "venue": "Cancer Cell International",
+      "authors": [
+        "Zhengzheng Zhang",
+        "Zhiyan Yao",
+        "Zimeng Zhang",
+        "Ling Cui",
+        "Ling Zhang",
+        "Gang Qiu",
+        "Xiaotian Song",
+        "Shuxia Song"
+      ],
+      "doi": "10.1186/s12935-023-02934-6",
+      "abstract": "BACKGROUND: Radiotherapy is one of the effective methods for treatment of breast cancer; however, controversies still exist with respect to radiotherapy for patients with TNBC. Here, we intend to explore the mechanism by which local radiotherapy promotes the recruitment of M-MDSCs in the lung and increases the risk of lung metastasis in TNBC tumor-bearing mice. METHODS: A single dose of 20 Gy X-ray was used to locally irradiate the primary tumor of 4T1 tumor-bearing mice. Tumor growth, the number of pulmonary metastatic nodules, and the frequency of MDSCs were monitored in the mice. Antibody microarray and ELISA methods were used to analyze the cytokines in exosomes released by irradiated (IR) or non-IR 4T1 cells. The effects of the exosomes on recruitment of MDSCs and colonization of 4T1 cells in the lung of normal BALB/c mice were observed with the methods of FCM and pathological section staining. T lymphocytes or 4T1 cells co-cultured with MDSCs were performed to demonstrate the inhibitory effect on T lymphocytes or accelerative migration effect on 4T1 cells. Finally, a series of in vitro experiments demonstrated how the exosomes promote the recruitment of M-MDSCs in lung of mice. RESULTS: ) significantly increased. Consistently, radiotherapy markedly potentiated M-MDSCs and decreased PMN-MDSCs recruitment to lung of tumor-bearing mice. Moreover, the frequency of M-MDSCs of lung was positively correlated with the number of lung metastatic nodules. Further, M-MDSCs markedly inhibited T cell function, while there was no difference between M-MDSCs and PMN-MDSCs in promoting 4T1 cell migration. X-ray irradiation promoted the release of G-CSF, GM-CSF and CXCl1-rich exosomes, and facilitated the migration of M-MDSCs and PMN-MDSCs into the lung through CXCL1/CXCR2 signaling. While irradiated mouse lung extracts or ir/4T1-exo treated macrophage culture medium showed obvious selective chemotaxis to M-MDSCs. Mechanistically, ir/4T1-exo induce macrophage to produce GM-CSF, which further promoted CCL2 release in an autocrine manner to recruit M-MDSCs via CCL2/CCR2 axis. CONCLUSIONS: Our work has identified an undesired effect of radiotherapy that may promote immunosuppressive premetastatic niches formation by recruiting M-MDSCs to lung. Further studies on radiotherapy combined CXCR2 or CCR2 signals inhibitors were necessary.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4379197518",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Ginsenosides From <scp> <i>Panax ginseng</i> </scp> Improves Hepatic Lipid Metabolism Disorders in <scp>HFD</scp> ‐Fed Rats by Regulating Gut Microbiota and Cholesterol Metabolism Signaling Pathways",
+      "year": 2024,
+      "venue": "Phytotherapy Research",
+      "authors": [
+        "Yue Zhu",
+        "Kang-Xi Zhang",
+        "Qingyun Bu",
+        "Shuxia Song",
+        "Yue Chen",
+        "Hong Yan Zou",
+        "Xiaoyan You",
+        "Guoping Zhao"
+      ],
+      "doi": "10.1002/ptr.8402",
+      "abstract": "A high-fat diet (HFD) is often associated with hepatic lipid metabolism disorders, leading to dysfunction in multiple body systems. Ginsenosides derived from Panax ginseng have been reported to possess potential effects in ameliorating lipid metabolism disorders; however, their underlying mechanisms remain insufficiently explored. This study aims to investigate the bioactivities of ginsenosides in combating lipid metabolism disorders and obesity, with a focus on their mechanisms involving the cholesterol metabolism signaling pathway and gut microbiota. Our results demonstrated that ginsenoside treatment significantly reduced overall body weight, body weight changes, liver weight, and eWAT weight, as well as alleviated hepatic steatosis and dyslipidemia in HFD-fed rats, without affecting food intake. These effects were dose-dependent. Furthermore, 16S rRNA sequencing revealed that ginsenosides significantly increased the relative abundance of Akkermansia muciniphila, Blautia, Eisenbergiella, Clostridium clusters XI, XVIII, and III, while decreasing the relative abundance of Clostridium subcluster XIVa and Dorea. In addition, ginsenoside treatment significantly regulated the expression of hepatic genes and proteins involved in the cholesterol metabolism signaling pathway (FXR, CYP7A1, CYP7B1, CYP27A1, ABCG5, ABCG8, Insig2, and Dhcr7), potentially inhibiting hepatic cholesterol biosynthesis while promoting cholesterol transport to HDL and its excretion via bile and feces. Notably, levels of 7-dehydrocholesterol (7-DHC) and 27-hydroxycholesterol (27-OHC) were reduced, while 5β,6β-epoxycholesterol (5,6β-epoxy) levels were elevated following ginsenoside treatment, indicating significant modulation of oxysterols by ginsenosides. Moreover, bile acid enterohepatic circulation was regulated through the enhancement of hepatic FXR-CYP7A1 signaling and intestinal FXR-FGF15 signaling in HFD-fed rats treated with ginsenosides, which was closely linked to gut microbiota composition. Collectively, our findings suggest that ginsenosides alleviate hepatic lipid metabolism disorders by modulating gut microbiota and the cholesterol metabolism signaling pathway in HFD-fed rats.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4405282072",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Impact of ginsenoside Rb1 on gut microbiome and associated changes in pharmacokinetics in rats",
+      "year": 2024,
+      "venue": "Scientific Reports",
+      "authors": [
+        "Yue Chen",
+        "Kang-Xi Zhang",
+        "Hui Liu",
+        "Yue Zhu",
+        "Qingyun Bu",
+        "Shuxia Song",
+        "Yuanfei Li",
+        "Hong Yan Zou"
+      ],
+      "doi": "10.1038/s41598-024-72225-1",
+      "abstract": "Ginsenoside Rb 1 exhibits a wide range of biological activities, and gut microbiota is considered the main metabolic site for Rb 1 . However, the impact of gut microbiota on the pharmacokinetics of Rb 1 are still uncertain. In this study, we investigated the gut microbiome changes and the pharmacokinetics after a 30 d Rb 1 intervention. Results reveal that the systemic exposure and metabolic clearance rate of Rb 1 and Rd were substantially affected after orally supplementing Rb 1 (60 mg/kg) to rats. Significant increase in the relative abundance of Bacteroides cellulosilyticus in gut microbiota and specific glycoside hydrolase (GH) families, such as GH2, GH92, and GH20 were observed based on microbiome and metagenomic analysis. Moreover, a robust association was identified between the pharmacokinetic parameters of Rb 1 and the relative abundance of specific Bacteroides species, and glycoside hydrolase families. Our study demonstrates that Rb 1 administration significantly affects the gut microbiome, revealing a complex relationship between B. cellulosilyticus , key GH families, and Rb 1 pharmacokinetics.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4402401706",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "A preliminary study on the activation and antigen presentation of hepatitis B virus core protein virus-like particle-pulsed bone marrow-derived dendritic cells",
+      "year": 2010,
+      "venue": "Molecular BioSystems",
+      "authors": [
+        "Fei‐Xiang Ding",
+        "Xian Xian",
+        "Yingjun Guo",
+        "Yin Liu",
+        "Yue Wang",
+        "Fu Yang",
+        "Yu-zhao Wang",
+        "Shuxia Song"
+      ],
+      "doi": "10.1039/c005222a",
+      "abstract": "Hepatitis B virus core protein virus-like particles (HBc-VLPs) act as a strong immunogen and are suitable for uptake by dendritic cells (DCs), in which they directly promote DC maturation and migration. To illustrate the utility of global proteomic analysis techniques in elucidating the molecular events that are altered in HBc-VLP-pulsed bone marrow-derived DCs (BMDCs) and to gain a better understanding of the molecular mechanisms of capture and processing of HBc-VLP-pulsed BMDCs, an antigen (Ag) delivery system based on HBc-VLP-pulsed BMDCs was developed. Two-dimensional electrophoresis (2-DE) and tandem mass spectrometry (MS/MS) analyses were utilized to analyze the differential protein expression patterns between HBc-VLP-pulsed and untreated BMDCs. Protein spots with significantly altered expression levels were detected, identified and validated. The results showed that exogenous HBc-VLPs were phagocytosed efficiently by BMDCs and enhanced the efficacy of BMDC maturation and Ag presentation, VLPs also induced high levels of Ag-specific CD8(+) T cells that displayed high cytotoxic T lymphocyte (CTL) activity in vivo. Several differentially expressed proteins, including growth factor receptor bound protein 2 (Grb2) and annexin A2 (AnxA2), were detected by proteomic analysis, identified by mass spectrometry and validated by western blot.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2113201901",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Augmented Humoral and Cellular Immune Responses Induced by Canine Adenovirus Type 1 DNA Vaccine in BALB/c Mice",
+      "year": 2007,
+      "venue": "Viral Immunology",
+      "authors": [
+        "Junxia Wang",
+        "Long Zheng",
+        "Shuxia Song",
+        "Xia Zhang",
+        "Limin Li",
+        "Fang Wang",
+        "Ying Fu Liu",
+        "Shuhan Sun"
+      ],
+      "doi": "10.1089/vim.2007.0018",
+      "abstract": "Infectious canine hepatitis (ICH) is caused by canine adenovirus type 1 (CAV-1), which severely harms infected animals. Vaccination provides an effective approach to preventing canine infectious diseases. With the objective of exploring a new vaccination strategy that may prevent or cure ICH, we constructed a DNA vaccine, pVAX1-CpG-Loop, and evaluated its immune efficacy. We found that vaccination of BALB/c mice with the DNA vaccine alone, or priming with DNA vaccine and boosting with the Loop protein, resulted in the following: (1) High-level specific antibody (IgG) against CAV-1 was induced; (2) T cell activation was elicited; and (3) neutralizing antibodies were detectable in immunized mice. Collectively, these data indicate that the availability of a DNA vaccine could prevent hepatitis contagiosa canis.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2031008079",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "Chimeric antigen receptor T cell (CAR-T) therapy is a late-model of immune cell therapy that has been shown to be effective in refractory/recurrent B-cell leukemia and lymphoma. Compared with the traditional anti-tumor methods, CAR-T cell therapy has the advantages of higher specificity, stronger lethality and longer-lasting efficacy.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4200181335",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "BACKGROUND: Paclitaxel and pirarubicin exhibit cytotoxic and antitumor activities. However, little is known about the apoptosis-inducing effects of paclitaxel and pirarubicin on human osteosarcoma MG-63 cells.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2000129278",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Shuxia Song"
+}

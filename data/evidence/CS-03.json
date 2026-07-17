@@ -1,0 +1,200 @@
+{
+  "professor_id": "CS-03",
+  "field": "cs_ai",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at University of America working on machine learning and applied AI. Publication record spans Quantum Computing Algorithms and Architecture, Quantum Information and Cryptography, Orbital Angular Momentum in Optics.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5064950481",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "IoT in Smart Cities: A Survey of Technologies, Practices and Challenges",
+      "year": 2021,
+      "venue": "Smart Cities",
+      "authors": [
+        "Abbas Shah Syed",
+        "Daniel Sierra-Sosa",
+        "Anup Kumar",
+        "Adel Elmaghraby"
+      ],
+      "doi": "10.3390/smartcities4020024",
+      "abstract": "Internet of Things (IoT) is a system that integrates different devices and technologies, removing the necessity of human intervention. This enables the capacity of having smart (or smarter) cities around the world. By hosting different technologies and allowing interactions between them, the internet of things has spearheaded the development of smart city systems for sustainable living, increased comfort and productivity for citizens. The IoT for Smart Cities has many different domains and draws upon various underlying systems for its operation. In this paper, we provide a holistic coverage of the Internet of Things in Smart Cities. We start by discussing the fundamental components that make up the IoT based Smart City landscape followed by the technologies that enable these domains to exist in terms of architectures utilized, networking technologies used as well as the Artificial Algorithms deployed in IoT based Smart City systems. This is then followed up by a review of the most prevalent practices and applications in various Smart City domains. Lastly, the challenges that deployment of IoT systems for smart cities encounter along with mitigation measures.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3143407182",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Deep Learning Techniques for Speech Emotion Recognition, from Databases to Models",
+      "year": 2021,
+      "venue": "Sensors",
+      "authors": [
+        "Babak Abbaschian",
+        "Daniel Sierra-Sosa",
+        "Adel Elmaghraby"
+      ],
+      "doi": "10.3390/s21041249",
+      "abstract": "The advancements in neural networks and the on-demand need for accurate and near real-time Speech Emotion Recognition (SER) in human-computer interactions make it mandatory to compare available methods and databases in SER to achieve feasible solutions and a firmer understanding of this open-ended problem. The current study reviews deep learning approaches for SER with available datasets, followed by conventional machine learning techniques for speech emotion recognition. Ultimately, we present a multi-aspect comparison between practical neural network approaches in speech emotion recognition. The goal of this study is to provide a survey of the field of discrete speech emotion recognition.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3126625480",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Quantum Machine Learning Applications in the Biomedical Domain: A Systematic Review",
+      "year": 2022,
+      "venue": "IEEE Access",
+      "authors": [
+        "Danyal Maheshwari",
+        "Begonya García-Zapirain",
+        "Daniel Sierra-Sosa"
+      ],
+      "doi": "10.1109/access.2022.3195044",
+      "abstract": "Quantum technologies have become powerful tools for a wide range of application disciplines, which tend to range from chemistry to agriculture, natural language processing, and healthcare due to exponentially growing computational power and advancement in machine learning algorithms. Furthermore, the processing of classical data and machine learning algorithms in the quantum domain has given rise to an emerging field like quantum machine learning. Recently, quantum machine learning, become a quite challenging field in case of healthcare applications. As a result, quantum machine learning has become a common and effective technique for data processing and classification across a wide range of domains. Consequently, quantum machine learning is the most commonly used application of quantum computing. The main objective of this work is to present a brief overview of current state-of-the-art published articles between 2013 and 2021 to identify, analyze, and classify the different QML algorithms and applications in the biomedical field. Furthermore, the approach adheres to the requirements for conducting systematic literature review techniques such as research questions and quality metrics of the articles. Initially, we discovered 3149 articles, excluded the 2847 papers, and read the 121 full papers. Therefore, this research compiled 30 articles that comply with the quantum machine learning models, and quantum circuits are using biomedical data. Eventually, this article provides a broad overview of quantum machine learning limitations and future prospects.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4288785604",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Variational Quantum Classifier for Binary Classification: Real vs Synthetic Dataset",
+      "year": 2021,
+      "venue": "IEEE Access",
+      "authors": [
+        "Danyal Maheshwari",
+        "Daniel Sierra-Sosa",
+        "Begonya García-Zapirain"
+      ],
+      "doi": "10.1109/access.2021.3139323",
+      "abstract": "Nowadays, quantum-enhanced methods have been widely studied to solve machine learning related problems. This article presents the application of a Variational Quantum Classifier (VQC) for binary classification. We utilized three datasets: a synthetic dataset with randomly generated values between 0 and 1, the publicly available University of California Intelligence Machine learning (UCI) sonar dataset consisting of mining data, and a proprietary diabetes dataset related to diabetes with acute diseases and diabetes without acute disease. To deal with the limitation of noisy intermediate-scale quantum systems (NISQ), we used a pre-processing method to enhance the prediction rate when applying the VQC method. The process includes feature selection and state preparation. Quantum state preparation is critical for obtaining a functioning pipeline in a quantum machine learning (QML) model. Amplitude encoding is a state preparation approach that enhances the performance of data encoding and the learning of quantum models. As a result, our proposed methods achieved accuracies of 75%, 71.4%, and 68.73% by using VQC model and in contrast, the amplitude encoding-based VQC achieved 98.40%, 67.3%, and 74.50% accuracies on the synthetic, sonar, and diabetes dataset, respectively.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4206799920",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Scalable Healthcare Assessment for Diabetic Patients Using Deep Learning on Multiple GPUs",
+      "year": 2019,
+      "venue": "IEEE Transactions on Industrial Informatics",
+      "authors": [
+        "Daniel Sierra-Sosa",
+        "Begonya García-Zapirain",
+        "Cristián Castillo-Olea",
+        "Ibon Ruiz",
+        "Roberto Nuño-Solínis",
+        "Maider Urtaran-Laresgoiti",
+        "Adel Elmaghraby"
+      ],
+      "doi": "10.1109/tii.2019.2919168",
+      "abstract": "The large-scale parallel computation that became available on the new generation of graphics processing units (GPUs) and on cloud-based services can be exploited for use in healthcare data analysis. Furthermore, computation workstations suited for deep learning are usually equipped with multiple GPUs allowing for workload distribution among multiple GPUs for larger datasets while exploiting parallelism in each GPU. In this paper, we utilize distributed and parallel computation techniques to efficiently analyze healthcare data using deep learning techniques. We demonstrate the scalability and computational benefits of this approach with a case study of longitudinal assessment of approximately 150 000 type 2 diabetic patients. Type 2 diabetes mellitus (T2DM) is the fourth case of mortality worldwide with rising prevalence. T2DM leads to adverse events such as acute myocardial infarction, major amputations, and avoidable hospitalizations. This paper aims to establish a relation between laboratory and medical assessment variables with the occurrence of the aforementioned adverse events and its prediction using machine learning techniques. We use a raw database provided by Basque Health Service, Spain, to conduct this study. This database contains 150 156 patients diagnosed with T2DM, from whom 321 laboratory and medical assessment variables recorded over four years are available. Predictions of adverse events on T2DM patients using both classical machine learning and deep learning techniques were performed and evaluated using accuracy, precision, recall and F1-score as metrics. The best performance for the prediction of acute myocardial infarction is obtained by linear discriminant analysis (LDA) and support vector machines (SVM) both balanced and weight models with an accuracy of 97%; hospital admission for avoidable causes best performance is obtained by LDA balanced and SVMs balanced both with an accuracy of 92%. For the prediction of the incidence of at least one adverse event, the model with the best performance is the recurrent neural network trained with a balanced dataset with an accuracy of 94.6%. The ability to perform and compare these experiments was possible through the use of a workstation with multi-GPUs. This setup allows for scalability to larger datasets. Such models are also cloud ready and can be deployed on similar architectures hosted on AWS for even larger datasets.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2947510367",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Malicious Text Identification: Deep Learning from Public Comments and Emails",
+      "year": 2020,
+      "venue": "Information",
+      "authors": [
+        "Asma Baccouche",
+        "Sadaf Ahmed",
+        "Daniel Sierra-Sosa",
+        "Adel Elmaghraby"
+      ],
+      "doi": "10.3390/info11060312",
+      "abstract": "Identifying internet spam has been a challenging problem for decades. Several solutions have succeeded to detect spam comments in social media or fraudulent emails. However, an adequate strategy for filtering messages is difficult to achieve, as these messages resemble real communications. From the Natural Language Processing (NLP) perspective, Deep Learning models are a good alternative for classifying text after being preprocessed. In particular, Long Short-Term Memory (LSTM) networks are one of the models that perform well for the binary and multi-label text classification problems. In this paper, an approach merging two different data sources, one intended for Spam in social media posts and the other for Fraud classification in emails, is presented. We designed a multi-label LSTM model and trained it on the joint datasets including text with common bigrams, extracted from each independent dataset. The experiment results show that our proposed model is capable of identifying malicious text regardless of the source. The LSTM model trained with the merged dataset outperforms the models trained independently on each dataset.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3035652504",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Kudo’s Classification for Colon Polyps Assessment Using a Deep Learning Approach",
+      "year": 2020,
+      "venue": "Applied Sciences",
+      "authors": [
+        "Sebastian Patino-Barrientos",
+        "Daniel Sierra-Sosa",
+        "Begonya García-Zapirain",
+        "Cristián Castillo-Olea",
+        "Adel Elmaghraby"
+      ],
+      "doi": "10.3390/app10020501",
+      "abstract": "Colorectal cancer (CRC) is the second leading cause of cancer death in the world. This disease could begin as a non-cancerous polyp in the colon, when not treated in a timely manner, these polyps could induce cancer, and in turn, death. We propose a deep learning model for classifying colon polyps based on the Kudo’s classification schema, using basic colonoscopy equipment. We train a deep convolutional model with a private dataset from the University of Deusto with and without using a VGG model as a feature extractor, and compared the results. We obtained 83% of accuracy and 83% of F1-score after fine tuning our model with the VGG filter. These results show that deep learning algorithms are useful to develop computer-aided tools for early CRC detection, and suggest combining it with a polyp segmentation model for its use by specialists.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2999493547",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "TensorFlow Quantum: Impacts of Quantum State Preparation on Quantum Machine Learning Performance",
+      "year": 2020,
+      "venue": "IEEE Access",
+      "authors": [
+        "Daniel Sierra-Sosa",
+        "Michael Telahun",
+        "Adel Elmaghraby"
+      ],
+      "doi": "10.1109/access.2020.3040798",
+      "abstract": "Learning methodologies on quantum devices have shown that there are advantages in utilizing quantum properties. A requirement for using quantum computing in machine learning techniques is the data representation as quantum states. In Quantum Machine Learning, quantum state preparation is paramount to attain a functional pipeline in a model. One state preparation method, amplitude encoding, allows a dataset to be mapped or encoded more robustly and enhances the learning of quantum models. Albeit more densely represented, a dataset which has been prepared by amplitude encoding provides a more learnable input to a model. The two main advantages from using amplitude encoding are an increase in classification accuracy and reduced variability of learning epoch to epoch. In this paper, we compare the basic implementations of TensorFlow Quantum's Quantum Convolutional Neural Network and a hybrid quantum-classical network using angle encoding, with a third network of our design that utilizes amplitude encoding for enriched state preparation. Our results show there is a direct benefit in performing amplitude encoding before training a TensorFlow Quantum hybrid quantum-classical model. In the best case scenario, amplitude encoding made classifying the samples 8.9% more accurate.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3109680281",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "Internet of Things (IoT) is a system that integrates different devices and technologies, removing the necessity of human intervention. This enables the capacity of having smart (or smarter) cities around the world.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3143407182",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "The advancements in neural networks and the on-demand need for accurate and near real-time Speech Emotion Recognition (SER) in human-computer interactions make it mandatory to compare available methods and databases in SER to achieve feasible solutions and a firmer understanding of this open-ended problem. The current study reviews deep learning approaches for SER with available datasets, followed by conventional machine learning techniques for speech emotion recognition.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3126625480",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Daniel Sierra-Sosa"
+}

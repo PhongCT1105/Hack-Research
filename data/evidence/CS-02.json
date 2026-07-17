@@ -1,0 +1,216 @@
+{
+  "professor_id": "CS-02",
+  "field": "cs_ai",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Korea Advanced Institute of Science and Technology working on machine learning and applied AI. Publication record spans Topic Modeling, Education and Learning Interventions, Natural Language Processing Techniques.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5100336474",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Multicomponent Covalent Organic Framework Solid Electrolyte Allowing Effective Li-Ion Dissociation and Diffusion for All-Solid-State Batteries",
+      "year": 2023,
+      "venue": "ACS Nano",
+      "authors": [
+        "Junhyeong Lee",
+        "Hajin Lee",
+        "Jae Wook Lee",
+        "Tae Woog Kang",
+        "Jung Hyun Park",
+        "Jae‐Hoon Shin",
+        "Hyunji Lee",
+        "Dibyananda Majhi"
+      ],
+      "doi": "10.1021/acsnano.3c05405",
+      "abstract": "Organic solid electrolytes compatible with all-solid-state Li metal batteries (LMBs) are essential to ensuring battery safety, high energy density, and long-term cycling performance. However, it remains a challenge to develop an approach to provide organic solid electrolytes with capabilities for the facile dissociation of strong Li-ion pairs and fast transport of ionic components. Herein, a diethylene glycol-modified pyridinium covalent organic framework (DEG-PMCOF) with a well-defined periodic structure is prepared as a multicomponent solid electrolyte with a cationic moiety of high polarity, an additional flexible ion-transporter, and an ordered ionic channel for all-solid-state LMBs. The DEG-containing pyridinium groups of DEG-PMCOF allow a lower dissociation energy of Li salts and a smaller energy barrier of Li-ion transport, leading to high ion conductivity (1.71 × 10 –4 S cm –1 ) and a large Li-ion transfer number (0.61) at room temperature in the solid electrolyte. The DEG-PMCOF solid electrolyte exhibits a wide electrochemical stability window and effectively suppresses the formation of Li dendrites and dead Li in all-solid-state LMBs. Molecular dynamics and density functional theory simulations provide insights into the mechanisms for the enhanced Li-ion transport driven by the integrated diffusion process based on hopping motion, vehicle motion, and free diffusion of DEG-PMCOF. The all-solid-state LMB assembled with a DEG-PMCOF solid electrolyte displays a high specific capacity with a retention of 99% and an outstanding Coulombic efficiency of 99% at various C-rates during long-term cycling. This DEG-PMCOF approach can offer an effective route to design various solid-state Li batteries.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4386158212",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Modulating the electrocatalytic activity of N-doped carbon frameworks via coupling with dual metals for Zn–air batteries",
+      "year": 2022,
+      "venue": "Nano Convergence",
+      "authors": [
+        "Jung Hyun Park",
+        "Jae‐Hoon Shin",
+        "Jong‐Min Ju",
+        "Junhyeong Lee",
+        "Chanhee Choi",
+        "Yoonhee So",
+        "Hyunji Lee",
+        "Jong‐Ho Kim"
+      ],
+      "doi": "10.1186/s40580-022-00308-8",
+      "abstract": "N-Doped carbon electrocatalysts are a promising alternative to precious metal catalysts to promote oxygen reduction reaction (ORR). However, it remains a challenge to design the desired active sites on carbon skeletons in a controllable manner for ORR. Herein, we developed a facile approach based on oxygen-mediated solvothermal radical reaction (OSRR) for preparation of N-doped carbon electrocatalysts with a pre-designed active site and modulated catalytic activity for ORR. In the OSRR, 2-methylimidazole reacted with Co and Mn salts to form an active site precursor (MnCo-MIm) in N-methyl-2-pyrrolidone (NMP) at room temperature. Then, the reaction temperature increased to 140 °C under an oxygen atmosphere to generate NMP radicals, followed by their polymerization with the pre-formed MnCo-MIm to produce Mn-coupled Co nanoparticle-embedded N-doped carbon framework (MnCo-NCF). The MnCo-NCF showed uniform dispersion of nitrogen atoms and Mn-doped Co nanoparticles on the carbon skeleton with micropores and mesopores. The MnCo-NCF exhibited higher electrocatalytic activity for ORR than did a Co nanoparticle only-incorporated carbon framework due to the improved charge transfer from the Mn-doped Co nanoparticles to the carbon skeleton. In addition, the Zn-air battery assembled with MnCo-NCF had superior performance and durability to the battery using commercial Pt/C. This facile approach can be extended for designing carbon electrocatalysts with desired active sites to promote specific reactions.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4223519839",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Amorphous Fluorinated Acrylate Polymer Dielectrics for Flexible Transistors and Logic Gates with High Operational Stability",
+      "year": 2023,
+      "venue": "ACS Applied Materials & Interfaces",
+      "authors": [
+        "Heqing Ye",
+        "Ka Yeon Ryu",
+        "Hyeok‐jin Kwon",
+        "Hyunji Lee",
+        "Rixuan Wang",
+        "Jisu Hong",
+        "Hyun Ho Choi",
+        "Sang Yong Nam"
+      ],
+      "doi": "10.1021/acsami.3c02010",
+      "abstract": "Fluorinated amorphous polymeric gate-insulating materials for organic thin-film transistors (OTFTs) not only form hydrophobic surfaces but also significantly reduce traps at the interface between the organic semiconductor and gate insulator. Therefore, these polymeric materials can enhance the OTFT's operation stability. In this study, we synthesized a new polymeric insulating material series composed of acrylate and fluorinated functional groups (with different ratios) named MBHCa-F and used them as gate insulators for OTFTs and in other applications. The insulating features of the MBHCa-F polymers, including surface energy, surface atomic content properties, dielectric constant, and leakage current, were clearly analyzed with respect to the content of the fluorinated functional groups. At higher fluorine-based functional group content, the polymeric series exhibited higher fluorine-based contents at the surface and superior electrical properties, such as field-effect mobility and driving stability, at OTFTs. Therefore, we believe that this study provides a substantial method for synthesizing polymeric insulating materials to enhance the operational stability and electrical performance of OTFTs.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4382344672",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Generative Multi-hop Retrieval",
+      "year": 2022,
+      "venue": "Unknown venue",
+      "authors": [
+        "Hyunji Lee",
+        "Sohee Yang",
+        "Hanseok Oh",
+        "Minjoon Seo"
+      ],
+      "doi": "10.18653/v1/2022.emnlp-main.92",
+      "abstract": "A common practice for text retrieval is to use an encoder to map the documents and the query to a common vector space and perform a nearest neighbor search (NNS); multi-hop retrieval also often adopts the same paradigm, usually with a modification of iteratively reformulating the query vector so that it can retrieve different documents at each hop. However, such a bi-encoder approach has limitations in multi-hop settings; (1) the reformulated query gets longer as the number of hops increases, which further tightens the embedding bottleneck of the query vector, and (2) it is prone to error propagation. In this paper, we focus on alleviating these limitations in multi-hop settings by formulating the problem in a fully generative way. We propose an encoder-decoder model that performs multi-hop retrieval by simply generating the entire text sequences of the retrieval targets, which means the query and the documents interact in the language model’s parametric space rather than L2 or inner product space as in the bi-encoder approach. Our approach, Generative Multi-hop Retrieval (GMR), consistently achieves comparable or higher performance than bi-encoder models in five datasets while demonstrating superior GPU memory and storage footprint.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4385573082",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Immersed in Art: The Impact of Affinity for Technology Interaction and Hedonic Motivation on Aesthetic Experiences in Virtual Reality",
+      "year": 2024,
+      "venue": "Empirical Studies of the Arts",
+      "authors": [
+        "Hyunji Lee",
+        "Nara Youn"
+      ],
+      "doi": "10.1177/02762374241282938",
+      "abstract": "Viewing artworks through virtual reality (VR) offers a unique experience, yet understanding how individual traits and motivations affect this process requires further exploration. In this study, we empirically examined the factors influencing aesthetic experiences when viewing artworks in VR. We conducted two experiments using a between-subjects design with VR and 2D videos based on a virtual tour of the Sydney Opera House and an artistic interpretation of Vincent van Gogh's paintings as stimuli. Our moderated mediation analyses identified two pathways through which VR influences aesthetic experiences: a cognitive pathway and an affective pathway. The cognitive pathway reveals that VR enhances the sense of agency and immersion, enriching the aesthetic experience for individuals with a high affinity for technology. The affective pathway shows that VR increases narrative transportation and immersion, enhancing the aesthetic experience particularly for those with strong hedonic motivations.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4402615225",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "The implication of frequency of the Korean Public Alert Service (KPAS)",
+      "year": 2021,
+      "venue": "International Journal of Disaster Risk Reduction",
+      "authors": [
+        "Hyunji Lee",
+        "Yoonkwan Byun",
+        "Sekchin Chang",
+        "Seong Jong Choi"
+      ],
+      "doi": "10.1016/j.ijdrr.2021.102674",
+      "abstract": "Since 2005, the South Korean government has been issuing emergency alerts to mobile devices. This service is called the Korean Public Alert Service (KPAS). The government has continued its efforts to expand the effectiveness and public acceptance as a primary alerting tool, comparable to the broadcasting media. KPAS contributed to successful defensive measures against the damage of disaster. As the number of KPAS alerts increases, people were reportedly getting more annoyed and insensitive to the alerts. This study focused on how the exploding number of alerts exacerbates the alert effectiveness such as public distrust and fatigue, resulting in ignorance and inactivation of KPAS on their mobile devices. This study analyzed an online survey with 1212 participants, with the following results. First, the frequency of KPAS alerts positively influenced public distrust and fatigue. Next, distrust and fatigue positively influenced the behavior of blocking and avoiding KPAS alerts. The results solicit the novel measures to turn up the effectiveness of KPAS through coordinated alerting policies as well as technical enhancements.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3210221703",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Nonparametric Decoding for Generative Retrieval",
+      "year": 2023,
+      "venue": "Unknown venue",
+      "authors": [
+        "Hyunji Lee",
+        "Jaeyoung Kim",
+        "Hoyeon Chang",
+        "Hanseok Oh",
+        "Sohee Yang",
+        "Vladimir Karpukhin",
+        "Yi Lu",
+        "Minjoon Seo"
+      ],
+      "doi": "10.18653/v1/2023.findings-acl.801",
+      "abstract": "The generative retrieval model depends solely on the information encoded in its model parameters without external memory, its information capacity is limited and fixed. To overcome the limitation, we propose Nonparametric Decoding (Np Decoding) which can be applied to existing generative retrieval models. Np Decoding uses nonparametric contextualized vocab embeddings (external memory) rather than vanilla vocab embeddings as decoder vocab embeddings. By leveraging the contextualized vocab embeddings, the generative retrieval model is able to utilize both the parametric and nonparametric space. Evaluation over 9 datasets (8 single-hop and 1 multi-hop) in the document retrieval task shows that applying Np Decoding to generative retrieval models significantly improves the performance. We also show that Np Decoding is data- and parameter-efficient, and shows high performance in the zero-shot setting.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4385572521",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Improving Probability-based Prompt Selection Through Unified Evaluation and Analysis",
+      "year": 2024,
+      "venue": "Transactions of the Association for Computational Linguistics",
+      "authors": [
+        "Sohee Yang",
+        "Jonghyeon Kim",
+        "Joel Jang",
+        "Seonghyeon Ye",
+        "Hyunji Lee",
+        "Minjoon Seo"
+      ],
+      "doi": "10.1162/tacl_a_00666",
+      "abstract": "Abstract Previous work in prompt engineering for large language models has introduced different gradient-free probability-based prompt selection methods that aim to choose the optimal prompt among the candidates for a given task but have failed to provide a comprehensive and fair comparison between each other. In this paper, we propose a unified framework to interpret and evaluate the existing probability-based prompt selection methods by performing extensive experiments on 13 common and diverse NLP tasks. We find that each of the existing methods can be interpreted as some variant of the method that maximizes mutual information between the input and the predicted output (MI). Utilizing this finding, we develop several other combinatorial variants of MI and increase the effectiveness of the oracle prompt selection method from 87.79% to 94.98%, measured as the ratio of the performance of the selected prompt to that of the optimal oracle prompt. Furthermore, considering that all the methods rely on the output probability distribution of the model that might be biased, we propose a novel calibration method called Calibration by Marginalization (CBM) that is orthogonal to the existing methods and helps increase the prompt selection effectiveness of the best method to 96.85%, achieving 99.44% of the oracle prompt F1 without calibration.1",
+      "provenance": {
+        "source_url": "https://openalex.org/W4398757466",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "Organic solid electrolytes compatible with all-solid-state Li metal batteries (LMBs) are essential to ensuring battery safety, high energy density, and long-term cycling performance. However, it remains a challenge to develop an approach to provide organic solid electrolytes with capabilities for the facile dissociation of strong Li-ion pairs and fast transport of ionic components.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4386158212",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "N-Doped carbon electrocatalysts are a promising alternative to precious metal catalysts to promote oxygen reduction reaction (ORR). However, it remains a challenge to design the desired active sites on carbon skeletons in a controllable manner for ORR.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4223519839",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Hyunji Lee"
+}

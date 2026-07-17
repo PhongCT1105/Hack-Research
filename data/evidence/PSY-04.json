@@ -1,0 +1,208 @@
+{
+  "professor_id": "PSY-04",
+  "field": "psychology",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Université Paris Cité working on psychology and cognitive science. Publication record spans Psychoanalysis and Psychopathology Research, Eating Disorders and Behaviors, Psychotherapy Techniques and Applications.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5057852009",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Dropout from inpatient treatment for anorexia nervosa: Critical review of the literature",
+      "year": 2009,
+      "venue": "International Journal of Eating Disorders",
+      "authors": [
+        "Jenny Wallier",
+        "Sarah Vibert",
+        "Sylvie Berthoz",
+        "Caroline Huas",
+        "Tamara Hubert",
+        "Nathalie Godart"
+      ],
+      "doi": "10.1002/eat.20609",
+      "abstract": "OBJECTIVE: High dropout rates from inpatient treatment for Anorexia Nervosa (AN) pose a serious obstacle to successful treatment. Because dropping out of inpatient treatment may have a negative impact on outcome, it is important to understand why dropout occurs so that treatment can be targeted toward keeping patients in care. We therefore conducted a critical literature review of studies on dropout from inpatient treatment for AN. METHOD: Searches of Medline and PsycINFO revealed nine articles on this subject. Two were excluded because they did not differentiate AN from other eating disorders in analyses. RESULTS: Results were scarce and conflicting, with methodological issues complicating comparisons. Weight on admission, AN subtype, eating disorder symptoms, greater psychiatric difficulty in general, and the absence of depression were related to dropout in multivariate analyses. DISCUSSION: Authors should use a common definition of dropout and continue research on the identified predictors as well as potential predictors such as impulsivity and family factors.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2151545152",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Expressed Emotion in Families of Patients with Eating Disorders: A Review of the Literature",
+      "year": 2012,
+      "venue": "Current Psychiatry Reviews",
+      "authors": [
+        "Jeanne Duclos",
+        "Sarah Vibert",
+        "Lama Mattar",
+        "Nathalie Godart"
+      ],
+      "doi": "10.2174/157340012800792975",
+      "abstract": "Objective: To review studies assessing Expressed Emotion among parents/relatives of patients with Anorexia Nervosa and Bulimia Nervosa. Method: A systematic computerized search was performed in Medline complemented by a manual search of the literature for all studies published between 1981 and 2011. A total of 27 papers in English were reviewed for their methods, instruments used and results. Results: Comparisons were not easy due to methodological disparities in assessments. Levels of Expressed Emotion depend concurrently on parental characteristics (parent assessed, social status and psychological distress), patient characteristics (age, social adjustment) and Eating Disorders characteristics (type of Eating Disorders, duration and severity of illness and previous treatment). Expressed Emotion has a predictive value for patient outcome and for compliance with/ and implication in treatment. Levels of Expressed Emotions vary with the parent assessed. The crosscultural aspects of Expressed Emotion in Eating Disorders are not widely documented. Discussion: Both positive and negative aspects of Expressed Emotion are important therapeutic targets and further research on this topic is needed. Keywords: Assessment methods, Anorexia Nervosa, Bulimia Nervosa, Parental Expressed Emotion, Predictive values, EE rating, Body Mass Index, CFI/SCFI, concordant attitudes, psychological functioning",
+      "provenance": {
+        "source_url": "https://openalex.org/W2005458180",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Anorexie mentale : une traversée mélancolique de l'adolescence ? Étude clinique et projective des processus identificatoires dans les troubles des conduites alimentaires",
+      "year": 2010,
+      "venue": "La psychiatrie de l enfant",
+      "authors": [
+        "Sarah Vibert",
+        "Catherine Chabert"
+      ],
+      "doi": "10.3917/psye.522.0339",
+      "abstract": "Résumé L’anorexie mentale, pathologie survenant à l’adolescence et de nette prévalence féminine, reste encore l’objet reste encore aujourd’hui l’objet de nombreux questionnements psychopathologiques. Cet article tente d’éclairer les liens pouvant unir la nécessité d’un recours en acte, intervenant en lieu et place du travail d’élaboration psychique attendu, et la problématique féminine. Les soubassements masochistes de cette auto-attaque destructrice seront interrogés dans leurs articulations avec la spécificité féminine du syndrome et sa survenue à l’adolescence. L’étude de la dynamique identificatoire chez les adolescentes/jeunes adultes présentant un syndrome d’anorexie mentale restrictive avec ou sans vomissements associés constituera l’axe privilégié d’investigation. Une problématique narcissique de dépendance du Moi à l’objet se rejouant dans l’après-coup pubertaire, au sein de la configuration œdipienne, entraverait les conflits inhérents au processus adolescent et l’accès à l’identification féminine sexuée. Cette problématique d’essence archaïque n’est pas en soi accessible mais la position féminine de l’adolescence présentant des affinités avec la passivité originaire pourrait peut-être en porter la marque au sein de la configuration des fantasmes originaires. L’hypothèse est mise à l’épreuve auprès de 18 jeunes filles de 15 à 21 ans hospitalisées dans un service spécialisé. L’objectif est ainsi de dégager, à partir de la clinique projective (Rorschach et tat ), des problématiques et des aménagements défensifs communs, mais aussi singuliers, susceptibles d’éclairer la signification des symptômes et ainsi d’améliorer les modalités de prise en charge.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2079250565",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "The Dynamics of TAT Process",
+      "year": 2014,
+      "venue": "Rorschachiana Journal of the International Society for the Rorschach",
+      "authors": [
+        "Benoît Verdon",
+        "Catherine Chabert",
+        "Catherine Azoulay",
+        "Michèle Emmanuelli",
+        "Françoise Neau",
+        "Sarah Vibert",
+        "Estelle Louët"
+      ],
+      "doi": "10.1027/1192-5604/a000056",
+      "abstract": "After many years of clinical practice, research and the teaching of projective tests, Shentoub and her colleagues (Debray, Brelet, Chabert & al.) put forward an original and rigorous method of analysis and interpretation of the TAT protocols in terms of psychoanalysis and clinical psychopathology. They developed the TAT process theory in order to understand how the subject builds a narrative. Our article will emphasize the source of the analytical approach developed by V. Shentoub in the 1950s to current research; the necessity of marking the boundary between the manifest and latent content in the cards; the procedure for analyzing the narrative, supported by an analysis sheet for understanding the stories' structure and identifying the defense mechanisms; and how developing hypotheses about how the mental functions are organized, as well as their potential psychopathological characteristics; and the formulation of a diagnosis in psychodynamic terms. In conjunction with the analysis and interpretation of the Rorschach test, this approach allows us to develop an overview of the subject's mental functioning, taking into account both the psychopathological elements that may threaten the subject and the potential for a therapeutic process. We will illustrate this by comparing neurotic, borderline, and psychotic personalities.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2162807564",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Caregivers in anorexia nervosa: is grief underlying parental burden?",
+      "year": 2023,
+      "venue": "Eating and Weight Disorders - Studies on Anorexia Bulimia and Obesity",
+      "authors": [
+        "Jeanne Duclos",
+        "Giulia Piva",
+        "Élise Riquin",
+        "Christophe Lalanne",
+        "Dominique Meilleur",
+        "Soline Blondin",
+        "EVHAN Group",
+        "Sylvie Berthoz"
+      ],
+      "doi": "10.1007/s40519-023-01530-x",
+      "abstract": "ABSTARCT: PURPOSE: Anorexia Nervosa (AN) is a severe chronic disorder and parents' experience of caregiving is usually marked by emotional distress and burden. Severe chronic psychiatric disorders are known to be linked with the concept of grief. Grief has not been investigated in AN. The aim of this study was to explore parents' and adolescents' characteristics that may be related to parental burden and grief in AN, and the link between these two dimensions. METHODS: Eighty mothers, 55 fathers and their adolescents (N = 84) hospitalized for AN participated in this study. Evaluations of clinical characteristics of the adolescent's illness were completed, as well as self-evaluations of adolescent and parental emotional distress (anxiety, depression, alexithymia). Levels of parental burden were evaluated with the Experience of Caregiving Inventory and levels of parental grief with the Mental Illness Version of the Texas Revised Inventory of Grief. RESULTS: Main findings indicated that the burden was higher in parents of adolescents with a more severe AN; fathers' burden was also significantly and positively related to their own level of anxiety. Parental grief was higher when adolescents' clinical state was more severe. Paternal grief was related to higher anxiety and depression, while maternal grief was correlated to higher alexithymia and depression. Paternal burden was explained by the father's anxiety and grief, maternal burden by the mother's grief and her child's clinical state. CONCLUSION: Parents of adolescents suffering from AN showed high levels of burden, emotional distress and grief. These inter-related experiences should be specific targets for intervention aimed at supporting parents. Our results support the extensive literature on the need to assist fathers and mothers in their caregiving role. This in turn may improve both their mental health and their abilities as caregivers of their suffering child. LEVEL OF EVIDENCE: Level III: Evidence obtained from cohort or case-control analytic studies.",
+      "provenance": {
+        "source_url": "https://openalex.org/W4321478635",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Eating Disorders and the Rorschach",
+      "year": 2021,
+      "venue": "Rorschachiana Journal of the International Society for the Rorschach",
+      "authors": [
+        "Silvia Monica Guinzbourg de Braude",
+        "Sarah Vibert",
+        "Tommaso Righetti",
+        "Arianna Antonelli"
+      ],
+      "doi": "10.1027/1192-5604/a000136",
+      "abstract": "Abstract. In this article we review research on eating disorders with the Rorschach. In this field there are two main lines of research involving two specific methodologies: the Comprehensive System and the French school. We present the main results of the different studies separately and then comment on some similarities and differences in the findings. We find that the results of these studies are complementary on certain aspects of functioning found in anorexia nervosa as compared with other categories of eating disorders. Both sets of studies underline the self-centeredness of anorexic patients with their difficulty in communicating their feelings and thoughts. In both types of study, treatment is understood as relying on an integrative and multidisciplinary model that seeks to modify the eating behaviors and to improve ego functions in order to moderate the patient’s distress. In addition, both types of research show that secure attachment would be the first priority for the therapist in psychological treatment, which should increase the patient’s confidence in others. They also both stress the importance of the restoration of self-esteem and a sense of identity through the support offered by the relationship to the therapist.",
+      "provenance": {
+        "source_url": "https://openalex.org/W3199379187",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Bonding and Expressed Emotion: Two Interlinked Concepts?",
+      "year": 2012,
+      "venue": "Psychopathology",
+      "authors": [
+        "Jeanne Duclos",
+        "Anne‐Solène Maria",
+        "Géraldine Dorard",
+        "Florence Curt",
+        "Alexandre Apfel",
+        "Sarah Vibert",
+        "Zoé Rein",
+        "Fabienne Perdereau"
+      ],
+      "doi": "10.1159/000345405",
+      "abstract": "BACKGROUND: Bonding and expressed emotion (EE) are two concepts modeling family relationships. Two studies, with contradictory results, have explored whether these concepts and their corresponding instruments [the Parental Bonding Instrument (PBI) and the Camberwell Family Interview] do indeed measure the same aspects of family relationships. Our first objective was to compare the adolescents' perceptions of family relationships using the PBI, and the parental viewpoint using the Five-Minute Speech Sample (FMSS-EE). Secondly, we compared the PBI scores and EE levels of the parents. SAMPLING AND METHODS: Sixty adolescent girls with anorexia nervosa completed the PBI. The FMSS and a modified version of the PBI were administered to parents separately. RESULTS: No significant link was identified between adolescent PBI scores and parental EE levels. However, a link between maternal 'modified' PBI scores and maternal EE was observed: when mothers registered a high Final EE, they were more likely to deny their daughter's psychological autonomy compared to mothers with lower EE. CONCLUSIONS: Our empirical results do not support the hypothesis of an overlap between the two concepts. Indeed bonding and EE measure the same object, i.e. the quality of family relationships, but time scales differ and so do the perspectives (patient vs. parental viewpoint).",
+      "provenance": {
+        "source_url": "https://openalex.org/W2040948658",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Fantasmes œdipiens et inhibition défensive dans l'anorexie mentale à l'adolescence",
+      "year": 2013,
+      "venue": "Psychologie clinique et projective",
+      "authors": [
+        "Sarah Vibert"
+      ],
+      "doi": "10.3917/pcp.018.0083",
+      "abstract": "Bien qu’associés de façon privilégiée aux fonctionnements limites, les troubles des conduites alimentaires sont sous-tendus par des organisations psychiques variées et loin d’apparaître aussi stéréotypées que les manifestations comportementales qui les sous-tendent. À l’appui d’observations cliniques et de réflexions théoriques, l’auteur s’intéresse à l’impact du sexuel dans les troubles des conduites alimentaires malgré la prégnance manifeste de la problématique de perte d’objet, à la lueur de deux études de cas dont les procédures défensives sont fort différentes voire opposées. Leur mise en écho permet de saisir avec davantage d’acuité les problématiques sous-jacentes aux symptômes anorexiques/boulimiques et notamment la fonction que l’inhibition est susceptible de revêtir au sein de certaines organisations sous-tendant ces conduites. Elle semble constituer dans certains cas un aménagement défensif destiné à lutter contre la proximité des fantasmes incestueux et parricides dont l’expression apparaît transparente dans d’autres.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1985722914",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "OBJECTIVE: High dropout rates from inpatient treatment for Anorexia Nervosa (AN) pose a serious obstacle to successful treatment. Because dropping out of inpatient treatment may have a negative impact on outcome, it is important to understand why dropout occurs so that treatment can be targeted toward keeping patients in care.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2151545152",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "Objective: To review studies assessing Expressed Emotion among parents/relatives of patients with Anorexia Nervosa and Bulimia Nervosa. Method: A systematic computerized search was performed in Medline complemented by a manual search of the literature for all studies published between 1981 and 2011.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2005458180",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Sarah Vibert"
+}

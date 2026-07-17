@@ -1,0 +1,210 @@
+{
+  "professor_id": "PSY-03",
+  "field": "psychology",
+  "career_stage": "associate",
+  "visibility_band": "medium",
+  "faculty_summary": "Researcher at Utrecht University working on psychology and cognitive science. Publication record spans Child and Adolescent Psychosocial and Emotional Development, Substance Abuse Treatment and Outcomes, Impact of Technology on Adolescents.",
+  "faculty_summary_provenance": {
+    "source_url": "https://openalex.org/A5037419243",
+    "retrieved": "2026-07-17",
+    "access_method": "openalex api",
+    "notes": "PROVISIONAL pending Phong D004/D013"
+  },
+  "papers": [
+    {
+      "paper_id": "P1",
+      "title": "Multiple behavioural impulsivity tasks predict prospective alcohol involvement in adolescents",
+      "year": 2013,
+      "venue": "Addiction",
+      "authors": [
+        "Gordon Fernie",
+        "Margot Peeters",
+        "Matthew J. Gullo",
+        "Paul Christiansen",
+        "Jon C. Cole",
+        "Harry Sumnall",
+        "Matt Field"
+      ],
+      "doi": "10.1111/add.12283",
+      "abstract": "AIMS: We investigated reciprocal prospective relationships between multiple behavioural impulsivity tasks (assessing delay discounting, risk-taking and disinhibition) and alcohol involvement (consumption, drunkenness and problems) among adolescents. We hypothesized that performance on the tasks would predict subsequent alcohol involvement, and that alcohol involvement would lead to increases in behavioural impulsivity over time. DESIGN: Cross-lagged prospective design in which impulsivity and alcohol involvement were assessed five times over 2 years (once every 6 months, on average). SETTING: Classrooms in secondary schools in North West England. PARTICIPANTS: Two hundred and eighty-seven adolescents (51.2% male) who were aged 12 or 13 years at study enrolment. MEASUREMENTS: Participants reported their alcohol involvement and completed computerized tasks of disinhibition, delay discounting and risk-taking at each assessment. Cross-sectional and prospective relationships between the variables of interest were investigated using cross-lagged analyses. FINDINGS: All behavioural impulsivity tasks predicted a composite index of alcohol involvement 6 months later (all Ps < 0.01), and these prospective relationships were reliable across the majority of time-points. Importantly, we did not observe the converse relationship across time: alcohol involvement did not predict performance on behavioural impulsivity tasks at any subsequent time point. CONCLUSIONS: Several measures of impulsivity predict escalation in alcohol involvement in young adolescents, but alcohol use does not appear to alter impulsivity.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1533659445",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "title": "Automatic processes in at‐risk adolescents: the role of alcohol‐approach tendencies and response inhibition in drinking behavior",
+      "year": 2012,
+      "venue": "Addiction",
+      "authors": [
+        "Margot Peeters",
+        "Reínout W. Wiers",
+        "Karin Monshouwer",
+        "Rens van de Schoot",
+        "Tim Janssen",
+        "Wilma Vollebergh"
+      ],
+      "doi": "10.1111/j.1360-0443.2012.03948.x",
+      "abstract": "AIMS: This study examined the association between automatic processes and drinking behavior in relation to individual differences in response inhibition in young adolescents who had just started drinking. It was hypothesized that strong automatic behavioral tendencies toward alcohol-related stimuli (alcohol-approach bias) were associated with higher levels of alcohol use, especially amongst adolescents with relatively weak inhibition skills. DESIGN: To test this hypothesis structural equation analyses (standard error of mean) were performed using a zero inflated Poisson (ZIP) model. A well-known problem in studying risk behavior is the low incidence rate resulting in a zero dominated distribution. A ZIP-model accounts for non-normality of the data. SETTING: Adolescents were selected from secondary Special Education schools (a risk group for the development of substance use problems). PARTICIPANTS: Participants were 374 adolescents (mean age of M = 13.6 years). MEASUREMENTS: Adolescents completed the alcohol approach avoidance task (a-AAT), the Stroop colour naming task (Stroop) and a questionnaire that assessed alcohol use. FINDINGS: The ZIP-model established stronger alcohol-approach tendencies for adolescent drinkers (P < 0.01) and the interaction revealed a stronger effect of alcohol-approach tendencies on alcohol use in the absence of good inhibition skills (P < 0.05). CONCLUSION: Automatically-activated cognitive processes are associated with the drinking behavior of young, at-risk adolescents. It appears that alcohol-approach tendencies are formed shortly after the initiation of drinking and particularly affect the drinking behavior of adolescents with relatively weak inhibition skills. Implications for the prevention of problem drinking in adolescents are discussed.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1906234576",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P3",
+      "title": "Where Do Priors Come From? Applying Guidelines to Construct Informative Priors in Small Sample Research",
+      "year": 2017,
+      "venue": "Research in Human Development",
+      "authors": [
+        "Mariëlle Zondervan‐Zwijnenburg",
+        "Margot Peeters",
+        "Sarah Depaoli",
+        "Rens van de Schoot"
+      ],
+      "doi": "10.1080/15427609.2017.1370966",
+      "abstract": "This article demonstrates the usefulness of Bayesian estimation with small samples. In Bayesian estimation, prior information can be included, which increases the precision of the posterior distribution. The posterior distribution reflects likely parameter values given the current state of knowledge. An issue that has received little attention, however, is the acquisition of prior information. This study provides general guidelines to collect prior knowledge and formalize it in prior distributions. Moreover, this study demonstrates with an empirical application how prior knowledge can be acquired systematically. The article closes with a discussion that also warns against the misuse of prior information.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2767026009",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P4",
+      "title": "Bidirectional effects of Internet-specific parenting practices and compulsive social media and Internet game use",
+      "year": 2018,
+      "venue": "Journal of Behavioral Addictions",
+      "authors": [
+        "Ina M. Koning",
+        "Margot Peeters",
+        "Catrin Finkenauer",
+        "Regina J. J. M. van den Eijnden"
+      ],
+      "doi": "10.1556/2006.7.2018.68",
+      "abstract": "Introduction This two-wave prospective study investigated the bidirectional relation between Internet-specific parenting (reactive restrictions, Internet-specific rules, and frequency and quality of communication about Internet) and adolescents’ symptoms of social media disorder (SMD) and Internet gaming disorder (IGD). In addition, we investigated whether this relation was different for boys and girls. Methods A sample of 352 adolescents (48.9% boys, M age = 13.9, SD age = 0.74, range: 11–15) completed questionnaires at two waves. Zero-inflated cross-lagged analyses in Mplus were performed to predict the level of IGD and SMD symptoms by Internet-specific parenting practices and vice versa, while controlling for age, level of education, and outcome at T 1 . Results More frequent parent–adolescent communication about Internet predicted more IGD (β = 0.26, p = .03) and SMD symptoms among boys, and more restrictive rules predicted fewer SMD symptoms among girls (β = −0.23, p = .08). More IGD symptoms predicted more reactive rules (β = 0.20, p = .08) among boys and girls and a higher frequency (β = 0.16, p = .02) and lower quality of communication (β = −0.24, p < .001) among boys and girls, respectively. Conclusions This study demonstrates bidirectional relations between Internet-specific parenting and IGD symptoms, but not SMD symptoms. Displaying IGD symptoms seems to elicit ineffective parental responses, which may further exacerbate problematic involvement in gaming. With respect to problematic social use media among girls, this study suggests that parents should set strict rules regarding Internet use, prior to problematic use of social media. Longitudinal studies on the role of parenting in development of Internet-related disorders would be promising in enhancing our understanding of how parents can effectively prevent problematic involvement in online behaviors among their children.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2895256467",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P5",
+      "title": "Weaknesses in executive functioning predict the initiating of adolescents’ alcohol use",
+      "year": 2015,
+      "venue": "Developmental Cognitive Neuroscience",
+      "authors": [
+        "Margot Peeters",
+        "Tim Janssen",
+        "Karin Monshouwer",
+        "Wouter J. Boendermaker",
+        "Thomas Pronk",
+        "Reínout W. Wiers",
+        "Wilma Vollebergh"
+      ],
+      "doi": "10.1016/j.dcn.2015.04.003",
+      "abstract": "Recently, it has been suggested that impairments in executive functioning might be risk factors for the onset of alcohol use rather than a result of heavy alcohol use. In the present study, we examined whether two aspects of executive functioning, working memory and response inhibition, predicted the first alcoholic drink and first binge drinking episode in young adolescents using discrete survival analyses. Adolescents were selected from several Dutch secondary schools including both mainstream and special education (externalizing behavioral problems). Participants were 534 adolescents between 12 and 14 years at baseline. Executive functioning and alcohol use were assessed four times over a period of two years. Working memory uniquely predicted the onset of first drink (p=.01) and first binge drinking episode (p=.04) while response inhibition only uniquely predicted the initiating of the first drink (p=.01). These results suggest that the association of executive functioning and alcohol consumption found in former studies cannot simply be interpreted as an effect of alcohol consumption, as weaknesses in executive functioning, found in alcohol naïve adolescents, predict the initiating of (binge) drinking. Though, prolonged and heavy alcohol use might further weaken already existing deficiencies.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2028388458",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P6",
+      "title": "Working Memory and Alcohol Use in At‐Risk Adolescents: A 2‐Year Follow‐Up",
+      "year": 2014,
+      "venue": "Alcoholism Clinical and Experimental Research",
+      "authors": [
+        "Margot Peeters",
+        "Karin Monshouwer",
+        "Tim Janssen",
+        "Reínout W. Wiers",
+        "Wilma Vollebergh"
+      ],
+      "doi": "10.1111/acer.12339",
+      "abstract": "BACKGROUND: Previous research has identified working memory (WM) as a possible risk factor for problem drinking in adolescence. At the same time, results suggest that WM functioning is negatively influenced by the use of alcohol. To get a better understanding of the nature of this relationship, the present study examined the prospective bidirectional association between alcohol use and WM in a sample of young adolescents at risk for problem drinking. METHODS: Adolescents were all 8th graders from 17 different Special Education Schools (for youth with externalizing behavior problems). At the beginning of the study, 374 adolescents participated (mean age of 13.6 years). Approximately every 6 months, adolescents completed a questionnaire to establish alcohol use and a Self-Ordered Pointing Task (SOPT) to assess WM. RESULTS: Cross-lagged analyses revealed that alcohol use at T1 negatively predicted WM functioning 6 months later (p < 0.001). WM functioning at T2 and at T3 predicted alcohol use 6 months later (p < 0.01). CONCLUSIONS: WM functioning has been identified as both risk factor for and as function negatively influenced by alcohol use. Findings indicate that early alcohol use in at-risk adolescents negatively influences the development of subsequent WM functioning, which in turn constitutes as a risk factor for later alcohol use problems. Implications for early interventions are discussed.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2160911255",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P7",
+      "title": "Behavioral Control and Reward Sensitivity in Adolescents’ Risk Taking Behavior: A Longitudinal TRAILS Study",
+      "year": 2017,
+      "venue": "Frontiers in Psychology",
+      "authors": [
+        "Margot Peeters",
+        "Tineke Oldehinkel",
+        "Wilma Vollebergh"
+      ],
+      "doi": "10.3389/fpsyg.2017.00231",
+      "abstract": "Neurodevelopmental theories of risk behavior hypothesize that low behavioral control in combination with high reward sensitivity explains adolescents' risk behavior. However, empirical studies examining this hypothesis while including actual risk taking behavior in adolescence are lacking. In this study we tested whether the imbalance between behavioral control and reward sensitivity underlies risk taking behavior in adolescence, using a nationally representative longitudinal sample of 715 adolescents, of which 66% revealed an increased risk for mental health problems. To assess behavioral control at age 11 we used both self-report (effortful control) as well as behavioral measures of cognitive control (i.e., working memory and response inhibition). Reward sensitivity was assessed with the Bangor Gambling Task. The main finding of this study was that effortful control at age 11 was the best predictor of risk taking behavior (alcohol and cannabis use) at age 16, particularly among adolescents who were more reward sensitive. Risk taking behavior in adolescents might be explained by relatively weak behavioral control functioning combined with high sensitivity for reward.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2586341083",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    },
+    {
+      "paper_id": "P8",
+      "title": "Automatic Processes and the Drinking Behavior in Early Adolescence: A Prospective Study",
+      "year": 2013,
+      "venue": "Alcoholism Clinical and Experimental Research",
+      "authors": [
+        "Margot Peeters",
+        "Karin Monshouwer",
+        "Rens A. G. J. van de Schoot",
+        "Tim Janssen",
+        "Wilma Vollebergh",
+        "Reínout W. Wiers"
+      ],
+      "doi": "10.1111/acer.12156",
+      "abstract": "BACKGROUND: This study examined the bi-directional prospective link between automatic alcohol-approach tendencies and alcohol use in a group of young adolescents (mean age = 13.6 years). The adolescents in the present study were assumed to be at-risk of early alcohol use and later problem drinking. It was hypothesized that alcohol use and automatic approach tendencies would reinforce one another particularly in the absence of well-developed inhibition skills. METHODS: A total of 347 adolescents (N = 279 at follow-up) from special secondary education, a risk group for the development of substance use problems, participated in the study. Automatic approach tendencies were assessed with the alcohol-approach avoidance task, inhibition skills were assessed with the Stroop task, and alcohol used was measured using a self-report measure. RESULTS: Zero-inflated Poisson analysis revealed a significant effect of automatic approach tendencies predicting alcohol use 6 months later, although only for adolescents with weaker inhibition skills. CONCLUSIONS: Automatic approach tendencies predict future drinking behavior of young adolescents with relatively weak inhibition skills. The findings of the present study have important implications for alcohol interventions for adolescents. Results are discussed in terms of risk factors for the development of problematic alcohol use in young adolescents.",
+      "provenance": {
+        "source_url": "https://openalex.org/W2121910669",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "reconstructed (D017)"
+      }
+    }
+  ],
+  "focal_passages": [
+    {
+      "paper_id": "P1",
+      "section": "abstract",
+      "text": "AIMS: We investigated reciprocal prospective relationships between multiple behavioural impulsivity tasks (assessing delay discounting, risk-taking and disinhibition) and alcohol involvement (consumption, drunkenness and problems) among adolescents. We hypothesized that performance on the tasks would predict subsequent alcohol involvement, and that alcohol involvement would lead to increases in behavioural impulsivity over time.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1533659445",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    },
+    {
+      "paper_id": "P2",
+      "section": "abstract",
+      "text": "AIMS: This study examined the association between automatic processes and drinking behavior in relation to individual differences in response inhibition in young adolescents who had just started drinking. It was hypothesized that strong automatic behavioral tendencies toward alcohol-related stimuli (alcohol-approach bias) were associated with higher levels of alcohol use, especially amongst adolescents with relatively weak inhibition skills.",
+      "provenance": {
+        "source_url": "https://openalex.org/W1906234576",
+        "retrieved": "2026-07-17",
+        "access_method": "openalex api",
+        "notes": "PROVISIONAL abstract excerpt"
+      }
+    }
+  ],
+  "real_name_do_not_export": "Margot Peeters"
+}
