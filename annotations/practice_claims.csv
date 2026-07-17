@@ -1,5 +1,4 @@
 claim_id,atomic_claim,claim_type,evidence_summary,gold_label,reasoning
-claim_id,atomic_claim,claim_type,evidence_summary,gold_label,reasoning
 1,"Professor A studies calibration methods for medical imaging AI systems.","Research topic","Evidence packet contains papers about calibration of medical imaging models.","Supported","The claim directly matches the professor's documented research area."
 2,"Professor A pioneered the entire field of trustworthy artificial intelligence.","Novelty","Evidence shows several trustworthy AI publications but does not establish being first.","Overstated","The professor works in the area, but pioneered is a strong priority claim requiring explicit evidence."
 3,"Professor A collaborates with NASA on artificial intelligence projects.","Collaboration","No papers, profile information, or evidence mentions NASA.","Unsupported","Collaboration claims should be supported by explicit evidence."
