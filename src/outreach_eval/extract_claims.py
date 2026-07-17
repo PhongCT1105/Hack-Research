@@ -48,4 +48,10 @@ def _parse_json(raw: str) -> dict:
     if text.startswith("```"):
         text = text.split("```", 2)[1]
         text = text.removeprefix("json").strip()
-    return json.loads(text)
+    try:
+        return json.loads(text, strict=False)  # tolerate literal newlines in string values
+    except json.JSONDecodeError:
+        start, end = text.find("{"), text.rfind("}")
+        if start != -1 and end > start:
+            return json.loads(text[start : end + 1], strict=False)
+        raise

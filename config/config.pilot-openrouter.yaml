@@ -1,0 +1,40 @@
+# Reported-run config via OpenRouter (paid, pinned models). Cross-family per CLAUDE.md:
+#   writer = OpenAI family (the audit target), verifier/extractor = Anthropic family.
+# Requires OPENROUTER_API_KEY in .env with account credit.
+#   python scripts/run_pilot.py --config config/config.pilot-openrouter.yaml --out outputs/pilot.jsonl
+
+roles:
+  writer:
+    provider: openrouter
+    model: openai/gpt-4o-mini            # deployed-class OpenAI model; the hallucination audit target
+    temperature: 0.7
+    max_tokens: 600
+  verifier:
+    provider: openrouter
+    model: anthropic/claude-haiku-4.5    # bigger output ceiling than claude-3-haiku (4096
+    temperature: 0.0                     # was too small for verbose emails); still Anthropic
+    max_tokens: 6000                     # must fit claims + edits + full revised email
+  claim_extractor:
+    provider: openrouter
+    model: anthropic/claude-3-haiku      # small output (claims only) — cheap model is fine
+    temperature: 0.0
+    max_tokens: 2000
+
+prompts:
+  writer: prompts/writer_v1.md
+  verifier: prompts/verifier_v1.md
+  claim_extractor: prompts/claim_extractor_v1.md
+
+experiment:
+  conditions: [A, B, C, D]
+  seeds: [1, 2]
+  email_word_limit: 220
+
+paths:
+  evidence_dir: data/evidence
+  professors_csv: data/professors.csv
+  outputs_dir: outputs
+  logs_dir: logs
+
+pilot:
+  professor_ids: [CS-01, PSY-01]
