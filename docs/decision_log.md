@@ -131,3 +131,17 @@ This log records design choices that affect multiple workstreams. Entries marked
   prose-wrapped output. Verifier `max_tokens` raised to 6000 and moved to claude-haiku-4.5
   because claude-3-haiku's 4096 output ceiling truncated long verified emails. Code-only,
   not a frozen artifact.
+
+## D019 - Auto-evaluator for claim labeling at scale
+
+- **Status:** Accepted 2026-07-17
+- **Decision:** Add `scripts/auto_evaluate.py` — a judge LLM (default anthropic/claude-3-haiku,
+  a different family than the OpenAI writer) labels every extracted claim against its evidence
+  packet using the 7-label rubric, emitting machine labels in the human-labels schema keyed by
+  blind claim id. `compute_results.py --labels annotations/machine_labels.csv` consumes them.
+- **Reason:** Human annotation of ~400 claims is the time bottleneck. Auto labels give
+  preliminary results at full scale now; the human-labeled pilot subset validates them (kappa),
+  exactly the "auto-evaluator validated on a human subset" plan in docs/analysis_plan.md.
+- **Full run:** 12 professors (4 per field: CS/AI, Psychology, Biomedicine) x 4 conditions
+  x 2 seeds = 96 emails, config/config.full-openrouter.yaml. Professors CS-02..04, PSY-02..04,
+  BIO-01..04 are provisional (same D004/D013 caveat as CS-01/PSY-01).

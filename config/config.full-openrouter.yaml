@@ -1,0 +1,51 @@
+# Full-run config (12 professors x 4 conditions x 2 seeds = 96 emails) via OpenRouter.
+# Same models/prompts as config.pilot-openrouter.yaml; only the professor list differs.
+roles:
+  writer:
+    provider: openrouter
+    model: openai/gpt-4o-mini
+    temperature: 0.7
+    max_tokens: 600
+  verifier:
+    provider: openrouter
+    model: anthropic/claude-haiku-4.5
+    temperature: 0.0
+    max_tokens: 6000
+  claim_extractor:
+    provider: openrouter
+    model: anthropic/claude-3-haiku
+    temperature: 0.0
+    max_tokens: 2000
+prompts:
+  writer: prompts/writer_v1.md
+  verifier: prompts/verifier_v1.md
+  claim_extractor: prompts/claim_extractor_v1.md
+experiment:
+  conditions:
+  - A
+  - B
+  - C
+  - D
+  seeds:
+  - 1
+  - 2
+  email_word_limit: 220
+paths:
+  evidence_dir: data/evidence
+  professors_csv: data/professors.csv
+  outputs_dir: outputs
+  logs_dir: logs
+pilot:
+  professor_ids:
+  - CS-01
+  - CS-02
+  - CS-03
+  - CS-04
+  - PSY-01
+  - PSY-02
+  - PSY-03
+  - PSY-04
+  - BIO-01
+  - BIO-02
+  - BIO-03
+  - BIO-04
