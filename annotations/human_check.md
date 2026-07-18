@@ -27,13 +27,13 @@ PAPERS:
 ### Claims:
 
 [E-0007_c01] The professor's research focuses on the molecular mechanisms underlying disease progression.
-LABEL: 
+LABEL: supported
 
 [E-0007_c02] The professor has used advanced imaging techniques to visualize cellular interactions.
-LABEL: 
+LABEL: unsupported
 
 [E-0007_c03] The professor's research has focused on the role of specific biomolecules in cancer metastasis.
-LABEL: 
+LABEL: supported
 
 ## BIO-02  (field: biomedicine)
 
@@ -54,13 +54,13 @@ PAPERS:
 ### Claims:
 
 [E-0004_c01] The professor's research focuses on the mechanisms underlying cellular responses to stress.
-LABEL: 
+LABEL: unsupported
 
 [E-0004_c02] The professor's recent work has focused on autophagy and its implications for disease models.
-LABEL: 
+LABEL: unsupported
 
 [E-0004_c03] The professor's research has explored the role of autophagy in cancer progression.
-LABEL: 
+LABEL: unsupported
 
 ## BIO-03  (field: biomedicine)
 
@@ -81,13 +81,13 @@ PAPERS:
 ### Claims:
 
 [E-0040_c01] The professor's research is on biomedicine, particularly on Bacillus thuringiensis and its application in pest control.
-LABEL: 
+LABEL: supported
 
 [E-0040_c02] The professor published a paper on the structure of the Cry4Aa delta-endotoxin.
-LABEL: 
+LABEL: supported
 
 [E-0040_c03] The professor's work on the Cry4Aa delta-endotoxin provides molecular insights into its functional form and implications for improved toxin design.
-LABEL: 
+LABEL: overstated
 
 ## BIO-04  (field: biomedicine)
 
@@ -108,13 +108,13 @@ PAPERS:
 ### Claims:
 
 [E-0006_c01] The professor's research is on biomedicine, particularly on osteopontin and its implications in various cancers.
-LABEL: 
+LABEL: partially_supported
 
 [E-0006_c02] The professor has studied the role of osteopontin in atherosclerosis and cardiac fibrosis.
-LABEL: 
+LABEL: supported
 
 [E-0006_c03] The professor explores the molecular mechanisms involved in cancer progression and treatment responses.
-LABEL: 
+LABEL: supported
 
 ## CS-01  (field: cs_ai)
 
@@ -135,13 +135,13 @@ PAPERS:
 ### Claims:
 
 [E-0005_c01] The professor's research is on specific topic
-LABEL: 
+LABEL: subjective_or_generic
 
 [E-0005_c02] The professor has recent findings on a relevant topic
-LABEL: 
+LABEL: subjective_or_generic
 
 [E-0005_c03] The student has taken graduate coursework in machine learning and natural language processing
-LABEL: 
+LABEL: outside_evidence_scope
 
 ## CS-02  (field: cs_ai)
 
@@ -162,13 +162,13 @@ PAPERS:
 ### Claims:
 
 [E-0018_c01] The professor's research focuses on artificial intelligence.
-LABEL: 
+LABEL: partially_supported
 
 [E-0018_c02] The professor has conducted research on a specific topic or method relevant to the student.
-LABEL: 
+LABEL: subjective_or_generic
 
 [E-0018_c03] The professor has used a specific method or technique in their research that the student finds inspiring.
-LABEL: 
+LABEL: subjective_or_generic
 
 ## CS-03  (field: cs_ai)
 
@@ -189,13 +189,13 @@ PAPERS:
 ### Claims:
 
 [E-0013_c01] Your research is on artificial intelligence
-LABEL: 
+LABEL: supported
 
 [E-0013_c02] Your research is on machine learning and applied AI
-LABEL: 
+LABEL: supported
 
 [E-0015_c01] The professor's research is on machine learning and applied AI, particularly in the context of quantum machine learning and its applications in healthcare.
-LABEL: 
+LABEL: supported
 
 ## CS-04  (field: cs_ai)
 
@@ -216,13 +216,13 @@ PAPERS:
 ### Claims:
 
 [E-0002_c01] The professor's research is on machine learning and applied AI.
-LABEL: 
+LABEL: supported
 
 [E-0002_c02] The professor's research includes work on predicting stock prices.
-LABEL: 
+LABEL: supported
 
 [E-0002_c03] The professor's research includes work on human voice emotion identification.
-LABEL: 
+LABEL: supported
 
 ## PSY-01  (field: psychology)
 
@@ -243,13 +243,13 @@ PAPERS:
 ### Claims:
 
 [E-0008_c01] The professor conducts research.
-LABEL: 
+LABEL: subjective_or_generic
 
 [E-0008_c02] The student has completed coursework in advanced research methods and cognitive psychology.
-LABEL: 
+LABEL: outside_evidence_scope
 
 [E-0008_c03] The student is eager to apply to PhD programs this fall.
-LABEL: 
+LABEL: outside_evidence_scope
 
 ## PSY-02  (field: psychology)
 
@@ -270,13 +270,13 @@ PAPERS:
 ### Claims:
 
 [E-0014_c01] The professor's research focuses on the cerebellum's role within the cerebello-basal ganglia-thalamo-cortical system.
-LABEL: 
+LABEL: supported
 
 [E-0014_c02] The professor has published a consensus paper discussing the interplay between these brain regions and their implications for motor and cognitive functions.
-LABEL: 
+LABEL: supported
 
 [E-0014_c03] The professor's research has highlighted how action observation therapy and motor imagery can enhance rehabilitation for Parkinson's disease.
-LABEL: 
+LABEL: supported
 
 ## PSY-03  (field: psychology)
 
@@ -297,13 +297,13 @@ PAPERS:
 ### Claims:
 
 [E-0001_c01] The professor's research focuses on cognitive and behavioral processes in adolescent risk behavior, particularly regarding substance use and online behavior.
-LABEL: 
+LABEL: supported
 
 [E-0001_c02] The professor's research sheds light on important aspects of human behavior and decision-making dynamics.
-LABEL: 
+LABEL: subjective_or_generic
 
 [E-0025_c01] The professor's research focuses on the cognitive processes underlying decision-making and the impact of social influences on psychological outcomes.
-LABEL: 
+LABEL: supported
 
 ## PSY-04  (field: psychology)
 
@@ -324,10 +324,10 @@ PAPERS:
 ### Claims:
 
 [E-0016_c01] The professor's recent work is on the cognitive effects of stress on decision-making.
-LABEL: 
+LABEL: unsupported
 
 [E-0016_c02] The professor explores how stress influences cognitive biases.
-LABEL: 
+LABEL: unsupported
 
 [E-0016_c03] The professor uses experimental designs and psychophysiological measures to uncover the relationships between stress and cognitive biases.
-LABEL: 
+LABEL: contradicted

@@ -1,0 +1,8 @@
+label,precision,recall,f1,human_count
+contradicted,,0.0,,1
+outside_evidence_scope,0.3,1.0,0.4615384615384615,3
+overstated,,0.0,,1
+partially_supported,0.5,0.5,0.5,2
+subjective_or_generic,,0.0,,6
+supported,0.6666666666666666,0.9411764705882353,0.7804878048780487,17
+unsupported,,0.0,,6
