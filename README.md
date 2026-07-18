@@ -152,6 +152,13 @@ python scripts/validate_evaluator.py --machine annotations/machine_labels.csv --
 [`docs/experimental_design.md`](docs/experimental_design.md), [`docs/decision_log.md`](docs/decision_log.md)
 · **Contributor guide:** [`CLAUDE.md`](CLAUDE.md)
 
+## Acknowledgements
+
+Built for the **NSRI Summer Research Hackathon 2026**, Technology & AI track. We thank the
+organisers and the track sponsors, **ColdMatch** and **Quanticle**, whose focus on AI-assisted
+academic outreach and research insight motivated this study's problem setting. The sponsors
+provided no funding and had no role in the design, execution, or reporting of this work.
+
 > **Limitations (pilot).** 12 professors, English-only; a single writer model; provisional
 > evidence packets (abstracts + abstract-excerpt passages); human validation on a 36-claim
 > subset. The direction of every result is robust; exact magnitudes are pilot-scale estimates.

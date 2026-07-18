@@ -156,7 +156,7 @@ In an offline benchmark of AI-generated professor outreach emails, giving the wr
 
 **Author Contributions.** Abhinav Singh — generation/verification pipeline, evaluation infrastructure, analysis. Phong Cao — dataset and evidence packets. Kanan — annotation framework and human validation. Azhdar Mammadov — related work and manuscript. All authors reviewed the final manuscript.
 
-**Acknowledgements.** We thank the NSRI Summer Research Hackathon organisers and track sponsors.
+**Acknowledgements.** We thank the NSRI Summer Research Hackathon 2026 organisers and the Technology & AI track sponsors, ColdMatch and Quanticle, whose focus on AI-assisted academic outreach and research insight motivated this study's problem setting. The sponsors provided no funding for, and had no role in, the design, execution, analysis, or reporting of this work.
 
 ---
 
