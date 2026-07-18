@@ -33,7 +33,15 @@ LABELS = ("supported | partially_supported | overstated | unsupported | "
 CLAIM_RE = re.compile(r"\[(?P<cid>[A-Za-z0-9_-]+)\][^\n]*\n\s*LABEL:\s*(?P<label>[A-Za-z_]*)")
 
 
-def build(sheet_csv: Path, evidence_dir: Path, out: Path, per_prof: int) -> None:
+def compact_evidence(packet, variants) -> str:
+    """Faculty summary + paper titles only (no abstracts) — fast to skim."""
+    lines = ["FACULTY SUMMARY: " + packet.faculty_summary, "", "PAPERS:"]
+    for p in packet.papers:
+        lines.append(f"- {p.title} ({p.year}, {p.venue})")
+    return scrub_names("\n".join(lines), variants)
+
+
+def build(sheet_csv: Path, evidence_dir: Path, out: Path, per_prof: int, full: bool) -> None:
     rows = list(csv.DictReader(sheet_csv.open()))
     by_prof: dict[str, list[dict]] = {}
     for r in rows:
@@ -54,12 +62,13 @@ def build(sheet_csv: Path, evidence_dir: Path, out: Path, per_prof: int) -> None
     for pid in sorted(by_prof):
         packet = EvidencePacket.model_validate_json((evidence_dir / f"{pid}.json").read_text())
         variants = name_variants(packet.real_name_do_not_export)
-        evidence = scrub_names(build_evidence_block(packet), variants)
+        evidence = (scrub_names(build_evidence_block(packet), variants) if full
+                    else compact_evidence(packet, variants))
         claims = sorted(by_prof[pid], key=lambda r: r["claim_id"])[:per_prof]
         if not claims:
             continue
-        lines += [f"\n## {pid}  (field: {packet.field})", "", "<details><summary>EVIDENCE (click)</summary>",
-                  "", "```", evidence, "```", "", "</details>", "", "### Claims:"]
+        lines += [f"\n## {pid}  (field: {packet.field})", "", "```", evidence, "```",
+                  "", "### Claims:"]
         for c in claims:
             lines.append(f"\n[{c['claim_id']}] {c['atomic_claim']}")
             lines.append("LABEL: ")
@@ -90,13 +99,14 @@ def main() -> int:
     b.add_argument("--evidence-dir", default="data/evidence")
     b.add_argument("--out", default="annotations/human_check.md")
     b.add_argument("--per-prof", type=int, default=3)
+    b.add_argument("--full", action="store_true", help="include full abstracts (default: titles only)")
     p = sub.add_parser("parse")
     p.add_argument("--in", dest="infile", default="annotations/human_check.md")
     p.add_argument("--out", default="annotations/human_labels.csv")
     args = ap.parse_args()
 
     if args.cmd == "build":
-        build(Path(args.sheet), Path(args.evidence_dir), Path(args.out), args.per_prof)
+        build(Path(args.sheet), Path(args.evidence_dir), Path(args.out), args.per_prof, args.full)
     else:
         parse(Path(args.infile), Path(args.out))
     return 0
