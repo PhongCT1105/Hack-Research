@@ -18,7 +18,7 @@
       "venue": "Smart Cities",
       "authors": [
         "Abbas Shah Syed",
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Anup Kumar",
         "Adel Elmaghraby"
       ],
@@ -38,7 +38,7 @@
       "venue": "Sensors",
       "authors": [
         "Babak Abbaschian",
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Adel Elmaghraby"
       ],
       "doi": "10.3390/s21041249",
@@ -58,7 +58,7 @@
       "authors": [
         "Danyal Maheshwari",
         "Begonya García-Zapirain",
-        "Daniel Sierra-Sosa"
+        "[anonymized]"
       ],
       "doi": "10.1109/access.2022.3195044",
       "abstract": "Quantum technologies have become powerful tools for a wide range of application disciplines, which tend to range from chemistry to agriculture, natural language processing, and healthcare due to exponentially growing computational power and advancement in machine learning algorithms. Furthermore, the processing of classical data and machine learning algorithms in the quantum domain has given rise to an emerging field like quantum machine learning. Recently, quantum machine learning, become a quite challenging field in case of healthcare applications. As a result, quantum machine learning has become a common and effective technique for data processing and classification across a wide range of domains. Consequently, quantum machine learning is the most commonly used application of quantum computing. The main objective of this work is to present a brief overview of current state-of-the-art published articles between 2013 and 2021 to identify, analyze, and classify the different QML algorithms and applications in the biomedical field. Furthermore, the approach adheres to the requirements for conducting systematic literature review techniques such as research questions and quality metrics of the articles. Initially, we discovered 3149 articles, excluded the 2847 papers, and read the 121 full papers. Therefore, this research compiled 30 articles that comply with the quantum machine learning models, and quantum circuits are using biomedical data. Eventually, this article provides a broad overview of quantum machine learning limitations and future prospects.",
@@ -76,7 +76,7 @@
       "venue": "IEEE Access",
       "authors": [
         "Danyal Maheshwari",
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Begonya García-Zapirain"
       ],
       "doi": "10.1109/access.2021.3139323",
@@ -94,7 +94,7 @@
       "year": 2019,
       "venue": "IEEE Transactions on Industrial Informatics",
       "authors": [
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Begonya García-Zapirain",
         "Cristián Castillo-Olea",
         "Ibon Ruiz",
@@ -119,7 +119,7 @@
       "authors": [
         "Asma Baccouche",
         "Sadaf Ahmed",
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Adel Elmaghraby"
       ],
       "doi": "10.3390/info11060312",
@@ -138,7 +138,7 @@
       "venue": "Applied Sciences",
       "authors": [
         "Sebastian Patino-Barrientos",
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Begonya García-Zapirain",
         "Cristián Castillo-Olea",
         "Adel Elmaghraby"
@@ -158,7 +158,7 @@
       "year": 2020,
       "venue": "IEEE Access",
       "authors": [
-        "Daniel Sierra-Sosa",
+        "[anonymized]",
         "Michael Telahun",
         "Adel Elmaghraby"
       ],
@@ -196,5 +196,5 @@
       }
     }
   ],
-  "real_name_do_not_export": "Daniel Sierra-Sosa"
+  "real_name_do_not_export": ""
 }

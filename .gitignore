@@ -47,3 +47,13 @@ logs/*.csv
 # OS / editor
 .DS_Store
 .ipynb_checkpoints/
+
+# Internal team/agent artifacts — kept local, not part of the research repo
+handoff/
+docs/superpowers/
+docs/source/
+paper/main_nsri_draft.md
+paper/outline.md
+annotations/human_check.md
+annotations/claims_to_label_final.csv
+annotations/claims_to_label_final1.csv

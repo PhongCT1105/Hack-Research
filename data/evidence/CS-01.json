@@ -19,7 +19,7 @@
       "authors": [
         "Syaiful Imron",
         "Esther Irawati Setiawan",
-        "Joan Santoso",
+        "[anonymized]",
         "Mauridhi Hery Purnomo"
       ],
       "doi": "10.29207/resti.v7i3.4751",
@@ -41,7 +41,7 @@
         "Esther Irawati Setiawan",
         "Ferry Ferry",
         "Institut Sains dan Teknologi Terpadu Surabaya",
-        "Joan Santoso",
+        "[anonymized]",
         "Institut Teknologi Sepuluh Nopember",
         "Surya Sumpeno",
         "Institut Teknologi Sepuluh Nopember"
@@ -63,7 +63,7 @@
       "authors": [
         "Anita Guterres",
         "Gunawan Gunawan",
-        "Joan Santoso"
+        "[anonymized]"
       ],
       "doi": "10.34148/teknika.v8i2.224",
       "abstract": "Stemming adalah proses yang sangat penting untuk mencari kata dasar dari sebuah kata derivatif. Inti dari proses stemming adalah menghilangkan imbuhan pada suatu kata. Stemming sangat dibutuhkan untuk proses information retrieval system. Algoritma pada proses stemming bisa berbeda-beda pada setiap bahasa di berbeda negara. Data yang digunakan adalah 176 kata dasar dalam bahasa Tetun yang merupakan bahasa asli warga negara Timor Leste. Penelitian ini bertujuan untuk merancang algoritma baru yang tepat untuk stemming bahasa Tetun. Tahap awal stemming bahasa Tetun adalah proses filterisasi untuk menghilangkan tanda baca, angka, dan kata yang tidak penting. Lalu tahap tokenisasi untuk membuat variabel yang terdiri dari satu kata. Lalu setiap kata melalui proses stemming untuk menghilangkan imbuhan awalan, akhiran, dan konfiks. Analisis dilakukan berdasarkan kasus error stemming seperti overstemming, understemming, unchanged, dan spelling exception. Hasil uji coba yang didapatkan adalah algoritma stemming bahasa Tetun menghasilkan akurasi sebesar 90.52%.",
@@ -82,7 +82,7 @@
       "authors": [
         "Ernest Lim",
         "Esther Irawati Setiawan",
-        "Joan Santoso"
+        "[anonymized]"
       ],
       "doi": "10.52985/insyst.v1i2.86",
       "abstract": "Misinformasi merupakan fenomena yang semakin sering terjadi di media sosial, tidak terkecuali Facebook, salah satu media sosial terbesar di Indonesia. Beberapa penelitian telah dilakukan mengenai teknik identifikasi dan klasifikasi stance di media sosial Indonesia. Akan tetapi, penggunaan Word2Vec sebagai word embedding dalam penelitian tersebut memiliki keterbatasan pada pengenalan kata baru. Hal ini menjadi dasar penggunaan fastText embedding dalam penelitian ini. Dengan menggunakan pendekatan deep learning, penelitian berfokus pada performa model dalam klasifikasi stance suatu judul post kesehatan di Facebook terhadap judul post lainnya. Stance berupa for (setuju), observing (netral), dan against (berlawanan). Dataset terdiri dari 3500 judul post yang terdiri dari 500 kalimat klaim dengan enam kalimat stance terhadap setiap klaim. Model dengan fastText pada penelitian ini mampu menghasilkan F1 macro score sebesar 64%.",
@@ -100,7 +100,7 @@
       "venue": "IEEE Access",
       "authors": [
         "Van-Thuy Phi",
-        "Joan Santoso",
+        "[anonymized]",
         "Van-Hien Tran",
         "Hiroyuki Shindo",
         "Masashi Shimbo",
@@ -122,7 +122,7 @@
       "venue": "International journal of intelligent engineering and systems",
       "authors": [
         "Institut Teknologi Sepuluh Nopember",
-        "Joan Santoso",
+        "[anonymized]",
         "Esther Irawati Setiawan",
         "Institut Teknologi Sepuluh Nopember",
         "Eko Mulyanto Yuniarno",
@@ -146,7 +146,7 @@
       "venue": "Unknown venue",
       "authors": [
         "Van-Thuy Phi",
-        "Joan Santoso",
+        "[anonymized]",
         "Masashi Shimbo",
         "Yūji Matsumoto"
       ],
@@ -166,7 +166,7 @@
       "venue": "IEEE Transactions on Instrumentation and Measurement",
       "authors": [
         "FX Ferdinandus",
-        "Joan Santoso",
+        "[anonymized]",
         "Esther Irawati Setiawan",
         "Eko Mulyanto Yuniarno",
         "I Ketut Eddy Purnama",
@@ -206,5 +206,5 @@
       }
     }
   ],
-  "real_name_do_not_export": "Joan Santoso"
+  "real_name_do_not_export": ""
 }

@@ -21,7 +21,7 @@
         "Tian Wang",
         "Xiaofeng Wang",
         "Yuqing Zhang",
-        "Shuxia Song",
+        "[anonymized]",
         "Cuiqing Ma"
       ],
       "doi": "10.1016/j.phrs.2021.106036",
@@ -40,7 +40,7 @@
       "venue": "Chemotherapy",
       "authors": [
         "Siyuan Liu",
-        "Shuxia Song",
+        "[anonymized]",
         "Liang Lin",
         "Xing Liu"
       ],
@@ -61,7 +61,7 @@
       "authors": [
         "Kang-Xi Zhang",
         "Yue Zhu",
-        "Shuxia Song",
+        "[anonymized]",
         "Qingyun Bu",
         "Xiaoyan You",
         "Hong Yan Zou",
@@ -88,8 +88,8 @@
         "Ling Cui",
         "Ling Zhang",
         "Gang Qiu",
-        "Xiaotian Song",
-        "Shuxia Song"
+        "[anonymized]",
+        "[anonymized]"
       ],
       "doi": "10.1186/s12935-023-02934-6",
       "abstract": "BACKGROUND: Radiotherapy is one of the effective methods for treatment of breast cancer; however, controversies still exist with respect to radiotherapy for patients with TNBC. Here, we intend to explore the mechanism by which local radiotherapy promotes the recruitment of M-MDSCs in the lung and increases the risk of lung metastasis in TNBC tumor-bearing mice. METHODS: A single dose of 20 Gy X-ray was used to locally irradiate the primary tumor of 4T1 tumor-bearing mice. Tumor growth, the number of pulmonary metastatic nodules, and the frequency of MDSCs were monitored in the mice. Antibody microarray and ELISA methods were used to analyze the cytokines in exosomes released by irradiated (IR) or non-IR 4T1 cells. The effects of the exosomes on recruitment of MDSCs and colonization of 4T1 cells in the lung of normal BALB/c mice were observed with the methods of FCM and pathological section staining. T lymphocytes or 4T1 cells co-cultured with MDSCs were performed to demonstrate the inhibitory effect on T lymphocytes or accelerative migration effect on 4T1 cells. Finally, a series of in vitro experiments demonstrated how the exosomes promote the recruitment of M-MDSCs in lung of mice. RESULTS: ) significantly increased. Consistently, radiotherapy markedly potentiated M-MDSCs and decreased PMN-MDSCs recruitment to lung of tumor-bearing mice. Moreover, the frequency of M-MDSCs of lung was positively correlated with the number of lung metastatic nodules. Further, M-MDSCs markedly inhibited T cell function, while there was no difference between M-MDSCs and PMN-MDSCs in promoting 4T1 cell migration. X-ray irradiation promoted the release of G-CSF, GM-CSF and CXCl1-rich exosomes, and facilitated the migration of M-MDSCs and PMN-MDSCs into the lung through CXCL1/CXCR2 signaling. While irradiated mouse lung extracts or ir/4T1-exo treated macrophage culture medium showed obvious selective chemotaxis to M-MDSCs. Mechanistically, ir/4T1-exo induce macrophage to produce GM-CSF, which further promoted CCL2 release in an autocrine manner to recruit M-MDSCs via CCL2/CCR2 axis. CONCLUSIONS: Our work has identified an undesired effect of radiotherapy that may promote immunosuppressive premetastatic niches formation by recruiting M-MDSCs to lung. Further studies on radiotherapy combined CXCR2 or CCR2 signals inhibitors were necessary.",
@@ -109,7 +109,7 @@
         "Yue Zhu",
         "Kang-Xi Zhang",
         "Qingyun Bu",
-        "Shuxia Song",
+        "[anonymized]",
         "Yue Chen",
         "Hong Yan Zou",
         "Xiaoyan You",
@@ -135,7 +135,7 @@
         "Hui Liu",
         "Yue Zhu",
         "Qingyun Bu",
-        "Shuxia Song",
+        "[anonymized]",
         "Yuanfei Li",
         "Hong Yan Zou"
       ],
@@ -161,7 +161,7 @@
         "Yue Wang",
         "Fu Yang",
         "Yu-zhao Wang",
-        "Shuxia Song"
+        "[anonymized]"
       ],
       "doi": "10.1039/c005222a",
       "abstract": "Hepatitis B virus core protein virus-like particles (HBc-VLPs) act as a strong immunogen and are suitable for uptake by dendritic cells (DCs), in which they directly promote DC maturation and migration. To illustrate the utility of global proteomic analysis techniques in elucidating the molecular events that are altered in HBc-VLP-pulsed bone marrow-derived DCs (BMDCs) and to gain a better understanding of the molecular mechanisms of capture and processing of HBc-VLP-pulsed BMDCs, an antigen (Ag) delivery system based on HBc-VLP-pulsed BMDCs was developed. Two-dimensional electrophoresis (2-DE) and tandem mass spectrometry (MS/MS) analyses were utilized to analyze the differential protein expression patterns between HBc-VLP-pulsed and untreated BMDCs. Protein spots with significantly altered expression levels were detected, identified and validated. The results showed that exogenous HBc-VLPs were phagocytosed efficiently by BMDCs and enhanced the efficacy of BMDC maturation and Ag presentation, VLPs also induced high levels of Ag-specific CD8(+) T cells that displayed high cytotoxic T lymphocyte (CTL) activity in vivo. Several differentially expressed proteins, including growth factor receptor bound protein 2 (Grb2) and annexin A2 (AnxA2), were detected by proteomic analysis, identified by mass spectrometry and validated by western blot.",
@@ -180,7 +180,7 @@
       "authors": [
         "Junxia Wang",
         "Long Zheng",
-        "Shuxia Song",
+        "[anonymized]",
         "Xia Zhang",
         "Limin Li",
         "Fang Wang",
@@ -221,5 +221,5 @@
       }
     }
   ],
-  "real_name_do_not_export": "Shuxia Song"
+  "real_name_do_not_export": ""
 }

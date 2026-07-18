@@ -18,9 +18,9 @@
       "venue": "Unknown venue",
       "authors": [
         "Patrick J. Hayes",
-        "Thomas C. Eskridge",
+        "[anonymized]",
         "Raul Saavedra",
-        "Thomas Reichherzer",
+        "[anonymized]",
         "Mala Mehrotra",
         "Dmitri Bobrovnikoff"
       ],
@@ -41,7 +41,7 @@
       "authors": [
         "Fitzroy Nembhard",
         "Marco Carvalho",
-        "Thomas C. Eskridge"
+        "[anonymized]"
       ],
       "doi": "10.1186/s13635-019-0092-4",
       "abstract": "Secure coding is crucial for the design of secure and efficient software and computing systems. However, many programmers avoid secure coding practices for a variety of reasons. Some of these reasons are lack of knowledge of secure coding standards, negligence, and poor performance of and usability issues with existing code analysis tools. Therefore, it is essential to create tools that address these issues and concerns. This article features the proposal, development, and evaluation of a recommender system that uses text mining techniques, coupled with IntelliSense technology, to recommend fixes for potential vulnerabilities in program code. The resulting system mines a large code base of over 1.6 million Java files using the MapReduce methodology, creating a knowledge base for a recommender system that provides fixes for taint-style vulnerabilities. Formative testing and a usability study determined that surveyed participants strongly believed that a recommender system would help programmers write more secure code.",
@@ -58,7 +58,7 @@
       "year": 2015,
       "venue": "Unknown venue",
       "authors": [
-        "Thomas C. Eskridge",
+        "[anonymized]",
         "Marco Carvalho",
         "Evan Stoner",
         "Troy Toggweiler",
@@ -82,7 +82,7 @@
         "Godwyll Aikins",
         "Mawaba Pascal Dao",
         "Josias Moukpe",
-        "Thomas C. Eskridge",
+        "[anonymized]",
         "Kim‐Doang Nguyen"
       ],
       "doi": "10.3390/electronics13224508",
@@ -101,7 +101,7 @@
       "venue": "Unknown venue",
       "authors": [
         "Marco Carvalho",
-        "Thomas C. Eskridge",
+        "[anonymized]",
         "Larry Bunch",
         "Adam Dalton",
         "Robert R. Hoffman",
@@ -126,7 +126,7 @@
       "authors": [
         "Vijayanth Tummala",
         "Tashieka S. Burris‐Melville",
-        "Thomas C. Eskridge"
+        "[anonymized]"
       ],
       "doi": "10.1002/jls.70003",
       "abstract": "The proliferation of artificial intelligence (AI) is transforming the nature of teamwork, leading to the emergence of human‐agent teams across various domains. From cognitive assistants supporting astronauts to AI‐driven automation in autonomous vehicles, AI is increasingly integrated as an active team member rather than a passive tool. The current paper explores the distinctions between human‐human, agent‐agent, and human‐agent teams, providing insights into the roles AI can assume within collaborative environments. We examine established teamwork models, such as Shared Mental Model (SMM) and Co‐Active Design, and present a human‐AI team framework to understand how AI can effectively enhance joint activity, communication, and decision‐making within teams. Additionally, the paper identifies current challenges with integrating AI into human‐agent teams, including the lack of adaptive teamwork models and engineering limitations. By addressing these challenges and leveraging structured frameworks, organizations can optimize AI‐human collaboration, fostering high‐performance teams capable of excelling in complex, dynamic work environments.",
@@ -143,7 +143,7 @@
       "year": 2012,
       "venue": "IEEE Intelligent Systems",
       "authors": [
-        "Thomas C. Eskridge",
+        "[anonymized]",
         "Robert R. Hoffman"
       ],
       "doi": "10.1109/mis.2012.101",
@@ -162,7 +162,7 @@
       "venue": "Journal of Information & Knowledge Management",
       "authors": [
         "John W. Coffey",
-        "Thomas C. Eskridge"
+        "[anonymized]"
       ],
       "doi": "10.1142/s021964920800207x",
       "abstract": "As populations age and large numbers of skilled workers progress toward retirement, the importance of preserving and sharing expert knowledge is becoming an increasing concern for organisations worldwide. This article contains descriptions of two case studies involving initiatives to elicit, preserve, and share expert knowledge in the nuclear power industry using a knowledge modeling toolkit named CmapTools and knowledge elicitation techniques that were originated at the Institute for Human and Machine Cognition, Pensacola, FL., USA. Along with an account of preparations for the work including the selection of the experts, the course of the sessions, results and impacts of the studies, missed opportunities, and lessons learned are described. Some similarities and some interesting differences between the case studies are discussed.",
@@ -198,5 +198,5 @@
       }
     }
   ],
-  "real_name_do_not_export": "Thomas C. Eskridge"
+  "real_name_do_not_export": ""
 }
