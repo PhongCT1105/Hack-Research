@@ -112,7 +112,11 @@ We generated 96 emails yielding 360 atomic research claims, each labelled by the
 | C — verify-only | 50 | 0.02 | 0.00–0.06 | 1.04 | 4.2% |
 | D — grounded + verified | 87 | 0.00 | 0.00–0.00 | 1.76 | 0% |
 
-*Figure 1 — `analysis/figures/ser_by_condition.png`. Figure 2 — `analysis/figures/frontier.png`.*
+> **[INSERT FIGURE 1 HERE — image file: `analysis/figures/ser_by_condition.png`]**
+> **Figure 1.** Severe Error Rate by condition (A–D), with 95% bootstrap confidence intervals. The closed-book baseline (A) is high (~0.34); grounded conditions (B, D) are at zero.
+
+> **[INSERT FIGURE 2 HERE — image file: `analysis/figures/frontier.png`]**
+> **Figure 2.** Supported-Specificity Frontier. Each condition is plotted at (x = Severe Error Rate, lower is better; y = Supported Personalization Density, higher is better). Condition A sits at the lower-right (high error, low specificity); B and D sit at the upper-left (no error, high specificity); C is intermediate. Upper-left is best.
 
 Across all 360 claims the automatic evaluator assigned 246 as supported, 62 as outside evidence scope, 21 as unsupported, 20 as partially supported, 10 as subjective/generic, and 1 as contradicted. A second automatic evaluator from a different model family agreed on 72.5% of claims (Cohen's κ = 0.50); agreement was high for supported claims (F1 = 0.90) but lower for the error categories, indicating that the ranking of conditions is stable but the precise severe-error magnitudes are judge-dependent.
 
