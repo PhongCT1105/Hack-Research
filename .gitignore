@@ -29,7 +29,10 @@ data/private/raw_pdfs/*
 !data/private/raw_pdfs/.gitkeep
 data/private/professor_identity_map.csv
 data/private/*identity*map*
-annotations/blinding_map.csv
+# annotations/blinding_map.csv — un-ignored for the journal revision (see decision log).
+# It holds only anonymous IDs (claim/email/run/professor CS-01..BIO-04, condition, seed);
+# verified free of real names. Required to reproduce every per-condition statistic, and
+# the annotation-blinding it protected ended when labelling finished.
 
 # Collection caches and temporary request artifacts
 data/raw/cache/

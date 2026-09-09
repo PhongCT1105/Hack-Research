@@ -30,8 +30,11 @@ Full rationale: `docs/research_proposal.md`. Design: `docs/experimental_design.m
    If an output is wrong, fix the code and re-run with a logged manifest entry.
 3. **Annotator blinding.** Nothing in `annotations/claims_to_label*.csv` may reveal the
    experimental condition, whether text is original or verified, or the professor's real
-   name. The blinding map (`annotations/blinding_map.csv`, gitignored) is maintained by
-   the pipeline owner only.
+   name. The blinding map (`annotations/blinding_map.csv`) is maintained by the pipeline
+   owner only. It is now committed rather than gitignored (D020): labelling is finished,
+   so the blinding it protected has served its purpose, and the map is required to
+   reproduce any per-condition statistic. It carries anonymous IDs only — never add a
+   real name to it.
 4. **Anonymization.** Public outputs, annotations, analysis, paper text, examples, and
    commit messages use anonymous IDs (`CS-01`, `PSY-02`, `BIO-03`, …). Expanded-benchmark
    identity mappings belong only in `data/private/professor_identity_map.csv` (gitignored).
