@@ -28,6 +28,11 @@ analysis = [
     "matplotlib>=3.9",
     "jupyter",
     "scikit-learn>=1.5",
+    "scipy>=1.11",
+]
+# Building the NSRI-compliant .docx submission (scripts/build_submission_docx.py).
+paper = [
+    "python-docx>=1.1",
 ]
 
 [tool.hatch.build.targets.wheel]
