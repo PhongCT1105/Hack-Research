@@ -145,3 +145,29 @@ This log records design choices that affect multiple workstreams. Entries marked
 - **Full run:** 12 professors (4 per field: CS/AI, Psychology, Biomedicine) x 4 conditions
   x 2 seeds = 96 emails, config/config.full-openrouter.yaml. Professors CS-02..04, PSY-02..04,
   BIO-01..04 are provisional (same D004/D013 caveat as CS-01/PSY-01).
+
+## D020 - Journal revision: honest uncertainty, released artifacts, NSRI formatting
+- **Date:** 2026-09-09 (NSRI-J-2026-0178, revision 1)
+- **Decision:** Report all primary estimates as automatic pilot estimates; replace the
+  degenerate `[0, 0]` bootstrap intervals with exact Clopper-Pearson bounds; report
+  per-condition rates under *both* automatic evaluators; disclose the field concentration
+  and the C/D verifier-evaluator family overlap; withdraw the overstatement-rate metric.
+- **Reason:** The editorial decision asked for pilot labelling, explicit evaluator
+  disagreement, and no universal guarantee from zero observed errors. Re-deriving every
+  number from `annotations/` + `outputs/full.jsonl` also surfaced defects the review did
+  not name — most importantly that the zeros in conditions B and D are specific to the
+  primary evaluator (gemini finds 10 severe errors in B, 4 in D), and that condition A's
+  email-level denominator is 22, not 24 (`metrics.py` counts all emails but rates only
+  those with a judged factual claim).
+- **Reproducibility:** `scripts/compute_revision_stats.py` regenerates every table into
+  `analysis/revision/`; `scripts/make_revision_figures.py` redraws Figures 1-3;
+  `scripts/build_submission_docx.py` renders the NSRI-compliant .docx.
+- **`annotations/blinding_map.csv` is no longer gitignored.** It holds only anonymous IDs
+  and is required to reproduce any per-condition statistic. The annotation blinding it
+  protected ended when labelling finished. Verified free of real names before release.
+- **`outputs/full.jsonl` stays withheld.** Closed-book drafts address real researchers by
+  surname and contain fabricated claims about them, so releasing them would de-anonymise
+  the sample and propagate the misrepresentation the study measures. Everything the
+  analysis needs from it is exported de-identified as `analysis/revision/run_metadata.csv`
+  (per-run word counts + verifier actions). The Data Availability Statement now says this
+  explicitly instead of claiming the emails are available.
