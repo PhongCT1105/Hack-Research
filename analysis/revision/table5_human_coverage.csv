@@ -1,0 +1,5 @@
+condition,human_claims,human_factual_claims,human_severe,human_emails,human_ser,human_ser_ci_low,human_ser_ci_high
+A,16,11,7,6,0.6364,0.3079,0.8907
+B,10,10,0,4,0.0,0.0,0.3085
+C,7,3,0,3,0.0,0.0,0.7076
+D,3,3,0,1,0.0,0.0,0.7076

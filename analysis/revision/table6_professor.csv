@@ -1,0 +1,16 @@
+professor_id,condition,factual_claims,severe,ser,ci_low,ci_high
+BIO-01,A,6,1,0.1667,,
+BIO-02,A,3,0,0.0,,
+BIO-03,A,4,0,0.0,,
+BIO-04,A,6,0,0.0,,
+CS-01,A,6,0,0.0,,
+CS-02,A,7,1,0.1429,,
+CS-03,A,4,2,0.5,,
+CS-04,A,6,0,0.0,,
+PSY-01,A,5,5,1.0,,
+PSY-02,A,6,6,1.0,,
+PSY-03,A,5,3,0.6,,
+PSY-04,A,3,3,1.0,,
+[A excluding psychology],A,42,4,0.0952,0.0266,0.2262
+[A excluding computer science],A,38,18,0.4737,0.3098,0.6418
+[A excluding biomedicine],A,42,20,0.4762,0.32,0.6358

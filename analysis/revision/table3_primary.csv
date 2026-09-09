@@ -1,0 +1,5 @@
+condition,n_emails_generated,n_emails_with_factual_claim,n_factual_claims,n_severe,ser,ser_ci_low_exact,ser_ci_high_exact,ser_ci_low_clusterboot,ser_ci_high_clusterboot,spd,email_level_severe,email_level_rate,email_level_ci_low,email_level_ci_high
+A,24,22,61,21,0.3443,0.2273,0.4769,0.1724,0.5345,0.6499,10/22,0.4545,0.2439,0.6779
+B,24,24,90,0,0.0,0.0,0.0402,0.0,0.0,1.7057,0/24,0.0,0.0,0.1425
+C,24,24,50,1,0.02,0.0005,0.1065,0.0,0.0652,1.0385,1/24,0.0417,0.0011,0.2112
+D,24,24,87,0,0.0,0.0,0.0415,0.0,0.0,1.7562,0/24,0.0,0.0,0.1425

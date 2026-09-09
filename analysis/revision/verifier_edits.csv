@@ -1,0 +1,3 @@
+condition,n_edit_decisions,delete,soften_or_rewrite,keep,deletion_rate,deletion_ci_low,deletion_ci_high,rewrite_rate
+C,49,27,14,8,0.551,0.4023,0.6933,0.2857
+D,56,14,14,28,0.25,0.1439,0.3837,0.25

@@ -1,0 +1,4 @@
+comparison,n_claims,raw_agreement,cohens_kappa,kappa_se,kappa_ci_low,kappa_ci_high,landis_koch
+primary (claude-3-haiku) vs human,36,0.5556,0.3255,0.0864,0.1562,0.4949,fair
+primary vs second evaluator (gemini-2.5-flash-lite),360,0.725,0.5045,0.0336,0.4385,0.5704,moderate
+second evaluator vs human,36,0.6944,0.5417,0.0987,0.3481,0.7352,moderate

@@ -1,0 +1,8 @@
+human_label,machine_contradicted,machine_outside_evidence_scope,machine_overstated,machine_partially_supported,machine_subjective_or_generic,machine_supported,machine_unsupported,total
+contradicted,0,1,0,0,0,0,0,1
+outside_evidence_scope,0,3,0,0,0,0,0,3
+overstated,0,0,0,0,0,1,0,1
+partially_supported,0,0,0,1,0,1,0,2
+subjective_or_generic,0,0,0,0,0,6,0,6
+supported,0,0,0,1,0,16,0,17
+unsupported,0,6,0,0,0,0,0,6
