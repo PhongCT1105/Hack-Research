@@ -6,7 +6,7 @@
 
 We thank the editorial team. The four points identified a single underlying defect: the manuscript presented automatic (LLM-judge) labels as measurements and converted a small-sample zero into an unconditional claim. We have corrected this throughout rather than patching individual sentences.
 
-Every statistic in the revised manuscript was regenerated from the released data by two new scripts, `scripts/compute_revision_stats.py` and `scripts/make_revision_figures.py`. Their output is in `analysis/revision/` (eight CSVs plus `report.md`) and is included as Supplementary File 2, so each number below can be checked independently.
+Every statistic in the revised manuscript was regenerated from the released data by two new scripts, `scripts/compute_revision_stats.py` and `scripts/make_revision_figures.py`. Their output is in `analysis/revision/` (nine CSVs plus `report.md`) and is included as Supplementary File 2, so each number below can be checked independently.
 
 Five further problems surfaced during this work that the review did not name, three of them substantive. We report them in §5 below rather than leaving them for a second round.
 

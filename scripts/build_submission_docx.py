@@ -40,17 +40,18 @@ INLINE = re.compile(
 FIG_MARKER = re.compile(r"\[INSERT FIGURE (\d+) HERE\s*[—-]\s*`?([^`\]]+?)`?\]")
 
 
-def configure_document(doc: Document) -> None:
-    """Times New Roman 12pt, double spaced, with continuous line numbers."""
+def configure_document(doc: Document, plain: bool = False) -> None:
+    """Times New Roman 12pt. Manuscripts are double spaced and line numbered;
+    `plain` (for the response letter) is single spaced with no line numbers."""
     style = doc.styles["Normal"]
     style.font.name = BODY_FONT
     style.font.size = Pt(BODY_PT)
     # Explicit east-asian mapping, or Word substitutes its own default font.
     style.element.rPr.rFonts.set(qn("w:eastAsia"), BODY_FONT)
     pf = style.paragraph_format
-    pf.line_spacing = 2.0
+    pf.line_spacing = 1.0 if plain else 2.0
     pf.space_before = Pt(0)
-    pf.space_after = Pt(0)
+    pf.space_after = Pt(6) if plain else Pt(0)
 
     # Word's built-in heading styles are blue and sans-serif; journals expect
     # black body-font headings.
@@ -61,14 +62,15 @@ def configure_document(doc: Document) -> None:
         heading.font.name = BODY_FONT
         heading.font.color.rgb = RGBColor(0, 0, 0)
         heading.font.bold = True
-        heading.paragraph_format.line_spacing = 2.0
+        heading.paragraph_format.line_spacing = 1.0 if plain else 2.0
         heading.paragraph_format.space_before = Pt(6)
         heading.paragraph_format.space_after = Pt(0)
 
     for section in doc.sections:
         section.left_margin = section.right_margin = Inches(1)
         section.top_margin = section.bottom_margin = Inches(1)
-        add_line_numbers(section)
+        if not plain:
+            add_line_numbers(section)
 
 
 def add_line_numbers(section) -> None:
@@ -242,10 +244,12 @@ def main() -> None:
     ap.add_argument("--output", type=Path,
                     default=REPO / "paper" / "NSRI-J-2026-0178_revision1.docx")
     ap.add_argument("--repo", type=Path, default=REPO)
+    ap.add_argument("--plain", action="store_true",
+                    help="single spaced, no line numbering (for the response letter)")
     args = ap.parse_args()
 
     doc = Document()
-    configure_document(doc)
+    configure_document(doc, plain=args.plain)
     stats = convert(args.input.read_text(encoding="utf-8"), doc, args.repo)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     doc.save(args.output)
@@ -253,8 +257,11 @@ def main() -> None:
     print(f"[written] {args.output}")
     print(f"  headings={stats['headings']} tables={stats['tables']} "
           f"figures={stats['figures']} paragraphs={stats['paragraphs']}")
-    print(f"  font={BODY_FONT} {BODY_PT}pt | line spacing=2.0 (double) "
-          f"| continuous line numbering | 1in margins")
+    if args.plain:
+        print(f"  font={BODY_FONT} {BODY_PT}pt | single spaced | no line numbers | 1in margins")
+    else:
+        print(f"  font={BODY_FONT} {BODY_PT}pt | line spacing=2.0 (double) "
+              f"| continuous line numbering | 1in margins")
 
 
 if __name__ == "__main__":
