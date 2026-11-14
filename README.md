@@ -7,10 +7,6 @@
 ---
 
 > **Status: revision 1 for the NSRI Student Research Journal** (submission NSRI-J-2026-0178).
-> The manuscript under review is
-> [`paper/REVISED_paper_NSRI-J-2026-0178.md`](paper/REVISED_paper_NSRI-J-2026-0178.md); the
-> point-by-point editor response is
-> [`paper/REVISION_RESPONSE.md`](paper/REVISION_RESPONSE.md).
 > **All rates below are pilot estimates from automatic (LLM) labels and are
 > instrument-relative — read the caveats before quoting any number.**
 
@@ -159,11 +155,7 @@ python scripts/validate_evaluator.py --machine annotations/machine_labels.csv --
 
 | Path | What it is |
 |------|-----------|
-| `paper/REVISED_paper_NSRI-J-2026-0178.md` | **The manuscript under review** (revision 1, 4798 words) |
-| `paper/NSRI-J-2026-0178_revision1.docx` | **The submission file** — NSRI-compliant: double spaced, Times New Roman 12pt, continuous line numbering |
 | `paper/archive/` | Longer 6393-word draft of the revision, before the length cut |
-| `paper/REVISION_RESPONSE.md` | Point-by-point response to the NSRI editorial decision |
-| `paper/FINAL_paper.md` | The originally submitted manuscript (superseded) |
 | `src/outreach_eval/` | Python package: schemas, LLM adapters, generation, verification, metrics |
 | `scripts/` | `run_pilot`, `auto_evaluate`, `compute_results`, `compute_revision_stats`, `make_revision_figures`, `build_submission_docx`, `validate_evaluator`, `build_annotation_batch`, `human_check`, `validate_packet`, + OpenAlex collection stages |
 | `config/` | Run configs (mock, OpenRouter pilot, full run) |
@@ -204,7 +196,7 @@ python scripts/validate_evaluator.py --machine annotations/machine_labels.csv --
 | 3 | Annotation & evaluation | Kanan |
 | 4 | Related work & paper | Azhdar Mammadov |
 
-**Full paper:** [`paper/REVISED_paper_NSRI-J-2026-0178.md`](paper/REVISED_paper_NSRI-J-2026-0178.md) · **Editor response:** [`paper/REVISION_RESPONSE.md`](paper/REVISION_RESPONSE.md) · **Design & decisions:**
+**Design & decisions:**
 [`docs/experimental_design.md`](docs/experimental_design.md), [`docs/decision_log.md`](docs/decision_log.md)
 · **Contributor guide:** [`CLAUDE.md`](CLAUDE.md)
 
