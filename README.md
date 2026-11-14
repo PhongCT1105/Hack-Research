@@ -155,7 +155,6 @@ python scripts/validate_evaluator.py --machine annotations/machine_labels.csv --
 
 | Path | What it is |
 |------|-----------|
-| `paper/archive/` | Longer 6393-word draft of the revision, before the length cut |
 | `src/outreach_eval/` | Python package: schemas, LLM adapters, generation, verification, metrics |
 | `scripts/` | `run_pilot`, `auto_evaluate`, `compute_results`, `compute_revision_stats`, `make_revision_figures`, `build_submission_docx`, `validate_evaluator`, `build_annotation_batch`, `human_check`, `validate_packet`, + OpenAlex collection stages |
 | `config/` | Run configs (mock, OpenRouter pilot, full run) |
