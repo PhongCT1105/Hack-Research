@@ -2,11 +2,10 @@
 
 **A factorial study of whether grounding and verification stop LLMs from misrepresenting a real researcher's work.**
 
-*NSRI Summer Research Hackathon 2026 — Technology & AI track. Offline benchmark; **no email is ever sent.***
+*Offline benchmark; **no email is ever sent.***
 
 ---
 
-> **Status: revision 1 for the NSRI Student Research Journal** (submission NSRI-J-2026-0178).
 > **All rates below are pilot estimates from automatic (LLM) labels and are
 > instrument-relative — read the caveats before quoting any number.**
 
@@ -88,7 +87,6 @@ Regenerate every number and figure above:
 ```bash
 python scripts/compute_revision_stats.py   # tables  -> analysis/revision/
 python scripts/make_revision_figures.py    # figures -> analysis/figures/
-python scripts/build_submission_docx.py    # NSRI-compliant .docx -> paper/
 ```
 
 ## The 2×2 experimental design
@@ -199,12 +197,7 @@ python scripts/validate_evaluator.py --machine annotations/machine_labels.csv --
 [`docs/experimental_design.md`](docs/experimental_design.md), [`docs/decision_log.md`](docs/decision_log.md)
 · **Contributor guide:** [`CLAUDE.md`](CLAUDE.md)
 
-## Acknowledgements
-
-Built for the **NSRI Summer Research Hackathon 2026**, Technology & AI track. We thank the
-organisers and the track sponsors, **ColdMatch** and **Quanticle**, whose focus on AI-assisted
-academic outreach and research insight motivated this study's problem setting. The sponsors
-provided no funding and had no role in the design, execution, or reporting of this work.
+## Limitations
 
 > **Limitations (pilot).** 12 professors, English-only; a single writer model; provisional
 > evidence packets (abstracts + abstract-excerpt passages); human validation on a 36-claim
