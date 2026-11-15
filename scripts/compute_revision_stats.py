@@ -1,4 +1,4 @@
-"""Recompute every manuscript statistic for the NSRI revision (NSRI-J-2026-0178).
+"""Recompute every manuscript statistic with exact intervals.
 
 The original `compute_results.py` reports point estimates with a percentile
 bootstrap over per-email severe-error rates. That bootstrap is degenerate when a
@@ -445,7 +445,7 @@ def main() -> None:
     write_csv(out / "verifier_edits.csv", ver)
     write_csv(out / "run_metadata.csv", run_metadata(c))
 
-    lines: list[str] = ["# Revision statistics — NSRI-J-2026-0178", ""]
+    lines: list[str] = ["# Revision statistics", ""]
     lines += ["All figures regenerated from `annotations/` and `outputs/full.jsonl`.",
               "Exact intervals are Clopper-Pearson; the cluster bootstrap resamples",
               "whole emails. Zero-event conditions have no informative bootstrap",

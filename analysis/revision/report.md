@@ -1,4 +1,4 @@
-# Revision statistics — NSRI-J-2026-0178
+# Revision statistics
 
 All figures regenerated from `annotations/` and `outputs/full.jsonl`.
 Exact intervals are Clopper-Pearson; the cluster bootstrap resamples

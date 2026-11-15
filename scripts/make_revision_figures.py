@@ -1,4 +1,4 @@
-"""Regenerate manuscript figures with honest intervals for the NSRI revision.
+"""Regenerate manuscript figures with honest intervals.
 
 Figure 1 previously drew zero-height error bars on conditions B and D, because the
 percentile bootstrap collapses when a condition contains no severe errors. Drawn
