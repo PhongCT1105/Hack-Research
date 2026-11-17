@@ -191,7 +191,7 @@ python scripts/validate_evaluator.py --machine annotations/machine_labels.csv --
 | 1 | Dataset & evidence packets | Phong Cao |
 | 2 | Generation & verification pipeline | Abhinav Singh |
 | 3 | Annotation & evaluation | Kanan |
-| 4 | Related work & paper | Azhdar Mammadov |
+| 4 | Related work & paper drafting/revision | Azhdar Mammadov |
 
 **Design & decisions:**
 [`docs/experimental_design.md`](docs/experimental_design.md), [`docs/decision_log.md`](docs/decision_log.md)
